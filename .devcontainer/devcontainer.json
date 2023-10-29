@@ -1,0 +1,20 @@
+{
+  "name": "EnergyUI@storyblok",
+  "dockerComposeFile": ["docker-compose.yml"],
+  "service": "app",
+  "workspaceFolder": "/workspaces/energyui-storyblok-starter",
+  // NOTE: https://www.kenmuse.com/blog/avoiding-dubious-ownership-in-dev-containers/
+  "postStartCommand": "git config --global --add safe.directory /workspaces/energyui-storyblok-starter",
+  // This is needed as we need to have the npm token safely mounted during `npm ci`
+  "initializeCommand": "docker build --secret id=secret_npmrc,src=$HOME/.npmrc . --tag energyui-storyblok-starter:latest",
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "stkb.rewrap",
+        "esbenp.prettier-vscode",
+        "dbaeumer.vscode-eslint",
+        "ms-azuretools.vscode-docker"
+      ]
+    }
+  }
+}

@@ -1,0 +1,44 @@
+version: "3.8"
+
+services:
+  app:
+    image: energyui-storyblok-starter:latest
+    env_file:
+      - ../.env
+    build:
+      context: ..
+      target: devcontainer
+    command: sleep infinity
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.app.rule=Host(`energyui.localhost`)"
+      - "traefik.http.routers.app.tls=true"
+    volumes:
+      - type: bind
+        source: ".."
+        target: /workspaces/energyui-storyblok-starter
+        consistency: cached
+    secrets:
+      - source: secret_npmrc
+        target: /home/node/.npmrc
+      - source: secret_local_env
+        target: /workspaces/energyui-storyblok-starter/.env.local
+
+  proxy:
+    image: traefik:v2.10
+    ports:
+      - "80:80"
+      - "443:443"
+      - "8080:8080"
+    volumes:
+      - ./traefik/traefik.yml:/etc/traefik/traefik.yml:ro # Traefik static config
+      - ./traefik/dynamic.yml:/etc/traefik/dynamic.yml # Traefik dynamic config
+      - ./traefik/certificate-key.pem:/etc/certs/certificate-key.pem:ro
+      - ./traefik/certificate.pem:/etc/certs/certificate.pem:ro
+      - /var/run/docker.sock:/var/run/docker.sock:ro # So that Traefik can listen to the Docker events
+
+secrets:
+  secret_npmrc:
+    file: ~/.npmrc
+  secret_local_env:
+    file: ../.env.local

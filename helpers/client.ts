@@ -1,5 +1,6 @@
 "use client";
 
-// import lightning from "@energyui/design-system/components/global.client";
+import palette from "@kickstartds/ds-agency/global.client.js";
+import "@kickstartds/ds-agency/global.css";
 
-console.log("LOREM");
+console.log(palette);

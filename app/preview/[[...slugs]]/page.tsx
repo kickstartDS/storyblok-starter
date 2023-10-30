@@ -10,7 +10,7 @@ export default async function Page({ params, searchParams }: PageProps) {
   const previewToken = process.env.storyblokApiToken;
   if (!previewToken) throw new Error("STORYBLOK_API_TOKEN missing");
   const preview = identifyPreview(searchParams, previewToken);
-  const { data } = await fetchData(params.slugs?.join('/') || 'home', preview);
+  const { data } = await fetchData(params.slugs?.join("/") || "home", preview);
 
   return (
     <div>

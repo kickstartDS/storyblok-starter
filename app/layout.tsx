@@ -1,5 +1,4 @@
 import { initStoryblok } from "@/helpers/initStoryblok";
-// import "@kickstartds/ds-agency/components/global";
 // @ts-expect-error
 import IconSprite from "@kickstartds/ds-agency/icon-sprite";
 

@@ -1,4 +1,4 @@
-import { StoryblokStory } from "storyblok-generate-ts";
+import {StoryblokStory} from 'storyblok-generate-ts'
 
 export interface BlogAsideStoryblok {
   socialSharing?: SocialSharingStoryblok[];
@@ -42,7 +42,7 @@ export interface CtaStoryblok {
   largeHeadline?: boolean;
   sub?: string;
   text?: string;
-  buttons?: never[];
+  buttons?: ButtonsStoryblok[];
   align?: "" | "left" | "center";
   type?: string;
   _uid: string;
@@ -56,19 +56,13 @@ export interface CtaPaidStoryblok {
   sub?: string;
   text?: string;
   fullWidth?: boolean;
-  buttons?: never[];
+  buttons?: ButtonsStoryblok[];
   backgroundColor?: string;
   backgroundImage?: string;
   align?: "" | "left" | "center";
   type?: string;
-  image_source?: string;
-  image_ratio?:
-    | ""
-    | "VALUE_4_3"
-    | "VALUE_3_2"
-    | "VALUE_16_9"
-    | "VALUE_1_1"
-    | "none";
+  image_src?: string;
+  image_ratio?: "" | "VALUE_4_3" | "VALUE_3_2" | "VALUE_16_9" | "VALUE_1_1" | "none";
   image_vAlign?: "" | "center" | "top" | "top_edge" | "bottom" | "bottom_edge";
   image_hAlign?: "" | "center" | "left" | "left_edge" | "right" | "right_edge";
   image_order?: any;
@@ -91,7 +85,7 @@ export interface FaqStoryblok {
 export interface FeaturesStoryblok {
   layout?: "" | "largeTiles" | "smallTiles" | "list";
   style?: "" | "intext" | "stack" | "centered" | "besideLarge" | "besideSmall";
-  features?: never[];
+  features?: FeaturesStoryblok[];
   type?: string;
   ctas_toggle?: boolean;
   ctas_style?: "" | "button" | "link" | "intext";
@@ -141,7 +135,7 @@ export interface HeroStoryblok {
   text?: string;
   height?: "" | "small" | "default" | "fullImage" | "fullScreen";
   textbox?: boolean;
-  buttons?: never[];
+  buttons?: ButtonsStoryblok[];
   overlay?: boolean;
   textPosition?: "" | "center" | "below" | "left" | "right";
   type?: string;
@@ -189,17 +183,11 @@ export interface ImageStoryStoryblok {
   text?: string;
   layout?: "" | "textLeft" | "imageLeft";
   padding?: boolean;
-  buttons?: never[];
+  buttons?: ButtonsStoryblok[];
   textAlign?: "" | "left" | "center";
   type?: string;
-  image_source?: string;
-  image_ratio?:
-    | ""
-    | "VALUE_4_3"
-    | "VALUE_3_2"
-    | "VALUE_16_9"
-    | "VALUE_1_1"
-    | "none";
+  image_src?: string;
+  image_ratio?: "" | "VALUE_4_3" | "VALUE_3_2" | "VALUE_16_9" | "VALUE_1_1" | "none";
   image_alt?: string;
   _uid: string;
   component: "image-story";
@@ -210,7 +198,7 @@ export interface ImageTextStoryblok {
   text: string;
   layout?: "" | "above" | "below" | "beside_right" | "beside_left";
   type?: string;
-  image_source?: string;
+  image_src?: string;
   image_alt?: string;
   _uid: string;
   component: "imageText";
@@ -239,7 +227,7 @@ export interface LogoStoryblok {
 
 export interface LogosStoryblok {
   tagline?: string;
-  logos?: never[];
+  logos?: LogosStoryblok[];
   align?: "" | "left" | "center";
   type?: string;
   cta_toggle?: boolean;
@@ -254,7 +242,7 @@ export interface LogosStoryblok {
 
 export interface LogosPaidStoryblok {
   tagline?: string;
-  logos?: never[];
+  logos?: LogosStoryblok[];
   align?: "" | "left" | "center";
   logosPerRow?: string;
   type?: string;
@@ -305,12 +293,21 @@ export interface QuestionsStoryblok {
 
 export interface SectionStoryblok {
   width?: "" | "full" | "max" | "wide" | "default" | "narrow";
-  style?: "" | "default" | "accent" | "bold" | "stagelights" | "gradient";
+  style?:
+    | ""
+    | "default"
+    | "accent"
+    | "bold"
+    | "stagelights"
+    | "horizontalGradient"
+    | "verticalGradient"
+    | "accentTransition"
+    | "glow";
   spaceBefore?: "" | "default" | "small" | "none";
   spaceAfter?: "" | "default" | "small" | "none";
   inverted?: boolean;
   components?: (CtaStoryblok | HeroStoryblok | MosaicStoryblok)[];
-  buttons?: never[];
+  buttons?: ButtonsStoryblok[];
   type?: string;
   headline_text?: string;
   headline_large?: boolean;
@@ -355,7 +352,7 @@ export interface SplitStoryblok {
 }
 
 export interface StatsStoryblok {
-  stats?: never[];
+  stats?: StatsStoryblok[];
   type?: string;
   _uid: string;
   component: "stats";
@@ -363,7 +360,7 @@ export interface StatsStoryblok {
 }
 
 export interface StatsPaidStoryblok {
-  stats?: never[];
+  stats?: StatsStoryblok[];
   type?: string;
   _uid: string;
   component: "stats-paid";
@@ -383,7 +380,7 @@ export interface TeaserCardStoryblok {
 }
 
 export interface TestimonialsStoryblok {
-  testimonials?: never[];
+  testimonials?: TestimonialsStoryblok[];
   type?: string;
   _uid: string;
   component: "testimonials";
@@ -391,7 +388,7 @@ export interface TestimonialsStoryblok {
 }
 
 export interface TestimonialsPaidStoryblok {
-  testimonials?: never[];
+  testimonials?: TestimonialsStoryblok[];
   type?: string;
   _uid: string;
   component: "testimonials-paid";
@@ -430,7 +427,7 @@ export interface VideoCurtainStoryblok {
   largeHeadline?: boolean;
   sub?: string;
   text?: string;
-  buttons?: never[];
+  buttons?: ButtonsStoryblok[];
   overlay?: boolean;
   textPosition?: "" | "center" | "left" | "right";
   type?: string;

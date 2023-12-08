@@ -1,14 +1,12 @@
-"use client";
-
 import dynamic from "next/dynamic";
 import {
   SbBlokData,
   storyblokEditable,
   StoryblokComponent,
-} from "@storyblok/react/rsc";
+} from "@storyblok/react";
 import { unflatten } from "@/helpers/unflatten";
-import editablePage from "./Page";
 import { Section } from "@kickstartds/ds-agency/section";
+import editablePage from "./Page";
 
 export const editable =
   (Component: React.ComponentType<any>, nestedBloksKey?: string) =>
@@ -39,11 +37,6 @@ export const components = {
   mosaic: editable(
     dynamic(() =>
       import("@kickstartds/ds-agency/mosaic").then((mod) => mod.Mosaic)
-    )
-  ),
-  "cta-paid": editable(
-    dynamic(() =>
-      import("@kickstartds/ds-agency/cta-paid").then((mod) => mod.CtaPaid)
     )
   ),
   faq: editable(
@@ -79,11 +72,6 @@ export const components = {
       import("@kickstartds/ds-agency/stats").then((mod) => mod.Stats)
     )
   ),
-  "stats-paid": editable(
-    dynamic(() =>
-      import("@kickstartds/ds-agency/stats-paid").then((mod) => mod.StatsPaid)
-    )
-  ),
   "teaser-card": editable(
     dynamic(() =>
       import("@kickstartds/ds-agency/teaser-card").then((mod) => mod.TeaserCard)
@@ -93,13 +81,6 @@ export const components = {
     dynamic(() =>
       import("@kickstartds/ds-agency/testimonials").then(
         (mod) => mod.Testimonials
-      )
-    )
-  ),
-  "testimonials-paid": editable(
-    dynamic(() =>
-      import("@kickstartds/ds-agency/testimonials-paid").then(
-        (mod) => mod.TestimonialsPaid
       )
     )
   ),
@@ -121,11 +102,6 @@ export const components = {
   logos: editable(
     dynamic(() =>
       import("@kickstartds/ds-agency/logos").then((mod) => mod.Logos)
-    )
-  ),
-  "logos-paid": editable(
-    dynamic(() =>
-      import("@kickstartds/ds-agency/logos-paid").then((mod) => mod.LogosPaid)
     )
   ),
 };

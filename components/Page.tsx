@@ -1,16 +1,12 @@
-"use client";
-
 // import { FC, PropsWithChildren } from "react";
 import { PageStoryblok } from "@/types/components-schema";
-import { storyblokEditable, StoryblokComponent } from "@storyblok/react/rsc";
-import DsaProviders from "@kickstartds/ds-agency/providers";
+import { storyblokEditable, StoryblokComponent } from "@storyblok/react";
 // import { render } from "storyblok-rich-text-react-renderer";
 // import { RichtextStoryblok } from "@/types/components-schema";
 // import {
 //   RichTextContext,
 //   RichTextContextDefault,
 // } from "@kickstartds/base/lib/rich-text";
-import "@/helpers/client";
 
 // type StoryblokRichTextProps = {
 //   text: RichtextStoryblok;
@@ -29,7 +25,7 @@ type PageProps = {
 };
 
 const Page: React.FC<PageProps> = ({ blok }) => (
-  <DsaProviders>
+  <>
     {/* <StoryblokRichTextProvider> */}
     <main {...storyblokEditable(blok)}>
       {blok.sections?.map((nestedBlok) => (
@@ -37,7 +33,7 @@ const Page: React.FC<PageProps> = ({ blok }) => (
       ))}
     </main>
     {/* </StoryblokRichTextProvider> */}
-  </DsaProviders>
+  </>
 );
 
 export default Page;

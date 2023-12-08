@@ -3,8 +3,9 @@
   "version": "0.0.1",
   "private": true,
   "scripts": {
-    "dev": "next dev",
-    "build": "next build",
+    "dev": "BUILD_ENV=preview next dev",
+    "build": "next build && next export",
+    "build-preview": "BUILD_ENV=preview yarn build",
     "start": "next start",
     "lint": "next lint",
     "ssl-proxy": "local-ssl-proxy --source 3010 --target 3000 --cert localhost.pem --key localhost-key.pem",
@@ -18,30 +19,30 @@
     "@kickstartds/blog": "^3.0.0-next.6",
     "@kickstartds/content": "^3.0.0-next.2",
     "@kickstartds/core": "^3.0.0-next.5",
-    "@kickstartds/ds-agency": "2.1.8--canary.30.696.0",
+    "@kickstartds/ds-agency": "^2.1.66",
     "@kickstartds/form": "^3.0.0-next.6",
-    "@storyblok/react": "^2.2.1",
-    "@types/node": "20.4.5",
-    "@types/react": "18.2.17",
-    "@types/react-dom": "18.2.7",
-    "eslint": "8.45.0",
-    "eslint-config-next": "13.4.12",
-    "next": "13.4.12",
+    "@storyblok/react": "^2.4.7",
     "react": "18.2.0",
     "react-dom": "18.2.0",
-    "storyblok-rich-text-react-renderer": "^2.9.0",
-    "typescript": "5.1.6"
+    "storyblok-rich-text-react-renderer": "^2.9.0"
   },
   "devDependencies": {
     "@kickstartds/jsonschema-utils": "^2.8.0",
     "@kickstartds/jsonschema2storyblok": "^1.0.24",
     "@kickstartds/jsonschema2uniform": "^1.0.4",
+    "@types/node": "20.4.5",
+    "@types/react": "18.2.17",
+    "@types/react-dom": "18.2.7",
     "esbuild": "^0.19.5",
+    "eslint": "8.45.0",
+    "eslint-config-next": "13.4.12",
     "import-meta-resolve": "~3.0.0",
     "json-schema-typed": "~8.0.1",
     "kickstartds": "2.2.0--canary.41.237.0",
     "local-ssl-proxy": "^2.0.5",
+    "next": "13.4.12",
     "storyblok": "^3.10.1",
-    "storyblok-generate-ts": "^1.15.0"
+    "storyblok-generate-ts": "^1.15.0",
+    "typescript": "5.1.6"
   }
 }

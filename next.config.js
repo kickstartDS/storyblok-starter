@@ -1,9 +1,13 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  env: {
-    storyblokApiToken: process.env.STORYBLOK_API_TOKEN,
-    storyblokSpaceId: process.env.STORYBLOK_SPACE_ID,
-  },
+  transpilePackages: [
+    "@kickstartds/base",
+    "@kickstartds/blog",
+    "@kickstartds/content",
+    "@kickstartds/core",
+    "@kickstartds/form",
+    "@kickstartds/ds-agency",
+  ],
 };
 
 module.exports = nextConfig;

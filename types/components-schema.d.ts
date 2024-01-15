@@ -1,22 +1,7 @@
 import {StoryblokStory} from 'storyblok-generate-ts'
 
-export interface BlogAsideStoryblok {
-  socialSharing?: SocialSharingStoryblok[];
-  readingTime?: string;
-  date: string;
-  type?: string;
-  author_name?: string;
-  author_byline?: string;
-  author_image?: string;
-  author_twitter?: string;
-  author_email?: string;
-  _uid: string;
-  component: "blog-aside";
-  [k: string]: any;
-}
-
 export interface ButtonStoryblok {
-  label: string;
+  label?: string;
   target?: string;
   variant?: "" | "primary" | "secondary" | "tertiary";
   icon?: string;
@@ -30,8 +15,8 @@ export interface ButtonStoryblok {
 
 export interface ButtonsStoryblok {
   label?: string;
-  target?: string;
   icon?: string;
+  target?: string;
   _uid: string;
   component: "buttons";
   [k: string]: any;
@@ -39,11 +24,11 @@ export interface ButtonsStoryblok {
 
 export interface CtaStoryblok {
   headline?: string;
-  largeHeadline?: boolean;
   sub?: string;
   text?: string;
+  highlightText?: boolean;
   buttons?: ButtonsStoryblok[];
-  align?: "" | "left" | "center";
+  textAlign?: "" | "left" | "center";
   type?: string;
   _uid: string;
   component: "cta";
@@ -52,23 +37,22 @@ export interface CtaStoryblok {
 
 export interface CtaPaidStoryblok {
   headline?: string;
-  largeHeadline?: boolean;
   sub?: string;
   text?: string;
+  highlightText?: boolean;
+  colorNeutral?: boolean;
   fullWidth?: boolean;
   buttons?: ButtonsStoryblok[];
   backgroundColor?: string;
   backgroundImage?: string;
-  align?: "" | "left" | "center";
-  type?: string;
   image_src?: string;
-  image_ratio?: "" | "VALUE_4_3" | "VALUE_3_2" | "VALUE_16_9" | "VALUE_1_1" | "none";
-  image_vAlign?: "" | "center" | "top" | "top_edge" | "bottom" | "bottom_edge";
-  image_hAlign?: "" | "center" | "left" | "left_edge" | "right" | "right_edge";
-  image_order?: any;
+  image_padding?: boolean;
   image_alt?: string;
-  image_order_mobileImageLast?: boolean;
-  image_order_desktopImageLast?: boolean;
+  order_mobileImageLast?: boolean;
+  order_desktopImageLast?: boolean;
+  textAlign?: "" | "left" | "center";
+  contentAlign?: "" | "center" | "top" | "bottom";
+  type?: string;
   _uid: string;
   component: "cta-paid";
   [k: string]: any;
@@ -83,12 +67,11 @@ export interface FaqStoryblok {
 }
 
 export interface FeaturesStoryblok {
-  layout?: "" | "largeTiles" | "smallTiles" | "list";
-  style?: "" | "intext" | "stack" | "centered" | "besideLarge" | "besideSmall";
-  features?: FeaturesStoryblok[];
-  type?: string;
-  ctas_toggle?: boolean;
-  ctas_style?: "" | "button" | "link" | "intext";
+  icon?: string;
+  title?: string;
+  text?: string;
+  cta_target?: string;
+  cta_label?: string;
   _uid: string;
   component: "features";
   [k: string]: any;
@@ -107,14 +90,27 @@ export interface FooterStoryblok {
 export interface GalleryStoryblok {
   images?: ImagesStoryblok[];
   layout?: "" | "stack" | "smallTiles" | "largeTiles";
+  aspectRatio?: "" | "unset" | "square" | "wide" | "landscape";
+  lightbox?: boolean;
   type?: string;
   _uid: string;
   component: "gallery";
   [k: string]: any;
 }
 
+export interface HeaderStoryblok {
+  logo?: LogoStoryblok[];
+  logoHref?: string;
+  floating?: boolean;
+  navItems?: NavItemsStoryblok[];
+  type?: string;
+  _uid: string;
+  component: "header";
+  [k: string]: any;
+}
+
 export interface HeadlineStoryblok {
-  text: string;
+  text?: string;
   sub?: string;
   switchOrder?: boolean;
   align?: "" | "left" | "center" | "right";
@@ -130,45 +126,29 @@ export interface HeadlineStoryblok {
 
 export interface HeroStoryblok {
   headline?: string;
-  largeHeadline?: boolean;
   sub?: string;
   text?: string;
+  highlightText?: boolean;
+  colorNeutral?: boolean;
   height?: "" | "small" | "default" | "fullImage" | "fullScreen";
   textbox?: boolean;
   buttons?: ButtonsStoryblok[];
   overlay?: boolean;
-  textPosition?: "" | "center" | "below" | "left" | "right";
-  type?: string;
   image_srcMobile?: string;
   image_srcTablet?: string;
   image_srcDesktop?: string;
   image_src?: string;
   image_indent?: "" | "none" | "left" | "right";
   image_alt?: string;
+  textPosition?: "" | "center" | "below" | "left" | "right";
+  type?: string;
   _uid: string;
   component: "hero";
   [k: string]: any;
 }
 
-export interface ImageStoryblok {
-  src?: string;
-  srcSet?: string;
-  alt?: string;
-  width?: string;
-  height?: string;
-  className?: string;
-  style?: string;
-  lazy?: boolean;
-  sources?: SourcesStoryblok[];
-  pictureClassName?: string;
-  type?: string;
-  _uid: string;
-  component: "image";
-  [k: string]: any;
-}
-
 export interface ImagesStoryblok {
-  url?: string;
+  src?: string;
   alt?: string;
   caption?: string;
   _uid: string;
@@ -183,25 +163,26 @@ export interface ImageStoryStoryblok {
   text?: string;
   layout?: "" | "textLeft" | "imageLeft";
   padding?: boolean;
-  buttons?: ButtonsStoryblok[];
-  textAlign?: "" | "left" | "center";
-  type?: string;
+  button?: ButtonStoryblok[];
   image_src?: string;
   image_ratio?: "" | "VALUE_4_3" | "VALUE_3_2" | "VALUE_16_9" | "VALUE_1_1" | "none";
   image_alt?: string;
+  textAlign?: "" | "left" | "center";
+  type?: string;
   _uid: string;
   component: "image-story";
   [k: string]: any;
 }
 
 export interface ImageTextStoryblok {
-  text: string;
-  layout?: "" | "above" | "below" | "beside_right" | "beside_left";
-  type?: string;
+  text?: string;
+  highlightText?: boolean;
   image_src?: string;
   image_alt?: string;
+  layout?: "" | "above" | "below" | "beside_right" | "beside_left";
+  type?: string;
   _uid: string;
-  component: "imageText";
+  component: "image-text";
   [k: string]: any;
 }
 
@@ -226,15 +207,8 @@ export interface LogoStoryblok {
 }
 
 export interface LogosStoryblok {
-  tagline?: string;
-  logos?: LogosStoryblok[];
-  align?: "" | "left" | "center";
-  type?: string;
-  cta_toggle?: boolean;
-  cta_text?: string;
-  cta_link?: string;
-  cta_label?: string;
-  cta_style?: "" | "button" | "text";
+  src?: string;
+  alt?: string;
   _uid: string;
   component: "logos";
   [k: string]: any;
@@ -245,12 +219,12 @@ export interface LogosPaidStoryblok {
   logos?: LogosStoryblok[];
   align?: "" | "left" | "center";
   logosPerRow?: string;
-  type?: string;
   cta_toggle?: boolean;
   cta_text?: string;
   cta_link?: string;
   cta_label?: string;
   cta_style?: "" | "button" | "text";
+  type?: string;
   _uid: string;
   component: "logos-paid";
   [k: string]: any;
@@ -269,14 +243,20 @@ export interface MosaicStoryblok {
 export interface NavItemsStoryblok {
   href?: string;
   label?: string;
-  target?: string;
   _uid: string;
   component: "navItems";
   [k: string]: any;
 }
 
 export interface PageStoryblok {
-  sections?: SectionStoryblok[];
+  id: string;
+  slug: string;
+  layout?: "" | "default" | "content" | "blog_list" | "blog_detail" | "glossary";
+  section?: SectionStoryblok[];
+  updated?: string;
+  created?: string;
+  seo?: SeoStoryblok[];
+  type?: string;
   _uid: string;
   component: "page";
   uuid?: string;
@@ -295,20 +275,19 @@ export interface SectionStoryblok {
   width?: "" | "full" | "max" | "wide" | "default" | "narrow";
   style?:
     | ""
-    | "default"
-    | "accent"
-    | "bold"
     | "stagelights"
     | "horizontalGradient"
     | "verticalGradient"
     | "accentTransition"
-    | "glow";
+    | "boldTransition"
+    | "symmetricGlow"
+    | "anchorGlow";
+  backgroundColor?: "" | "default" | "accent" | "bold";
+  spotlight?: boolean;
   spaceBefore?: "" | "default" | "small" | "none";
   spaceAfter?: "" | "default" | "small" | "none";
   inverted?: boolean;
-  components?: (CtaStoryblok | HeroStoryblok | MosaicStoryblok)[];
-  buttons?: ButtonsStoryblok[];
-  type?: string;
+  headerSpacing?: boolean;
   headline_text?: string;
   headline_large?: boolean;
   headline_width?: "" | "unset" | "narrow" | "default" | "wide";
@@ -319,18 +298,92 @@ export interface SectionStoryblok {
   content_width?: "" | "unset" | "narrow" | "default" | "wide";
   content_align?: "" | "left" | "center" | "right";
   content_gutter?: "" | "large" | "default" | "small" | "none";
-  content_mode?: "" | "default" | "tile" | "list";
+  content_mode?: "" | "default" | "tile" | "list" | "slider";
+  content_tileWidth?: "" | "control" | "card" | "narrow" | "medium" | "wide";
+  components?: (
+    | CtaStoryblok
+    | CtaPaidStoryblok
+    | FaqStoryblok
+    | GalleryStoryblok
+    | HeadlineStoryblok
+    | HeroStoryblok
+    | ImageStoryStoryblok
+    | ImageTextStoryblok
+    | LogosPaidStoryblok
+    | MosaicStoryblok
+    | SplitStoryblok
+    | StatsPaidStoryblok
+    | TeaserCardStoryblok
+    | TestimonialsPaidStoryblok
+    | TextStoryblok
+    | VideoCurtainStoryblok
+  )[];
+  button?: ButtonStoryblok[];
+  type?: string;
   _uid: string;
   component: "section";
   [k: string]: any;
 }
 
-export interface SocialSharingStoryblok {
-  icon?: string;
-  href?: string;
+export interface SeoStoryblok {
   title?: string;
+  description?: string;
+  keywords?: string;
+  image?: string;
+  cardImage?: string;
+  type?: string;
   _uid: string;
-  component: "socialSharing";
+  component: "seo";
+  [k: string]: any;
+}
+
+export interface SettingsStoryblok {
+  header?: HeaderStoryblok[];
+  footer?: FooterStoryblok[];
+  seo?: (
+    | ButtonStoryblok
+    | ButtonsStoryblok
+    | CtaStoryblok
+    | CtaPaidStoryblok
+    | FaqStoryblok
+    | FeaturesStoryblok
+    | FooterStoryblok
+    | GalleryStoryblok
+    | HeaderStoryblok
+    | HeadlineStoryblok
+    | HeroStoryblok
+    | ImagesStoryblok
+    | ImageStoryStoryblok
+    | ImageTextStoryblok
+    | LogoStoryblok
+    | LogosStoryblok
+    | LogosPaidStoryblok
+    | MosaicStoryblok
+    | NavItemsStoryblok
+    | PageStoryblok
+    | QuestionsStoryblok
+    | SectionStoryblok
+    | SeoStoryblok
+    | SettingsStoryblok
+    | SourcesStoryblok
+    | SplitStoryblok
+    | StatsStoryblok
+    | StatsPaidStoryblok
+    | TeaserCardStoryblok
+    | TestimonialsStoryblok
+    | TestimonialsPaidStoryblok
+    | TextStoryblok
+    | TilesStoryblok
+    | VideoCurtainStoryblok
+  )[];
+  title?: string;
+  description?: string;
+  keywords?: string;
+  image?: string;
+  cardImage?: string;
+  type?: string;
+  _uid: string;
+  component: "settings";
   [k: string]: any;
 }
 
@@ -352,8 +405,9 @@ export interface SplitStoryblok {
 }
 
 export interface StatsStoryblok {
-  stats?: StatsStoryblok[];
-  type?: string;
+  number?: string;
+  description?: string;
+  title?: string;
   _uid: string;
   component: "stats";
   [k: string]: any;
@@ -370,9 +424,12 @@ export interface StatsPaidStoryblok {
 export interface TeaserCardStoryblok {
   headline?: string;
   text?: string;
+  label?: string;
+  layout?: "" | "stack" | "row";
   target?: string;
+  displayButton?: boolean;
   image?: string;
-  inverted?: boolean;
+  imageRatio?: "" | "wide" | "landscape" | "square" | "unset";
   type?: string;
   _uid: string;
   component: "teaser-card";
@@ -380,14 +437,18 @@ export interface TeaserCardStoryblok {
 }
 
 export interface TestimonialsStoryblok {
-  testimonials?: TestimonialsStoryblok[];
-  type?: string;
+  quote?: string;
+  name?: string;
+  title?: string;
+  image_src?: string;
+  image_alt?: string;
   _uid: string;
   component: "testimonials";
   [k: string]: any;
 }
 
 export interface TestimonialsPaidStoryblok {
+  layout?: "" | "slider" | "list" | "alternating";
   testimonials?: TestimonialsStoryblok[];
   type?: string;
   _uid: string;
@@ -396,10 +457,10 @@ export interface TestimonialsPaidStoryblok {
 }
 
 export interface TextStoryblok {
-  text: string;
+  text?: string;
   layout?: "" | "singleColumn" | "multiColumn";
   align?: "" | "left" | "center";
-  style?: "" | "highlight" | "default";
+  highlightText?: boolean;
   type?: string;
   _uid: string;
   component: "text";
@@ -410,13 +471,15 @@ export interface TilesStoryblok {
   headline?: string;
   sub?: string;
   text?: string;
-  image?: string;
-  backgroundColor?: string;
-  textColor?: string;
+  image_src?: string;
+  image_alt?: string;
   button_toggle?: boolean;
   button_label?: string;
   button_target?: string;
   button_icon?: string;
+  backgroundColor?: string;
+  backgroundImage?: string;
+  textColor?: string;
   _uid: string;
   component: "tiles";
   [k: string]: any;
@@ -424,16 +487,17 @@ export interface TilesStoryblok {
 
 export interface VideoCurtainStoryblok {
   headline?: string;
-  largeHeadline?: boolean;
   sub?: string;
   text?: string;
+  highlightText?: boolean;
+  colorNeutral?: boolean;
   buttons?: ButtonsStoryblok[];
   overlay?: boolean;
-  textPosition?: "" | "center" | "left" | "right";
-  type?: string;
   video_srcMobile?: string;
   video_srcTablet?: string;
   video_srcDesktop?: string;
+  textPosition?: "" | "center" | "left" | "right";
+  type?: string;
   _uid: string;
   component: "video-curtain";
   [k: string]: any;

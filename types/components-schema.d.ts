@@ -1,7 +1,51 @@
 import {StoryblokStory} from 'storyblok-generate-ts'
 
+export interface BlogAsideStoryblok {
+  author_name?: string;
+  author_byline?: string;
+  author_image?: string;
+  author_twitter?: string;
+  author_email?: string;
+  socialSharing?: SocialSharingStoryblok[];
+  readingTime?: string;
+  date: string;
+  type?: string;
+  _uid: string;
+  component: "blog-aside";
+  [k: string]: any;
+}
+
+export interface BlogHeadStoryblok {
+  date?: string;
+  tags?: string;
+  headline: string;
+  image?: string;
+  type?: string;
+  _uid: string;
+  component: "blog-head";
+  [k: string]: any;
+}
+
+export interface BlogTeaserStoryblok {
+  date?: string;
+  tags?: string;
+  headline: string;
+  teaserText: string;
+  image?: string;
+  link_url?: string;
+  link_label?: string;
+  readingTime?: string;
+  author_name?: string;
+  author_title?: string;
+  author_image?: string;
+  type?: string;
+  _uid: string;
+  component: "blog-teaser";
+  [k: string]: any;
+}
+
 export interface ButtonStoryblok {
-  label?: string;
+  label: string;
   target?: string;
   variant?: "" | "primary" | "secondary" | "tertiary";
   icon?: string;
@@ -13,12 +57,36 @@ export interface ButtonStoryblok {
   [k: string]: any;
 }
 
+export interface ButtonGroupStoryblok {
+  button?: never[];
+  colorNeutral?: boolean;
+  size?: "" | "small" | "medium" | "large";
+  arrangement?: "" | "left" | "center" | "right" | "space_between" | "grow";
+  className?: string;
+  type?: string;
+  _uid: string;
+  component: "button-group";
+  [k: string]: any;
+}
+
 export interface ButtonsStoryblok {
   label?: string;
   icon?: string;
   target?: string;
   _uid: string;
   component: "buttons";
+  [k: string]: any;
+}
+
+export interface ComponentTeaserStoryblok {
+  title?: string;
+  text?: string;
+  label?: string;
+  target?: string;
+  image?: string;
+  type?: string;
+  _uid: string;
+  component: "component-teaser";
   [k: string]: any;
 }
 
@@ -110,7 +178,7 @@ export interface HeaderStoryblok {
 }
 
 export interface HeadlineStoryblok {
-  text?: string;
+  text: string;
   sub?: string;
   switchOrder?: boolean;
   align?: "" | "left" | "center" | "right";
@@ -147,6 +215,24 @@ export interface HeroStoryblok {
   [k: string]: any;
 }
 
+export interface ImageStoryblok {
+  src?: string;
+  srcSet?: string;
+  alt?: string;
+  width?: string;
+  height?: string;
+  aspectRatio?: "" | "unset" | "square" | "wide" | "landscape";
+  className?: string;
+  style?: string;
+  lazy?: boolean;
+  sources?: SourcesStoryblok[];
+  pictureClassName?: string;
+  type?: string;
+  _uid: string;
+  component: "image";
+  [k: string]: any;
+}
+
 export interface ImagesStoryblok {
   src?: string;
   alt?: string;
@@ -163,7 +249,7 @@ export interface ImageStoryStoryblok {
   text?: string;
   layout?: "" | "textLeft" | "imageLeft";
   padding?: boolean;
-  button?: ButtonStoryblok[];
+  button?: never[];
   image_src?: string;
   image_ratio?: "" | "VALUE_4_3" | "VALUE_3_2" | "VALUE_16_9" | "VALUE_1_1" | "none";
   image_alt?: string;
@@ -175,7 +261,7 @@ export interface ImageStoryStoryblok {
 }
 
 export interface ImageTextStoryblok {
-  text?: string;
+  text: string;
   highlightText?: boolean;
   image_src?: string;
   image_alt?: string;
@@ -183,6 +269,14 @@ export interface ImageTextStoryblok {
   type?: string;
   _uid: string;
   component: "image-text";
+  [k: string]: any;
+}
+
+export interface ItemsStoryblok {
+  href?: string;
+  label?: string;
+  _uid: string;
+  component: "items";
   [k: string]: any;
 }
 
@@ -243,8 +337,19 @@ export interface MosaicStoryblok {
 export interface NavItemsStoryblok {
   href?: string;
   label?: string;
+  target?: string;
   _uid: string;
   component: "navItems";
+  [k: string]: any;
+}
+
+export interface NavMainStoryblok {
+  logo?: LogoStoryblok[];
+  logoHref?: string;
+  items?: ItemsStoryblok[];
+  type?: string;
+  _uid: string;
+  component: "nav-main";
   [k: string]: any;
 }
 
@@ -252,7 +357,7 @@ export interface PageStoryblok {
   id: string;
   slug: string;
   layout?: "" | "default" | "content" | "blog_list" | "blog_detail" | "glossary";
-  section?: SectionStoryblok[];
+  section?: never[];
   updated?: string;
   created?: string;
   seo?: SeoStoryblok[];
@@ -260,6 +365,17 @@ export interface PageStoryblok {
   _uid: string;
   component: "page";
   uuid?: string;
+  [k: string]: any;
+}
+
+export interface PageIntroStoryblok {
+  headline?: string;
+  sub?: string;
+  link_href?: string;
+  link_label?: string;
+  type?: string;
+  _uid: string;
+  component: "page-intro";
   [k: string]: any;
 }
 
@@ -300,25 +416,8 @@ export interface SectionStoryblok {
   content_gutter?: "" | "large" | "default" | "small" | "none";
   content_mode?: "" | "default" | "tile" | "list" | "slider";
   content_tileWidth?: "" | "control" | "card" | "narrow" | "medium" | "wide";
-  components?: (
-    | CtaStoryblok
-    | CtaPaidStoryblok
-    | FaqStoryblok
-    | GalleryStoryblok
-    | HeadlineStoryblok
-    | HeroStoryblok
-    | ImageStoryStoryblok
-    | ImageTextStoryblok
-    | LogosPaidStoryblok
-    | MosaicStoryblok
-    | SplitStoryblok
-    | StatsPaidStoryblok
-    | TeaserCardStoryblok
-    | TestimonialsPaidStoryblok
-    | TextStoryblok
-    | VideoCurtainStoryblok
-  )[];
-  button?: ButtonStoryblok[];
+  components?: never[];
+  button?: never[];
   type?: string;
   _uid: string;
   component: "section";
@@ -340,42 +439,7 @@ export interface SeoStoryblok {
 export interface SettingsStoryblok {
   header?: HeaderStoryblok[];
   footer?: FooterStoryblok[];
-  seo?: (
-    | ButtonStoryblok
-    | ButtonsStoryblok
-    | CtaStoryblok
-    | CtaPaidStoryblok
-    | FaqStoryblok
-    | FeaturesStoryblok
-    | FooterStoryblok
-    | GalleryStoryblok
-    | HeaderStoryblok
-    | HeadlineStoryblok
-    | HeroStoryblok
-    | ImagesStoryblok
-    | ImageStoryStoryblok
-    | ImageTextStoryblok
-    | LogoStoryblok
-    | LogosStoryblok
-    | LogosPaidStoryblok
-    | MosaicStoryblok
-    | NavItemsStoryblok
-    | PageStoryblok
-    | QuestionsStoryblok
-    | SectionStoryblok
-    | SeoStoryblok
-    | SettingsStoryblok
-    | SourcesStoryblok
-    | SplitStoryblok
-    | StatsStoryblok
-    | StatsPaidStoryblok
-    | TeaserCardStoryblok
-    | TestimonialsStoryblok
-    | TestimonialsPaidStoryblok
-    | TextStoryblok
-    | TilesStoryblok
-    | VideoCurtainStoryblok
-  )[];
+  seo?: SeoStoryblok[];
   title?: string;
   description?: string;
   keywords?: string;
@@ -384,6 +448,29 @@ export interface SettingsStoryblok {
   type?: string;
   _uid: string;
   component: "settings";
+  [k: string]: any;
+}
+
+export interface SliderStoryblok {
+  autoplay?: boolean;
+  nav?: boolean;
+  perView?: string;
+  gap?: string;
+  arrows?: boolean;
+  type?: string;
+  className?: string;
+  typeProp?: "" | "slider" | "carousel";
+  _uid: string;
+  component: "slider";
+  [k: string]: any;
+}
+
+export interface SocialSharingStoryblok {
+  icon?: string;
+  href?: string;
+  title?: string;
+  _uid: string;
+  component: "socialSharing";
   [k: string]: any;
 }
 
@@ -437,7 +524,7 @@ export interface TeaserCardStoryblok {
 }
 
 export interface TestimonialsStoryblok {
-  quote?: string;
+  quote: string;
   name?: string;
   title?: string;
   image_src?: string;
@@ -457,7 +544,7 @@ export interface TestimonialsPaidStoryblok {
 }
 
 export interface TextStoryblok {
-  text?: string;
+  text: string;
   layout?: "" | "singleColumn" | "multiColumn";
   align?: "" | "left" | "center";
   highlightText?: boolean;

@@ -23,7 +23,7 @@
     "@kickstartds/core": "^3.0.0-beta.0",
     "@kickstartds/ds-agency": "2.3.0--canary.44.1497.0",
     "@kickstartds/form": "^3.0.0-beta.0",
-    "@storyblok/react": "^2.4.7",
+    "@storyblok/react": "^3.0.7",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "storyblok-rich-text-react-renderer": "^2.9.0"

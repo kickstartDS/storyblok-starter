@@ -1,11 +1,15 @@
 import { GetStaticPaths, GetStaticProps, NextPage } from "next";
-import { ISbStory } from "@storyblok/react";
-import StoryblokStory from "@storyblok/react/story";
+import {
+  useStoryblokState,
+  StoryblokComponent,
+  ISbStory,
+} from "@storyblok/react";
 import { fetchStories, fetchStory } from "@/helpers/storyblok";
 
-const Page: NextPage<ISbStory["data"]> = ({ story }) => (
-  <StoryblokStory story={story} />
-);
+const Page: NextPage<ISbStory["data"]> = ({ story: initialStory }) => {
+  const story = useStoryblokState(initialStory);
+  return story ? <StoryblokComponent blok={story.content} /> : null;
+};
 
 export default Page;
 

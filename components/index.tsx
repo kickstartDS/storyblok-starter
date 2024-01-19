@@ -28,16 +28,8 @@ export const editable =
 export const components = {
   page: editablePage,
   section: editable(Section, "components"),
-  hero: editable(
-    dynamic(() => import("@kickstartds/ds-agency/hero").then((mod) => mod.Hero))
-  ),
   cta: editable(
     dynamic(() => import("@kickstartds/ds-agency/cta").then((mod) => mod.Cta))
-  ),
-  mosaic: editable(
-    dynamic(() =>
-      import("@kickstartds/ds-agency/mosaic").then((mod) => mod.Mosaic)
-    )
   ),
   faq: editable(
     dynamic(() => import("@kickstartds/ds-agency/faq").then((mod) => mod.Faq))
@@ -55,11 +47,6 @@ export const components = {
   headline: editable(
     dynamic(() =>
       import("@kickstartds/ds-agency/headline").then((mod) => mod.Headline)
-    )
-  ),
-  "image-story": editable(
-    dynamic(() =>
-      import("@kickstartds/ds-agency/image-story").then((mod) => mod.ImageStory)
     )
   ),
   split: editable(
@@ -86,13 +73,6 @@ export const components = {
   ),
   text: editable(
     dynamic(() => import("@kickstartds/ds-agency/text").then((mod) => mod.Text))
-  ),
-  "video-curtain": editable(
-    dynamic(() =>
-      import("@kickstartds/ds-agency/video-curtain").then(
-        (mod) => mod.VideoCurtain
-      )
-    )
   ),
   "image-text": editable(
     dynamic(() =>

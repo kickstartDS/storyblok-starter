@@ -24,9 +24,9 @@ export const getStaticPaths = (async () => {
   return { paths, fallback: false };
 }) satisfies GetStaticPaths;
 
-export const getStaticProps = (async ({ params }) => {
+export const getStaticProps = (async ({ params, draftMode }) => {
   const slug = (params?.slug as string[] | undefined)?.join("/") || "home";
-  const { data } = await fetchStory(slug, false);
+  const { data } = await fetchStory(slug, draftMode || false);
   return {
     props: { ...data, key: data.story.id },
     revalidate: 3600, // revalidate every hour

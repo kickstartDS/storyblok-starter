@@ -1,6 +1,6 @@
 import {StoryblokStory} from 'storyblok-generate-ts'
 
-export interface BlogAsideStoryblok {
+export interface BlogAsideReferenceStoryblok {
   author_name?: string;
   author_byline?: string;
   author_image?: string;
@@ -11,27 +11,27 @@ export interface BlogAsideStoryblok {
   date?: string;
   type?: string;
   _uid: string;
-  component: "blog-aside";
+  component: "blog-aside-reference";
   [k: string]: any;
 }
 
-export interface BlogHeadStoryblok {
+export interface BlogHeadReferenceStoryblok {
   date?: string;
   tags?: string;
   headline?: string;
   image?: string;
   type?: string;
   _uid: string;
-  component: "blog-head";
+  component: "blog-head-reference";
   [k: string]: any;
 }
 
 export interface BlogOverviewStoryblok {
-  latest?: BlogTeaserStoryblok[];
+  latest?: BlogTeaserReferenceStoryblok[];
   list?: BlogTeaserStoryblok[];
   more?: BlogTeaserStoryblok[];
-  cta?: CtaStoryblok[];
-  seo?: SeoStoryblok[];
+  cta?: CtaReferenceStoryblok[];
+  seo?: SeoReferenceStoryblok[];
   type?: string;
   _uid: string;
   component: "blog-overview";
@@ -39,11 +39,11 @@ export interface BlogOverviewStoryblok {
 }
 
 export interface BlogPostStoryblok {
-  head?: BlogHeadStoryblok[];
-  aside?: BlogAsideStoryblok[];
+  head?: BlogHeadReferenceStoryblok[];
+  aside?: BlogAsideReferenceStoryblok[];
   content?: string;
-  cta?: CtaStoryblok[];
-  seo?: SeoStoryblok[];
+  cta?: CtaReferenceStoryblok[];
+  seo?: SeoReferenceStoryblok[];
   type?: string;
   _uid: string;
   component: "blog-post";
@@ -65,6 +65,24 @@ export interface BlogTeaserStoryblok {
   type?: string;
   _uid: string;
   component: "blog-teaser";
+  [k: string]: any;
+}
+
+export interface BlogTeaserReferenceStoryblok {
+  date?: string;
+  tags?: string;
+  headline?: string;
+  teaserText?: string;
+  image?: string;
+  link_url?: string;
+  link_label?: string;
+  readingTime?: string;
+  author_name?: string;
+  author_title?: string;
+  author_image?: string;
+  type?: string;
+  _uid: string;
+  component: "blog-teaser-reference";
   [k: string]: any;
 }
 
@@ -103,6 +121,19 @@ export interface CtaStoryblok {
   [k: string]: any;
 }
 
+export interface CtaReferenceStoryblok {
+  headline?: string;
+  sub?: string;
+  text?: string;
+  highlightText?: boolean;
+  buttons?: ButtonsEntryStoryblok[];
+  textAlign?: "" | "left" | "center";
+  type?: string;
+  _uid: string;
+  component: "cta-reference";
+  [k: string]: any;
+}
+
 export interface FaqStoryblok {
   questions?: QuestionsEntryStoryblok[];
   type?: string;
@@ -134,13 +165,13 @@ export interface FeaturesEntryStoryblok {
   [k: string]: any;
 }
 
-export interface FooterStoryblok {
-  logo?: PictureStoryblok[];
+export interface FooterReferenceStoryblok {
+  logo?: PictureReferenceStoryblok[];
   logoHref?: string;
   navItems?: NavItemsEntryStoryblok[];
   type?: string;
   _uid: string;
-  component: "footer";
+  component: "footer-reference";
   [k: string]: any;
 }
 
@@ -155,14 +186,14 @@ export interface GalleryStoryblok {
   [k: string]: any;
 }
 
-export interface HeaderStoryblok {
-  logo?: PictureStoryblok[];
+export interface HeaderReferenceStoryblok {
+  logo?: PictureReferenceStoryblok[];
   logoHref?: string;
   floating?: boolean;
   navItems?: NavItemsEntryStoryblok[];
   type?: string;
   _uid: string;
-  component: "header";
+  component: "header-reference";
   [k: string]: any;
 }
 
@@ -220,7 +251,7 @@ export interface NavItemsEntryStoryblok {
 
 export interface PageStoryblok {
   sections?: SectionStoryblok[];
-  seo?: SeoStoryblok[];
+  seo?: SeoReferenceStoryblok[];
   type?: string;
   _uid: string;
   component: "page";
@@ -228,14 +259,14 @@ export interface PageStoryblok {
   [k: string]: any;
 }
 
-export interface PictureStoryblok {
+export interface PictureReferenceStoryblok {
   src?: string;
   srcSet?: string;
   alt?: string;
   width?: string;
   height?: string;
   className?: string;
-  component: "picture";
+  component: "picture-reference";
   id?: string;
   itemProp?: string;
   style?: string;
@@ -286,6 +317,7 @@ export interface SectionStoryblok {
   content_mode?: "" | "default" | "tile" | "list" | "slider";
   content_tileWidth?: "" | "smallest" | "default" | "medium" | "large" | "largest";
   components?: (
+    | CtaStoryblok
     | FaqStoryblok
     | FeaturesStoryblok
     | GalleryStoryblok
@@ -304,7 +336,7 @@ export interface SectionStoryblok {
   [k: string]: any;
 }
 
-export interface SeoStoryblok {
+export interface SeoReferenceStoryblok {
   title?: string;
   description?: string;
   keywords?: string;
@@ -312,14 +344,14 @@ export interface SeoStoryblok {
   cardImage?: string;
   type?: string;
   _uid: string;
-  component: "seo";
+  component: "seo-reference";
   [k: string]: any;
 }
 
 export interface SettingsStoryblok {
-  header?: HeaderStoryblok[];
-  footer?: FooterStoryblok[];
-  seo?: SeoStoryblok[];
+  header?: HeaderReferenceStoryblok[];
+  footer?: FooterReferenceStoryblok[];
+  seo?: SeoReferenceStoryblok[];
   type?: string;
   _uid: string;
   component: "settings";

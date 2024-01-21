@@ -7,7 +7,7 @@ const cspHeader = `
     object-src 'none';
     base-uri 'self';
     form-action 'self';
-    frame-ancestors 'https://app.storyblok.com';
+    frame-ancestors https://app.storyblok.com;
     block-all-mixed-content;
     upgrade-insecure-requests;
 `;

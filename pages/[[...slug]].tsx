@@ -16,7 +16,7 @@ export default Page;
 export const getStaticPaths = (async () => {
   const { data } = await fetchStories();
   const paths = [
-    { params: { slug: [] } },
+    // { params: { slug: [] } },
     ...data.stories.map((story) => ({
       params: { slug: story.full_slug.split("/") },
     })),

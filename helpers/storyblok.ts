@@ -9,7 +9,6 @@ import {
 import { components } from "@/components";
 
 export function initStoryblok(accessToken?: string) {
-  console.log("initStoryblok called", accessToken);
   storyblokInit({
     accessToken,
     use: [apiPlugin],

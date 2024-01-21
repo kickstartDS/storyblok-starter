@@ -7,7 +7,7 @@
    Github Repository. Unfold "Environment Variables" and add the following:
    - `NPM_RC` with `//<your package registry>:_authToken=<your npm token>`
    - `STORYBLOK_API_TOKEN` with a preview token from the cloned Stroyblok
-      Space above.
+     Space above.
 4. Click on "Deploy"
 5. Configure your freshly deployt App as the default preview URL in Storyblok
    ("Settings" -> "Visual Editor"). Type in the base URL of your deployment and
@@ -57,21 +57,21 @@ The application is now available on https://energyui.localhost/.
    specific configuration and adapt to your needs.
 2. If your design system npm package is published on a protected registry,
    please configure the auth token in your `~/.npmrc`.
-2. Run a Next.js server process locally:
+3. Run a Next.js server process locally:
    1. `npm i`
    2. `npm run dev`
-3. Setup a local proxy server for ssl: (in a new terminal)
+4. Setup a local proxy server for ssl: (in a new terminal)
    1. `mkcert localhost`
    2. `npx local-ssl-proxy --source 3010 --target 3000 --cert localhost.pem --key localhost-key.pem`
-4. In storyblok change the preview URL to "Dev".
-5. Run `storyblok login` for being able to use the storyblok-cli.
+5. In storyblok change the preview URL to "Dev".
+6. Run `storyblok login` for being able to use the storyblok-cli.
 
 # Working with the content schema
 
 ## Typescript Support
 
 Generate ts types according to the content schema by running
-`STORYBLOK_SPACE_ID=<your-space-id> npm run generate-content-types`.
+`NEXT_PUBLIC_STORYBLOK_SPACE_ID=<your-space-id> npm run generate-content-types`.
 
 ## Migrations
 

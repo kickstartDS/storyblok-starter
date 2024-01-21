@@ -10,6 +10,10 @@ import "@kickstartds/ds-agency/tokens/tokens.css";
 import "@kickstartds/ds-agency/global.css";
 
 initStoryblok(process.env.NEXT_PUBLIC_STORYBLOK_API_TOKEN);
+console.log(
+  "should run initStoryblok",
+  process.env.NEXT_PUBLIC_STORYBLOK_API_TOKEN
+);
 if (typeof window !== "undefined") {
   console.log(palette);
 }

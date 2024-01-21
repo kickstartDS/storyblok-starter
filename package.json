@@ -31,7 +31,7 @@
     "@kickstartds/jsonschema-utils": "^2.11.1",
     "@kickstartds/jsonschema2netlifycms": "^2.8.2",
     "@kickstartds/jsonschema2stackbit": "^1.2.2",
-    "@kickstartds/jsonschema2storyblok": "^1.4.0",
+    "@kickstartds/jsonschema2storyblok": "^1.4.1",
     "@kickstartds/jsonschema2types": "^1.1.24",
     "@kickstartds/jsonschema2uniform": "^1.3.2",
     "@kickstartds/style-dictionary": "^2.2.1",

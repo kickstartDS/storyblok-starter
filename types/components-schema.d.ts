@@ -6,7 +6,7 @@ export interface BlogAsideStoryblok {
   author_image?: string;
   author_twitter?: string;
   author_email?: string;
-  socialSharing?: any[];
+  socialSharing?: SocialSharingStoryblok[];
   readingTime?: string;
   date?: string;
   type?: string;
@@ -27,11 +27,11 @@ export interface BlogHeadStoryblok {
 }
 
 export interface BlogOverviewStoryblok {
-  latest?: any[];
-  list?: any[];
-  more?: any[];
-  cta?: any[];
-  seo?: any[];
+  latest?: BlogTeaserStoryblok[];
+  list?: BlogTeaserStoryblok[];
+  more?: BlogTeaserStoryblok[];
+  cta?: CtaStoryblok[];
+  seo?: SeoStoryblok[];
   type?: string;
   _uid: string;
   component: "blog-overview";
@@ -39,11 +39,11 @@ export interface BlogOverviewStoryblok {
 }
 
 export interface BlogPostStoryblok {
-  head?: any[];
-  aside?: any[];
+  head?: BlogHeadStoryblok[];
+  aside?: BlogAsideStoryblok[];
   content?: string;
-  cta?: any[];
-  seo?: any[];
+  cta?: CtaStoryblok[];
+  seo?: SeoStoryblok[];
   type?: string;
   _uid: string;
   component: "blog-post";
@@ -95,7 +95,7 @@ export interface CtaStoryblok {
   sub?: string;
   text?: string;
   highlightText?: boolean;
-  buttons?: any[];
+  buttons?: ButtonsStoryblok[];
   textAlign?: "" | "left" | "center";
   type?: string;
   _uid: string;
@@ -104,7 +104,7 @@ export interface CtaStoryblok {
 }
 
 export interface FaqStoryblok {
-  questions?: any[];
+  questions?: QuestionsStoryblok[];
   type?: string;
   _uid: string;
   component: "faq";
@@ -116,7 +116,7 @@ export interface FeaturesStoryblok {
   style?: "" | "intext" | "stack" | "centered" | "besideLarge" | "besideSmall";
   ctas_toggle?: boolean;
   ctas_style?: "" | "button" | "link" | "intext";
-  items?: any[];
+  items?: ItemsStoryblok[];
   type?: string;
   _uid: string;
   component: "features";
@@ -124,9 +124,9 @@ export interface FeaturesStoryblok {
 }
 
 export interface FooterStoryblok {
-  logo?: any[];
+  logo?: PictureStoryblok[];
   logoHref?: string;
-  navItems?: any[];
+  navItems?: NavItemsStoryblok[];
   type?: string;
   _uid: string;
   component: "footer";
@@ -134,7 +134,7 @@ export interface FooterStoryblok {
 }
 
 export interface GalleryStoryblok {
-  images?: any[];
+  images?: ImagesStoryblok[];
   layout?: "" | "stack" | "smallTiles" | "largeTiles";
   aspectRatio?: "" | "unset" | "square" | "wide" | "landscape";
   lightbox?: boolean;
@@ -145,10 +145,10 @@ export interface GalleryStoryblok {
 }
 
 export interface HeaderStoryblok {
-  logo?: any[];
+  logo?: PictureStoryblok[];
   logoHref?: string;
   floating?: boolean;
-  navItems?: any[];
+  navItems?: NavItemsStoryblok[];
   type?: string;
   _uid: string;
   component: "header";
@@ -189,7 +189,7 @@ export interface ItemsStoryblok {
 
 export interface LogosStoryblok {
   tagline?: string;
-  items?: any[];
+  items?: ItemsStoryblok[];
   align?: "" | "left" | "center";
   cta_toggle?: boolean;
   cta_text?: string;
@@ -211,8 +211,8 @@ export interface NavItemsStoryblok {
 }
 
 export interface PageStoryblok {
-  sections?: any[];
-  seo?: any[];
+  sections?: SectionStoryblok[];
+  seo?: SeoStoryblok[];
   type?: string;
   _uid: string;
   component: "page";
@@ -233,7 +233,7 @@ export interface PictureStoryblok {
   style?: string;
   noscript?: boolean;
   lazy?: boolean;
-  sources?: any[];
+  sources?: SourcesStoryblok[];
   pictureClassName?: string;
   type?: string;
   _uid: string;
@@ -289,7 +289,7 @@ export interface SectionStoryblok {
     | TestimonialsStoryblok
     | TextStoryblok
   )[];
-  buttons?: any[];
+  buttons?: ButtonStoryblok[];
   type?: string;
   _uid: string;
   component: "section";
@@ -309,9 +309,9 @@ export interface SeoStoryblok {
 }
 
 export interface SettingsStoryblok {
-  header?: any[];
-  footer?: any[];
-  seo?: any[];
+  header?: HeaderStoryblok[];
+  footer?: FooterStoryblok[];
+  seo?: SeoStoryblok[];
   type?: string;
   _uid: string;
   component: "settings";
@@ -345,7 +345,7 @@ export interface SplitStoryblok {
 }
 
 export interface StatsStoryblok {
-  items?: any[];
+  items?: ItemsStoryblok[];
   type?: string;
   _uid: string;
   component: "stats";
@@ -370,7 +370,7 @@ export interface TeaserCardStoryblok {
 }
 
 export interface TestimonialsStoryblok {
-  items?: any[];
+  items?: ItemsStoryblok[];
   type?: string;
   _uid: string;
   component: "testimonials";

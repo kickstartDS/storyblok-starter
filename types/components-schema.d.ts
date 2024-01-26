@@ -111,12 +111,23 @@ export interface FaqStoryblok {
   [k: string]: any;
 }
 
+export interface FeatureStoryblok {
+  icon?: string;
+  title?: string;
+  text?: string;
+  cta_target?: string;
+  cta_label?: string;
+  _uid: string;
+  component: "feature";
+  [k: string]: any;
+}
+
 export interface FeaturesStoryblok {
   layout?: "" | "largeTiles" | "smallTiles" | "list";
   style?: "" | "intext" | "stack" | "centered" | "besideLarge" | "besideSmall";
   ctas_toggle?: boolean;
   ctas_style?: "" | "button" | "link" | "intext";
-  items?: ItemsStoryblok[];
+  feature?: FeatureStoryblok[];
   type?: string;
   _uid: string;
   component: "features";
@@ -176,20 +187,17 @@ export interface ImageTextStoryblok {
   [k: string]: any;
 }
 
-export interface ItemsStoryblok {
-  icon?: string;
-  title?: string;
-  text?: string;
-  cta_target?: string;
-  cta_label?: string;
+export interface LogoStoryblok {
+  src?: string;
+  alt?: string;
   _uid: string;
-  component: "items";
+  component: "logo";
   [k: string]: any;
 }
 
 export interface LogosStoryblok {
   tagline?: string;
-  items?: ItemsStoryblok[];
+  logo?: LogoStoryblok[];
   align?: "" | "left" | "center";
   cta_toggle?: boolean;
   cta_text?: string;
@@ -283,7 +291,6 @@ export interface SectionStoryblok {
     | GalleryStoryblok
     | ImageTextStoryblok
     | LogosStoryblok
-    | SplitStoryblok
     | StatsStoryblok
     | TeaserCardStoryblok
     | TestimonialsStoryblok
@@ -336,16 +343,17 @@ export interface SourcesStoryblok {
   [k: string]: any;
 }
 
-export interface SplitStoryblok {
-  layout?: "" | "sidebarRight" | "sidebarLeft" | "even";
-  type?: string;
+export interface StatStoryblok {
+  number?: string;
+  description?: string;
+  title?: string;
   _uid: string;
-  component: "split";
+  component: "stat";
   [k: string]: any;
 }
 
 export interface StatsStoryblok {
-  items?: ItemsStoryblok[];
+  stat?: StatStoryblok[];
   type?: string;
   _uid: string;
   component: "stats";
@@ -369,8 +377,19 @@ export interface TeaserCardStoryblok {
   [k: string]: any;
 }
 
+export interface TestimonialStoryblok {
+  quote?: string;
+  name?: string;
+  title?: string;
+  image_src?: string;
+  image_alt?: string;
+  _uid: string;
+  component: "testimonial";
+  [k: string]: any;
+}
+
 export interface TestimonialsStoryblok {
-  items?: ItemsStoryblok[];
+  testimonial?: TestimonialStoryblok[];
   type?: string;
   _uid: string;
   component: "testimonials";

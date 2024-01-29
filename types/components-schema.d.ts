@@ -1,5 +1,16 @@
 import {StoryblokStory} from 'storyblok-generate-ts'
 
+export interface AssetStoryblok {
+  alt?: string;
+  copyright?: string;
+  id: number;
+  filename: string;
+  name: string;
+  title?: string;
+  focus?: string;
+  [k: string]: any;
+}
+
 export type MultilinkStoryblok =
   | {
       id?: string;
@@ -53,7 +64,7 @@ export type MultilinkStoryblok =
 export interface BlogAsideStoryblok {
   author_name?: string;
   author_byline?: string;
-  author_image?: MultilinkStoryblok;
+  author_image?: AssetStoryblok;
   author_twitter?: MultilinkStoryblok;
   author_email?: Exclude<MultilinkStoryblok, {linktype?: "asset"}>;
   socialSharing?: SocialSharingStoryblok[];
@@ -69,7 +80,7 @@ export interface BlogHeadStoryblok {
   date?: string;
   tags?: string;
   headline?: string;
-  image?: MultilinkStoryblok;
+  image?: AssetStoryblok;
   type?: string;
   _uid: string;
   component: "blog-head";
@@ -100,17 +111,6 @@ export interface BlogPostStoryblok {
   [k: string]: any;
 }
 
-export interface AssetStoryblok {
-  alt?: string;
-  copyright?: string;
-  id: number;
-  filename: string;
-  name: string;
-  title?: string;
-  focus?: string;
-  [k: string]: any;
-}
-
 export interface BlogTeaserStoryblok {
   date?: string;
   tags?: string;
@@ -122,7 +122,7 @@ export interface BlogTeaserStoryblok {
   readingTime?: string;
   author_name?: string;
   author_title?: string;
-  author_image?: string;
+  author_image?: AssetStoryblok;
   type?: string;
   _uid: string;
   component: "blog-teaser";
@@ -184,7 +184,7 @@ export interface FeaturesStoryblok {
 
 export interface FooterStoryblok {
   logo?: PictureStoryblok[];
-  logoHref?: string;
+  logoHref?: MultilinkStoryblok;
   navItems?: NavItemsStoryblok[];
   type?: string;
   _uid: string;
@@ -205,7 +205,7 @@ export interface GalleryStoryblok {
 
 export interface HeaderStoryblok {
   logo?: PictureStoryblok[];
-  logoHref?: string;
+  logoHref?: MultilinkStoryblok;
   floating?: boolean;
   navItems?: NavItemsStoryblok[];
   type?: string;
@@ -215,7 +215,7 @@ export interface HeaderStoryblok {
 }
 
 export interface ImagesStoryblok {
-  src?: string;
+  src?: AssetStoryblok;
   alt?: string;
   caption?: string;
   _uid: string;
@@ -226,7 +226,7 @@ export interface ImagesStoryblok {
 export interface ImageTextStoryblok {
   text?: string;
   highlightText?: boolean;
-  image_src?: string;
+  image_src?: AssetStoryblok;
   image_alt?: string;
   layout?: "" | "above" | "below" | "beside_right" | "beside_left";
   type?: string;
@@ -246,7 +246,7 @@ export interface ListStoryblok {
   readingTime?: string;
   author_name?: string;
   author_title?: string;
-  author_image?: string;
+  author_image?: AssetStoryblok;
   type?: string;
   _uid: string;
   component: "list";
@@ -254,7 +254,7 @@ export interface ListStoryblok {
 }
 
 export interface LogoStoryblok {
-  src?: string;
+  src?: AssetStoryblok;
   alt?: string;
   _uid: string;
   component: "logo";
@@ -287,7 +287,7 @@ export interface MoreStoryblok {
   readingTime?: string;
   author_name?: string;
   author_title?: string;
-  author_image?: string;
+  author_image?: AssetStoryblok;
   type?: string;
   _uid: string;
   component: "more";
@@ -295,7 +295,7 @@ export interface MoreStoryblok {
 }
 
 export interface NavItemsStoryblok {
-  href?: string;
+  href?: MultilinkStoryblok;
   label?: string;
   _uid: string;
   component: "navItems";
@@ -303,7 +303,7 @@ export interface NavItemsStoryblok {
 }
 
 export interface PageStoryblok {
-  section?: (SectionsStoryblok | SectionStoryblok)[];
+  section?: SectionStoryblok[];
   seo?: SeoStoryblok[];
   type?: string;
   _uid: string;
@@ -454,7 +454,7 @@ export interface TeaserCardStoryblok {
   button_label?: string;
   button_chevron?: boolean;
   button_hidden?: boolean;
-  image?: MultilinkStoryblok;
+  image?: AssetStoryblok;
   imageRatio?: "" | "wide" | "landscape" | "square" | "unset";
   type?: string;
   _uid: string;
@@ -466,7 +466,7 @@ export interface TestimonialStoryblok {
   quote?: string;
   name?: string;
   title?: string;
-  image_src?: string;
+  image_src?: AssetStoryblok;
   image_alt?: string;
   _uid: string;
   component: "testimonial";

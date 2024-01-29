@@ -1,11 +1,61 @@
 import {StoryblokStory} from 'storyblok-generate-ts'
 
+export type MultilinkStoryblok =
+  | {
+      id?: string;
+      cached_url?: string;
+      anchor?: string;
+      linktype?: "story";
+      story?: {
+        name: string;
+        created_at?: string;
+        published_at?: string;
+        id: number;
+        uuid: string;
+        content?: {
+          [k: string]: any;
+        };
+        slug: string;
+        full_slug: string;
+        sort_by_date?: null | string;
+        position?: number;
+        tag_list?: string[];
+        is_startpage?: boolean;
+        parent_id?: null | number;
+        meta_data?: null | {
+          [k: string]: any;
+        };
+        group_id?: string;
+        first_published_at?: string;
+        release_id?: null | number;
+        lang?: string;
+        path?: null | string;
+        alternates?: any[];
+        default_full_slug?: null | string;
+        translated_slugs?: null | any[];
+        [k: string]: any;
+      };
+      [k: string]: any;
+    }
+  | {
+      url?: string;
+      cached_url?: string;
+      anchor?: string;
+      linktype?: "asset" | "url";
+      [k: string]: any;
+    }
+  | {
+      email?: string;
+      linktype?: "email";
+      [k: string]: any;
+    };
+
 export interface BlogAsideStoryblok {
   author_name?: string;
   author_byline?: string;
-  author_image?: string;
-  author_twitter?: string;
-  author_email?: string;
+  author_image?: MultilinkStoryblok;
+  author_twitter?: MultilinkStoryblok;
+  author_email?: Exclude<MultilinkStoryblok, {linktype?: "asset"}>;
   socialSharing?: SocialSharingStoryblok[];
   readingTime?: string;
   date?: string;
@@ -19,7 +69,7 @@ export interface BlogHeadStoryblok {
   date?: string;
   tags?: string;
   headline?: string;
-  image?: string;
+  image?: MultilinkStoryblok;
   type?: string;
   _uid: string;
   component: "blog-head";
@@ -28,8 +78,8 @@ export interface BlogHeadStoryblok {
 
 export interface BlogOverviewStoryblok {
   latest?: BlogTeaserStoryblok[];
-  list?: BlogTeaserStoryblok[];
-  more?: BlogTeaserStoryblok[];
+  list?: ListStoryblok[];
+  more?: MoreStoryblok[];
   cta?: CtaStoryblok[];
   seo?: SeoStoryblok[];
   type?: string;
@@ -50,13 +100,24 @@ export interface BlogPostStoryblok {
   [k: string]: any;
 }
 
+export interface AssetStoryblok {
+  alt?: string;
+  copyright?: string;
+  id: number;
+  filename: string;
+  name: string;
+  title?: string;
+  focus?: string;
+  [k: string]: any;
+}
+
 export interface BlogTeaserStoryblok {
   date?: string;
   tags?: string;
   headline?: string;
   teaserText?: string;
-  image?: string;
-  link_url?: string;
+  image?: AssetStoryblok;
+  link_url?: MultilinkStoryblok;
   link_label?: string;
   readingTime?: string;
   author_name?: string;
@@ -68,23 +129,10 @@ export interface BlogTeaserStoryblok {
   [k: string]: any;
 }
 
-export interface ButtonStoryblok {
-  label?: string;
-  target?: string;
-  variant?: "" | "primary" | "secondary" | "tertiary";
-  icon?: string;
-  size?: "" | "small" | "medium" | "large";
-  disabled?: boolean;
-  type?: string;
-  _uid: string;
-  component: "button";
-  [k: string]: any;
-}
-
 export interface ButtonsStoryblok {
   label?: string;
   icon?: string;
-  target?: string;
+  target?: MultilinkStoryblok;
   _uid: string;
   component: "buttons";
   [k: string]: any;
@@ -115,7 +163,7 @@ export interface FeatureStoryblok {
   icon?: string;
   title?: string;
   text?: string;
-  cta_target?: string;
+  cta_target?: MultilinkStoryblok;
   cta_label?: string;
   _uid: string;
   component: "feature";
@@ -187,6 +235,24 @@ export interface ImageTextStoryblok {
   [k: string]: any;
 }
 
+export interface ListStoryblok {
+  date?: string;
+  tags?: string;
+  headline?: string;
+  teaserText?: string;
+  image?: AssetStoryblok;
+  link_url?: MultilinkStoryblok;
+  link_label?: string;
+  readingTime?: string;
+  author_name?: string;
+  author_title?: string;
+  author_image?: string;
+  type?: string;
+  _uid: string;
+  component: "list";
+  [k: string]: any;
+}
+
 export interface LogoStoryblok {
   src?: string;
   alt?: string;
@@ -201,12 +267,30 @@ export interface LogosStoryblok {
   align?: "" | "left" | "center";
   cta_toggle?: boolean;
   cta_text?: string;
-  cta_link?: string;
+  cta_link?: MultilinkStoryblok;
   cta_label?: string;
   cta_style?: "" | "button" | "text";
   type?: string;
   _uid: string;
   component: "logos";
+  [k: string]: any;
+}
+
+export interface MoreStoryblok {
+  date?: string;
+  tags?: string;
+  headline?: string;
+  teaserText?: string;
+  image?: AssetStoryblok;
+  link_url?: MultilinkStoryblok;
+  link_label?: string;
+  readingTime?: string;
+  author_name?: string;
+  author_title?: string;
+  author_image?: string;
+  type?: string;
+  _uid: string;
+  component: "more";
   [k: string]: any;
 }
 
@@ -219,7 +303,7 @@ export interface NavItemsStoryblok {
 }
 
 export interface PageStoryblok {
-  sections?: SectionStoryblok[];
+  section?: (SectionsStoryblok | SectionStoryblok)[];
   seo?: SeoStoryblok[];
   type?: string;
   _uid: string;
@@ -229,8 +313,8 @@ export interface PageStoryblok {
 }
 
 export interface PictureStoryblok {
-  src?: string;
-  srcSet?: string;
+  src?: AssetStoryblok;
+  srcSet?: AssetStoryblok;
   alt?: string;
   width?: string;
   height?: string;
@@ -286,6 +370,7 @@ export interface SectionStoryblok {
   content_mode?: "" | "default" | "tile" | "list" | "slider";
   content_tileWidth?: "" | "smallest" | "default" | "medium" | "large" | "largest";
   components?: (
+    | CtaStoryblok
     | FaqStoryblok
     | FeaturesStoryblok
     | GalleryStoryblok
@@ -296,7 +381,7 @@ export interface SectionStoryblok {
     | TestimonialsStoryblok
     | TextStoryblok
   )[];
-  buttons?: ButtonStoryblok[];
+  buttons?: ButtonsStoryblok[];
   type?: string;
   _uid: string;
   component: "section";
@@ -307,7 +392,7 @@ export interface SeoStoryblok {
   title?: string;
   description?: string;
   keywords?: string;
-  image?: string;
+  image?: AssetStoryblok;
   cardImage?: string;
   type?: string;
   _uid: string;
@@ -327,7 +412,7 @@ export interface SettingsStoryblok {
 
 export interface SocialSharingStoryblok {
   icon?: string;
-  href?: string;
+  href?: MultilinkStoryblok;
   title?: string;
   _uid: string;
   component: "socialSharing";
@@ -335,7 +420,7 @@ export interface SocialSharingStoryblok {
 }
 
 export interface SourcesStoryblok {
-  srcSet?: string;
+  srcSet?: AssetStoryblok;
   media?: string;
   type?: string;
   _uid: string;
@@ -365,11 +450,11 @@ export interface TeaserCardStoryblok {
   text?: string;
   label?: string;
   layout?: "" | "stack" | "row";
-  target?: string;
+  target?: MultilinkStoryblok;
   button_label?: string;
   button_chevron?: boolean;
   button_hidden?: boolean;
-  image?: string;
+  image?: MultilinkStoryblok;
   imageRatio?: "" | "wide" | "landscape" | "square" | "unset";
   type?: string;
   _uid: string;

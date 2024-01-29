@@ -28,7 +28,7 @@ const Page: React.FC<PageProps> = ({ blok }) => (
   <>
     {/* <StoryblokRichTextProvider> */}
     <main {...storyblokEditable(blok)}>
-      {blok.sections?.map((nestedBlok) => (
+      {blok.section?.map((nestedBlok) => (
         <StoryblokComponent blok={nestedBlok} key={nestedBlok._uid} />
       ))}
     </main>

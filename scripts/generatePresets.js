@@ -136,7 +136,9 @@ const start = async () => {
       `https://storybook.basic.design-system.agency/${presetImage.value}`
     );
 
-    presetImage.parent[presetImage.key] = await promiseThrottle.add(image).url;
+    presetImage.parent[presetImage.key] = (
+      await promiseThrottle.add(image)
+    ).url;
   }
 
   fs.writeFileSync(

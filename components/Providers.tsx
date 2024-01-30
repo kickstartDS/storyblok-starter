@@ -6,6 +6,7 @@ import {
   PropsWithChildren,
   forwardRef,
 } from "react";
+import NextLink from "next/link";
 import {
   PictureContextDefault,
   PictureContext,
@@ -48,7 +49,9 @@ const Link = forwardRef<
       href.linktype === "email"
         ? `mailto:${href.email}`
         : href.cached_url || href.story?.full_slug;
-    return (
+    return linkTarget ? (
+      <NextLink {...props} ref={ref} href={linkTarget} target={href.target} />
+    ) : (
       <LinkContextDefault
         {...props}
         ref={ref}
@@ -58,7 +61,7 @@ const Link = forwardRef<
     );
   }
 
-  return <LinkContextDefault {...props} href={href} />;
+  return <LinkContextDefault ref={ref} {...props} href={href} />;
 });
 
 const LinkProvider: FC<PropsWithChildren> = (props) => (
@@ -69,12 +72,12 @@ const LinkProvider: FC<PropsWithChildren> = (props) => (
 const Picture = forwardRef<
   HTMLImageElement,
   PictureProps & ImgHTMLAttributes<HTMLImageElement>
->(({ src, ...props }: PictureProps) => {
+>(({ src, ...props }: PictureProps, ref) => {
   if (isStoryblokAsset(src)) {
     const filename = (src as unknown as StoryblokAsset)?.filename;
-    return <PictureContextDefault {...props} src={filename} />;
+    return <PictureContextDefault ref={ref} {...props} src={filename} />;
   }
-  return <PictureContextDefault {...props} src={src} />;
+  return <PictureContextDefault ref={ref} {...props} src={src} />;
 });
 
 const PictureProvider: FC<PropsWithChildren> = (props) => (

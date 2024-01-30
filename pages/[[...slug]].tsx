@@ -40,7 +40,7 @@ export const getStaticProps = (async ({ params, draftMode }) => {
   return {
     props: {
       ...pageData,
-      settings: settingsData.stories[0]?.content,
+      settings: settingsData.stories[0]?.content || null,
       key: pageData.story.id,
     },
     revalidate: 3600, // revalidate every hour

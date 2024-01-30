@@ -78,7 +78,7 @@ export interface BlogAsideStoryblok {
 
 export interface BlogHeadStoryblok {
   date?: string;
-  tags?: string;
+  tags?: TagsStoryblok[];
   headline?: string;
   image?: AssetStoryblok;
   type?: string;
@@ -113,7 +113,7 @@ export interface BlogPostStoryblok {
 
 export interface BlogTeaserStoryblok {
   date?: string;
-  tags?: string;
+  tags?: TagsStoryblok[];
   headline?: string;
   teaserText?: string;
   image?: AssetStoryblok;
@@ -237,7 +237,7 @@ export interface ImageTextStoryblok {
 
 export interface ListStoryblok {
   date?: string;
-  tags?: string;
+  tags?: TagsStoryblok[];
   headline?: string;
   teaserText?: string;
   image?: AssetStoryblok;
@@ -278,7 +278,7 @@ export interface LogosStoryblok {
 
 export interface MoreStoryblok {
   date?: string;
-  tags?: string;
+  tags?: TagsStoryblok[];
   headline?: string;
   teaserText?: string;
   image?: AssetStoryblok;
@@ -442,6 +442,13 @@ export interface StatsStoryblok {
   type?: string;
   _uid: string;
   component: "stats";
+  [k: string]: any;
+}
+
+export interface TagsStoryblok {
+  entry?: string;
+  _uid: string;
+  component: "tags";
   [k: string]: any;
 }
 

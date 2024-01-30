@@ -18,10 +18,14 @@ export function initStoryblok(accessToken?: string) {
 
 let lastContentVersion: number | undefined = undefined;
 
-export const sbParams = (draft: boolean): ISbStoriesParams => ({
+export const sbParams = (
+  draft: boolean,
+  params: ISbStoriesParams = {}
+): ISbStoriesParams => ({
   version: draft ? "draft" : "published",
   cv: lastContentVersion,
   resolve_links: "url",
+  ...params,
 });
 
 export async function fetchStory(slug: string, preview: boolean) {
@@ -36,11 +40,11 @@ export async function fetchStory(slug: string, preview: boolean) {
 }
 
 // TODO: https://www.storyblok.com/docs/api/content-delivery/v2#topics/pagination
-export async function fetchStories() {
+export async function fetchStories(params?: ISbStoriesParams) {
   const storyblokApi = getStoryblokApi();
   const response: ISbStories = await storyblokApi.get(
     `cdn/stories`,
-    sbParams(false)
+    sbParams(false, params)
   );
 
   lastContentVersion = response.data.cv;

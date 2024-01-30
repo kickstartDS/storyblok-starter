@@ -25,13 +25,13 @@ const Link = forwardRef<
         cached_url: string;
         story?: { full_slug: string; url: string; slug: string };
       }
-    ).cached_url ||
+    )?.cached_url ||
     (
       href as unknown as {
         cached_url: string;
         story?: { full_slug: string; url: string; slug: string };
       }
-    ).story?.full_slug;
+    )?.story?.full_slug;
   return <LinkContextDefault ref={ref} {...props} href={linkTarget} />;
 });
 

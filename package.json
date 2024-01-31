@@ -21,7 +21,7 @@
     "@kickstartds/base": "2.3.0-beta.1",
     "@kickstartds/blog": "2.3.0-beta.1",
     "@kickstartds/core": "3.0.0-beta.0",
-    "@kickstartds/ds-agency": "^3.2.17",
+    "@kickstartds/ds-agency": "^3.3.0",
     "@kickstartds/form": "2.3.0-beta.1",
     "@storyblok/react": "^3.0.7",
     "react": "18.2.0",

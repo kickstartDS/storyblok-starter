@@ -6,6 +6,7 @@ import DsaProviders from "@kickstartds/ds-agency/providers";
 import { Header } from "@kickstartds/ds-agency/header";
 import { Footer } from "@kickstartds/ds-agency/footer";
 import { initStoryblok } from "@/helpers/storyblok";
+import { unflatten } from "@/helpers/unflatten";
 import Meta from "@/components/Meta";
 
 import StoryblokProviders from "../components/Providers";
@@ -38,9 +39,9 @@ export default function App({
           fallbackName={story?.name}
         />
         <IconSprite />
-        {headerProps && <Header {...headerProps} />}
+        {headerProps && <Header {...unflatten(headerProps)} />}
         <Component {...pageProps} />
-        {footerProps && <Footer {...footerProps} />}
+        {footerProps && <Footer {...unflatten(footerProps)} />}
       </StoryblokProviders>
     </DsaProviders>
   );

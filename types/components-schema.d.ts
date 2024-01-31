@@ -11,6 +11,56 @@ export interface AssetStoryblok {
   [k: string]: any;
 }
 
+export interface BlogAsideStoryblok {
+  author_name?: string;
+  author_byline?: string;
+  author_image?: AssetStoryblok;
+  author_twitter?: string;
+  author_email?: string;
+  socialSharing?: SocialSharingStoryblok[];
+  readingTime?: string;
+  date?: string;
+  type?: string;
+  _uid: string;
+  component: "blog-aside";
+  [k: string]: any;
+}
+
+export interface BlogHeadStoryblok {
+  date?: string;
+  tags?: TagsStoryblok[];
+  headline?: string;
+  image?: AssetStoryblok;
+  type?: string;
+  _uid: string;
+  component: "blog-head";
+  [k: string]: any;
+}
+
+export interface BlogOverviewStoryblok {
+  latest?: BlogTeaserStoryblok[];
+  list?: ListStoryblok[];
+  more?: MoreStoryblok[];
+  cta?: CtaStoryblok[];
+  seo?: SeoStoryblok[];
+  type?: string;
+  _uid: string;
+  component: "blog-overview";
+  [k: string]: any;
+}
+
+export interface BlogPostStoryblok {
+  head?: BlogHeadStoryblok[];
+  aside?: BlogAsideStoryblok[];
+  content?: string;
+  cta?: CtaStoryblok[];
+  seo?: SeoStoryblok[];
+  type?: string;
+  _uid: string;
+  component: "blog-post";
+  [k: string]: any;
+}
+
 export type MultilinkStoryblok =
   | {
       id?: string;
@@ -60,56 +110,6 @@ export type MultilinkStoryblok =
       linktype?: "email";
       [k: string]: any;
     };
-
-export interface BlogAsideStoryblok {
-  author_name?: string;
-  author_byline?: string;
-  author_image?: AssetStoryblok;
-  author_twitter?: MultilinkStoryblok;
-  author_email?: Exclude<MultilinkStoryblok, {linktype?: "asset"}>;
-  socialSharing?: SocialSharingStoryblok[];
-  readingTime?: string;
-  date?: string;
-  type?: string;
-  _uid: string;
-  component: "blog-aside";
-  [k: string]: any;
-}
-
-export interface BlogHeadStoryblok {
-  date?: string;
-  tags?: TagsStoryblok[];
-  headline?: string;
-  image?: AssetStoryblok;
-  type?: string;
-  _uid: string;
-  component: "blog-head";
-  [k: string]: any;
-}
-
-export interface BlogOverviewStoryblok {
-  latest?: BlogTeaserStoryblok[];
-  list?: ListStoryblok[];
-  more?: MoreStoryblok[];
-  cta?: CtaStoryblok[];
-  seo?: SeoStoryblok[];
-  type?: string;
-  _uid: string;
-  component: "blog-overview";
-  [k: string]: any;
-}
-
-export interface BlogPostStoryblok {
-  head?: BlogHeadStoryblok[];
-  aside?: BlogAsideStoryblok[];
-  content?: string;
-  cta?: CtaStoryblok[];
-  seo?: SeoStoryblok[];
-  type?: string;
-  _uid: string;
-  component: "blog-post";
-  [k: string]: any;
-}
 
 export interface BlogTeaserStoryblok {
   date?: string;
@@ -183,7 +183,10 @@ export interface FeaturesStoryblok {
 }
 
 export interface FooterStoryblok {
-  logo?: PictureStoryblok[];
+  logo_src?: AssetStoryblok;
+  logo_alt?: string;
+  logo_width?: string;
+  logo_height?: string;
   logoHref?: MultilinkStoryblok;
   navItems?: NavItemsStoryblok[];
   type?: string;
@@ -204,7 +207,10 @@ export interface GalleryStoryblok {
 }
 
 export interface HeaderStoryblok {
-  logo?: PictureStoryblok[];
+  logo_src?: AssetStoryblok;
+  logo_alt?: string;
+  logo_width?: string;
+  logo_height?: string;
   logoHref?: MultilinkStoryblok;
   floating?: boolean;
   navItems?: NavItemsStoryblok[];
@@ -312,26 +318,6 @@ export interface PageStoryblok {
   [k: string]: any;
 }
 
-export interface PictureStoryblok {
-  src?: AssetStoryblok;
-  srcSet?: AssetStoryblok;
-  alt?: string;
-  width?: string;
-  height?: string;
-  className?: string;
-  component: "picture";
-  id?: string;
-  itemProp?: string;
-  style?: string;
-  noscript?: boolean;
-  lazy?: boolean;
-  sources?: SourcesStoryblok[];
-  pictureClassName?: string;
-  type?: string;
-  _uid: string;
-  [k: string]: any;
-}
-
 export interface QuestionsStoryblok {
   question?: string;
   answer?: string;
@@ -416,15 +402,6 @@ export interface SocialSharingStoryblok {
   title?: string;
   _uid: string;
   component: "socialSharing";
-  [k: string]: any;
-}
-
-export interface SourcesStoryblok {
-  srcSet?: AssetStoryblok;
-  media?: string;
-  type?: string;
-  _uid: string;
-  component: "sources";
   [k: string]: any;
 }
 

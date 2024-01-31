@@ -25,11 +25,39 @@ export const editable =
       </div>
     );
 
+const editableBlogTeaser = editable(
+  dynamic(() =>
+    import("@kickstartds/ds-agency/blog-teaser").then(
+      (mod) => mod.BlogTeaserContextDefault
+    )
+  )
+);
+
 export const components = {
   page: editablePage,
+  "blog-overview": dynamic(() => import("./BlogOverview")),
+  "blog-post": dynamic(() => import("./BlogPost")),
+  "blog-teaser": editableBlogTeaser,
+  more: editableBlogTeaser,
+  "blog-aside": editable(
+    dynamic(() =>
+      import("@kickstartds/ds-agency/blog-aside").then(
+        (mod) => mod.BlogAsideContextDefault
+      )
+    )
+  ),
+  "blog-head": editable(
+    dynamic(() =>
+      import("@kickstartds/ds-agency/blog-head").then(
+        (mod) => mod.BlogHeadContextDefault
+      )
+    )
+  ),
   section: editable(Section, "components"),
   cta: editable(
-    dynamic(() => import("@kickstartds/ds-agency/cta").then((mod) => mod.Cta))
+    dynamic(() =>
+      import("@kickstartds/ds-agency/cta").then((mod) => mod.CtaContextDefault)
+    )
   ),
   faq: editable(
     dynamic(() => import("@kickstartds/ds-agency/faq").then((mod) => mod.Faq))

@@ -12,12 +12,13 @@ import {
   PictureContext,
 } from "@kickstartds/base/lib/picture";
 
-import {
-  LinkContextDefault,
-  LinkContext,
-  LinkProps,
-} from "@kickstartds/base/lib/link";
+import { LinkContext, LinkProps } from "@kickstartds/base/lib/link";
 import { PictureProps } from "@kickstartds/base/lib/picture/typing";
+import { StoryblokSubComponent } from "./StoryblokSubComponent";
+import { BlogTeaserContext } from "@kickstartds/ds-agency/blog-teaser";
+import { BlogAsideContext } from "@kickstartds/ds-agency/blog-aside";
+import { BlogHeadContext } from "@kickstartds/ds-agency/blog-head";
+import { CtaContext } from "@kickstartds/ds-agency/cta";
 
 // TODO look for a better type for `href` in Storyblok
 type StoryblokLink = {
@@ -49,19 +50,17 @@ const Link = forwardRef<
       href.linktype === "email"
         ? `mailto:${href.email}`
         : href.cached_url || href.story?.full_slug;
-    return linkTarget ? (
-      <NextLink {...props} ref={ref} href={linkTarget} target={href.target} />
-    ) : (
-      <LinkContextDefault
+    return (
+      <NextLink
         {...props}
         ref={ref}
-        href={linkTarget}
+        href={linkTarget || ""}
         target={href.target}
       />
     );
   }
 
-  return <LinkContextDefault ref={ref} {...props} href={href} />;
+  return <NextLink ref={ref} {...props} href={href || ""} />;
 });
 
 const LinkProvider: FC<PropsWithChildren> = (props) => (
@@ -86,7 +85,21 @@ const PictureProvider: FC<PropsWithChildren> = (props) => (
 
 const Providers = (props: PropsWithChildren) => (
   <PictureProvider>
-    <LinkProvider {...props} />
+    <LinkProvider>
+      {/* @ts-expect-error */}
+      <CtaContext.Provider value={StoryblokSubComponent}>
+        {/* @ts-expect-error */}
+        <BlogHeadContext.Provider value={StoryblokSubComponent}>
+          {/* @ts-expect-error */}
+          <BlogAsideContext.Provider value={StoryblokSubComponent}>
+            {/* @ts-expect-error */}
+            <BlogTeaserContext.Provider value={StoryblokSubComponent}>
+              {props.children}
+            </BlogTeaserContext.Provider>
+          </BlogAsideContext.Provider>
+        </BlogHeadContext.Provider>
+      </CtaContext.Provider>
+    </LinkProvider>
   </PictureProvider>
 );
 

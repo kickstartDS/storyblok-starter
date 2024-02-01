@@ -19,6 +19,7 @@ import { BlogTeaserContext } from "@kickstartds/ds-agency/blog-teaser";
 import { BlogAsideContext } from "@kickstartds/ds-agency/blog-aside";
 import { BlogHeadContext } from "@kickstartds/ds-agency/blog-head";
 import { CtaContext } from "@kickstartds/ds-agency/cta";
+import { TeaserProvider } from "./TeaserProvider";
 
 // TODO look for a better type for `href` in Storyblok
 type StoryblokLink = {
@@ -71,7 +72,7 @@ const LinkProvider: FC<PropsWithChildren> = (props) => (
 const Picture = forwardRef<
   HTMLImageElement,
   PictureProps & ImgHTMLAttributes<HTMLImageElement>
->(({ src, ...props }: PictureProps, ref) => {
+>(({ src, ...props }, ref) => {
   if (isStoryblokAsset(src)) {
     const filename = (src as unknown as StoryblokAsset)?.filename;
     return <PictureContextDefault ref={ref} {...props} src={filename} />;
@@ -86,19 +87,21 @@ const PictureProvider: FC<PropsWithChildren> = (props) => (
 const Providers = (props: PropsWithChildren) => (
   <PictureProvider>
     <LinkProvider>
-      {/* @ts-expect-error */}
-      <CtaContext.Provider value={StoryblokSubComponent}>
+      <TeaserProvider>
         {/* @ts-expect-error */}
-        <BlogHeadContext.Provider value={StoryblokSubComponent}>
+        <CtaContext.Provider value={StoryblokSubComponent}>
           {/* @ts-expect-error */}
-          <BlogAsideContext.Provider value={StoryblokSubComponent}>
+          <BlogHeadContext.Provider value={StoryblokSubComponent}>
             {/* @ts-expect-error */}
-            <BlogTeaserContext.Provider value={StoryblokSubComponent}>
-              {props.children}
-            </BlogTeaserContext.Provider>
-          </BlogAsideContext.Provider>
-        </BlogHeadContext.Provider>
-      </CtaContext.Provider>
+            <BlogAsideContext.Provider value={StoryblokSubComponent}>
+              {/* @ts-expect-error */}
+              <BlogTeaserContext.Provider value={StoryblokSubComponent}>
+                {props.children}
+              </BlogTeaserContext.Provider>
+            </BlogAsideContext.Provider>
+          </BlogHeadContext.Provider>
+        </CtaContext.Provider>
+      </TeaserProvider>
     </LinkProvider>
   </PictureProvider>
 );

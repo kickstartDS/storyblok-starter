@@ -21,7 +21,7 @@
     "@kickstartds/base": "2.3.0-beta.1",
     "@kickstartds/blog": "2.3.0-beta.1",
     "@kickstartds/core": "3.0.0-beta.0",
-    "@kickstartds/ds-agency": "3.4.1--canary.69.1745.0",
+    "@kickstartds/ds-agency": "3.4.1--canary.69.1749.0",
     "@kickstartds/form": "2.3.0-beta.1",
     "@storyblok/react": "^3.0.7",
     "lazysizes": "^5.3.2",

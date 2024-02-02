@@ -8,6 +8,7 @@ import { Footer } from "@kickstartds/ds-agency/footer";
 import { initStoryblok } from "@/helpers/storyblok";
 import { unflatten } from "@/helpers/unflatten";
 import Meta from "@/components/Meta";
+import "lazysizes/plugins/attrchange/ls.attrchange";
 
 import StoryblokProviders from "../components/Providers";
 

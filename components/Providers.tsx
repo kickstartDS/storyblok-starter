@@ -18,8 +18,12 @@ import { StoryblokSubComponent } from "./StoryblokSubComponent";
 import { BlogTeaserContext } from "@kickstartds/ds-agency/blog-teaser";
 import { BlogAsideContext } from "@kickstartds/ds-agency/blog-aside";
 import { BlogHeadContext } from "@kickstartds/ds-agency/blog-head";
-import { CtaContext } from "@kickstartds/ds-agency/cta";
 import { TeaserProvider } from "./TeaserProvider";
+import { CtaContext } from "@kickstartds/ds-agency/cta";
+import { FeatureContext } from "@kickstartds/ds-agency/feature";
+import { LogoContext } from "@kickstartds/ds-agency/logo";
+import { StatContext } from "@kickstartds/ds-agency/stat";
+import { TestimonialContext } from "@kickstartds/ds-agency/testimonial";
 
 // TODO look for a better type for `href` in Storyblok
 type StoryblokLink = {
@@ -91,15 +95,27 @@ const Providers = (props: PropsWithChildren) => (
         {/* @ts-expect-error */}
         <CtaContext.Provider value={StoryblokSubComponent}>
           {/* @ts-expect-error */}
-          <BlogHeadContext.Provider value={StoryblokSubComponent}>
+          <FeatureContext.Provider value={StoryblokSubComponent}>
             {/* @ts-expect-error */}
-            <BlogAsideContext.Provider value={StoryblokSubComponent}>
+            <LogoContext.Provider value={StoryblokSubComponent}>
               {/* @ts-expect-error */}
-              <BlogTeaserContext.Provider value={StoryblokSubComponent}>
-                {props.children}
-              </BlogTeaserContext.Provider>
-            </BlogAsideContext.Provider>
-          </BlogHeadContext.Provider>
+              <StatContext.Provider value={StoryblokSubComponent}>
+                {/* @ts-expect-error */}
+                <TestimonialContext.Provider value={StoryblokSubComponent}>
+                  {/* @ts-expect-error */}
+                  <BlogHeadContext.Provider value={StoryblokSubComponent}>
+                    {/* @ts-expect-error */}
+                    <BlogAsideContext.Provider value={StoryblokSubComponent}>
+                      {/* @ts-expect-error */}
+                      <BlogTeaserContext.Provider value={StoryblokSubComponent}>
+                        {props.children}
+                      </BlogTeaserContext.Provider>
+                    </BlogAsideContext.Provider>
+                  </BlogHeadContext.Provider>
+                </TestimonialContext.Provider>
+              </StatContext.Provider>
+            </LogoContext.Provider>
+          </FeatureContext.Provider>
         </CtaContext.Provider>
       </TeaserProvider>
     </LinkProvider>

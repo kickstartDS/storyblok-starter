@@ -26,18 +26,6 @@ const promiseThrottle = new PromiseThrottle({
   promiseImplementation: Promise,
 });
 
-const download = async (uri, fileName) => {
-  return new Promise((resolve, reject) => {
-    request.head(uri, (err, res, body) => {
-      request(uri)
-        .pipe(fs.createWriteStream("./tmp/images/" + fileName))
-        .on("close", () => {
-          return resolve(`${fileName} downloaded`);
-        });
-    });
-  });
-};
-
 const upload = (signed_request, file) => {
   return new Promise((resolve, reject) => {
     const form = new FormData();
@@ -54,7 +42,9 @@ const upload = (signed_request, file) => {
 
 const signedUpload = async (fileName) => {
   return new Promise(async (resolve, reject) => {
-    let dimensions = sizeOf("./tmp/images/" + fileName);
+    let dimensions = sizeOf(
+      "./node_modules/@kickstartds/ds-agency/dist/static/" + fileName
+    );
 
     const assetResponse = await Storyblok.post(
       `spaces/${process.env.NEXT_PUBLIC_STORYBLOK_SPACE_ID}/assets/`,
@@ -65,7 +55,7 @@ const signedUpload = async (fileName) => {
     );
     let uploadResponse = await upload(
       assetResponse.data,
-      "./tmp/images/" + fileName
+      "./node_modules/@kickstartds/ds-agency/dist/static/" + fileName
     );
 
     return resolve({
@@ -73,12 +63,6 @@ const signedUpload = async (fileName) => {
       url: assetResponse.data.pretty_url,
     });
   });
-};
-
-const handleFile = async (fileURL) => {
-  let fileName = fileURL.split("/").pop();
-  await download(fileURL, fileName);
-  return signedUpload(fileName);
 };
 
 const start = async () => {
@@ -96,10 +80,7 @@ const start = async () => {
         .slice(1)
         .join("-");
 
-      const image = handleFile.bind(
-        this,
-        `https://storybook.basic.design-system.agency/${preset.screenshot}`
-      );
+      const image = signedUpload.bind(this, preset.screenshot);
 
       presets[preset.id] = {
         id: 0,
@@ -131,10 +112,7 @@ const start = async () => {
   });
 
   for (const presetImage of presetImages) {
-    const image = handleFile.bind(
-      this,
-      `https://storybook.basic.design-system.agency/${presetImage.value}`
-    );
+    const image = signedUpload.bind(this, presetImage.value);
 
     presetImage.parent[presetImage.key] = (
       await promiseThrottle.add(image)

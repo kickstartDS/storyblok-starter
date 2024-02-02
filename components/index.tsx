@@ -67,6 +67,13 @@ export const components = {
       import("@kickstartds/ds-agency/features").then((mod) => mod.Features)
     )
   ),
+  feature: editable(
+    dynamic(() =>
+      import("@kickstartds/ds-agency/feature").then(
+        (mod) => mod.FeatureContextDefault
+      )
+    )
+  ),
   gallery: editable(
     dynamic(() =>
       import("@kickstartds/ds-agency/gallery").then((mod) => mod.Gallery)
@@ -87,6 +94,13 @@ export const components = {
       import("@kickstartds/ds-agency/stats").then((mod) => mod.Stats)
     )
   ),
+  stat: editable(
+    dynamic(() =>
+      import("@kickstartds/ds-agency/stat").then(
+        (mod) => mod.StatContextDefault
+      )
+    )
+  ),
   "teaser-card": editable(
     dynamic(() =>
       import("@kickstartds/ds-agency/teaser-card").then((mod) => mod.TeaserCard)
@@ -96,6 +110,13 @@ export const components = {
     dynamic(() =>
       import("@kickstartds/ds-agency/testimonials").then(
         (mod) => mod.Testimonials
+      )
+    )
+  ),
+  testimonial: editable(
+    dynamic(() =>
+      import("@kickstartds/ds-agency/testimonial").then(
+        (mod) => mod.TestimonialContextDefault
       )
     )
   ),
@@ -110,6 +131,13 @@ export const components = {
   logos: editable(
     dynamic(() =>
       import("@kickstartds/ds-agency/logos").then((mod) => mod.Logos)
+    )
+  ),
+  logo: editable(
+    dynamic(() =>
+      import("@kickstartds/ds-agency/logo").then(
+        (mod) => mod.LogoContextDefault
+      )
     )
   ),
 };

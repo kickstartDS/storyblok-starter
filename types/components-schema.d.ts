@@ -163,8 +163,12 @@ export interface FeatureStoryblok {
   icon?: string;
   title?: string;
   text?: string;
+  style?: "" | "intext" | "stack" | "centered" | "besideLarge" | "besideSmall";
   cta_target?: MultilinkStoryblok;
   cta_label?: string;
+  cta_toggle?: boolean;
+  cta_style?: "" | "button" | "link" | "intext";
+  type?: string;
   _uid: string;
   component: "feature";
   [k: string]: any;
@@ -262,6 +266,7 @@ export interface ListStoryblok {
 export interface LogoStoryblok {
   src?: AssetStoryblok;
   alt?: string;
+  type?: string;
   _uid: string;
   component: "logo";
   [k: string]: any;
@@ -409,6 +414,7 @@ export interface StatStoryblok {
   number?: string;
   description?: string;
   title?: string;
+  type?: string;
   _uid: string;
   component: "stat";
   [k: string]: any;
@@ -452,6 +458,7 @@ export interface TestimonialStoryblok {
   title?: string;
   image_src?: AssetStoryblok;
   image_alt?: string;
+  type?: string;
   _uid: string;
   component: "testimonial";
   [k: string]: any;

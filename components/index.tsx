@@ -13,16 +13,14 @@ export const editable =
   // eslint-disable-next-line react/display-name
   ({ blok }: { blok: SbBlokData }) =>
     (
-      <div {...storyblokEditable(blok)}>
-        <Component {...unflatten(blok)}>
-          {nestedBloksKey &&
-            (blok[nestedBloksKey] as SbBlokData[] | undefined)?.map(
-              (nestedBlok) => (
-                <StoryblokComponent blok={nestedBlok} key={nestedBlok._uid} />
-              )
-            )}
-        </Component>
-      </div>
+      <Component {...storyblokEditable(blok)} {...unflatten(blok)}>
+        {nestedBloksKey &&
+          (blok[nestedBloksKey] as SbBlokData[] | undefined)?.map(
+            (nestedBlok) => (
+              <StoryblokComponent blok={nestedBlok} key={nestedBlok._uid} />
+            )
+          )}
+      </Component>
     );
 
 const editableBlogTeaser = editable(

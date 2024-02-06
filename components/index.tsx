@@ -58,11 +58,15 @@ export const components = {
     )
   ),
   faq: editable(
-    dynamic(() => import("@kickstartds/ds-agency/faq").then((mod) => mod.Faq))
+    dynamic(() =>
+      import("@kickstartds/ds-agency/faq").then((mod) => mod.FaqContextDefault)
+    )
   ),
   features: editable(
     dynamic(() =>
-      import("@kickstartds/ds-agency/features").then((mod) => mod.Features)
+      import("@kickstartds/ds-agency/features").then(
+        (mod) => mod.FeaturesContextDefault
+      )
     )
   ),
   feature: editable(
@@ -74,7 +78,9 @@ export const components = {
   ),
   gallery: editable(
     dynamic(() =>
-      import("@kickstartds/ds-agency/gallery").then((mod) => mod.Gallery)
+      import("@kickstartds/ds-agency/gallery").then(
+        (mod) => mod.GalleryContextDefault
+      )
     )
   ),
   headline: editable(
@@ -89,7 +95,9 @@ export const components = {
   ),
   stats: editable(
     dynamic(() =>
-      import("@kickstartds/ds-agency/stats").then((mod) => mod.Stats)
+      import("@kickstartds/ds-agency/stats").then(
+        (mod) => mod.StatsContextDefault
+      )
     )
   ),
   stat: editable(
@@ -101,7 +109,9 @@ export const components = {
   ),
   "teaser-card": editable(
     dynamic(() =>
-      import("@kickstartds/ds-agency/teaser-card").then((mod) => mod.TeaserCard)
+      import("@kickstartds/ds-agency/teaser-card").then(
+        (mod) => mod.TeaserCardContextDefault
+      )
     )
   ),
   testimonials: editable(
@@ -119,16 +129,24 @@ export const components = {
     )
   ),
   text: editable(
-    dynamic(() => import("@kickstartds/ds-agency/text").then((mod) => mod.Text))
+    dynamic(() =>
+      import("@kickstartds/ds-agency/text").then(
+        (mod) => mod.TextContextDefault
+      )
+    )
   ),
   "image-text": editable(
     dynamic(() =>
-      import("@kickstartds/ds-agency/image-text").then((mod) => mod.ImageText)
+      import("@kickstartds/ds-agency/image-text").then(
+        (mod) => mod.ImageTextContextDefault
+      )
     )
   ),
   logos: editable(
     dynamic(() =>
-      import("@kickstartds/ds-agency/logos").then((mod) => mod.Logos)
+      import("@kickstartds/ds-agency/logos").then(
+        (mod) => mod.LogosContextDefault
+      )
     )
   ),
   logo: editable(

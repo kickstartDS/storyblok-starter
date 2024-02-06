@@ -40,9 +40,9 @@ export default function App({
           fallbackName={story?.name}
         />
         <IconSprite />
-        {headerProps && <Header {...unflatten(headerProps)} />}
+        {headerProps && <Header logo={{}} {...unflatten(headerProps)} />}
         <Component {...pageProps} />
-        {footerProps && <Footer {...unflatten(footerProps)} />}
+        {footerProps && <Footer logo={{}} {...unflatten(footerProps)} />}
       </StoryblokProviders>
     </DsaProviders>
   );

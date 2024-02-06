@@ -234,6 +234,7 @@ const generate = async () => {
       { pathSeparator: "/" }
     );
 
+    // ... also flatten some keys to be compatible with Storyblok config
     traverse(preset.preset, ({ parent, key, value }) => {
       if (typeof value === "object" && isNaN(key) && !Array.isArray(value)) {
         for (const [propKey, propValue] of Object.entries(value)) {
@@ -265,10 +266,23 @@ const generate = async () => {
     presetImage.parent[presetImage.key] = images.get(presetImage.value);
   }
 
+  // Add preview for first (default) preset to component, too
+  for (const generatedComponent of generatedComponents.components) {
+    generatedComponent.image = Object.values(presets).find(
+      (preset) => preset.preset.type === generatedComponent.name
+    )?.image;
+  }
+
   // Write preset configuration to disk
   fs.writeFileSync(
     "storyblok/presets.123456.json",
     JSON.stringify({ presets: [...Object.values(presets)] }, null, 2)
+  );
+
+  // Write updated component configuration to disk
+  fs.writeFileSync(
+    "storyblok/components.123456.json",
+    JSON.stringify(generatedComponents, null, 2)
   );
 };
 

@@ -39,8 +39,8 @@ export interface BlogHeadStoryblok {
 
 export interface BlogOverviewStoryblok {
   latest?: BlogTeaserStoryblok[];
-  list?: ListStoryblok[];
-  more?: MoreStoryblok[];
+  list?: BlogTeaserStoryblok[];
+  more?: BlogTeaserStoryblok[];
   cta?: CtaStoryblok[];
   seo?: SeoStoryblok[];
   type?: string;
@@ -245,24 +245,6 @@ export interface ImageTextStoryblok {
   [k: string]: any;
 }
 
-export interface ListStoryblok {
-  date?: string;
-  tags?: TagsStoryblok[];
-  headline?: string;
-  teaserText?: string;
-  image?: AssetStoryblok;
-  link_url?: MultilinkStoryblok;
-  link_label?: string;
-  readingTime?: string;
-  author_name?: string;
-  author_title?: string;
-  author_image?: AssetStoryblok;
-  type?: string;
-  _uid: string;
-  component: "list";
-  [k: string]: any;
-}
-
 export interface LogoStoryblok {
   src?: AssetStoryblok;
   alt?: string;
@@ -284,24 +266,6 @@ export interface LogosStoryblok {
   type?: string;
   _uid: string;
   component: "logos";
-  [k: string]: any;
-}
-
-export interface MoreStoryblok {
-  date?: string;
-  tags?: TagsStoryblok[];
-  headline?: string;
-  teaserText?: string;
-  image?: AssetStoryblok;
-  link_url?: MultilinkStoryblok;
-  link_label?: string;
-  readingTime?: string;
-  author_name?: string;
-  author_title?: string;
-  author_image?: AssetStoryblok;
-  type?: string;
-  _uid: string;
-  component: "more";
   [k: string]: any;
 }
 
@@ -361,6 +325,7 @@ export interface SectionStoryblok {
   content_mode?: "" | "default" | "tile" | "list" | "slider";
   content_tileWidth?: "" | "smallest" | "default" | "medium" | "large" | "largest";
   components?: (
+    | BlogTeaserStoryblok
     | CtaStoryblok
     | FaqStoryblok
     | FeaturesStoryblok

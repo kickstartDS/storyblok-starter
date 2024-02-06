@@ -3,8 +3,8 @@
     {
       "name": "tags",
       "display_name": "Tags",
-      "created_at": "2024-02-04T22:10:58.934Z",
-      "updated_at": "2024-02-04T22:10:58.934Z",
+      "created_at": "2024-02-06T12:57:17.373Z",
+      "updated_at": "2024-02-06T12:57:17.373Z",
       "id": 0,
       "schema": {
         "entry": {
@@ -24,8 +24,8 @@
     {
       "name": "blog-head",
       "display_name": "Blog Head",
-      "created_at": "2024-02-04T22:10:58.934Z",
-      "updated_at": "2024-02-04T22:10:58.934Z",
+      "created_at": "2024-02-06T12:57:17.374Z",
+      "updated_at": "2024-02-06T12:57:17.374Z",
       "id": 1,
       "schema": {
         "date": {
@@ -89,8 +89,8 @@
     {
       "name": "socialSharing",
       "display_name": "SocialSharing",
-      "created_at": "2024-02-04T22:10:58.938Z",
-      "updated_at": "2024-02-04T22:10:58.938Z",
+      "created_at": "2024-02-06T12:57:17.377Z",
+      "updated_at": "2024-02-06T12:57:17.377Z",
       "id": 2,
       "schema": {
         "icon": {
@@ -133,15 +133,15 @@
     {
       "name": "blog-aside",
       "display_name": "Blog Aside",
-      "created_at": "2024-02-04T22:10:58.938Z",
-      "updated_at": "2024-02-04T22:10:58.938Z",
+      "created_at": "2024-02-06T12:57:17.377Z",
+      "updated_at": "2024-02-06T12:57:17.377Z",
       "id": 3,
       "schema": {
-        "tab-5d640155-b69c-4e59-9637-e155986f17e5": {
+        "tab-febc065c-e3f2-41c6-b0a0-e6703a7b9371": {
           "id": 0,
           "pos": 0,
           "display_name": "Author",
-          "key": "tab-5d640155-b69c-4e59-9637-e155986f17e5",
+          "key": "tab-febc065c-e3f2-41c6-b0a0-e6703a7b9371",
           "keys": [
             "author_name",
             "author_byline",
@@ -250,8 +250,8 @@
     {
       "name": "buttons",
       "display_name": "Buttons",
-      "created_at": "2024-02-04T22:10:58.941Z",
-      "updated_at": "2024-02-04T22:10:58.941Z",
+      "created_at": "2024-02-06T12:57:17.380Z",
+      "updated_at": "2024-02-06T12:57:17.380Z",
       "id": 4,
       "schema": {
         "label": {
@@ -294,8 +294,8 @@
     {
       "name": "cta",
       "display_name": "Cta",
-      "created_at": "2024-02-04T22:10:58.941Z",
-      "updated_at": "2024-02-04T22:10:58.941Z",
+      "created_at": "2024-02-06T12:57:17.380Z",
+      "updated_at": "2024-02-06T12:57:17.380Z",
       "id": 5,
       "schema": {
         "headline": {
@@ -359,12 +359,12 @@
             {
               "name": "left",
               "value": "left",
-              "_uid": "66da708f-be14-416e-9c9f-0009a625fe28"
+              "_uid": "ba3c1d66-ec49-4fde-acfe-0da2664e8c6b"
             },
             {
               "name": "center",
               "value": "center",
-              "_uid": "6be2e3d5-30b3-46fa-aacc-9b8a27681fdd"
+              "_uid": "43766925-eb36-4953-aac5-17c3d27c2d8b"
             }
           ],
           "required": false
@@ -383,14 +383,14 @@
       "real_name": "Cta",
       "color": "#05566a",
       "icon": "block-wallet",
-      "component_group_uuid": "50aa19bb-5128-42b5-9be5-e36daf7a52b5",
+      "component_group_uuid": "5460c080-84a8-4e83-9db8-d58b82ce0b2e",
       "component_group_name": "Components"
     },
     {
       "name": "seo",
       "display_name": "Seo",
-      "created_at": "2024-02-04T22:10:58.942Z",
-      "updated_at": "2024-02-04T22:10:58.942Z",
+      "created_at": "2024-02-06T12:57:17.381Z",
+      "updated_at": "2024-02-06T12:57:17.381Z",
       "id": 6,
       "schema": {
         "title": {
@@ -459,8 +459,8 @@
     {
       "name": "blog-teaser",
       "display_name": "Blog Teaser",
-      "created_at": "2024-02-04T22:10:58.946Z",
-      "updated_at": "2024-02-04T22:10:58.946Z",
+      "created_at": "2024-02-06T12:57:17.384Z",
+      "updated_at": "2024-02-06T12:57:17.384Z",
       "id": 9,
       "schema": {
         "date": {
@@ -515,11 +515,11 @@
           "description": "The preview image for the blog post",
           "required": false
         },
-        "tab-eb17e890-fdd3-4b08-98f0-8d0e7b2764bd": {
+        "tab-d16aac18-deef-470d-be26-990ebaf238b8": {
           "id": 0,
           "pos": 0,
           "display_name": "Link",
-          "key": "tab-eb17e890-fdd3-4b08-98f0-8d0e7b2764bd",
+          "key": "tab-d16aac18-deef-470d-be26-990ebaf238b8",
           "keys": [
             "link_url",
             "link_label"
@@ -560,11 +560,11 @@
           "description": "Time to read for the blog post",
           "required": false
         },
-        "tab-8f1267ba-1f3d-4725-ba85-300a8d92b6bc": {
+        "tab-d6b4c39c-1505-417c-8cee-dde48efb9259": {
           "id": 0,
           "pos": 0,
           "display_name": "Author",
-          "key": "tab-8f1267ba-1f3d-4725-ba85-300a8d92b6bc",
+          "key": "tab-d6b4c39c-1505-417c-8cee-dde48efb9259",
           "keys": [
             "author_name",
             "author_title",
@@ -622,8 +622,8 @@
     {
       "name": "list",
       "display_name": "List",
-      "created_at": "2024-02-04T22:10:58.946Z",
-      "updated_at": "2024-02-04T22:10:58.946Z",
+      "created_at": "2024-02-06T12:57:17.385Z",
+      "updated_at": "2024-02-06T12:57:17.385Z",
       "id": 11,
       "schema": {
         "date": {
@@ -678,11 +678,11 @@
           "description": "The preview image for the blog post",
           "required": false
         },
-        "tab-1600472d-cafc-4adc-8549-3cff4d30012e": {
+        "tab-d644481c-dddc-4290-beb0-a6592cff3c4b": {
           "id": 0,
           "pos": 0,
           "display_name": "Link",
-          "key": "tab-1600472d-cafc-4adc-8549-3cff4d30012e",
+          "key": "tab-d644481c-dddc-4290-beb0-a6592cff3c4b",
           "keys": [
             "link_url",
             "link_label"
@@ -723,11 +723,11 @@
           "description": "Time to read for the blog post",
           "required": false
         },
-        "tab-de72cd23-1778-4dd3-8b08-5006bf457ca6": {
+        "tab-c92e6675-f8aa-4077-addf-43427f410f23": {
           "id": 0,
           "pos": 0,
           "display_name": "Author",
-          "key": "tab-de72cd23-1778-4dd3-8b08-5006bf457ca6",
+          "key": "tab-c92e6675-f8aa-4077-addf-43427f410f23",
           "keys": [
             "author_name",
             "author_title",
@@ -785,8 +785,8 @@
     {
       "name": "more",
       "display_name": "More",
-      "created_at": "2024-02-04T22:10:58.947Z",
-      "updated_at": "2024-02-04T22:10:58.947Z",
+      "created_at": "2024-02-06T12:57:17.385Z",
+      "updated_at": "2024-02-06T12:57:17.385Z",
       "id": 13,
       "schema": {
         "date": {
@@ -841,11 +841,11 @@
           "description": "The preview image for the blog post",
           "required": false
         },
-        "tab-3abba16b-0378-4cec-a527-ee003152aaa4": {
+        "tab-44eeb71b-2079-468c-a6ae-4eefe48c956d": {
           "id": 0,
           "pos": 0,
           "display_name": "Link",
-          "key": "tab-3abba16b-0378-4cec-a527-ee003152aaa4",
+          "key": "tab-44eeb71b-2079-468c-a6ae-4eefe48c956d",
           "keys": [
             "link_url",
             "link_label"
@@ -886,11 +886,11 @@
           "description": "Time to read for the blog post",
           "required": false
         },
-        "tab-8af79e04-e24a-4d2e-8805-7f72366f75d0": {
+        "tab-796892b2-6a8c-46c0-b028-a2026beac115": {
           "id": 0,
           "pos": 0,
           "display_name": "Author",
-          "key": "tab-8af79e04-e24a-4d2e-8805-7f72366f75d0",
+          "key": "tab-796892b2-6a8c-46c0-b028-a2026beac115",
           "keys": [
             "author_name",
             "author_title",
@@ -948,8 +948,8 @@
     {
       "name": "questions",
       "display_name": "Questions",
-      "created_at": "2024-02-04T22:10:58.949Z",
-      "updated_at": "2024-02-04T22:10:58.949Z",
+      "created_at": "2024-02-06T12:57:17.388Z",
+      "updated_at": "2024-02-06T12:57:17.388Z",
       "id": 19,
       "schema": {
         "question": {
@@ -979,8 +979,8 @@
     {
       "name": "feature",
       "display_name": "Feature",
-      "created_at": "2024-02-04T22:10:58.952Z",
-      "updated_at": "2024-02-04T22:10:58.952Z",
+      "created_at": "2024-02-06T12:57:17.390Z",
+      "updated_at": "2024-02-06T12:57:17.390Z",
       "id": 20,
       "schema": {
         "icon": {
@@ -1021,36 +1021,36 @@
             {
               "name": "intext",
               "value": "intext",
-              "_uid": "5040ca31-d2d6-4185-a1ba-1cc6e5257eb5"
+              "_uid": "6afcce6d-b3ae-415b-a1c2-41e67a376c4b"
             },
             {
               "name": "stack",
               "value": "stack",
-              "_uid": "24daeb0a-6751-4478-9e0f-9fe00bd50364"
+              "_uid": "c7093003-b3a6-4193-b392-0ee17b64715e"
             },
             {
               "name": "centered",
               "value": "centered",
-              "_uid": "21ab383d-d2ea-4b35-a744-29d6cf9964d6"
+              "_uid": "77f890af-0a0f-4afb-beb2-97150e6e4541"
             },
             {
               "name": "besideLarge",
               "value": "besideLarge",
-              "_uid": "1063a0f7-fbea-4bb9-bdc0-42b484873e96"
+              "_uid": "ecd72671-8b69-4104-b72a-f19d7e29d53e"
             },
             {
               "name": "besideSmall",
               "value": "besideSmall",
-              "_uid": "64f00dac-6a47-4f56-85dd-c9184c0e98da"
+              "_uid": "6b91dab2-5cf2-413b-82ad-61e93cc0c49b"
             }
           ],
           "required": false
         },
-        "tab-c473afe9-c134-4388-be4d-8dbd840621b4": {
+        "tab-ca9dfc99-1ee0-4926-a113-e9ec3fe9c9a2": {
           "id": 0,
           "pos": 0,
           "display_name": "Cta",
-          "key": "tab-c473afe9-c134-4388-be4d-8dbd840621b4",
+          "key": "tab-ca9dfc99-1ee0-4926-a113-e9ec3fe9c9a2",
           "keys": [
             "cta_target",
             "cta_label",
@@ -1107,17 +1107,17 @@
             {
               "name": "button",
               "value": "button",
-              "_uid": "21713661-1b40-4ad3-9353-7d0cec352154"
+              "_uid": "140fa108-006f-4d65-8205-83d83a92e7df"
             },
             {
               "name": "link",
               "value": "link",
-              "_uid": "4330031b-b796-4d5f-ad76-20bda57065b5"
+              "_uid": "7e5833b6-2f84-41ee-9d16-4260053007ff"
             },
             {
               "name": "intext",
               "value": "intext",
-              "_uid": "9640c316-2e25-4eec-9ad1-090a30322ea0"
+              "_uid": "ee314b28-1fe7-4128-b42d-5319673740b4"
             }
           ],
           "required": false
@@ -1140,8 +1140,8 @@
     {
       "name": "images",
       "display_name": "Images",
-      "created_at": "2024-02-04T22:10:58.954Z",
-      "updated_at": "2024-02-04T22:10:58.954Z",
+      "created_at": "2024-02-06T12:57:17.392Z",
+      "updated_at": "2024-02-06T12:57:17.392Z",
       "id": 21,
       "schema": {
         "src": {
@@ -1183,8 +1183,8 @@
     {
       "name": "logo",
       "display_name": "Logo",
-      "created_at": "2024-02-04T22:10:58.957Z",
-      "updated_at": "2024-02-04T22:10:58.957Z",
+      "created_at": "2024-02-06T12:57:17.394Z",
+      "updated_at": "2024-02-06T12:57:17.394Z",
       "id": 22,
       "schema": {
         "src": {
@@ -1226,8 +1226,8 @@
     {
       "name": "stat",
       "display_name": "Stat",
-      "created_at": "2024-02-04T22:10:58.958Z",
-      "updated_at": "2024-02-04T22:10:58.958Z",
+      "created_at": "2024-02-06T12:57:17.395Z",
+      "updated_at": "2024-02-06T12:57:17.395Z",
       "id": 23,
       "schema": {
         "number": {
@@ -1275,8 +1275,8 @@
     {
       "name": "testimonial",
       "display_name": "Testimonial",
-      "created_at": "2024-02-04T22:10:58.962Z",
-      "updated_at": "2024-02-04T22:10:58.962Z",
+      "created_at": "2024-02-06T12:57:17.399Z",
+      "updated_at": "2024-02-06T12:57:17.399Z",
       "id": 24,
       "schema": {
         "quote": {
@@ -1306,11 +1306,11 @@
           "description": "The title of the quote author",
           "required": false
         },
-        "tab-2a016d3c-2cda-428a-8287-5655898fd2da": {
+        "tab-7552745c-05fd-47e3-af58-165607f6b2c4": {
           "id": 0,
           "pos": 0,
           "display_name": "Image",
-          "key": "tab-2a016d3c-2cda-428a-8287-5655898fd2da",
+          "key": "tab-7552745c-05fd-47e3-af58-165607f6b2c4",
           "keys": [
             "image_src",
             "image_alt"
@@ -1357,8 +1357,8 @@
     {
       "name": "faq",
       "display_name": "Faq",
-      "created_at": "2024-02-04T22:10:58.964Z",
-      "updated_at": "2024-02-04T22:10:58.964Z",
+      "created_at": "2024-02-06T12:57:17.400Z",
+      "updated_at": "2024-02-06T12:57:17.400Z",
       "id": 26,
       "schema": {
         "questions": {
@@ -1387,14 +1387,14 @@
       "real_name": "Components",
       "color": "#05566a",
       "icon": "block-wallet",
-      "component_group_uuid": "50aa19bb-5128-42b5-9be5-e36daf7a52b5",
+      "component_group_uuid": "5460c080-84a8-4e83-9db8-d58b82ce0b2e",
       "component_group_name": "Components"
     },
     {
       "name": "features",
       "display_name": "Features",
-      "created_at": "2024-02-04T22:10:58.964Z",
-      "updated_at": "2024-02-04T22:10:58.964Z",
+      "created_at": "2024-02-06T12:57:17.400Z",
+      "updated_at": "2024-02-06T12:57:17.400Z",
       "id": 27,
       "schema": {
         "layout": {
@@ -1409,17 +1409,17 @@
             {
               "name": "largeTiles",
               "value": "largeTiles",
-              "_uid": "3a13670b-c66e-488c-82ee-e768c688bed1"
+              "_uid": "65ec3253-cf04-4dc7-b867-eb3eca14bc62"
             },
             {
               "name": "smallTiles",
               "value": "smallTiles",
-              "_uid": "0ea4e42c-f123-4e35-bc9f-342bda15d92a"
+              "_uid": "95dc67cb-2d91-4a13-8a4b-2867ddcefb66"
             },
             {
               "name": "list",
               "value": "list",
-              "_uid": "95f5f02a-1254-4c34-a941-eea04162a02f"
+              "_uid": "02642b0b-d23b-4714-b25c-5825c95bb032"
             }
           ],
           "required": false
@@ -1435,36 +1435,36 @@
             {
               "name": "intext",
               "value": "intext",
-              "_uid": "edd742d0-b29b-419c-aff6-c20886ab4544"
+              "_uid": "a9c97434-3901-47d7-aab4-b9a7cedd73b3"
             },
             {
               "name": "stack",
               "value": "stack",
-              "_uid": "9fb460c1-4e49-429f-b277-37b34ad38d54"
+              "_uid": "fd89f8eb-6ab6-40fb-a415-fa69c3c059dd"
             },
             {
               "name": "centered",
               "value": "centered",
-              "_uid": "62faa266-813e-4eea-b2bd-22dafbe80abb"
+              "_uid": "edb25986-b567-4039-beb6-7d2a2064798f"
             },
             {
               "name": "besideLarge",
               "value": "besideLarge",
-              "_uid": "de72f73a-b93e-43ed-a9c8-0ecd55aa98af"
+              "_uid": "64062cdf-97ae-4943-8d99-303e04615366"
             },
             {
               "name": "besideSmall",
               "value": "besideSmall",
-              "_uid": "382662d4-36ad-4e28-aaa3-91b9d90ea881"
+              "_uid": "9ac37a65-498b-4bd0-9fee-238d7ea8c57c"
             }
           ],
           "required": false
         },
-        "tab-533fb6c9-9930-437d-b9e7-746fe6f9ffa9": {
+        "tab-ca0e2f15-44c9-40a9-bba6-c6f610076b1c": {
           "id": 0,
           "pos": 0,
           "display_name": "Ctas",
-          "key": "tab-533fb6c9-9930-437d-b9e7-746fe6f9ffa9",
+          "key": "tab-ca0e2f15-44c9-40a9-bba6-c6f610076b1c",
           "keys": [
             "ctas_toggle",
             "ctas_style"
@@ -1493,17 +1493,17 @@
             {
               "name": "button",
               "value": "button",
-              "_uid": "4912c555-bb38-40b6-9f53-d255725df11b"
+              "_uid": "e2546009-6758-4216-be07-a59fc4626eb9"
             },
             {
               "name": "link",
               "value": "link",
-              "_uid": "9fac28f2-6231-4c0f-847a-cb86e5031c73"
+              "_uid": "91e38968-b978-4e8d-a414-53930f9eaa99"
             },
             {
               "name": "intext",
               "value": "intext",
-              "_uid": "b3f0e17a-9d4c-45da-87e5-0c9be51e6cbf"
+              "_uid": "966d4fcc-7150-44aa-88a1-b151a1488605"
             }
           ],
           "required": false
@@ -1535,14 +1535,14 @@
       "real_name": "Components",
       "color": "#05566a",
       "icon": "block-wallet",
-      "component_group_uuid": "50aa19bb-5128-42b5-9be5-e36daf7a52b5",
+      "component_group_uuid": "5460c080-84a8-4e83-9db8-d58b82ce0b2e",
       "component_group_name": "Components"
     },
     {
       "name": "gallery",
       "display_name": "Gallery",
-      "created_at": "2024-02-04T22:10:58.964Z",
-      "updated_at": "2024-02-04T22:10:58.964Z",
+      "created_at": "2024-02-06T12:57:17.400Z",
+      "updated_at": "2024-02-06T12:57:17.400Z",
       "id": 28,
       "schema": {
         "images": {
@@ -1568,17 +1568,17 @@
             {
               "name": "stack",
               "value": "stack",
-              "_uid": "f2825a42-dfa9-4415-9482-06e30340cfd9"
+              "_uid": "541f3ae7-12f4-422e-a109-c4ed84ed811d"
             },
             {
               "name": "smallTiles",
               "value": "smallTiles",
-              "_uid": "532ccaf9-38fe-40be-8493-62349f7b1759"
+              "_uid": "6c9fc290-e38b-4568-a166-5c6ca6c2958f"
             },
             {
               "name": "largeTiles",
               "value": "largeTiles",
-              "_uid": "736e56e9-b771-407f-948c-86ff954f15c7"
+              "_uid": "a6560dfb-1c46-4c06-8975-d11a44362a42"
             }
           ],
           "required": false
@@ -1595,22 +1595,22 @@
             {
               "name": "unset",
               "value": "unset",
-              "_uid": "202a4142-7e47-4e4f-ad03-05578a4306ca"
+              "_uid": "8f4c9c2a-7f5f-47f0-9804-9e0a0c2c5676"
             },
             {
               "name": "square",
               "value": "square",
-              "_uid": "344b9ab5-1625-4b5e-9a80-b7046588c655"
+              "_uid": "d0a09dc3-4b4d-43d5-9c9d-a462ac606713"
             },
             {
               "name": "wide",
               "value": "wide",
-              "_uid": "9b8fca36-79c2-419f-be1a-d80dfdf28e97"
+              "_uid": "4be4262f-ff89-40d6-8963-456fc57b0086"
             },
             {
               "name": "landscape",
               "value": "landscape",
-              "_uid": "c4a2c23a-c79b-47de-a334-ad652a65b901"
+              "_uid": "3a3f056b-90d1-46ec-9b2b-71e0acecadc7"
             }
           ],
           "required": false
@@ -1638,14 +1638,14 @@
       "real_name": "Components",
       "color": "#05566a",
       "icon": "block-wallet",
-      "component_group_uuid": "50aa19bb-5128-42b5-9be5-e36daf7a52b5",
+      "component_group_uuid": "5460c080-84a8-4e83-9db8-d58b82ce0b2e",
       "component_group_name": "Components"
     },
     {
       "name": "image-text",
       "display_name": "Image Text",
-      "created_at": "2024-02-04T22:10:58.964Z",
-      "updated_at": "2024-02-04T22:10:58.964Z",
+      "created_at": "2024-02-06T12:57:17.400Z",
+      "updated_at": "2024-02-06T12:57:17.400Z",
       "id": 29,
       "schema": {
         "text": {
@@ -1666,11 +1666,11 @@
           "description": "Visually highlight the text",
           "required": false
         },
-        "tab-9d30e45f-9730-4307-8d53-60a691f10101": {
+        "tab-830f9db3-65c9-461e-8d62-d21dec1b8900": {
           "id": 0,
           "pos": 0,
           "display_name": "Image",
-          "key": "tab-9d30e45f-9730-4307-8d53-60a691f10101",
+          "key": "tab-830f9db3-65c9-461e-8d62-d21dec1b8900",
           "keys": [
             "image_src",
             "image_alt"
@@ -1710,22 +1710,22 @@
             {
               "name": "above",
               "value": "above",
-              "_uid": "ac4c5736-5662-4e35-8ece-ca50b7d4f320"
+              "_uid": "4adf6aad-bc79-4a68-8e51-3a32fc7a55ea"
             },
             {
               "name": "below",
               "value": "below",
-              "_uid": "a2352041-1f20-482a-ba45-19e5071b7696"
+              "_uid": "c971debd-1789-4b5e-8525-93dfd74a99da"
             },
             {
               "name": "beside-right",
               "value": "beside_right",
-              "_uid": "0f943fe7-cee0-48e8-8e5b-c67c41c1608b"
+              "_uid": "6fef8e2f-aadc-453e-8e2f-de0c70a86a99"
             },
             {
               "name": "beside-left",
               "value": "beside_left",
-              "_uid": "4da0534d-e25b-488f-b159-52c1d53b8bad"
+              "_uid": "50b07414-3139-4f27-be39-a69d91398489"
             }
           ],
           "required": false
@@ -1744,14 +1744,14 @@
       "real_name": "Components",
       "color": "#05566a",
       "icon": "block-wallet",
-      "component_group_uuid": "50aa19bb-5128-42b5-9be5-e36daf7a52b5",
+      "component_group_uuid": "5460c080-84a8-4e83-9db8-d58b82ce0b2e",
       "component_group_name": "Components"
     },
     {
       "name": "logos",
       "display_name": "Logos",
-      "created_at": "2024-02-04T22:10:58.964Z",
-      "updated_at": "2024-02-04T22:10:58.964Z",
+      "created_at": "2024-02-06T12:57:17.400Z",
+      "updated_at": "2024-02-06T12:57:17.400Z",
       "id": 30,
       "schema": {
         "tagline": {
@@ -1788,21 +1788,21 @@
             {
               "name": "left",
               "value": "left",
-              "_uid": "99bf6068-06cc-41e6-ad56-e12d609a30e6"
+              "_uid": "e91f08b7-4f83-4af3-8f15-18f4bdcb4cee"
             },
             {
               "name": "center",
               "value": "center",
-              "_uid": "cfd2bb73-bd9b-424c-ba0a-418b1987e46b"
+              "_uid": "c06b8c6b-db72-4737-bd18-28e029f66949"
             }
           ],
           "required": false
         },
-        "tab-0a8e080a-afe7-47a2-99bd-a024adb86006": {
+        "tab-9d3b739c-0bd6-4d9f-94f9-65aabca3efe5": {
           "id": 0,
           "pos": 0,
           "display_name": "Cta",
-          "key": "tab-0a8e080a-afe7-47a2-99bd-a024adb86006",
+          "key": "tab-9d3b739c-0bd6-4d9f-94f9-65aabca3efe5",
           "keys": [
             "cta_toggle",
             "cta_text",
@@ -1866,12 +1866,12 @@
             {
               "name": "button",
               "value": "button",
-              "_uid": "86f0edb5-203a-4913-920c-d8508bca3a5b"
+              "_uid": "11662e35-f5ef-4e0f-b4d1-cb6cf6a5028e"
             },
             {
               "name": "text",
               "value": "text",
-              "_uid": "540f1348-982d-4948-b032-9cfa5ae690d4"
+              "_uid": "c327f642-4efe-468e-8b35-41f833aa5882"
             }
           ],
           "required": false
@@ -1890,14 +1890,14 @@
       "real_name": "Components",
       "color": "#05566a",
       "icon": "block-wallet",
-      "component_group_uuid": "50aa19bb-5128-42b5-9be5-e36daf7a52b5",
+      "component_group_uuid": "5460c080-84a8-4e83-9db8-d58b82ce0b2e",
       "component_group_name": "Components"
     },
     {
       "name": "stats",
       "display_name": "Stats",
-      "created_at": "2024-02-04T22:10:58.964Z",
-      "updated_at": "2024-02-04T22:10:58.964Z",
+      "created_at": "2024-02-06T12:57:17.400Z",
+      "updated_at": "2024-02-06T12:57:17.400Z",
       "id": 31,
       "schema": {
         "stat": {
@@ -1927,14 +1927,14 @@
       "real_name": "Components",
       "color": "#05566a",
       "icon": "block-wallet",
-      "component_group_uuid": "50aa19bb-5128-42b5-9be5-e36daf7a52b5",
+      "component_group_uuid": "5460c080-84a8-4e83-9db8-d58b82ce0b2e",
       "component_group_name": "Components"
     },
     {
       "name": "teaser-card",
       "display_name": "Teaser Card",
-      "created_at": "2024-02-04T22:10:58.964Z",
-      "updated_at": "2024-02-04T22:10:58.964Z",
+      "created_at": "2024-02-06T12:57:17.400Z",
+      "updated_at": "2024-02-06T12:57:17.400Z",
       "id": 32,
       "schema": {
         "headline": {
@@ -1976,12 +1976,12 @@
             {
               "name": "stack",
               "value": "stack",
-              "_uid": "8addb3e5-0301-4c7c-a498-89004c049de6"
+              "_uid": "c6f424d3-c772-4122-be95-2c72ccf01e13"
             },
             {
               "name": "row",
               "value": "row",
-              "_uid": "1cc96ec8-33d3-474f-84eb-ff8139dae266"
+              "_uid": "ffc81895-71fd-464c-9c84-89de2b53ee83"
             }
           ],
           "required": false
@@ -1999,11 +1999,11 @@
           "description": "Target that should be linked",
           "required": false
         },
-        "tab-336d1a1f-18ff-460c-b336-2be05838bad3": {
+        "tab-a8f8fa43-48bc-464c-9f92-56bdb5c6d28e": {
           "id": 0,
           "pos": 0,
           "display_name": "Button",
-          "key": "tab-336d1a1f-18ff-460c-b336-2be05838bad3",
+          "key": "tab-a8f8fa43-48bc-464c-9f92-56bdb5c6d28e",
           "keys": [
             "button_label",
             "button_chevron",
@@ -2063,22 +2063,22 @@
             {
               "name": "wide",
               "value": "wide",
-              "_uid": "17225afe-98ae-41ad-93d0-7a2798920d2a"
+              "_uid": "8ff8f1bf-99aa-4733-a66f-e7e835e082bf"
             },
             {
               "name": "landscape",
               "value": "landscape",
-              "_uid": "ccf01172-064d-4ce3-ad62-ea2c68deac29"
+              "_uid": "6b1a893e-9e19-4d79-83be-65aebfb3ddc4"
             },
             {
               "name": "square",
               "value": "square",
-              "_uid": "ce07d0b1-7ea7-41d4-a707-4e811491d2f1"
+              "_uid": "5cadc7e2-3626-418f-844b-ba609e4064da"
             },
             {
               "name": "unset",
               "value": "unset",
-              "_uid": "af0c10b8-0d31-4fa3-a050-d78f18414850"
+              "_uid": "b36d9f8f-18d7-4866-ba96-4bbc6bd07a38"
             }
           ],
           "required": false
@@ -2097,14 +2097,14 @@
       "real_name": "Components",
       "color": "#05566a",
       "icon": "block-wallet",
-      "component_group_uuid": "50aa19bb-5128-42b5-9be5-e36daf7a52b5",
+      "component_group_uuid": "5460c080-84a8-4e83-9db8-d58b82ce0b2e",
       "component_group_name": "Components"
     },
     {
       "name": "testimonials",
       "display_name": "Testimonials",
-      "created_at": "2024-02-04T22:10:58.964Z",
-      "updated_at": "2024-02-04T22:10:58.964Z",
+      "created_at": "2024-02-06T12:57:17.400Z",
+      "updated_at": "2024-02-06T12:57:17.400Z",
       "id": 33,
       "schema": {
         "testimonial": {
@@ -2134,14 +2134,14 @@
       "real_name": "Components",
       "color": "#05566a",
       "icon": "block-wallet",
-      "component_group_uuid": "50aa19bb-5128-42b5-9be5-e36daf7a52b5",
+      "component_group_uuid": "5460c080-84a8-4e83-9db8-d58b82ce0b2e",
       "component_group_name": "Components"
     },
     {
       "name": "text",
       "display_name": "Text",
-      "created_at": "2024-02-04T22:10:58.964Z",
-      "updated_at": "2024-02-04T22:10:58.964Z",
+      "created_at": "2024-02-06T12:57:17.400Z",
+      "updated_at": "2024-02-06T12:57:17.400Z",
       "id": 34,
       "schema": {
         "text": {
@@ -2165,12 +2165,12 @@
             {
               "name": "singleColumn",
               "value": "singleColumn",
-              "_uid": "dbf1ec7d-2c3c-4a49-8918-e4f4225a45d2"
+              "_uid": "d3c42204-c759-44d0-a4eb-82e9f76e2313"
             },
             {
               "name": "multiColumn",
               "value": "multiColumn",
-              "_uid": "10be7a22-9a39-4384-ab6a-7692917bc441"
+              "_uid": "d07d793f-854b-4953-a896-56d8f0210952"
             }
           ],
           "required": false
@@ -2187,12 +2187,12 @@
             {
               "name": "left",
               "value": "left",
-              "_uid": "102b24cb-d6bd-42bd-bea0-0109c7f3c41b"
+              "_uid": "20326d30-e144-45ac-ab08-0c013b5f4110"
             },
             {
               "name": "center",
               "value": "center",
-              "_uid": "81637833-8d98-4b26-b9d7-c01ef1b3e264"
+              "_uid": "3aa80908-a12c-4ff9-a859-f3fa9aa6d577"
             }
           ],
           "required": false
@@ -2220,14 +2220,14 @@
       "real_name": "Components",
       "color": "#05566a",
       "icon": "block-wallet",
-      "component_group_uuid": "50aa19bb-5128-42b5-9be5-e36daf7a52b5",
+      "component_group_uuid": "5460c080-84a8-4e83-9db8-d58b82ce0b2e",
       "component_group_name": "Components"
     },
     {
       "name": "section",
       "display_name": "Section",
-      "created_at": "2024-02-04T22:10:58.964Z",
-      "updated_at": "2024-02-04T22:10:58.964Z",
+      "created_at": "2024-02-06T12:57:17.400Z",
+      "updated_at": "2024-02-06T12:57:17.400Z",
       "id": 36,
       "schema": {
         "width": {
@@ -2242,27 +2242,27 @@
             {
               "name": "full",
               "value": "full",
-              "_uid": "f215e9e4-902c-4131-970f-0e37909ef3f0"
+              "_uid": "0f8df017-3e4b-4082-961f-2937a7fc3660"
             },
             {
               "name": "max",
               "value": "max",
-              "_uid": "6247c5ce-d0ef-4d94-9540-fb2ea61d4fb1"
+              "_uid": "5aaae956-b5cc-4848-9f8e-1f3e6a02d256"
             },
             {
               "name": "wide",
               "value": "wide",
-              "_uid": "e3381d15-3304-41ac-b284-aec8b0d88bbc"
+              "_uid": "90d73afc-ea62-4f65-8616-0eb248c5acfe"
             },
             {
               "name": "default",
               "value": "default",
-              "_uid": "c75da86c-ca95-445a-bfa1-1db4ebdd33dc"
+              "_uid": "50a0b693-ddff-4c7e-93c6-f56389ba4da3"
             },
             {
               "name": "narrow",
               "value": "narrow",
-              "_uid": "bc643715-36dd-4a65-ba5c-f5f0e8df5f4d"
+              "_uid": "1360567e-ab1f-42f5-b5bc-b1a5a9ac99a9"
             }
           ],
           "required": false
@@ -2279,37 +2279,37 @@
             {
               "name": "stagelights",
               "value": "stagelights",
-              "_uid": "0d934eae-6efa-4884-9086-4d8ab6ee7f9d"
+              "_uid": "bb3d2df0-2d38-4d15-b0cc-0e2aa836e05b"
             },
             {
               "name": "horizontalGradient",
               "value": "horizontalGradient",
-              "_uid": "11e2fac6-e31f-44c4-9fa1-2b895ee0d157"
+              "_uid": "bf51d1ea-1242-4d2d-abd5-6ae1f5183957"
             },
             {
               "name": "verticalGradient",
               "value": "verticalGradient",
-              "_uid": "5e194157-bc7d-4b6f-82f0-6807c4fd26fe"
+              "_uid": "546230fa-e19f-4102-a7d3-cb4cbe3f421c"
             },
             {
               "name": "accentTransition",
               "value": "accentTransition",
-              "_uid": "0f4511bd-dad1-4bdc-a639-03976342eba5"
+              "_uid": "7630cf41-7a4a-4526-a04b-9d4e92f1247e"
             },
             {
               "name": "boldTransition",
               "value": "boldTransition",
-              "_uid": "9f65e679-31c2-4bf7-b56c-c71a1ef18c96"
+              "_uid": "06f9016c-d916-4a47-8cc8-a6f104fc1535"
             },
             {
               "name": "symmetricGlow",
               "value": "symmetricGlow",
-              "_uid": "4630faec-3d72-4102-9132-5a6dd28f6504"
+              "_uid": "0245e34d-a0be-4765-abc7-40c739704d1d"
             },
             {
               "name": "anchorGlow",
               "value": "anchorGlow",
-              "_uid": "09304a37-2416-4f37-9a59-8c317d1bdb43"
+              "_uid": "ef22c375-d728-45bf-a207-42c74383de71"
             }
           ],
           "required": false
@@ -2326,17 +2326,17 @@
             {
               "name": "default",
               "value": "default",
-              "_uid": "55e40412-b721-4cc2-8cfa-d3ae023b14d0"
+              "_uid": "edc885ef-c366-47d6-b550-2d472c07aeac"
             },
             {
               "name": "accent",
               "value": "accent",
-              "_uid": "0afc9c50-f49c-4e93-a0ff-0830c84acdd5"
+              "_uid": "351e0bdf-cfd6-4a36-8bf1-7f2e462a7b34"
             },
             {
               "name": "bold",
               "value": "bold",
-              "_uid": "df7cb3a3-9b08-40a6-a50e-a1a9562f93c0"
+              "_uid": "015180f0-32a9-4630-b1fe-087bab142a3c"
             }
           ],
           "required": false
@@ -2362,17 +2362,17 @@
             {
               "name": "default",
               "value": "default",
-              "_uid": "e3184dd1-4da0-49a7-9c8d-889b6140920f"
+              "_uid": "7068011a-4168-466e-b923-3537467d0581"
             },
             {
               "name": "small",
               "value": "small",
-              "_uid": "66669176-cc50-4953-9399-166711d75da2"
+              "_uid": "274bef8f-f187-4ba9-b019-eb568295ac26"
             },
             {
               "name": "none",
               "value": "none",
-              "_uid": "46967577-2b7e-4a5b-91cd-dc71e416cb0a"
+              "_uid": "ef84ec8f-cff3-4106-ab06-c05ebc0f4a58"
             }
           ],
           "required": false
@@ -2389,17 +2389,17 @@
             {
               "name": "default",
               "value": "default",
-              "_uid": "1421d937-6071-4213-a02d-9908effdf2b9"
+              "_uid": "eeb77ee4-4303-45a4-803d-c3b90fc46431"
             },
             {
               "name": "small",
               "value": "small",
-              "_uid": "8f46007c-b55b-44d5-9d36-f2ac60851aa4"
+              "_uid": "6a272f1d-3605-4a64-be54-c0317a76073f"
             },
             {
               "name": "none",
               "value": "none",
-              "_uid": "ecc0cb71-70b9-4b8a-96c3-b8d1280674cf"
+              "_uid": "a0c13ce3-5cfb-4679-ac3d-3be62d6d20d1"
             }
           ],
           "required": false
@@ -2422,11 +2422,11 @@
           "description": "Reserve additional spacing for a floating header",
           "required": false
         },
-        "tab-d70bf12b-10dc-4b06-9b1f-92ad90e8b544": {
+        "tab-284fe0db-311e-4cd8-b7b2-b9f3a7de2da0": {
           "id": 0,
           "pos": 0,
           "display_name": "Headline",
-          "key": "tab-d70bf12b-10dc-4b06-9b1f-92ad90e8b544",
+          "key": "tab-284fe0db-311e-4cd8-b7b2-b9f3a7de2da0",
           "keys": [
             "headline_text",
             "headline_large",
@@ -2469,22 +2469,22 @@
             {
               "name": "unset",
               "value": "unset",
-              "_uid": "442dbdeb-fe17-4f1c-a613-ee800d3fad58"
+              "_uid": "fa6797d4-37c9-42c1-8bef-b3295406f9b0"
             },
             {
               "name": "narrow",
               "value": "narrow",
-              "_uid": "cdd86cd5-b925-46b4-b913-d3f539c54e9d"
+              "_uid": "af0d30d3-17c4-4a58-aad9-49e75043395b"
             },
             {
               "name": "default",
               "value": "default",
-              "_uid": "d5486e11-7ff1-4b59-8b24-79c4dbe17e5e"
+              "_uid": "4d940227-e21e-4154-85c9-c8cbcad90aff"
             },
             {
               "name": "wide",
               "value": "wide",
-              "_uid": "73e29d4c-3986-4937-991e-12a5975f76c3"
+              "_uid": "2a25d6a6-9797-4c5e-9a0e-9b00cb1abe11"
             }
           ],
           "required": false
@@ -2500,17 +2500,17 @@
             {
               "name": "left",
               "value": "left",
-              "_uid": "71985098-b454-4f14-ad15-cc7a5e84daa0"
+              "_uid": "1521f9b0-0fe2-4362-8d5f-33bbaa62a4d9"
             },
             {
               "name": "center",
               "value": "center",
-              "_uid": "976349c6-ddd0-4c3c-b887-c419f203d6a0"
+              "_uid": "c2042843-9be6-447b-8ad6-7a6a4fa0a797"
             },
             {
               "name": "right",
               "value": "right",
-              "_uid": "55f89efa-e801-480e-924b-baae6aa887b9"
+              "_uid": "60dbb6c1-2b54-4bb8-ae94-08fdfb6adf5f"
             }
           ],
           "required": false
@@ -2526,17 +2526,17 @@
             {
               "name": "left",
               "value": "left",
-              "_uid": "7419d92f-338b-4d2a-9156-e2209325ae44"
+              "_uid": "eb516d47-e405-41fa-81a1-d7cbfa86e8ee"
             },
             {
               "name": "center",
               "value": "center",
-              "_uid": "f4b96239-4a47-48ba-b5dd-0b901b7401a4"
+              "_uid": "901ce6a0-e958-4c63-9703-b004548e66e7"
             },
             {
               "name": "right",
               "value": "right",
-              "_uid": "d5bcc254-b80b-406a-9202-582411215b7d"
+              "_uid": "7d73c89d-b471-47ff-92dc-8bcd216a278c"
             }
           ],
           "required": false
@@ -2559,11 +2559,11 @@
           "description": "Switch the order of headline and subheadline",
           "required": false
         },
-        "tab-e88c5155-649a-4288-ae84-d6418c677ed9": {
+        "tab-7b21ed96-4d28-43e3-a391-05482576a185": {
           "id": 0,
           "pos": 0,
           "display_name": "Content",
-          "key": "tab-e88c5155-649a-4288-ae84-d6418c677ed9",
+          "key": "tab-7b21ed96-4d28-43e3-a391-05482576a185",
           "keys": [
             "content_width",
             "content_align",
@@ -2586,22 +2586,22 @@
             {
               "name": "unset",
               "value": "unset",
-              "_uid": "27cd0060-f207-4776-8582-9cf75b7f6248"
+              "_uid": "f2676443-1a43-4fb8-bea5-463d7a91f494"
             },
             {
               "name": "narrow",
               "value": "narrow",
-              "_uid": "e4bb9cbf-a4bd-4f6c-9e30-09702001f94c"
+              "_uid": "1e400dab-4e7b-497e-88c0-2a010cde38c2"
             },
             {
               "name": "default",
               "value": "default",
-              "_uid": "a33ac0b2-a6fe-46c6-8345-56665a9aaadd"
+              "_uid": "da6585ac-96c1-48bd-829e-29233aefb7dd"
             },
             {
               "name": "wide",
               "value": "wide",
-              "_uid": "863d9c78-aa93-4ccd-b1a1-fcda5e4a4741"
+              "_uid": "050ed5e1-ab45-4547-a9c6-92fb08d5baa3"
             }
           ],
           "required": false
@@ -2618,17 +2618,17 @@
             {
               "name": "left",
               "value": "left",
-              "_uid": "72182a13-1645-4efa-9fe1-67f1c711838c"
+              "_uid": "c6c21e12-4ff1-497f-b11b-563944232dc6"
             },
             {
               "name": "center",
               "value": "center",
-              "_uid": "accc84b5-2bbc-44b8-b085-d7e653b329a9"
+              "_uid": "e9f1fcfd-6b39-4386-850f-4677012fc809"
             },
             {
               "name": "right",
               "value": "right",
-              "_uid": "3774d5f7-227b-4614-8558-5ee424071365"
+              "_uid": "1b018fd0-301c-4ddf-8557-2e342978358b"
             }
           ],
           "required": false
@@ -2645,22 +2645,22 @@
             {
               "name": "large",
               "value": "large",
-              "_uid": "1831ba4e-6c26-48ac-988a-afac55b4143e"
+              "_uid": "4cf078df-9062-41b8-913c-51e55abf0d3a"
             },
             {
               "name": "default",
               "value": "default",
-              "_uid": "dc3a54db-4fd5-4d30-b266-3180259af242"
+              "_uid": "5a5a1cb1-2a4e-4c70-9a13-a99cafb20acd"
             },
             {
               "name": "small",
               "value": "small",
-              "_uid": "9b446817-9dd8-45be-994a-5e18f7905f69"
+              "_uid": "11614411-6491-4ab8-ba5b-a64138aa96d6"
             },
             {
               "name": "none",
               "value": "none",
-              "_uid": "3a658da0-426c-4931-aa09-dea821589647"
+              "_uid": "1e1e2f1f-aac2-4e1a-bbb1-478d7fbd71da"
             }
           ],
           "required": false
@@ -2677,22 +2677,22 @@
             {
               "name": "default",
               "value": "default",
-              "_uid": "aa217d8e-0fc5-4ebe-99b1-f8ff99f2e223"
+              "_uid": "e85b5083-a0be-43fc-8391-8c08e8833fb5"
             },
             {
               "name": "tile",
               "value": "tile",
-              "_uid": "8d265e8a-9d18-48fc-b8bd-42c03157fe6e"
+              "_uid": "762ee458-64a3-4eb4-8a1e-5360ca1df862"
             },
             {
               "name": "list",
               "value": "list",
-              "_uid": "1aef170b-e264-4093-a7a2-3b3ec84d2409"
+              "_uid": "2b0369ec-8465-4971-b5ed-1cace3ac08db"
             },
             {
               "name": "slider",
               "value": "slider",
-              "_uid": "c4ffc297-fd6b-43f7-96bf-6d2beeff48b2"
+              "_uid": "14840ade-93f1-4230-8c94-189f56abf479"
             }
           ],
           "required": false
@@ -2709,27 +2709,27 @@
             {
               "name": "smallest",
               "value": "smallest",
-              "_uid": "45a9a167-0017-4039-9c92-207f3cde3287"
+              "_uid": "7990e8cf-3189-46df-ae53-a1e0e44ea6fb"
             },
             {
               "name": "default",
               "value": "default",
-              "_uid": "a9016c1c-75c7-4685-8559-114f03e562c0"
+              "_uid": "ad77e6eb-9853-4f0d-bcf9-b8ad59f704b2"
             },
             {
               "name": "medium",
               "value": "medium",
-              "_uid": "ae4fbf0e-d109-4058-a050-1bce7360fcd3"
+              "_uid": "44b18811-f75f-4327-8f0f-9928e8cda3cc"
             },
             {
               "name": "large",
               "value": "large",
-              "_uid": "c6ff8e46-fd9f-439b-8641-f4c99bad6f09"
+              "_uid": "ff872c89-1dc4-4702-96a8-e7a37dc97ce4"
             },
             {
               "name": "largest",
               "value": "largest",
-              "_uid": "38958db1-440d-4c69-8d50-1fb4c19f3cef"
+              "_uid": "cdd88b45-dfd3-4391-8f6a-a4ebbefe8e60"
             }
           ],
           "required": false
@@ -2743,7 +2743,7 @@
           "restrict_type": "groups",
           "restrict_components": true,
           "component_group_whitelist": [
-            "50aa19bb-5128-42b5-9be5-e36daf7a52b5"
+            "5460c080-84a8-4e83-9db8-d58b82ce0b2e"
           ],
           "description": "Abstracts a page concept into JSON schema",
           "required": false
@@ -2779,8 +2779,8 @@
     {
       "name": "navItems",
       "display_name": "NavItems",
-      "created_at": "2024-02-04T22:10:58.967Z",
-      "updated_at": "2024-02-04T22:10:58.967Z",
+      "created_at": "2024-02-06T12:57:17.403Z",
+      "updated_at": "2024-02-06T12:57:17.403Z",
       "id": 39,
       "schema": {
         "href": {
@@ -2812,15 +2812,15 @@
     {
       "name": "header",
       "display_name": "Header",
-      "created_at": "2024-02-04T22:10:58.967Z",
-      "updated_at": "2024-02-04T22:10:58.967Z",
+      "created_at": "2024-02-06T12:57:17.403Z",
+      "updated_at": "2024-02-06T12:57:17.403Z",
       "id": 40,
       "schema": {
-        "tab-3cb47cab-9753-4f82-8974-353c6019bbda": {
+        "tab-ebcf77d0-687b-4594-959f-cb48e6835abd": {
           "id": 0,
           "pos": 0,
           "display_name": "Logo",
-          "key": "tab-3cb47cab-9753-4f82-8974-353c6019bbda",
+          "key": "tab-ebcf77d0-687b-4594-959f-cb48e6835abd",
           "keys": [
             "logo_src",
             "logo_alt",
@@ -2922,15 +2922,15 @@
     {
       "name": "footer",
       "display_name": "Footer",
-      "created_at": "2024-02-04T22:10:58.969Z",
-      "updated_at": "2024-02-04T22:10:58.969Z",
+      "created_at": "2024-02-06T12:57:17.405Z",
+      "updated_at": "2024-02-06T12:57:17.405Z",
       "id": 42,
       "schema": {
-        "tab-c476ad7d-01b8-4f64-b915-bc10bf3a5ee9": {
+        "tab-4ae95765-62f3-4aa0-b8ea-40f175ca085a": {
           "id": 0,
           "pos": 0,
           "display_name": "Logo",
-          "key": "tab-c476ad7d-01b8-4f64-b915-bc10bf3a5ee9",
+          "key": "tab-4ae95765-62f3-4aa0-b8ea-40f175ca085a",
           "keys": [
             "logo_src",
             "logo_alt",
@@ -3023,8 +3023,8 @@
     {
       "name": "blog-post",
       "display_name": "Blog Post",
-      "created_at": "2024-02-04T22:10:58.942Z",
-      "updated_at": "2024-02-04T22:10:58.942Z",
+      "created_at": "2024-02-06T12:57:17.381Z",
+      "updated_at": "2024-02-06T12:57:17.381Z",
       "is_root": true,
       "id": 7,
       "schema": {
@@ -3105,8 +3105,8 @@
     {
       "name": "blog-overview",
       "display_name": "Blog Overview",
-      "created_at": "2024-02-04T22:10:58.947Z",
-      "updated_at": "2024-02-04T22:10:58.947Z",
+      "created_at": "2024-02-06T12:57:17.385Z",
+      "updated_at": "2024-02-06T12:57:17.385Z",
       "is_root": true,
       "id": 17,
       "schema": {
@@ -3191,8 +3191,8 @@
     {
       "name": "page",
       "display_name": "Page",
-      "created_at": "2024-02-04T22:10:58.964Z",
-      "updated_at": "2024-02-04T22:10:58.964Z",
+      "created_at": "2024-02-06T12:57:17.401Z",
+      "updated_at": "2024-02-06T12:57:17.401Z",
       "is_root": true,
       "id": 38,
       "schema": {
@@ -3238,8 +3238,8 @@
     {
       "name": "settings",
       "display_name": "Settings",
-      "created_at": "2024-02-04T22:10:58.969Z",
-      "updated_at": "2024-02-04T22:10:58.969Z",
+      "created_at": "2024-02-06T12:57:17.406Z",
+      "updated_at": "2024-02-06T12:57:17.406Z",
       "is_root": true,
       "id": 44,
       "schema": {

@@ -102,6 +102,7 @@ const deleteAssetFolder = async (folderId) =>
   );
 
 const generate = async () => {
+  // Clean up already existing folders
   const assetFolders = (
     await Storyblok.get(
       `spaces/${process.env.NEXT_PUBLIC_STORYBLOK_SPACE_ID}/asset_folders/`
@@ -116,6 +117,7 @@ const generate = async () => {
   );
 
   for (const componentScreenshotFolder of componentScreenshotFolders) {
+    // Clean up assets currently in folder first
     const { assets } = (
       await promiseThrottle.add(
         getAssetsForFolder.bind(this, componentScreenshotFolder.id)
@@ -126,12 +128,14 @@ const generate = async () => {
       await promiseThrottle.add(deleteAsset.bind(this, asset.id));
     }
 
+    // ... and then delete the asset folder itself
     await promiseThrottle.add(
       deleteAssetFolder.bind(this, componentScreenshotFolder.id)
     );
   }
 
   for (const demoContentFolder of demoContentFolders) {
+    // Clean up assets currently in folder first
     const { assets } = (
       await promiseThrottle.add(
         getAssetsForFolder.bind(this, demoContentFolder.id)
@@ -142,11 +146,13 @@ const generate = async () => {
       await promiseThrottle.add(deleteAsset.bind(this, asset.id));
     }
 
+    // ... and then delete the asset folder itself
     await promiseThrottle.add(
       deleteAssetFolder.bind(this, demoContentFolder.id)
     );
   }
 
+  // Create new folders for assets to be uploaded
   const previewsFolderId = (
     await promiseThrottle.add(
       createAssetFolder.bind(this, componentScreenshotAssetFolderName)
@@ -158,6 +164,7 @@ const generate = async () => {
     )
   ).data.asset_folder.id;
 
+  // Create presets, and lazily load images for previews
   for (const preset of designSystemPresets) {
     const component_id = generatedComponents.components.find(
       (component) =>
@@ -197,8 +204,8 @@ const generate = async () => {
     }
   }
 
+  // Add Storyblok component typing where needed
   const presetImages = [];
-
   for (const [presetId, preset] of Object.entries(presets)) {
     const component = generatedComponents.components.find(
       (component) => component.name === presetIdToComponentName(presetId)
@@ -226,14 +233,29 @@ const generate = async () => {
       },
       { pathSeparator: "/" }
     );
+
+    traverse(preset.preset, ({ parent, key, value }) => {
+      if (typeof value === "object" && isNaN(key) && !Array.isArray(value)) {
+        for (const [propKey, propValue] of Object.entries(value)) {
+          parent[`${key}_${propKey}`] = propValue;
+        }
+        delete parent[key];
+      }
+    });
   }
 
+  // Find all images used in presets...
   traverse(presets, ({ parent, key, value }) => {
-    if (value && typeof value === "string" && value.startsWith("img/")) {
+    if (
+      value &&
+      typeof value === "string" &&
+      (value.startsWith("img/") || value === "/logo.svg")
+    ) {
       presetImages.push({ parent, key, value });
     }
   });
 
+  // ... and lazily load them
   for (const presetImage of presetImages) {
     if (!images.has(presetImage.value)) {
       const image = signedUpload.bind(this, presetImage.value, demoFolderId);
@@ -243,6 +265,7 @@ const generate = async () => {
     presetImage.parent[presetImage.key] = images.get(presetImage.value);
   }
 
+  // Write preset configuration to disk
   fs.writeFileSync(
     "storyblok/presets.123456.json",
     JSON.stringify({ presets: [...Object.values(presets)] }, null, 2)

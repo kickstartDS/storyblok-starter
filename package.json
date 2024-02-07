@@ -4,8 +4,8 @@
   "private": true,
   "scripts": {
     "dev": "BUILD_ENV=preview next dev",
-    "build": "next build",
-    "build-preview": "BUILD_ENV=preview yarn build",
+    "build": "npm run build-tokens && next build",
+    "build-preview": "BUILD_ENV=preview npm run build",
     "start": "next start",
     "lint": "next lint",
     "init-tokens": "kickstartDS tokens init --token-dictionary-path token/dictionary --branding-token-path token/branding-token.json",

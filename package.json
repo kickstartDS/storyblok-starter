@@ -8,6 +8,8 @@
     "build-preview": "BUILD_ENV=preview yarn build",
     "start": "next start",
     "lint": "next lint",
+    "init-tokens": "kickstartDS tokens init --token-dictionary-path token/dictionary --branding-token-path token/branding-token.json",
+    "build-tokens": "kickstartDS tokens compile --token-dictionary-path token/dictionary",
     "ssl-proxy": "local-ssl-proxy --source 3010 --target 3000 --cert localhost.pem --key localhost-key.pem",
     "converter": "esbuild helpers/createStoryblokConfig.ts --outfile=helpers/createStoryblokConfig.js --bundle --platform=node --target=node16 && node helpers/createStoryblokConfig.js",
     "pull-content-schema": "source ./.env.local && storyblok pull-components --space $NEXT_PUBLIC_STORYBLOK_SPACE_ID -p types/ && mv types/components.$NEXT_PUBLIC_STORYBLOK_SPACE_ID.json types/components-schema.json && mv types/presets.$NEXT_PUBLIC_STORYBLOK_SPACE_ID.json types/components-presets.json",

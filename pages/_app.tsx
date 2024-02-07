@@ -13,8 +13,9 @@ import "lazysizes/plugins/attrchange/ls.attrchange";
 import StoryblokProviders from "../components/Providers";
 
 import palette from "@kickstartds/ds-agency/global.client.js";
-import "@kickstartds/ds-agency/tokens/tokens.css";
+// import "@kickstartds/ds-agency/tokens/tokens.css";
 import "@kickstartds/ds-agency/global.css";
+import "../token/tokens.css";
 
 initStoryblok(process.env.NEXT_PUBLIC_STORYBLOK_API_TOKEN);
 if (typeof window !== "undefined") {

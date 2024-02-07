@@ -40,3 +40,14 @@ next-env.d.ts
 # storyblok
 types/components.*.json
 tmp/*
+
+# kickstartDS
+*.dereffed.json
+*-tokens.json
+token/tokens.css
+token/IconSprite.js
+token/tokens.js
+token/icon-sprite.html
+token/storybook/tokens.css
+token/storybook/tokens.js
+token/storybook/icons.svg

@@ -4,6 +4,7 @@ import {
   StoryblokComponent,
   ISbStory,
   ISbStoryData,
+  StoryblokClient,
 } from "@storyblok/react";
 import { fetchStories, fetchStory } from "@/helpers/storyblok";
 
@@ -31,11 +32,20 @@ export const getStaticPaths = (async () => {
   return { paths, fallback: false };
 }) satisfies GetStaticPaths;
 
-export const getStaticProps = (async ({ params, draftMode }) => {
-  const slug = (params?.slug as string[] | undefined)?.join("/") || "home";
+export const getStaticProps = (async ({ params, previewData }) => {
+  let previewStoryblokApi: StoryblokClient | undefined;
+
+  if (previewData) {
+    const StoryblokClient = await import("storyblok-js-client").then(
+      (mod) => mod.default
+    );
+    previewStoryblokApi = new StoryblokClient({ accessToken: previewData });
+  }
+
+  const slug = params?.slug?.join("/") || "home";
   const [{ data: pageData }, { data: settingsData }] = await Promise.all([
-    fetchStory(slug, draftMode || false),
-    fetchStories({ content_type: "settings" }),
+    fetchStory(slug, previewStoryblokApi),
+    fetchStories({ content_type: "settings" }, previewStoryblokApi),
   ]);
   return {
     props: {
@@ -45,4 +55,4 @@ export const getStaticProps = (async ({ params, draftMode }) => {
     },
     revalidate: 3600, // revalidate every hour
   };
-}) satisfies GetStaticProps<ISbStory["data"]>;
+}) satisfies GetStaticProps<ISbStory["data"], NodeJS.Dict<string[]>, string>;

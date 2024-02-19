@@ -7,7 +7,7 @@ export default function handler(req: NextApiRequest, res: NextApiResponse) {
     return res.status(401).json({ message: "Invalid token" });
   }
 
-  res.setDraftMode({ enable: true });
+  res.setPreviewData(process.env.NEXT_STORYBLOK_API_TOKEN!);
   easeCookies(res);
 
   res.redirect(normalizeSlug(req));
@@ -22,7 +22,7 @@ const inEditMode = (query: NextApiRequest["query"]) => {
   if (isString(spaceId) && isString(token) && isString(timestamp)) {
     const validationString = [
       spaceId,
-      process.env.NEXT_PUBLIC_STORYBLOK_API_TOKEN,
+      process.env.NEXT_STORYBLOK_API_TOKEN,
       timestamp,
     ].join(":");
     const validationToken = crypto

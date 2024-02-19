@@ -37,7 +37,7 @@ export default function App({
       <StoryblokProviders>
         <Meta
           globalSeo={settings?.seo[0]}
-          pageSeo={story?.content.seo[0]}
+          pageSeo={story?.content.seo?.[0]}
           fallbackName={story?.name}
         />
         <IconSprite />

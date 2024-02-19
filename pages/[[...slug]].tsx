@@ -43,16 +43,22 @@ export const getStaticProps = (async ({ params, previewData }) => {
   }
 
   const slug = params?.slug?.join("/") || "home";
-  const [{ data: pageData }, { data: settingsData }] = await Promise.all([
-    fetchStory(slug, previewStoryblokApi),
-    fetchStories({ content_type: "settings" }, previewStoryblokApi),
-  ]);
-  return {
-    props: {
-      ...pageData,
-      settings: settingsData.stories[0]?.content || null,
-      key: pageData.story.id,
-    },
-    revalidate: 3600, // revalidate every hour
-  };
+  try {
+    const [{ data: pageData }, { data: settingsData }] = await Promise.all([
+      fetchStory(slug, previewStoryblokApi),
+      fetchStories({ content_type: "settings" }, previewStoryblokApi),
+    ]);
+    return {
+      props: {
+        ...pageData,
+        settings: settingsData.stories[0]?.content || null,
+        key: pageData.story.id,
+      },
+      revalidate: 3600, // revalidate every hour
+    };
+  } catch (e) {
+    return {
+      notFound: true,
+    };
+  }
 }) satisfies GetStaticProps<ISbStory["data"], NodeJS.Dict<string[]>, string>;

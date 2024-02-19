@@ -11,17 +11,17 @@ const generatedComponents = require("../storyblok/components.123456.json");
 
 require("dotenv").config({ path: ".env.local" });
 
-if (!process.env.NEXT_PUBLIC_STORYBLOK_SPACE_ID)
-  throw new Error("Missing NEXT_PUBLIC_STORYBLOK_SPACE_ID env variable");
-if (!process.env.NEXT_PUBLIC_STORYBLOK_OAUTH_TOKEN)
-  throw new Error("Missing NEXT_PUBLIC_STORYBLOK_OAUTH_TOKEN env variable");
+if (!process.env.NEXT_STORYBLOK_SPACE_ID)
+  throw new Error("Missing NEXT_STORYBLOK_SPACE_ID env variable");
+if (!process.env.NEXT_STORYBLOK_OAUTH_TOKEN)
+  throw new Error("Missing NEXT_STORYBLOK_OAUTH_TOKEN env variable");
 
 /** Configuration */
 const componentScreenshotAssetFolderName = "Component Screenshots";
 const demoContentAssetFolderName = "Demo Content";
 
 const Storyblok = new StoryblokClient({
-  oauthToken: process.env.NEXT_PUBLIC_STORYBLOK_OAUTH_TOKEN,
+  oauthToken: process.env.NEXT_STORYBLOK_OAUTH_TOKEN,
 });
 
 const presets = {};
@@ -57,7 +57,7 @@ const signedUpload = async (fileName, assetFolderId) => {
     );
 
     const assetResponse = await Storyblok.post(
-      `spaces/${process.env.NEXT_PUBLIC_STORYBLOK_SPACE_ID}/assets/`,
+      `spaces/${process.env.NEXT_STORYBLOK_SPACE_ID}/assets/`,
       {
         filename: fileName,
         size: `${dimensions.width}x${dimensions.height}`,
@@ -78,7 +78,7 @@ const signedUpload = async (fileName, assetFolderId) => {
 
 const createAssetFolder = async (folderName) =>
   Storyblok.post(
-    `spaces/${process.env.NEXT_PUBLIC_STORYBLOK_SPACE_ID}/asset_folders/`,
+    `spaces/${process.env.NEXT_STORYBLOK_SPACE_ID}/asset_folders/`,
     {
       asset_folder: {
         name: folderName,
@@ -88,24 +88,24 @@ const createAssetFolder = async (folderName) =>
 
 const getAssetsForFolder = async (folderId) =>
   Storyblok.get(
-    `spaces/${process.env.NEXT_PUBLIC_STORYBLOK_SPACE_ID}/assets?per_page=100&page=1&in_folder=${folderId}`
+    `spaces/${process.env.NEXT_STORYBLOK_SPACE_ID}/assets?per_page=100&page=1&in_folder=${folderId}`
   );
 
 const deleteAsset = async (assetId) =>
   Storyblok.delete(
-    `spaces/${process.env.NEXT_PUBLIC_STORYBLOK_SPACE_ID}/assets/${assetId}`
+    `spaces/${process.env.NEXT_STORYBLOK_SPACE_ID}/assets/${assetId}`
   );
 
 const deleteAssetFolder = async (folderId) =>
   Storyblok.delete(
-    `spaces/${process.env.NEXT_PUBLIC_STORYBLOK_SPACE_ID}/asset_folders/${folderId}`
+    `spaces/${process.env.NEXT_STORYBLOK_SPACE_ID}/asset_folders/${folderId}`
   );
 
 const generate = async () => {
   // Clean up already existing folders
   const assetFolders = (
     await Storyblok.get(
-      `spaces/${process.env.NEXT_PUBLIC_STORYBLOK_SPACE_ID}/asset_folders/`
+      `spaces/${process.env.NEXT_STORYBLOK_SPACE_ID}/asset_folders/`
     )
   ).data?.asset_folders;
 
@@ -184,7 +184,7 @@ const generate = async () => {
           ...preset.args,
         },
         component_id,
-        space_id: process.env.NEXT_PUBLIC_STORYBLOK_SPACE_ID,
+        space_id: process.env.NEXT_STORYBLOK_SPACE_ID,
         created_at: new Date().toISOString(),
         updated_at: new Date().toISOString(),
         color: "",

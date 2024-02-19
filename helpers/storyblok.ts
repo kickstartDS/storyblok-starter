@@ -12,7 +12,7 @@ import { components } from "@/components";
 export function initStoryblok(accessToken?: string) {
   storyblokInit({
     accessToken,
-    use: [apiPlugin],
+    use: accessToken ? [apiPlugin] : undefined,
     components,
   });
 }

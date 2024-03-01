@@ -5,13 +5,14 @@ import {
   apiPlugin,
   storyblokInit,
   ISbStory,
+  StoryblokClient,
 } from "@storyblok/react";
 import { components } from "@/components";
 
 export function initStoryblok(accessToken?: string) {
   storyblokInit({
     accessToken,
-    use: [apiPlugin],
+    use: accessToken ? [apiPlugin] : undefined,
     components,
   });
 }
@@ -28,11 +29,14 @@ export const sbParams = (
   ...params,
 });
 
-export async function fetchStory(slug: string, preview: boolean) {
-  const storyblokApi = getStoryblokApi();
+export async function fetchStory(
+  slug: string,
+  previewStoryblokApi?: StoryblokClient
+) {
+  const storyblokApi = previewStoryblokApi || getStoryblokApi();
   const response: ISbStory = await storyblokApi.get(
     `cdn/stories/${slug}`,
-    sbParams(preview)
+    sbParams(!!previewStoryblokApi)
   );
 
   lastContentVersion = response.data.cv;
@@ -40,11 +44,14 @@ export async function fetchStory(slug: string, preview: boolean) {
 }
 
 // TODO: https://www.storyblok.com/docs/api/content-delivery/v2#topics/pagination
-export async function fetchStories(params?: ISbStoriesParams) {
-  const storyblokApi = getStoryblokApi();
+export async function fetchStories(
+  params?: ISbStoriesParams,
+  previewStoryblokApi?: StoryblokClient
+) {
+  const storyblokApi = previewStoryblokApi || getStoryblokApi();
   const response: ISbStories = await storyblokApi.get(
     `cdn/stories`,
-    sbParams(false, params)
+    sbParams(!!previewStoryblokApi, params)
   );
 
   lastContentVersion = response.data.cv;

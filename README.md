@@ -72,7 +72,7 @@ The application is now available on https://energyui.localhost/.
 ## Typescript Support
 
 Generate ts types according to the content schema by running
-`NEXT_PUBLIC_STORYBLOK_SPACE_ID=<your-space-id> npm run generate-content-types`.
+`NEXT_STORYBLOK_SPACE_ID=<your-space-id> npm run generate-content-types`.
 
 ## Migrations
 

@@ -17,7 +17,7 @@ import palette from "@kickstartds/ds-agency/global.client.js";
 import "@kickstartds/ds-agency/global.css";
 import "../token/tokens.css";
 
-initStoryblok(process.env.NEXT_PUBLIC_STORYBLOK_API_TOKEN);
+initStoryblok(process.env.NEXT_STORYBLOK_API_TOKEN);
 if (typeof window !== "undefined") {
   console.log(palette);
 }
@@ -37,7 +37,7 @@ export default function App({
       <StoryblokProviders>
         <Meta
           globalSeo={settings?.seo[0]}
-          pageSeo={story?.content.seo[0]}
+          pageSeo={story?.content.seo?.[0]}
           fallbackName={story?.name}
         />
         <IconSprite />

@@ -275,13 +275,13 @@ const generate = async () => {
 
   // Write preset configuration to disk
   fs.writeFileSync(
-    "storyblok/presets.123456.json",
+    "cms/presets.123456.json",
     JSON.stringify({ presets: [...Object.values(presets)] }, null, 2)
   );
 
   // Write updated component configuration to disk
   fs.writeFileSync(
-    "storyblok/components.123456.json",
+    "cms/components.123456.json",
     JSON.stringify(generatedComponents, null, 2)
   );
 };

@@ -19,8 +19,10 @@ See ["Local Development"-Section](#local-development) below for the necessary st
 You can use this button to deploy the EnergyUI@Storyblok starter repo on Vercel. Feel free to change the repository URL for quicker deployment of the clone repository:
 
 [![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Ftaktsoft%2Fenergyui-storyblok-starter&env=NPM_RC,STORYBLOK_API_TOKEN&envDescription=NPM_RC%20must%20contain%20at%20least%20%60%2F%2Fgit.taktsoft.com%2Fapi%2Fv4%2Fprojects%2F378%2Fpackages%2Fnpm%2F%3A_authToken%3D%3Cyour%20npm%20token%3E%60)
+[![Deploy to Netlify](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/kickstartDS/storyblok-starter)
 
 # Local Development
+
 ## Dependencies
 
 - [`mkcert`](https://github.com/FiloSottile/mkcert#installation)

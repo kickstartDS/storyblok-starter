@@ -36,7 +36,6 @@ export const components = {
   "blog-overview": dynamic(() => import("./BlogOverview")),
   "blog-post": dynamic(() => import("./BlogPost")),
   "blog-teaser": editableBlogTeaser,
-  more: editableBlogTeaser,
   "blog-aside": editable(
     dynamic(() =>
       import("@kickstartds/ds-agency/blog-aside").then(

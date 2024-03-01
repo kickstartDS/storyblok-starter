@@ -7,7 +7,7 @@ const StoryblokClient = require("storyblok-js-client");
 const { v4: uuidv4 } = require("uuid");
 const jsonpointer = require("jsonpointer");
 const designSystemPresets = require("@kickstartds/ds-agency/presets.json");
-const generatedComponents = require("../storyblok/components.123456.json");
+const generatedComponents = require("../cms/components.123456.json");
 
 require("dotenv").config({ path: ".env.local" });
 

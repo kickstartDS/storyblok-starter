@@ -1,3 +1,12 @@
+[template]
+  incoming-hooks = ["Storyblok"]
+
+[template.environment]
+  NEXT_PUBLIC_STORYBLOK_API_TOKEN = ""
+  NEXT_PUBLIC_STORYBLOK_OAUTH_TOKEN = ""
+  NEXT_PUBLIC_STORYBLOK_SPACE_ID = ""
+  NEXT_PUBLIC_DRAFT_SECRET_TOKEN = ""
+
 [build]
   command = "npm run build"
   publish = ".next"

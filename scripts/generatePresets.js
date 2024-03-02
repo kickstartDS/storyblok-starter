@@ -306,5 +306,8 @@ const generate = async () => {
     JSON.stringify(generatedComponents, null, 2)
   );
 };
-
-generate();
+try {
+  generate();
+} catch (error) {
+  console.log("ERROR", JSON.stringify(error, null, 2));
+}

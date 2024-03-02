@@ -2,11 +2,12 @@
   incoming-hooks = ["Storyblok"]
 
 [template.environment]
-  NEXT_PUBLIC_STORYBLOK_API_TOKEN = ""
-  NEXT_PUBLIC_STORYBLOK_OAUTH_TOKEN = ""
-  NEXT_PUBLIC_STORYBLOK_SPACE_ID = ""
-  NEXT_PUBLIC_DRAFT_SECRET_TOKEN = ""
+  NEXT_STORYBLOK_API_TOKEN = "Add your Storyblok API token for the newly created Space here"
+  NEXT_STORYBLOK_OAUTH_TOKEN = "Add your Oauth token, generated from your personal account here"
+  NEXT_STORYBLOK_SPACE_ID = "Add your Storyblok Space ID for the newly created Space here"
+  STORYBLOK_LOGIN_EMAIL = "Add the email you used on Storyblok for the newly created Space here"
+  STORYBLOK_REGION = "Add the region you used on Storyblok for the newly created Space here"
 
 [build]
-  command = "npm run build"
+  command = "(path-exists ./cms/presets.123456.json || npm run init) && npm run build"
   publish = ".next"

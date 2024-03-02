@@ -27,4 +27,31 @@ export default function netrc(plop) {
       },
     ],
   });
+  plop.setGenerator("env", {
+    description: "add .env.local to project",
+    prompts: [
+      {
+        type: "input",
+        name: "apiToken",
+        message: "Next Storyblok API Token",
+      },
+      {
+        type: "input",
+        name: "oauthToken",
+        message: "Next Storyblok Oauth Token",
+      },
+      {
+        type: "input",
+        name: "spaceId",
+        message: "Next Storyblok Space ID",
+      },
+    ],
+    actions: [
+      {
+        type: "add",
+        path: `.env.local`,
+        templateFile: "helpers/env.hbs",
+      },
+    ],
+  });
 }

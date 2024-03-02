@@ -16,6 +16,8 @@ if (!process.env.NEXT_STORYBLOK_SPACE_ID)
 if (!process.env.NEXT_STORYBLOK_OAUTH_TOKEN)
   throw new Error("Missing NEXT_STORYBLOK_OAUTH_TOKEN env variable");
 
+console.log("THIS IS GETTING STARTED");
+
 /** Configuration */
 const componentScreenshotAssetFolderName = "Component Screenshots";
 const demoContentAssetFolderName = "Demo Content";

@@ -7,7 +7,7 @@
     "build": "npm run build-tokens && next build",
     "build-preview": "BUILD_ENV=preview npm run build",
     "post_install": "path-exists ./cms/presets.123456.json || npm run init",
-    "netrc": "plop netrc $STORYBLOK_LOGIN_EMAIL $NEXT_STORYBLOK_OAUTH_TOKEN $STORYBLOK_REGION && cat $HOME/.netrc",
+    "netrc": "plop netrc $STORYBLOK_LOGIN_EMAIL $NEXT_STORYBLOK_OAUTH_TOKEN $STORYBLOK_REGION",
     "init": "npm run netrc && npm run generate-presets && npm run push-components && npm run generate-content-types",
     "start": "next start",
     "lint": "next lint",

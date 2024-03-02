@@ -112,199 +112,205 @@ const deleteAssetFolder = async (folderId) =>
 const generate = async () => {
   console.log("5");
   // Clean up already existing folders
-  const assetFolders = (
-    await Storyblok.get(
+  try {
+    const assetsFolders = await Storyblok.get(
       `spaces/${process.env.NEXT_STORYBLOK_SPACE_ID}/asset_folders/`
-    )
-  ).data?.asset_folders;
-
-  const componentScreenshotFolders = assetFolders.filter(
-    (assetFolder) => assetFolder.name === componentScreenshotAssetFolderName
-  );
-  const demoContentFolders = assetFolders.filter(
-    (assetFolder) => assetFolder.name === demoContentAssetFolderName
-  );
-
-  console.log("6");
-
-  for (const componentScreenshotFolder of componentScreenshotFolders) {
-    // Clean up assets currently in folder first
-    const { assets } = (
-      await promiseThrottle.add(
-        getAssetsForFolder.bind(this, componentScreenshotFolder.id)
-      )
-    ).data;
-
-    for (const asset of assets) {
-      await promiseThrottle.add(deleteAsset.bind(this, asset.id));
-    }
-
-    // ... and then delete the asset folder itself
-    await promiseThrottle.add(
-      deleteAssetFolder.bind(this, componentScreenshotFolder.id)
     );
-  }
+    console.log("assetsFolders", JSON.stringify(assetsFolders, null, 2));
+    const assetFolders = assetsFolders.data?.asset_folders;
 
-  console.log("7");
-
-  for (const demoContentFolder of demoContentFolders) {
-    // Clean up assets currently in folder first
-    const { assets } = (
-      await promiseThrottle.add(
-        getAssetsForFolder.bind(this, demoContentFolder.id)
-      )
-    ).data;
-
-    for (const asset of assets) {
-      await promiseThrottle.add(deleteAsset.bind(this, asset.id));
-    }
-
-    // ... and then delete the asset folder itself
-    await promiseThrottle.add(
-      deleteAssetFolder.bind(this, demoContentFolder.id)
+    const componentScreenshotFolders = assetFolders.filter(
+      (assetFolder) => assetFolder.name === componentScreenshotAssetFolderName
     );
-  }
+    const demoContentFolders = assetFolders.filter(
+      (assetFolder) => assetFolder.name === demoContentAssetFolderName
+    );
 
-  console.log("8");
+    console.log("6");
 
-  // Create new folders for assets to be uploaded
-  const previewsFolderId = (
-    await promiseThrottle.add(
-      createAssetFolder.bind(this, componentScreenshotAssetFolderName)
-    )
-  ).data.asset_folder.id;
-  const demoFolderId = (
-    await promiseThrottle.add(
-      createAssetFolder.bind(this, demoContentAssetFolderName)
-    )
-  ).data.asset_folder.id;
+    for (const componentScreenshotFolder of componentScreenshotFolders) {
+      // Clean up assets currently in folder first
+      const { assets } = (
+        await promiseThrottle.add(
+          getAssetsForFolder.bind(this, componentScreenshotFolder.id)
+        )
+      ).data;
 
-  // Create presets, and lazily load images for previews
-  for (const preset of designSystemPresets) {
-    console.log("9");
-    const component_id = generatedComponents.components.find(
-      (component) =>
-        component.display_name.trim() === groupToComponentName(preset.group)
-    )?.id;
-
-    if (component_id) {
-      const componentKey = presetIdToComponentName(preset.id);
-
-      presets[preset.id] = {
-        id: 0,
-        name: preset.name,
-        preset: {
-          _uid: uuidv4(),
-          type: componentKey,
-          component: componentKey,
-          ...preset.args,
-        },
-        component_id,
-        space_id: process.env.NEXT_STORYBLOK_SPACE_ID,
-        created_at: new Date().toISOString(),
-        updated_at: new Date().toISOString(),
-        color: "",
-        icon: "",
-        description: "",
-      };
-
-      console.log("10");
-
-      if (!images.has(preset.screenshot)) {
-        const image = signedUpload.bind(
-          this,
-          preset.screenshot,
-          previewsFolderId
-        );
-        images.set(preset.screenshot, (await promiseThrottle.add(image)).url);
+      for (const asset of assets) {
+        await promiseThrottle.add(deleteAsset.bind(this, asset.id));
       }
-      presets[preset.id].image = images.get(preset.screenshot);
+
+      // ... and then delete the asset folder itself
+      await promiseThrottle.add(
+        deleteAssetFolder.bind(this, componentScreenshotFolder.id)
+      );
     }
-  }
 
-  console.log("11");
+    console.log("7");
 
-  // Add Storyblok component typing where needed
-  const presetImages = [];
-  for (const [presetId, preset] of Object.entries(presets)) {
-    const component = generatedComponents.components.find(
-      (component) => component.name === presetIdToComponentName(presetId)
-    );
-    console.log("12");
-    traverse(
-      preset.preset,
-      ({ meta }) => {
-        const config = jsonpointer.get(component.schema, `/${meta.nodePath}`);
-        if (!config) return;
-        if (config.type === "bloks") {
-          jsonpointer.set(
-            preset.preset,
-            `/${meta.nodePath}`,
-            jsonpointer.get(preset.preset, `/${meta.nodePath}`).map((entry) => {
-              if (typeof entry !== "object") return entry;
-              return {
-                ...entry,
-                _uid: uuidv4(),
-                type: config.component_whitelist[0],
-                component: config.component_whitelist[0],
-              };
-            })
+    for (const demoContentFolder of demoContentFolders) {
+      // Clean up assets currently in folder first
+      const { assets } = (
+        await promiseThrottle.add(
+          getAssetsForFolder.bind(this, demoContentFolder.id)
+        )
+      ).data;
+
+      for (const asset of assets) {
+        await promiseThrottle.add(deleteAsset.bind(this, asset.id));
+      }
+
+      // ... and then delete the asset folder itself
+      await promiseThrottle.add(
+        deleteAssetFolder.bind(this, demoContentFolder.id)
+      );
+    }
+
+    console.log("8");
+
+    // Create new folders for assets to be uploaded
+    const previewsFolderId = (
+      await promiseThrottle.add(
+        createAssetFolder.bind(this, componentScreenshotAssetFolderName)
+      )
+    ).data.asset_folder.id;
+    const demoFolderId = (
+      await promiseThrottle.add(
+        createAssetFolder.bind(this, demoContentAssetFolderName)
+      )
+    ).data.asset_folder.id;
+
+    // Create presets, and lazily load images for previews
+    for (const preset of designSystemPresets) {
+      console.log("9");
+      const component_id = generatedComponents.components.find(
+        (component) =>
+          component.display_name.trim() === groupToComponentName(preset.group)
+      )?.id;
+
+      if (component_id) {
+        const componentKey = presetIdToComponentName(preset.id);
+
+        presets[preset.id] = {
+          id: 0,
+          name: preset.name,
+          preset: {
+            _uid: uuidv4(),
+            type: componentKey,
+            component: componentKey,
+            ...preset.args,
+          },
+          component_id,
+          space_id: process.env.NEXT_STORYBLOK_SPACE_ID,
+          created_at: new Date().toISOString(),
+          updated_at: new Date().toISOString(),
+          color: "",
+          icon: "",
+          description: "",
+        };
+
+        console.log("10");
+
+        if (!images.has(preset.screenshot)) {
+          const image = signedUpload.bind(
+            this,
+            preset.screenshot,
+            previewsFolderId
           );
+          images.set(preset.screenshot, (await promiseThrottle.add(image)).url);
         }
-      },
-      { pathSeparator: "/" }
-    );
-    console.log("13");
-    // ... also flatten some keys to be compatible with Storyblok config
-    traverse(preset.preset, ({ parent, key, value }) => {
-      if (typeof value === "object" && isNaN(key) && !Array.isArray(value)) {
-        for (const [propKey, propValue] of Object.entries(value)) {
-          parent[`${key}_${propKey}`] = propValue;
+        presets[preset.id].image = images.get(preset.screenshot);
+      }
+    }
+
+    console.log("11");
+
+    // Add Storyblok component typing where needed
+    const presetImages = [];
+    for (const [presetId, preset] of Object.entries(presets)) {
+      const component = generatedComponents.components.find(
+        (component) => component.name === presetIdToComponentName(presetId)
+      );
+      console.log("12");
+      traverse(
+        preset.preset,
+        ({ meta }) => {
+          const config = jsonpointer.get(component.schema, `/${meta.nodePath}`);
+          if (!config) return;
+          if (config.type === "bloks") {
+            jsonpointer.set(
+              preset.preset,
+              `/${meta.nodePath}`,
+              jsonpointer
+                .get(preset.preset, `/${meta.nodePath}`)
+                .map((entry) => {
+                  if (typeof entry !== "object") return entry;
+                  return {
+                    ...entry,
+                    _uid: uuidv4(),
+                    type: config.component_whitelist[0],
+                    component: config.component_whitelist[0],
+                  };
+                })
+            );
+          }
+        },
+        { pathSeparator: "/" }
+      );
+      console.log("13");
+      // ... also flatten some keys to be compatible with Storyblok config
+      traverse(preset.preset, ({ parent, key, value }) => {
+        if (typeof value === "object" && isNaN(key) && !Array.isArray(value)) {
+          for (const [propKey, propValue] of Object.entries(value)) {
+            parent[`${key}_${propKey}`] = propValue;
+          }
+          delete parent[key];
         }
-        delete parent[key];
+      });
+    }
+    console.log("14");
+    // Find all images used in presets...
+    traverse(presets, ({ parent, key, value }) => {
+      if (
+        value &&
+        typeof value === "string" &&
+        (value.startsWith("img/") || value === "/logo.svg")
+      ) {
+        presetImages.push({ parent, key, value });
       }
     });
-  }
-  console.log("14");
-  // Find all images used in presets...
-  traverse(presets, ({ parent, key, value }) => {
-    if (
-      value &&
-      typeof value === "string" &&
-      (value.startsWith("img/") || value === "/logo.svg")
-    ) {
-      presetImages.push({ parent, key, value });
+    console.log("15");
+    // ... and lazily load them
+    for (const presetImage of presetImages) {
+      if (!images.has(presetImage.value)) {
+        const image = signedUpload.bind(this, presetImage.value, demoFolderId);
+        images.set(presetImage.value, (await promiseThrottle.add(image)).url);
+      }
+
+      presetImage.parent[presetImage.key] = images.get(presetImage.value);
     }
-  });
-  console.log("15");
-  // ... and lazily load them
-  for (const presetImage of presetImages) {
-    if (!images.has(presetImage.value)) {
-      const image = signedUpload.bind(this, presetImage.value, demoFolderId);
-      images.set(presetImage.value, (await promiseThrottle.add(image)).url);
+    console.log("16");
+    // Add preview for first (default) preset to component, too
+    for (const generatedComponent of generatedComponents.components) {
+      generatedComponent.image = Object.values(presets).find(
+        (preset) => preset.preset.type === generatedComponent.name
+      )?.image;
     }
 
-    presetImage.parent[presetImage.key] = images.get(presetImage.value);
-  }
-  console.log("16");
-  // Add preview for first (default) preset to component, too
-  for (const generatedComponent of generatedComponents.components) {
-    generatedComponent.image = Object.values(presets).find(
-      (preset) => preset.preset.type === generatedComponent.name
-    )?.image;
-  }
+    // Write preset configuration to disk
+    fs.writeFileSync(
+      "cms/presets.123456.json",
+      JSON.stringify({ presets: [...Object.values(presets)] }, null, 2)
+    );
 
-  // Write preset configuration to disk
-  fs.writeFileSync(
-    "cms/presets.123456.json",
-    JSON.stringify({ presets: [...Object.values(presets)] }, null, 2)
-  );
-
-  // Write updated component configuration to disk
-  fs.writeFileSync(
-    "cms/components.123456.json",
-    JSON.stringify(generatedComponents, null, 2)
-  );
+    // Write updated component configuration to disk
+    fs.writeFileSync(
+      "cms/components.123456.json",
+      JSON.stringify(generatedComponents, null, 2)
+    );
+  } catch (error) {
+    console.log("errorr", JSON.stringify(error, null, 2));
+  }
 };
 try {
   generate();

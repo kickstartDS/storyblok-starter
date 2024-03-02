@@ -106,11 +106,11 @@ const deleteAssetFolder = async (folderId) =>
 const generate = async () => {
   // Clean up already existing folders
   try {
-    const assetsFolders = await Storyblok.get(
-      `spaces/${process.env.NEXT_STORYBLOK_SPACE_ID}/asset_folders/`
-    );
-    console.log("assetsFolders", JSON.stringify(assetsFolders, null, 2));
-    const assetFolders = assetsFolders.data?.asset_folders;
+    const assetFolders = (
+      await Storyblok.get(
+        `spaces/${process.env.NEXT_STORYBLOK_SPACE_ID}/asset_folders/`
+      )
+    ).data?.asset_folders;
 
     const componentScreenshotFolders = assetFolders.filter(
       (assetFolder) => assetFolder.name === componentScreenshotAssetFolderName

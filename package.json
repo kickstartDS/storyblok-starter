@@ -18,7 +18,7 @@
     "pull-content-schema": "storyblok pull-components --space $NEXT_STORYBLOK_SPACE_ID -p types/ && mv types/components.$NEXT_STORYBLOK_SPACE_ID.json types/components-schema.json && mv types/presets.$NEXT_STORYBLOK_SPACE_ID.json types/components-presets.json",
     "generate-content-types": "npm run pull-content-schema && storyblok-generate-ts source=./types/components-schema.json target=./types/components-schema",
     "generate-presets": "rimraf tmp && mkdir -p tmp/images && node scripts/generatePresets.js",
-    "push-components": "storyblok push-components storyblok/components.123456.json --space $NEXT_STORYBLOK_SPACE_ID --presets-source storyblok/presets.123456.json",
+    "push-components": "storyblok push-components cms/components.123456.json --space $NEXT_STORYBLOK_SPACE_ID --presets-source cms/presets.123456.json",
     "create-storyblok-config": "kickstartDS cms storyblok --components-path node_modules/@kickstartds/ds-agency/dist/components --configuration-path storyblok",
     "storyblok-logout": "storyblok logout",
     "storyblok-login": "storyblok login"

@@ -6,7 +6,7 @@
     "dev": "BUILD_ENV=preview next dev",
     "build": "npm run build-tokens && next build",
     "build-preview": "BUILD_ENV=preview npm run build",
-    "postinstall": "echo 'LOOK HERE' && echo $REPOSITORY_URL",
+    "postinstall": "echo 'LOOK HERE' && echo $REPOSITORY_URL && echo 'WILL THIS GET IN?' >> README.md",
     "netrc": "plop netrc $STORYBLOK_LOGIN_EMAIL $NEXT_STORYBLOK_OAUTH_TOKEN $STORYBLOK_REGION",
     "env": "plop env $NEXT_STORYBLOK_API_TOKEN $NEXT_STORYBLOK_OAUTH_TOKEN $NEXT_STORYBLOK_SPACE_ID",
     "init": "echo $REPOSITORY_URL && npm run env && npm run netrc && npm run generate-presets && npm run push-components && npm run generate-content-types",

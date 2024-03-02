@@ -16,7 +16,7 @@ if (!process.env.NEXT_STORYBLOK_SPACE_ID)
 if (!process.env.NEXT_STORYBLOK_OAUTH_TOKEN)
   throw new Error("Missing NEXT_STORYBLOK_OAUTH_TOKEN env variable");
 
-console.log("THIS IS GETTING STARTED");
+console.log("process.env", process.env);
 
 /** Configuration */
 const componentScreenshotAssetFolderName = "Component Screenshots";
@@ -26,8 +26,6 @@ const Storyblok = new StoryblokClient({
   oauthToken: process.env.NEXT_STORYBLOK_OAUTH_TOKEN,
 });
 
-console.log("1");
-
 const presets = {};
 const images = new Map();
 const promiseThrottle = new PromiseThrottle({
@@ -35,15 +33,12 @@ const promiseThrottle = new PromiseThrottle({
   promiseImplementation: Promise,
 });
 
-console.log("2");
-
 const presetIdToComponentName = (id) =>
   id.split("--").shift().split("-").slice(1).join("-");
 
 const groupToComponentName = (name) => name.split("/").pop().trim();
 
 const upload = (signed_request, file) => {
-  console.log("3");
   return new Promise((resolve, reject) => {
     const form = new FormData();
     for (let key in signed_request.fields) {
@@ -58,7 +53,6 @@ const upload = (signed_request, file) => {
 };
 
 const signedUpload = async (fileName, assetFolderId) => {
-  console.log("4");
   return new Promise(async (resolve, reject) => {
     let dimensions = sizeOf(
       "./node_modules/@kickstartds/ds-agency/dist/static/" + fileName
@@ -110,7 +104,6 @@ const deleteAssetFolder = async (folderId) =>
   );
 
 const generate = async () => {
-  console.log("5");
   // Clean up already existing folders
   try {
     const assetsFolders = await Storyblok.get(
@@ -125,8 +118,6 @@ const generate = async () => {
     const demoContentFolders = assetFolders.filter(
       (assetFolder) => assetFolder.name === demoContentAssetFolderName
     );
-
-    console.log("6");
 
     for (const componentScreenshotFolder of componentScreenshotFolders) {
       // Clean up assets currently in folder first
@@ -146,8 +137,6 @@ const generate = async () => {
       );
     }
 
-    console.log("7");
-
     for (const demoContentFolder of demoContentFolders) {
       // Clean up assets currently in folder first
       const { assets } = (
@@ -166,8 +155,6 @@ const generate = async () => {
       );
     }
 
-    console.log("8");
-
     // Create new folders for assets to be uploaded
     const previewsFolderId = (
       await promiseThrottle.add(
@@ -182,7 +169,6 @@ const generate = async () => {
 
     // Create presets, and lazily load images for previews
     for (const preset of designSystemPresets) {
-      console.log("9");
       const component_id = generatedComponents.components.find(
         (component) =>
           component.display_name.trim() === groupToComponentName(preset.group)
@@ -209,8 +195,6 @@ const generate = async () => {
           description: "",
         };
 
-        console.log("10");
-
         if (!images.has(preset.screenshot)) {
           const image = signedUpload.bind(
             this,
@@ -223,15 +207,12 @@ const generate = async () => {
       }
     }
 
-    console.log("11");
-
     // Add Storyblok component typing where needed
     const presetImages = [];
     for (const [presetId, preset] of Object.entries(presets)) {
       const component = generatedComponents.components.find(
         (component) => component.name === presetIdToComponentName(presetId)
       );
-      console.log("12");
       traverse(
         preset.preset,
         ({ meta }) => {
@@ -257,7 +238,7 @@ const generate = async () => {
         },
         { pathSeparator: "/" }
       );
-      console.log("13");
+
       // ... also flatten some keys to be compatible with Storyblok config
       traverse(preset.preset, ({ parent, key, value }) => {
         if (typeof value === "object" && isNaN(key) && !Array.isArray(value)) {
@@ -268,7 +249,7 @@ const generate = async () => {
         }
       });
     }
-    console.log("14");
+
     // Find all images used in presets...
     traverse(presets, ({ parent, key, value }) => {
       if (
@@ -279,7 +260,7 @@ const generate = async () => {
         presetImages.push({ parent, key, value });
       }
     });
-    console.log("15");
+
     // ... and lazily load them
     for (const presetImage of presetImages) {
       if (!images.has(presetImage.value)) {
@@ -289,7 +270,7 @@ const generate = async () => {
 
       presetImage.parent[presetImage.key] = images.get(presetImage.value);
     }
-    console.log("16");
+
     // Add preview for first (default) preset to component, too
     for (const generatedComponent of generatedComponents.components) {
       generatedComponent.image = Object.values(presets).find(
@@ -309,11 +290,11 @@ const generate = async () => {
       JSON.stringify(generatedComponents, null, 2)
     );
   } catch (error) {
-    console.log("errorr", JSON.stringify(error, null, 2));
+    console.error(
+      "There was an error generating the presets",
+      JSON.stringify(error, null, 2)
+    );
   }
 };
-try {
-  generate();
-} catch (error) {
-  console.log("ERROR", JSON.stringify(error, null, 2));
-}
+
+generate();

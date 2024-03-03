@@ -101,9 +101,51 @@ const deleteAssetFolder = async (folderId) =>
     `spaces/${process.env.NEXT_STORYBLOK_SPACE_ID}/asset_folders/${folderId}`
   );
 
-const generate = async () => {
-  // Clean up already existing folders
+const deleteStory = async (storyId) =>
+  Storyblok.delete(
+    `spaces/${process.env.NEXT_STORYBLOK_SPACE_ID}/stories/${storyId}`
+  );
+
+const deleteComponent = async (componentId) =>
+  Storyblok.delete(
+    `spaces/${process.env.NEXT_STORYBLOK_SPACE_ID}/components/${componentId}`
+  );
+
+const prepare = async () => {
   try {
+    // Clean up default content in space
+    const stories = (
+      await Storyblok.get(
+        `spaces/${process.env.NEXT_STORYBLOK_SPACE_ID}/stories/`
+      )
+    ).data?.stories;
+    const defaultStory = stories.find(
+      (story) => story.name === "Home" && story.slug === "home"
+    );
+    if (defaultStory) {
+      await promiseThrottle.add(deleteStory.bind(this, defaultStory.id));
+    }
+
+    const components = (
+      await Storyblok.get(
+        `spaces/${process.env.NEXT_STORYBLOK_SPACE_ID}/components/`
+      )
+    ).data?.components;
+
+    const defaultComponents = components.filter((component) =>
+      ["feature", "grid", "page", "teaser"].includes(component.name)
+    );
+
+    for (const defaultComponent of defaultComponents) {
+      await promiseThrottle.add(
+        deleteComponent.bind(this, defaultComponent.id)
+      );
+    }
+
+    // Add demo content to space
+    // TODO
+
+    // Clean up already existing folders
     const assetFolders = (
       await Storyblok.get(
         `spaces/${process.env.NEXT_STORYBLOK_SPACE_ID}/asset_folders/`
@@ -295,4 +337,4 @@ const generate = async () => {
   }
 };
 
-generate();
+prepare();

@@ -11,3 +11,6 @@
 [build]
   command = "(path-exists ./cms/presets.123456.json || npm run init) && npm run build"
   publish = ".next"
+
+[[plugins]]
+package = "/plugins/netlify-plugin-ksds-storyblok"

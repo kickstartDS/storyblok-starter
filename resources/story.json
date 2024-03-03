@@ -148,6 +148,7 @@
       "component": "page"
     },
     "published": true,
+    "unpublished_changes": false,
     "slug": "getting-started",
     "full_slug": "getting-started",
     "position": 0

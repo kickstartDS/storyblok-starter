@@ -349,6 +349,7 @@ const prepare = async () => {
         `spaces/${process.env.NEXT_STORYBLOK_SPACE_ID}/stories/`,
         {
           story: initialStory.story,
+          published: 1,
         }
       );
     }

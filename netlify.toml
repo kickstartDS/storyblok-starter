@@ -13,4 +13,7 @@
   publish = ".next"
 
 [[plugins]]
-package = "/plugins/netlify-plugin-ksds-storyblok"
+  package = "@netlify/plugin-nextjs"
+
+[[plugins]]
+  package = "/plugins/netlify-plugin-ksds-storyblok"

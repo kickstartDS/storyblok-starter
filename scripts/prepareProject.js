@@ -8,6 +8,7 @@ const { v4: uuidv4 } = require("uuid");
 const jsonpointer = require("jsonpointer");
 const designSystemPresets = require("@kickstartds/ds-agency/presets.json");
 const generatedComponents = require("../cms/components.123456.json");
+const initialStory = require("../resources/story.json");
 
 require("dotenv").config({ path: ".env.local" });
 
@@ -141,9 +142,6 @@ const prepare = async () => {
         deleteComponent.bind(this, defaultComponent.id)
       );
     }
-
-    // Add demo content to space
-    // TODO
 
     // Clean up already existing folders
     const assetFolders = (
@@ -316,6 +314,43 @@ const prepare = async () => {
       generatedComponent.image = Object.values(presets).find(
         (preset) => preset.preset.type === generatedComponent.name
       )?.image;
+    }
+
+    // Find all images used in demo content...
+    const initialImages = [];
+    traverse(initialStory, ({ parent, key, value }) => {
+      if (
+        value &&
+        typeof value === "string" &&
+        (value.startsWith("img/") || value === "/logo.svg")
+      ) {
+        initialImages.push({ parent, key, value });
+      }
+    });
+
+    // ... and lazily load them
+    for (const initialImage of initialImages) {
+      if (!images.has(initialImage.value)) {
+        const image = signedUpload.bind(this, initialImage.value, demoFolderId);
+        images.set(initialImage.value, (await promiseThrottle.add(image)).url);
+      }
+
+      initialImage.parent[initialImage.key] = images.get(initialImage.value);
+    }
+
+    // Add demo content to space
+    if (
+      !stories.some(
+        (story) =>
+          story.name === "Getting Started" && story.slug === "getting-started"
+      )
+    ) {
+      await Storyblok.post(
+        `spaces/${process.env.NEXT_STORYBLOK_SPACE_ID}/stories/`,
+        {
+          story: initialStory,
+        }
+      );
     }
 
     // Write preset configuration to disk

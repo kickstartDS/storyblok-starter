@@ -23,7 +23,7 @@ export default function netrc(plop) {
         type: "add",
         path: `${process.env.HOME}/.netrc`,
         skipIfExists: true,
-        templateFile: "helpers/netrc.hbs",
+        templateFile: "resources/netrc.hbs",
       },
     ],
   });
@@ -50,7 +50,7 @@ export default function netrc(plop) {
       {
         type: "add",
         path: `.env.local`,
-        templateFile: "helpers/env.hbs",
+        templateFile: "resources/env.hbs",
       },
     ],
   });

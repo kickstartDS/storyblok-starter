@@ -1,0 +1,155 @@
+{
+  "story": {
+    "name": "Getting Started",
+    "is_folder": false,
+    "content": {
+      "seo": [
+        {
+          "type": "seo",
+          "image": "img/close-up-young-business-team-working.png",
+          "title": "Page Title",
+          "keywords": "Keyword 01, Keyword 02",
+          "cardImage": "img/close-up-young-business-team-working.png",
+          "component": "seo",
+          "description": "Page Description"
+        }
+      ],
+      "type": "page",
+      "section": [
+        {
+          "type": "section",
+          "style": "stagelights",
+          "width": "default",
+          "inverted": false,
+          "component": "section",
+          "spotlight": false,
+          "components": [
+            {
+              "sub": "Start your journey today.",
+              "text": "Get started with our design system today and experience a new level of efficiency and consistency in your projects.",
+              "type": "cta",
+              "buttons": [
+                {
+                  "icon": "person",
+                  "type": "buttons",
+                  "label": "Contact Us",
+                  "target": "#",
+                  "component": "buttons"
+                },
+                {
+                  "icon": "date",
+                  "type": "buttons",
+                  "label": "Learn More",
+                  "target": "#",
+                  "component": "buttons"
+                }
+              ],
+              "headline": "Ready to Transform Your Development Process?",
+              "component": "cta",
+              "textAlign": "center",
+              "highlightText": false
+            }
+          ],
+          "spaceAfter": "default",
+          "spaceBefore": "default",
+          "content_mode": "default",
+          "headline_sub": "",
+          "content_align": "center",
+          "content_width": "unset",
+          "headerSpacing": false,
+          "headline_text": "",
+          "content_gutter": "default",
+          "headline_align": "",
+          "headline_large": false,
+          "headline_width": "unset",
+          "backgroundColor": "default",
+          "content_tileWidth": "default",
+          "headline_textAlign": "",
+          "headline_switchOrder": false
+        },
+        {
+          "type": "section",
+          "style": "accentTransition",
+          "width": "default",
+          "inverted": false,
+          "component": "section",
+          "spotlight": true,
+          "components": [
+            {
+              "type": "gallery",
+              "images": [
+                {
+                  "alt": "Alt text Image 1",
+                  "src": "img/close-up-young-business-team-working.png",
+                  "type": "images",
+                  "caption": "Caption Image 1",
+                  "component": "images"
+                },
+                {
+                  "alt": "Alt text Image 2",
+                  "src": "img/low-angle-tall-building-with-many-windows_23-2148230392.png",
+                  "type": "images",
+                  "caption": "Caption Image 2",
+                  "component": "images"
+                },
+                {
+                  "alt": "Alt text Image 3",
+                  "src": "img/full-shot-different-people-working-together.png",
+                  "type": "images",
+                  "caption": "Caption Image 3",
+                  "component": "images"
+                },
+                {
+                  "alt": "Alt text Image 4",
+                  "src": "img/top-view-desk-with-keyboard-drawing-pad.png",
+                  "type": "images",
+                  "caption": "Caption Image 4",
+                  "component": "images"
+                },
+                {
+                  "alt": "Alt text Image 5",
+                  "src": "img/people-brainstorming-work-meeting.png",
+                  "type": "images",
+                  "caption": "Caption Image 5",
+                  "component": "images"
+                },
+                {
+                  "alt": "Alt text Image 6",
+                  "src": "img/view-modern-office.jpg",
+                  "type": "images",
+                  "caption": "Caption Image 6",
+                  "component": "images"
+                }
+              ],
+              "layout": "largeTiles",
+              "lightbox": false,
+              "component": "gallery",
+              "aspectRatio": "landscape"
+            }
+          ],
+          "spaceAfter": "default",
+          "spaceBefore": "default",
+          "content_mode": "default",
+          "headline_sub": "",
+          "content_align": "center",
+          "content_width": "unset",
+          "headerSpacing": false,
+          "headline_text": "",
+          "content_gutter": "default",
+          "headline_align": "",
+          "headline_large": false,
+          "headline_width": "unset",
+          "backgroundColor": "default",
+          "content_tileWidth": "default",
+          "headline_textAlign": "",
+          "headline_switchOrder": false
+        }
+      ],
+      "component": "page"
+    },
+    "published": true,
+    "slug": "getting-started",
+    "full_slug": "getting-started",
+    "position": 0
+  }
+}

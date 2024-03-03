@@ -16,7 +16,6 @@
     "ssl-proxy": "local-ssl-proxy --source 3010 --target 3000 --cert localhost.pem --key localhost-key.pem",
     "pull-content-schema": "storyblok pull-components --space $NEXT_STORYBLOK_SPACE_ID -p types/ && mv types/components.$NEXT_STORYBLOK_SPACE_ID.json types/components-schema.json && mv types/presets.$NEXT_STORYBLOK_SPACE_ID.json types/components-presets.json",
     "generate-content-types": "npm run pull-content-schema && storyblok-generate-ts source=./types/components-schema.json target=./types/components-schema",
-    "generate-presets": "",
     "push-components": "storyblok push-components cms/components.123456.json --space $NEXT_STORYBLOK_SPACE_ID --presets-source cms/presets.123456.json",
     "create-storyblok-config": "kickstartDS cms storyblok --components-path node_modules/@kickstartds/ds-agency/dist/components --configuration-path storyblok",
     "storyblok-logout": "storyblok logout",

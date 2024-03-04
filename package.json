@@ -1,7 +1,11 @@
 {
   "name": "@kickstartds/storyblok-starter",
-  "version": "0.0.1",
-  "private": true,
+  "version": "1.0.0",
+  "license": "(MIT OR Apache-2.0)",
+  "author": {
+    "name": "Jonas Ulrich",
+    "email": "jonas.ulrich@kickstartds.com"
+  },
   "scripts": {
     "dev": "BUILD_ENV=preview next dev",
     "build": "npm run build-tokens && next build",

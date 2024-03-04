@@ -1,4 +1,4 @@
-# Getting Started
+# kickstartDS Storyblok starter
 
 1. Clone our Starter space by visiting https://app.storyblok.com/#!/build/242426.
 2. Clone `energyui-storyblok-starter`-Repo by clicking on "Use this template"
@@ -23,38 +23,16 @@ You can use this button to deploy the EnergyUI@Storyblok starter repo on Vercel.
 [![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Ftaktsoft%2Fenergyui-storyblok-starter&env=NPM_RC,STORYBLOK_API_TOKEN&envDescription=NPM_RC%20must%20contain%20at%20least%20%60%2F%2Fgit.taktsoft.com%2Fapi%2Fv4%2Fprojects%2F378%2Fpackages%2Fnpm%2F%3A_authToken%3D%3Cyour%20npm%20token%3E%60)
 [![Deploy to Netlify](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/kickstartDS/storyblok-starter)
 
-# Local Development
+## Local Development
 
-## Dependencies
+### Dependencies
 
 - [`mkcert`](https://github.com/FiloSottile/mkcert#installation)
 - `npm` (unless you opt for devcontainer)
 
-## Setup
+### Setup
 
-### Docker/Devcontainer
-
-You will need the [devcontainer-cli](https://github.com/devcontainers/cli#npm-install)
-or the [externsion for vscode](https://code.visualstudio.com/docs/devcontainers/containers#_installation).
-
-You might also need to manually install BuildKit capabilities for Docker:
-
-- https://docs.docker.com/build/buildkit/
-- https://docs.docker.com/engine/reference/commandline/buildx_build/
-
-1. Copy `.env.local.sample` to `.env.local`. Replace all placeholders with your
-   specific configuration and adapt to your needs.
-2. If your design system npm package is published on a protected registry,
-   please configure the auth token in your `~/.npmrc`. This file will be mounted
-   as a secret onto the devcontainer filesystem.
-3. On your host, run: `mkcert -cert-file .devcontainer/traefik/certificate.pem -key-file .devcontainer/traefik/certificate-key.pem localhost energyui.localhost`
-4. `devcontainer up --workspace-folder .` or in vscode `Dev Containers: Reopen in Container`
-5. `devcontainer exec --workspace-folder . npm run dev` or run `npm run dev` in a new vscode terminal.
-6. Run `storyblok login` for being able to use the storyblok-cli.
-
-The application is now available on https://energyui.localhost/.
-
-### Locally
+#### Locally
 
 1. Copy `.env.local.sample` to `.env.local`. Replace all placeholders with your
    specific configuration and adapt to your needs.
@@ -69,14 +47,37 @@ The application is now available on https://energyui.localhost/.
 5. In storyblok change the preview URL to "Dev".
 6. Run `storyblok login` for being able to use the storyblok-cli.
 
-# Working with the content schema
+## Working with the content schema
 
-## Typescript Support
+### Typescript Support
 
 Generate ts types according to the content schema by running
 `NEXT_STORYBLOK_SPACE_ID=<your-space-id> npm run generate-content-types`.
 
-## Migrations
+### Migrations
 
 When changing the content schema we recommend sticking to [Storyblok's Best
 Practices](https://www.storyblok.com/tp/storyblok-cli-best-practices#modify-blok-structure).
+
+## Contributing
+
+Contributions are welcome. Unless you explicitly state otherwise, any contribution intentionally submitted for inclusion in the work by you, as defined in the Apache-2.0 license, shall be dual licensed as below, without any additional terms or conditions.
+
+## License
+
+This project is licensed under either of
+
+- [Apache License, Version 2.0](https://www.apache.org/licenses/LICENSE-2.0) ([LICENSE-APACHE](LICENSE-APACHE))
+- [MIT license](https://opensource.org/license/mit/) ([LICENSE-MIT](LICENSE-MIT))
+
+at your option.
+
+The SPDX license identifier for this project is MIT OR Apache-2.0.
+
+---
+
+For more information and updates, please visit the project's GitHub repository.
+
+## Support
+
+Join our [Discord community](https://discord.gg/mwKzD5gejY) for support, or leave an issue on this repository!

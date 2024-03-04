@@ -7,8 +7,7 @@
         {
           "type": "seo",
           "image": "img/close-up-young-business-team-working.png",
-          "title": "Page Title",
-          "keywords": "Keyword 01, Keyword 02",
+          "title": "Getting Started with your kickstartDS Next.js starter",
           "cardImage": "img/close-up-young-business-team-working.png",
           "component": "seo",
           "description": "Page Description"
@@ -17,132 +16,77 @@
       "type": "page",
       "section": [
         {
-          "type": "section",
-          "style": "stagelights",
-          "width": "default",
-          "inverted": false,
-          "component": "section",
-          "spotlight": false,
+          "headerSpacing": true,
+          "style": "accentTransition",
+          "spaceAfter": "small",
+          "headline": {
+            "large": true,
+            "sub": "So, you're almost done.",
+            "text": "**Well done** 👏 you've just setup your first project."
+          },
+          "content": {
+            "tileWidth": "default",
+            "width": "wide",
+            "align": "center"
+          },
           "components": [
             {
-              "sub": "Start your journey today.",
-              "text": "Get started with our design system today and experience a new level of efficiency and consistency in your projects.",
-              "type": "cta",
-              "buttons": [
-                {
-                  "icon": "person",
-                  "type": "buttons",
-                  "label": "Contact Us",
-                  "target": "#",
-                  "component": "buttons"
-                },
-                {
-                  "icon": "date",
-                  "type": "buttons",
-                  "label": "Learn More",
-                  "target": "#",
-                  "component": "buttons"
-                }
-              ],
-              "headline": "Ready to Transform Your Development Process?",
-              "component": "cta",
-              "textAlign": "center",
-              "highlightText": false
+              "button": {
+                "chevron": true,
+                "hidden": false,
+                "label": "Customize Design"
+              },
+              "type": "teaser-card",
+              "component": "teaser-card",
+              "headline": "Next Steps",
+              "layout": "stack",
+              "target": "https://www.kickstartds.com/docs/foundations/token/branding-token/",
+              "text": "This page can be tailored to your specific needs, ensuring a custom solution that drives your digital success."
+            },
+            {
+              "button": {
+                "chevron": true,
+                "hidden": false,
+                "label": "Explore our story"
+              },
+              "type": "teaser-card",
+              "component": "teaser-card",
+              "headline": "What is this for and why?",
+              "layout": "stack",
+              "target": "https://about.design-system.agency/",
+              "text": "Experience the speed & scalability unlike anything seen before with our Headless CMS powered websites, web apps & composable architecture."
             }
-          ],
-          "spaceAfter": "default",
-          "spaceBefore": "default",
-          "content_mode": "default",
-          "headline_sub": "",
-          "content_align": "center",
-          "content_width": "unset",
-          "headerSpacing": false,
-          "headline_text": "",
-          "content_gutter": "default",
-          "headline_align": "",
-          "headline_large": false,
-          "headline_width": "unset",
-          "backgroundColor": "default",
-          "content_tileWidth": "default",
-          "headline_textAlign": "",
-          "headline_switchOrder": false
+          ]
         },
         {
-          "type": "section",
-          "style": "accentTransition",
-          "width": "default",
-          "inverted": false,
-          "component": "section",
-          "spotlight": true,
+          "width": "wide",
+          "spaceBefore": "default",
+          "spaceAfter": "default",
+          "backgroundColor": "accent",
+          "style": "anchorGlow",
+          "content": {
+            "width": "narrow"
+          },
           "components": [
             {
-              "type": "gallery",
-              "images": [
+              "type": "cta",
+              "component": "cta",
+              "headline": "Need help?",
+              "sub": "Reach out to us and the community for any questions or for the case you ran in to trouble. **We're on Discord, join us!**",
+              "textAlign": "center",
+              "order": {
+                "desktopImageLast": false,
+                "mobileImageLast": false
+              },
+              "buttons": [
                 {
-                  "alt": "Alt text Image 1",
-                  "src": "img/close-up-young-business-team-working.png",
-                  "type": "images",
-                  "caption": "Caption Image 1",
-                  "component": "images"
-                },
-                {
-                  "alt": "Alt text Image 2",
-                  "src": "img/low-angle-tall-building-with-many-windows_23-2148230392.png",
-                  "type": "images",
-                  "caption": "Caption Image 2",
-                  "component": "images"
-                },
-                {
-                  "alt": "Alt text Image 3",
-                  "src": "img/full-shot-different-people-working-together.png",
-                  "type": "images",
-                  "caption": "Caption Image 3",
-                  "component": "images"
-                },
-                {
-                  "alt": "Alt text Image 4",
-                  "src": "img/top-view-desk-with-keyboard-drawing-pad.png",
-                  "type": "images",
-                  "caption": "Caption Image 4",
-                  "component": "images"
-                },
-                {
-                  "alt": "Alt text Image 5",
-                  "src": "img/people-brainstorming-work-meeting.png",
-                  "type": "images",
-                  "caption": "Caption Image 5",
-                  "component": "images"
-                },
-                {
-                  "alt": "Alt text Image 6",
-                  "src": "img/view-modern-office.jpg",
-                  "type": "images",
-                  "caption": "Caption Image 6",
-                  "component": "images"
+                  "label": "Join our Discord server",
+                  "target": "https://discord.gg/mwKzD5gejY",
+                  "icon": "link"
                 }
-              ],
-              "layout": "largeTiles",
-              "lightbox": false,
-              "component": "gallery",
-              "aspectRatio": "landscape"
+              ]
             }
-          ],
-          "spaceAfter": "default",
-          "spaceBefore": "default",
-          "content_mode": "default",
-          "headline_sub": "",
-          "content_align": "center",
-          "content_width": "unset",
-          "headerSpacing": false,
-          "headline_text": "",
-          "content_gutter": "default",
-          "headline_align": "",
-          "headline_large": false,
-          "headline_width": "unset",
-          "backgroundColor": "default",
-          "content_tileWidth": "default",
-          "headline_textAlign": "",
-          "headline_switchOrder": false
+          ]
         }
       ],
       "component": "page"

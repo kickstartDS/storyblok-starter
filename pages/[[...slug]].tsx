@@ -26,7 +26,7 @@ export const getStaticPaths = (async () => {
     ...data.stories
       .filter((story) => story.content.component !== "settings")
       .map((story) => ({
-        params: { slug: story.full_slug.split("/") || "/" },
+        params: { slug: story.full_slug.split("/") },
       })),
   ];
   return { paths, fallback: false };
@@ -42,7 +42,7 @@ export const getStaticProps = (async ({ params, previewData }) => {
     previewStoryblokApi = new StoryblokClient({ accessToken: previewData });
   }
 
-  const slug = params?.slug?.join("/") || "/";
+  const slug = params?.slug?.join("/") || "getting-started";
   try {
     const [{ data: pageData }, { data: settingsData }] = await Promise.all([
       fetchStory(slug, previewStoryblokApi),

@@ -82,9 +82,10 @@
       "component": "page"
     },
     "published": true,
+    "real_path": "/",
     "unpublished_changes": false,
-    "slug": "/",
-    "full_slug": "/",
+    "slug": "getting-started",
+    "full_slug": "getting-started",
     "position": 0
   }
 }

@@ -10,12 +10,14 @@
           "title": "Getting Started with your kickstartDS Next.js starter",
           "cardImage": "img/close-up-young-business-team-working.png",
           "component": "seo",
-          "description": "Page Description"
+          "description": "Getting started page for kickstartDS CMS starter"
         }
       ],
       "type": "page",
       "section": [
         {
+          "type": "section",
+          "component": "section",
           "headerSpacing": true,
           "style": "accentTransition",
           "spaceAfter": "small",
@@ -59,6 +61,8 @@
           ]
         },
         {
+          "type": "section",
+          "component": "section",
           "width": "wide",
           "spaceBefore": "default",
           "spaceAfter": "default",

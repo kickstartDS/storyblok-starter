@@ -43,20 +43,20 @@
               "headline": "Next Steps",
               "layout": "stack",
               "target": "https://www.kickstartds.com/docs/foundations/token/branding-token/",
-              "text": "This page can be tailored to your specific needs, ensuring a custom solution that drives your digital success."
+              "text": "This page can be tailored to your specific design and branding needs, ensuring a custom solution that drives your digital success!"
             },
             {
               "button": {
                 "chevron": true,
                 "hidden": false,
-                "label": "Explore our story"
+                "label": "Learn more"
               },
               "type": "teaser-card",
               "component": "teaser-card",
               "headline": "What is this for and why?",
               "layout": "stack",
               "target": "https://about.design-system.agency/",
-              "text": "Experience the speed & scalability unlike anything seen before with our Headless CMS powered websites, web apps & composable architecture."
+              "text": "Learn more about this starter, and the the speed & scalability provided by our headless CMS powered websites."
             }
           ]
         },
@@ -76,7 +76,7 @@
               "type": "cta",
               "component": "cta",
               "headline": "Need help?",
-              "sub": "Reach out to us and the community for any questions or for the case you ran in to trouble. **We're on Discord, join us!**",
+              "sub": "Reach out to us and the community for any questions, or for the case you ran into trouble. **We're on Discord, join us!**",
               "textAlign": "center",
               "order": {
                 "desktopImageLast": false,
@@ -97,8 +97,8 @@
     },
     "published": true,
     "unpublished_changes": false,
-    "slug": "getting-started",
-    "full_slug": "getting-started",
+    "slug": "/",
+    "full_slug": "/",
     "position": 0
   }
 }

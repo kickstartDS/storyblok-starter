@@ -21,23 +21,17 @@
           "headerSpacing": true,
           "style": "accentTransition",
           "spaceAfter": "small",
-          "headline": {
-            "large": true,
-            "sub": "So, you're almost done.",
-            "text": "**Well done** 👏 you've just setup your first project."
-          },
-          "content": {
-            "tileWidth": "default",
-            "width": "wide",
-            "align": "center"
-          },
+          "headline_large": true,
+          "headline_sub": "So, you're almost done.",
+          "headline_text": "**Well done** 👏 you've just setup your first project.",
+          "content_tileWidth": "default",
+          "content_width": "wide",
+          "content_align": "center",
           "components": [
             {
-              "button": {
-                "chevron": true,
-                "hidden": false,
-                "label": "Customize Design"
-              },
+              "button_chevron": true,
+              "button_hidden": false,
+              "button_label": "Customize Design",
               "type": "teaser-card",
               "component": "teaser-card",
               "headline": "Next Steps",
@@ -46,11 +40,9 @@
               "text": "This page can be tailored to your specific design and branding needs, ensuring a custom solution that drives your digital success!"
             },
             {
-              "button": {
-                "chevron": true,
-                "hidden": false,
-                "label": "Learn more"
-              },
+              "button_chevron": true,
+              "button_hidden": false,
+              "button_label": "Learn more",
               "type": "teaser-card",
               "component": "teaser-card",
               "headline": "What is this for and why?",
@@ -68,9 +60,7 @@
           "spaceAfter": "default",
           "backgroundColor": "accent",
           "style": "anchorGlow",
-          "content": {
-            "width": "narrow"
-          },
+          "content_width": "narrow",
           "components": [
             {
               "type": "cta",
@@ -78,10 +68,6 @@
               "headline": "Need help?",
               "sub": "Reach out to us and the community for any questions, or for the case you ran into trouble. **We're on Discord, join us!**",
               "textAlign": "center",
-              "order": {
-                "desktopImageLast": false,
-                "mobileImageLast": false
-              },
               "buttons": [
                 {
                   "label": "Join our Discord server",

@@ -16,6 +16,7 @@ import palette from "@kickstartds/ds-agency-premium/global.client.js";
 // import "@kickstartds/ds-agency-premium/tokens/tokens.css";
 import "@kickstartds/ds-agency-premium/global.css";
 import "../token/tokens.css";
+import "../index.scss";
 
 initStoryblok(process.env.NEXT_STORYBLOK_API_TOKEN);
 if (typeof window !== "undefined") {

@@ -10,7 +10,7 @@
           }
         },
         "base": {
-          "value": "0.246",
+          "value": "0.1481",
           "attributes": {
             "category": "size"
           }
@@ -39,7 +39,7 @@
           }
         },
         "base": {
-          "value": "0.3567",
+          "value": "0.2222",
           "attributes": {
             "category": "size"
           }
@@ -68,7 +68,7 @@
           }
         },
         "base": {
-          "value": "0.5172",
+          "value": "0.3333",
           "attributes": {
             "category": "size"
           }
@@ -97,7 +97,7 @@
           }
         },
         "base": {
-          "value": "0.75",
+          "value": "0.5",
           "attributes": {
             "category": "size"
           }
@@ -126,7 +126,7 @@
           }
         },
         "base": {
-          "value": "1.0875",
+          "value": "0.75",
           "attributes": {
             "category": "size"
           }
@@ -155,7 +155,7 @@
           }
         },
         "base": {
-          "value": "1.5769",
+          "value": "1.125",
           "attributes": {
             "category": "size"
           }
@@ -184,7 +184,7 @@
           }
         },
         "base": {
-          "value": "2.2865",
+          "value": "1.6875",
           "attributes": {
             "category": "size"
           }

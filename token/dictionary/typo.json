@@ -2,21 +2,21 @@
   "ks": {
     "font-family": {
       "display": {
-        "value": "Fredoka, Baskerville, 'Baskerville Old Face', 'Hoefler Text', 'Times New Roman', serif",
+        "value": "'NovelPro', Baskerville, 'Baskerville Old Face', 'Hoefler Text', 'Times New Roman', serif",
         "token": {
           "category": "Font Families",
           "presenter": "FontFamily"
         }
       },
       "copy": {
-        "value": "Mulish, 'Helvetica Neue', Helvetica, Arial, sans-serif",
+        "value": "'NovelSansPro', 'Helvetica Neue', Helvetica, Arial, sans-serif",
         "token": {
           "category": "Font Families",
           "presenter": "FontFamily"
         }
       },
       "interface": {
-        "value": "Mulish, system-ui, -apple-system, BlinkMacSystemFont, 'Avenir Next', 'Avenir', 'Segoe UI', 'Lucida Grande', 'Helvetica Neue', 'Helvetica', 'Fira Sans', 'Roboto', 'Noto', 'Droid Sans', 'Cantarell', 'Oxygen', 'Ubuntu', 'Franklin Gothic Medium', 'Century Gothic', 'Liberation Sans', sans-serif",
+        "value": "'NovelSansPro', system-ui, -apple-system, BlinkMacSystemFont, 'Avenir Next', 'Avenir', 'Segoe UI', 'Lucida Grande', 'Helvetica Neue', 'Helvetica', 'Fira Sans', 'Roboto', 'Noto', 'Droid Sans', 'Cantarell', 'Oxygen', 'Ubuntu', 'Franklin Gothic Medium', 'Century Gothic', 'Liberation Sans', sans-serif",
         "token": {
           "category": "Font Families",
           "presenter": "FontFamily"
@@ -45,15 +45,8 @@
           "presenter": "FontWeight"
         }
       },
-      "medium": {
-        "value": 500,
-        "token": {
-          "category": "Font Weights",
-          "presenter": "FontWeight"
-        }
-      },
       "semi-bold": {
-        "value": 600,
+        "value": 500,
         "token": {
           "category": "Font Weights",
           "presenter": "FontWeight"
@@ -71,20 +64,14 @@
       "display": {
         "bp-factor": {
           "phone": {
-            "value": 1.125
-          },
-          "tablet": {
             "value": 1.25
           },
-          "laptop": {
-            "value": 1.5
-          },
-          "desktop": {
-            "value": 1.65
+          "tablet": {
+            "value": 1.35
           }
         },
         "xxs-base": {
-          "value": "0.65rem",
+          "value": "0.612rem",
           "attributes": {
             "category": "size"
           },
@@ -94,7 +81,7 @@
           }
         },
         "xs-base": {
-          "value": "0.8rem",
+          "value": "0.7497rem",
           "attributes": {
             "category": "size"
           },
@@ -104,7 +91,7 @@
           }
         },
         "s-base": {
-          "value": "1rem",
+          "value": "0.9184rem",
           "attributes": {
             "category": "size"
           },
@@ -114,7 +101,7 @@
           }
         },
         "m-base": {
-          "value": "1.25rem",
+          "value": "1.125rem",
           "attributes": {
             "category": "size"
           },
@@ -124,7 +111,7 @@
           }
         },
         "l-base": {
-          "value": "1.5rem",
+          "value": "1.3781rem",
           "attributes": {
             "category": "size"
           },
@@ -134,7 +121,7 @@
           }
         },
         "xl-base": {
-          "value": "2rem",
+          "value": "1.6882rem",
           "attributes": {
             "category": "size"
           },
@@ -144,7 +131,7 @@
           }
         },
         "xxl-base": {
-          "value": "2.5rem",
+          "value": "2.068rem",
           "attributes": {
             "category": "size"
           },
@@ -315,7 +302,7 @@
           }
         },
         "xxs-base": {
-          "value": "0.612rem",
+          "value": "0.544rem",
           "attributes": {
             "category": "size"
           },
@@ -325,7 +312,7 @@
           }
         },
         "xs-base": {
-          "value": "0.7497rem",
+          "value": "0.6664rem",
           "attributes": {
             "category": "size"
           },
@@ -335,7 +322,7 @@
           }
         },
         "s-base": {
-          "value": "0.9184rem",
+          "value": "0.8163rem",
           "attributes": {
             "category": "size"
           },
@@ -345,7 +332,7 @@
           }
         },
         "m-base": {
-          "value": "1.125rem",
+          "value": "1rem",
           "attributes": {
             "category": "size"
           },
@@ -355,7 +342,7 @@
           }
         },
         "l-base": {
-          "value": "1.3781rem",
+          "value": "1.225rem",
           "attributes": {
             "category": "size"
           },
@@ -365,7 +352,7 @@
           }
         },
         "xl-base": {
-          "value": "1.6882rem",
+          "value": "1.5006rem",
           "attributes": {
             "category": "size"
           },
@@ -375,7 +362,7 @@
           }
         },
         "xxl-base": {
-          "value": "2.068rem",
+          "value": "1.8383rem",
           "attributes": {
             "category": "size"
           },
@@ -389,42 +376,42 @@
     "line-height": {
       "display": {
         "xxs": {
-          "value": 1.15
+          "value": 1.25
         },
         "xs": {
-          "value": 1.15
+          "value": 1.25
         },
         "s": {
-          "value": 1.15
+          "value": 1.25
         },
         "m": {
-          "value": 1.15
+          "value": 1.25
         },
         "l": {
-          "value": 1.15
+          "value": 1.25
         },
         "xl": {
-          "value": 1.15
+          "value": 1.25
         },
         "xxl": {
-          "value": 1.15
+          "value": 1.25
         }
       },
       "copy": {
         "xxs": {
-          "value": 1.5
+          "value": 1.35
         },
         "xs": {
-          "value": 1.5
+          "value": 1.35
         },
         "s": {
-          "value": 1.5
+          "value": 1.35
         },
         "m": {
-          "value": 1.5
+          "value": 1.35
         },
         "l": {
-          "value": 1.45
+          "value": 1.35
         },
         "xl": {
           "value": 1.35
@@ -435,48 +422,48 @@
       },
       "interface": {
         "xxs": {
-          "value": 1.5
+          "value": 1.35
         },
         "xs": {
-          "value": 1.5
+          "value": 1.35
         },
         "s": {
-          "value": 1.5
+          "value": 1.35
         },
         "m": {
-          "value": 1.5
+          "value": 1.35
         },
         "l": {
-          "value": 1.5
+          "value": 1.35
         },
         "xl": {
-          "value": 1.5
+          "value": 1.35
         },
         "xxl": {
-          "value": 1.5
+          "value": 1.35
         }
       },
       "mono": {
         "xxs": {
-          "value": 1.5
+          "value": 1.35
         },
         "xs": {
-          "value": 1.5
+          "value": 1.35
         },
         "s": {
-          "value": 1.5
+          "value": 1.35
         },
         "m": {
-          "value": 1.5
+          "value": 1.35
         },
         "l": {
-          "value": 1.5
+          "value": 1.35
         },
         "xl": {
-          "value": 1.5
+          "value": 1.35
         },
         "xxl": {
-          "value": 1.5
+          "value": 1.35
         }
       }
     }

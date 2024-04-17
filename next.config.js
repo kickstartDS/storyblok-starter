@@ -17,9 +17,10 @@ const nextConfig = {
   transpilePackages: [
     "@kickstartds/base",
     "@kickstartds/blog",
+    "@kickstartds/content",
     "@kickstartds/core",
     "@kickstartds/form",
-    "@kickstartds/ds-agency",
+    "@kickstartds/ds-agency-premium",
   ],
 };
 

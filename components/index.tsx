@@ -5,7 +5,7 @@ import {
   StoryblokComponent,
 } from "@storyblok/react";
 import { unflatten } from "@/helpers/unflatten";
-import { Section } from "@kickstartds/ds-agency/section";
+import { Section } from "@kickstartds/ds-agency-premium/section";
 import editablePage from "./Page";
 
 export const editable =
@@ -25,7 +25,7 @@ export const editable =
 
 const editableBlogTeaser = editable(
   dynamic(() =>
-    import("@kickstartds/ds-agency/blog-teaser").then(
+    import("@kickstartds/ds-agency-premium/blog-teaser").then(
       (mod) => mod.BlogTeaserContextDefault
     )
   )
@@ -38,14 +38,14 @@ export const components = {
   "blog-teaser": editableBlogTeaser,
   "blog-aside": editable(
     dynamic(() =>
-      import("@kickstartds/ds-agency/blog-aside").then(
+      import("@kickstartds/ds-agency-premium/blog-aside").then(
         (mod) => mod.BlogAsideContextDefault
       )
     )
   ),
   "blog-head": editable(
     dynamic(() =>
-      import("@kickstartds/ds-agency/blog-head").then(
+      import("@kickstartds/ds-agency-premium/blog-head").then(
         (mod) => mod.BlogHeadContextDefault
       )
     )
@@ -53,106 +53,138 @@ export const components = {
   section: editable(Section, "components"),
   cta: editable(
     dynamic(() =>
-      import("@kickstartds/ds-agency/cta").then((mod) => mod.CtaContextDefault)
+      import("@kickstartds/ds-agency-premium/cta").then(
+        (mod) => mod.CtaContextDefault
+      )
     )
   ),
   faq: editable(
     dynamic(() =>
-      import("@kickstartds/ds-agency/faq").then((mod) => mod.FaqContextDefault)
+      import("@kickstartds/ds-agency-premium/faq").then(
+        (mod) => mod.FaqContextDefault
+      )
     )
   ),
   features: editable(
     dynamic(() =>
-      import("@kickstartds/ds-agency/features").then(
+      import("@kickstartds/ds-agency-premium/features").then(
         (mod) => mod.FeaturesContextDefault
       )
     )
   ),
   feature: editable(
     dynamic(() =>
-      import("@kickstartds/ds-agency/feature").then(
+      import("@kickstartds/ds-agency-premium/feature").then(
         (mod) => mod.FeatureContextDefault
       )
     )
   ),
   gallery: editable(
     dynamic(() =>
-      import("@kickstartds/ds-agency/gallery").then(
+      import("@kickstartds/ds-agency-premium/gallery").then(
         (mod) => mod.GalleryContextDefault
       )
     )
   ),
   headline: editable(
     dynamic(() =>
-      import("@kickstartds/ds-agency/headline").then((mod) => mod.Headline)
+      import("@kickstartds/ds-agency-premium/headline").then(
+        (mod) => mod.Headline
+      )
     )
   ),
   split: editable(
     dynamic(() =>
-      import("@kickstartds/ds-agency/split").then((mod) => mod.Split)
+      import("@kickstartds/ds-agency-premium/split").then((mod) => mod.Split)
     )
   ),
   stats: editable(
     dynamic(() =>
-      import("@kickstartds/ds-agency/stats").then(
+      import("@kickstartds/ds-agency-premium/stats").then(
         (mod) => mod.StatsContextDefault
       )
     )
   ),
   stat: editable(
     dynamic(() =>
-      import("@kickstartds/ds-agency/stat").then(
+      import("@kickstartds/ds-agency-premium/stat").then(
         (mod) => mod.StatContextDefault
       )
     )
   ),
   "teaser-card": editable(
     dynamic(() =>
-      import("@kickstartds/ds-agency/teaser-card").then(
+      import("@kickstartds/ds-agency-premium/teaser-card").then(
         (mod) => mod.TeaserCardContextDefault
       )
     )
   ),
   testimonials: editable(
     dynamic(() =>
-      import("@kickstartds/ds-agency/testimonials").then(
+      import("@kickstartds/ds-agency-premium/testimonials").then(
         (mod) => mod.Testimonials
       )
     )
   ),
   testimonial: editable(
     dynamic(() =>
-      import("@kickstartds/ds-agency/testimonial").then(
+      import("@kickstartds/ds-agency-premium/testimonial").then(
         (mod) => mod.TestimonialContextDefault
       )
     )
   ),
   text: editable(
     dynamic(() =>
-      import("@kickstartds/ds-agency/text").then(
+      import("@kickstartds/ds-agency-premium/text").then(
         (mod) => mod.TextContextDefault
       )
     )
   ),
   "image-text": editable(
     dynamic(() =>
-      import("@kickstartds/ds-agency/image-text").then(
+      import("@kickstartds/ds-agency-premium/image-text").then(
         (mod) => mod.ImageTextContextDefault
       )
     )
   ),
   logos: editable(
     dynamic(() =>
-      import("@kickstartds/ds-agency/logos").then(
+      import("@kickstartds/ds-agency-premium/logos").then(
         (mod) => mod.LogosContextDefault
       )
     )
   ),
-  logo: editable(
+  hero: editable(
     dynamic(() =>
-      import("@kickstartds/ds-agency/logo").then(
-        (mod) => mod.LogoContextDefault
+      import("@kickstartds/ds-agency-premium/hero").then(
+        (mod) => mod.HeroContextDefault
       )
+    )
+  ),
+  mosaic: editable(
+    dynamic(() =>
+      import("@kickstartds/ds-agency-premium/mosaic").then(
+        (mod) => mod.MosaicContextDefault
+      )
+    )
+  ),
+  "video-curtain": editable(
+    dynamic(() =>
+      import("@kickstartds/ds-agency-premium/video-curtain").then(
+        (mod) => mod.VideoCurtainContextDefault
+      )
+    )
+  ),
+  "image-story": editable(
+    dynamic(() =>
+      import("@kickstartds/ds-agency-premium/image-story").then(
+        (mod) => mod.ImageStoryContextDefault
+      )
+    )
+  ),
+  slider: editable(
+    dynamic(() =>
+      import("@kickstartds/ds-agency-premium/slider").then((mod) => mod.Slider)
     )
   ),
 };

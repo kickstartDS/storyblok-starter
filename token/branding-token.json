@@ -67,7 +67,7 @@
   "spacing": {
     "base": 8,
     "scale-ratio": 1.5,
-    "bp-ratio": 1.25
+    "bp-ratio": 1.35
   },
   "border-radius": "0px",
   "box-shadow": {

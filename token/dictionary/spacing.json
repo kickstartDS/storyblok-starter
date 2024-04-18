@@ -17,16 +17,16 @@
         },
         "bp-factor": {
           "phone": {
-            "value": "1.25"
+            "value": "1.35"
           },
           "tablet": {
-            "value": "1.5625"
+            "value": "1.8225"
           },
           "laptop": {
-            "value": "1.9531"
+            "value": "2.4604"
           },
           "desktop": {
-            "value": "2.4414"
+            "value": "3.3215"
           }
         }
       },
@@ -46,16 +46,16 @@
         },
         "bp-factor": {
           "phone": {
-            "value": "1.25"
+            "value": "1.35"
           },
           "tablet": {
-            "value": "1.5625"
+            "value": "1.8225"
           },
           "laptop": {
-            "value": "1.9531"
+            "value": "2.4604"
           },
           "desktop": {
-            "value": "2.4414"
+            "value": "3.3215"
           }
         }
       },
@@ -75,16 +75,16 @@
         },
         "bp-factor": {
           "phone": {
-            "value": "1.25"
+            "value": "1.35"
           },
           "tablet": {
-            "value": "1.5625"
+            "value": "1.8225"
           },
           "laptop": {
-            "value": "1.9531"
+            "value": "2.4604"
           },
           "desktop": {
-            "value": "2.4414"
+            "value": "3.3215"
           }
         }
       },
@@ -104,16 +104,16 @@
         },
         "bp-factor": {
           "phone": {
-            "value": "1.25"
+            "value": "1.35"
           },
           "tablet": {
-            "value": "1.5625"
+            "value": "1.8225"
           },
           "laptop": {
-            "value": "1.9531"
+            "value": "2.4604"
           },
           "desktop": {
-            "value": "2.4414"
+            "value": "3.3215"
           }
         }
       },
@@ -133,16 +133,16 @@
         },
         "bp-factor": {
           "phone": {
-            "value": "1.25"
+            "value": "1.35"
           },
           "tablet": {
-            "value": "1.5625"
+            "value": "1.8225"
           },
           "laptop": {
-            "value": "1.9531"
+            "value": "2.4604"
           },
           "desktop": {
-            "value": "2.4414"
+            "value": "3.3215"
           }
         }
       },
@@ -162,16 +162,16 @@
         },
         "bp-factor": {
           "phone": {
-            "value": "1.25"
+            "value": "1.35"
           },
           "tablet": {
-            "value": "1.5625"
+            "value": "1.8225"
           },
           "laptop": {
-            "value": "1.9531"
+            "value": "2.4604"
           },
           "desktop": {
-            "value": "2.4414"
+            "value": "3.3215"
           }
         }
       },
@@ -191,16 +191,16 @@
         },
         "bp-factor": {
           "phone": {
-            "value": "1.25"
+            "value": "1.35"
           },
           "tablet": {
-            "value": "1.5625"
+            "value": "1.8225"
           },
           "laptop": {
-            "value": "1.9531"
+            "value": "2.4604"
           },
           "desktop": {
-            "value": "2.4414"
+            "value": "3.3215"
           }
         }
       },

@@ -54,50 +54,50 @@
       "color": {
         "control": {
           "_": {
-            "value": "rgba(0,40,72,{ks.box-shadow.opacity.control._})"
+            "value": "rgba(2,54,104,{ks.box-shadow.opacity.control._})"
           },
           "hover": {
-            "value": "rgba(0,40,72,{ks.box-shadow.opacity.control.hover})"
+            "value": "rgba(2,54,104,{ks.box-shadow.opacity.control.hover})"
           }
         },
         "control-inverted": {
           "_": {
-            "value": "rgba(0,40,72,{ks.box-shadow.opacity.control-inverted._})"
+            "value": "rgba(2,54,104,{ks.box-shadow.opacity.control-inverted._})"
           },
           "hover": {
-            "value": "rgba(0,40,72,{ks.box-shadow.opacity.control-inverted.hover})"
+            "value": "rgba(2,54,104,{ks.box-shadow.opacity.control-inverted.hover})"
           }
         },
         "card": {
           "_": {
-            "value": "rgba(0,40,72,{ks.box-shadow.opacity.card._})"
+            "value": "rgba(2,54,104,{ks.box-shadow.opacity.card._})"
           },
           "hover": {
-            "value": "rgba(0,40,72,{ks.box-shadow.opacity.card.hover})"
+            "value": "rgba(2,54,104,{ks.box-shadow.opacity.card.hover})"
           }
         },
         "card-inverted": {
           "_": {
-            "value": "rgba(0,40,72,{ks.box-shadow.opacity.card-inverted._})"
+            "value": "rgba(2,54,104,{ks.box-shadow.opacity.card-inverted._})"
           },
           "hover": {
-            "value": "rgba(0,40,72,{ks.box-shadow.opacity.card-inverted.hover})"
+            "value": "rgba(2,54,104,{ks.box-shadow.opacity.card-inverted.hover})"
           }
         },
         "surface": {
           "_": {
-            "value": "rgba(0,40,72,{ks.box-shadow.opacity.surface._})"
+            "value": "rgba(2,54,104,{ks.box-shadow.opacity.surface._})"
           },
           "hover": {
-            "value": "rgba(0,40,72,{ks.box-shadow.opacity.surface.hover})"
+            "value": "rgba(2,54,104,{ks.box-shadow.opacity.surface.hover})"
           }
         },
         "surface-inverted": {
           "_": {
-            "value": "rgba(0,40,72,{ks.box-shadow.opacity.surface-inverted._})"
+            "value": "rgba(2,54,104,{ks.box-shadow.opacity.surface-inverted._})"
           },
           "hover": {
-            "value": "rgba(0,40,72,{ks.box-shadow.opacity.surface-inverted.hover})"
+            "value": "rgba(2,54,104,{ks.box-shadow.opacity.surface-inverted.hover})"
           }
         }
       },

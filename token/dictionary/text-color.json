@@ -3,7 +3,7 @@
     "text-color": {
       "default": {
         "base": {
-          "value": "{ks.color.fg.base}",
+          "value": "{ks.color.fg.to-bg.3.base}",
           "attributes": {
             "category": "color"
           },

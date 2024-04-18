@@ -3,7 +3,7 @@
     "text-color": {
       "default": {
         "base": {
-          "value": "{ks.color.fg.to-bg.3.base}",
+          "value": "{ks.color.fg.base}",
           "attributes": {
             "category": "color"
           },
@@ -123,7 +123,7 @@
       },
       "copy": {
         "base": {
-          "value": "{ks.color.fg.alpha.3.base}",
+          "value": "{ks.color.fg.alpha.2.base}",
           "attributes": {
             "category": "color"
           },
@@ -183,7 +183,7 @@
       },
       "copy-inverted": {
         "base": {
-          "value": "{ks.color.fg-inverted.alpha.3.base}",
+          "value": "{ks.color.fg-inverted.alpha.2.base}",
           "attributes": {
             "category": "color"
           },

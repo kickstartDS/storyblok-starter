@@ -1,0 +1,8 @@
+.nav-main {
+  --dsa-nav-main__link--font-weight: var(--ks-font-weight-bold);
+  --dsa-nav-main__link--font: var(--ks-font-interface-s);
+
+  .nav-main__link {
+    text-transform: uppercase;
+  }
+}

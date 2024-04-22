@@ -23,19 +23,17 @@ export const editable =
       </Component>
     );
 
-const editableBlogTeaser = editable(
-  dynamic(() =>
-    import("@kickstartds/ds-agency/blog-teaser").then(
-      (mod) => mod.BlogTeaserContextDefault
-    )
-  )
-);
-
 export const components = {
   page: editablePage,
   "blog-overview": dynamic(() => import("./BlogOverview")),
   "blog-post": dynamic(() => import("./BlogPost")),
-  "blog-teaser": editableBlogTeaser,
+  "blog-teaser": editable(
+    dynamic(() =>
+      import("@kickstartds/ds-agency/blog-teaser").then(
+        (mod) => mod.BlogTeaserContextDefault
+      )
+    )
+  ),
   "blog-aside": editable(
     dynamic(() =>
       import("@kickstartds/ds-agency/blog-aside").then(

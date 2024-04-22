@@ -6,6 +6,7 @@ import {
 } from "@storyblok/react";
 import { unflatten } from "@/helpers/unflatten";
 import { Section } from "@kickstartds/ds-agency-premium/section";
+import { Slider } from "@kickstartds/ds-agency-premium/slider";
 import editablePage from "./Page";
 
 export const editable =
@@ -23,19 +24,17 @@ export const editable =
       </Component>
     );
 
-const editableBlogTeaser = editable(
-  dynamic(() =>
-    import("@kickstartds/ds-agency-premium/blog-teaser").then(
-      (mod) => mod.BlogTeaserContextDefault
-    )
-  )
-);
-
 export const components = {
   page: editablePage,
   "blog-overview": dynamic(() => import("./BlogOverview")),
   "blog-post": dynamic(() => import("./BlogPost")),
-  "blog-teaser": editableBlogTeaser,
+  "blog-teaser": editable(
+    dynamic(() =>
+      import("@kickstartds/ds-agency-premium/blog-teaser").then(
+        (mod) => mod.BlogTeaserContextDefault
+      )
+    )
+  ),
   "blog-aside": editable(
     dynamic(() =>
       import("@kickstartds/ds-agency-premium/blog-aside").then(
@@ -182,9 +181,5 @@ export const components = {
       )
     )
   ),
-  slider: editable(
-    dynamic(() =>
-      import("@kickstartds/ds-agency-premium/slider").then((mod) => mod.Slider)
-    )
-  ),
+  slider: editable(Slider, "components"),
 };

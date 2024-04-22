@@ -7,22 +7,22 @@ import {
   forwardRef,
 } from "react";
 import NextLink from "next/link";
-import {
-  PictureContextDefault,
-  PictureContext,
-} from "@kickstartds/base/lib/picture";
+import { Image } from "@unpic/react/nextjs";
 
+import { PictureContext } from "@kickstartds/base/lib/picture";
 import { LinkContext, LinkProps } from "@kickstartds/base/lib/link";
 import { PictureProps } from "@kickstartds/base/lib/picture/typing";
-import { StoryblokSubComponent } from "./StoryblokSubComponent";
+
 import { BlogTeaserContext } from "@kickstartds/ds-agency-premium/blog-teaser";
 import { BlogAsideContext } from "@kickstartds/ds-agency-premium/blog-aside";
 import { BlogHeadContext } from "@kickstartds/ds-agency-premium/blog-head";
-import { TeaserProvider } from "./TeaserProvider";
 import { CtaContext } from "@kickstartds/ds-agency-premium/cta";
 import { FeatureContext } from "@kickstartds/ds-agency-premium/feature";
 import { StatContext } from "@kickstartds/ds-agency-premium/stat";
 import { TestimonialContext } from "@kickstartds/ds-agency-premium/testimonial";
+
+import { StoryblokSubComponent } from "./StoryblokSubComponent";
+import { TeaserProvider } from "./TeaserProvider";
 
 // TODO look for a better type for `href` in Storyblok
 type StoryblokLink = {
@@ -78,9 +78,9 @@ const Picture = forwardRef<
 >(({ src, ...props }, ref) => {
   if (isStoryblokAsset(src)) {
     const filename = (src as unknown as StoryblokAsset)?.filename;
-    return <PictureContextDefault ref={ref} {...props} src={filename} />;
+    return <Image ref={ref} alt="" {...props} src={filename} />;
   }
-  return <PictureContextDefault ref={ref} {...props} src={src} />;
+  return <Image ref={ref} alt="" {...props} src={src || ""} />;
 });
 
 const PictureProvider: FC<PropsWithChildren> = (props) => (

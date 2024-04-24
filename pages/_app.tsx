@@ -1,7 +1,6 @@
 import type { NextPage } from "next";
 import type { AppProps } from "next/app";
-// @ts-expect-error
-import IconSprite from "@kickstartds/ds-agency-premium/icon-sprite";
+// import IconSprite from "@kickstartds/ds-agency-premium/icon-sprite";
 import DsaProviders from "@kickstartds/ds-agency-premium/providers";
 import { Header } from "@kickstartds/ds-agency-premium/header";
 import { Footer } from "@kickstartds/ds-agency-premium/footer";
@@ -15,6 +14,7 @@ import StoryblokProviders from "../components/Providers";
 import palette from "@kickstartds/ds-agency-premium/global.client.js";
 // import "@kickstartds/ds-agency-premium/tokens/tokens.css";
 import "@kickstartds/ds-agency-premium/global.css";
+import IconSprite from "../token/IconSprite";
 import "../token/tokens.css";
 import "../index.scss";
 

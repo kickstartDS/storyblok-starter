@@ -52,7 +52,7 @@ const upload = (signed_request, file) => {
 };
 
 const signedUpload = async (fileName, assetFolderId) => {
-  return new Promise(async (resolve, reject) => {
+  return new Promise(async (resolve) => {
     let dimensions = sizeOf(
       "./node_modules/@kickstartds/ds-agency-premium/dist/static/" + fileName
     );
@@ -125,6 +125,8 @@ const prepare = async () => {
     );
     if (defaultStory) {
       await promiseThrottle.add(deleteStory.bind(this, defaultStory.id));
+    } else {
+      return;
     }
 
     const components = (

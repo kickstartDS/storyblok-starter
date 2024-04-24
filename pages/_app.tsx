@@ -16,6 +16,7 @@ import palette from "@kickstartds/ds-agency-premium/global.client.js";
 // import "@kickstartds/ds-agency-premium/tokens/tokens.css";
 import "@kickstartds/ds-agency-premium/global.css";
 import "../token/tokens.css";
+import { BlurHashProvider } from "@/components/BlurHashContext";
 
 initStoryblok(process.env.NEXT_STORYBLOK_API_TOKEN);
 if (typeof window !== "undefined") {
@@ -28,36 +29,38 @@ export default function App({
 }: AppProps & {
   Component: NextPage;
 }) {
-  const { settings, story } = pageProps;
+  const { settings, story, blurHashes } = pageProps;
   const headerProps = settings?.header[0];
   const footerProps = settings?.footer[0];
 
   return (
-    <DsaProviders>
-      <StoryblokProviders>
-        <Meta
-          globalSeo={settings?.seo[0]}
-          pageSeo={story?.content.seo?.[0]}
-          fallbackName={story?.name}
-        />
-        <IconSprite />
-        {headerProps && (
-          <Header
-            logo={{}}
-            {...unflatten(headerProps)}
-            inverted={story.header.inverted || false}
-            floating={story.header.floating || false}
+    <BlurHashProvider blurHashes={blurHashes}>
+      <DsaProviders>
+        <StoryblokProviders>
+          <Meta
+            globalSeo={settings?.seo[0]}
+            pageSeo={story?.content.seo?.[0]}
+            fallbackName={story?.name}
           />
-        )}
-        <Component {...pageProps} />
-        {footerProps && (
-          <Footer
-            logo={{}}
-            {...unflatten(footerProps)}
-            inverted={story.footer.inverted || false}
-          />
-        )}
-      </StoryblokProviders>
-    </DsaProviders>
+          <IconSprite />
+          {headerProps && (
+            <Header
+              logo={{}}
+              {...unflatten(headerProps)}
+              inverted={story.header.inverted || false}
+              floating={story.header.floating || false}
+            />
+          )}
+          <Component {...pageProps} />
+          {footerProps && (
+            <Footer
+              logo={{}}
+              {...unflatten(footerProps)}
+              inverted={story.footer.inverted || false}
+            />
+          )}
+        </StoryblokProviders>
+      </DsaProviders>
+    </BlurHashProvider>
   );
 }

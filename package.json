@@ -12,7 +12,8 @@
     "build-preview": "BUILD_ENV=preview npm run build",
     "netrc": "plop netrc $STORYBLOK_LOGIN_EMAIL $NEXT_STORYBLOK_OAUTH_TOKEN $STORYBLOK_REGION",
     "env": "plop env $NEXT_STORYBLOK_API_TOKEN $NEXT_STORYBLOK_OAUTH_TOKEN $NEXT_STORYBLOK_SPACE_ID",
-    "init": "npm run env && npm run netrc && rimraf tmp && mkdir -p tmp/images && node scripts/prepareProject.js && npm run push-components && npm run generate-content-types",
+    "netlify-init": "npm run env && npm run netrc && npm run init",
+    "init": "rimraf tmp && mkdir -p tmp/images && node scripts/prepareProject.js && npm run push-components && npm run generate-content-types",
     "start": "next start",
     "lint": "next lint",
     "init-tokens": "kickstartDS tokens init --token-dictionary-path token/dictionary --branding-token-path token/branding-token.json",
@@ -41,7 +42,7 @@
   "devDependencies": {
     "@kickstartds/jsonschema2storyblok": "^1.5.20",
     "@kickstartds/style-dictionary": "^4.0.2",
-    "@netlify/plugin-nextjs": "^5.0.0",
+    "@netlify/plugin-nextjs": "^5.1.2",
     "@types/node": "20.4.5",
     "@types/react": "18.2.17",
     "@types/react-dom": "18.2.7",

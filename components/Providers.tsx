@@ -7,6 +7,7 @@ import {
   forwardRef,
 } from "react";
 import NextLink from "next/link";
+import { blurhashToCssGradientString } from "@unpic/placeholder";
 import { Image } from "@unpic/react/nextjs";
 
 import { PictureContext } from "@kickstartds/base/lib/picture";
@@ -24,6 +25,8 @@ import { TestimonialContext } from "@kickstartds/ds-agency/testimonial";
 
 import { StoryblokSubComponent } from "./StoryblokSubComponent";
 import { TeaserProvider } from "./TeaserProvider";
+import { useBlurHashes } from "./BlurHashContext";
+import { useImagePriority } from "./ImagePriorityContext";
 
 // TODO look for a better type for `href` in Storyblok
 type StoryblokLink = {
@@ -77,11 +80,29 @@ const Picture = forwardRef<
   HTMLImageElement,
   PictureProps & ImgHTMLAttributes<HTMLImageElement>
 >(({ src, ...props }, ref) => {
-  if (isStoryblokAsset(src)) {
-    const filename = (src as unknown as StoryblokAsset)?.filename;
-    return <Image ref={ref} alt="" {...props} src={filename} />;
-  }
-  return <Image ref={ref} alt="" {...props} src={src || ""} />;
+  const blurHashes = useBlurHashes();
+  const priority = useImagePriority();
+
+  if (!src) return;
+  const source = isStoryblokAsset(src)
+    ? (src as StoryblokAsset)?.filename
+    : src;
+  const fileUrl = !source.startsWith("http") ? `https:${source}` : source;
+
+  const [width, height] = fileUrl.match(/\/(\d+)x(\d+)\//)?.slice(1) || [];
+  const placeholder = blurhashToCssGradientString(blurHashes[fileUrl]);
+  return (
+    <Image
+      ref={ref}
+      alt=""
+      {...props}
+      src={fileUrl}
+      width={parseInt(width, 10)}
+      height={parseInt(height, 10)}
+      priority={priority}
+      background={placeholder || undefined}
+    />
+  );
 });
 
 const PictureProvider: FC<PropsWithChildren> = (props) => (

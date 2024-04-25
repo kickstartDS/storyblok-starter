@@ -90,7 +90,6 @@ const Picture = forwardRef<
   const fileUrl = !source.startsWith("http") ? `https:${source}` : source;
 
   const [width, height] = fileUrl.match(/\/(\d+)x(\d+)\//)?.slice(1) || [];
-  const placeholder = blurhashToCssGradientString(blurHashes[fileUrl]);
   return (
     <Image
       ref={ref}
@@ -100,7 +99,11 @@ const Picture = forwardRef<
       width={parseInt(width, 10)}
       height={parseInt(height, 10)}
       priority={priority}
-      background={placeholder || undefined}
+      background={
+        blurHashes[fileUrl]
+          ? blurhashToCssGradientString(blurHashes[fileUrl])
+          : undefined
+      }
     />
   );
 });

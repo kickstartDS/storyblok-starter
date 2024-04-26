@@ -69,7 +69,7 @@
     "scale-ratio": 1.5,
     "bp-ratio": 1.35
   },
-  "border-radius": "0px",
+  "border-radius": "4px",
   "box-shadow": {
     "blur": "2.75px"
   },

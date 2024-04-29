@@ -1,5 +1,6 @@
 import type { NextPage } from "next";
 import type { AppProps } from "next/app";
+
 import DsaProviders from "@kickstartds/ds-agency/providers";
 import { Header } from "@kickstartds/ds-agency/header";
 import { Footer } from "@kickstartds/ds-agency/footer";
@@ -14,6 +15,7 @@ import palette from "@kickstartds/ds-agency/global.client.js";
 import IconSprite from "../token/IconSprite";
 import "@kickstartds/ds-agency/global.css";
 import "../token/tokens.css";
+import "../index.scss";
 import { BlurHashProvider } from "@/components/BlurHashContext";
 
 initStoryblok(process.env.NEXT_STORYBLOK_API_TOKEN);

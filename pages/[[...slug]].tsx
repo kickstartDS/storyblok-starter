@@ -12,6 +12,7 @@ import { encode } from "blurhash";
 import { getPixels } from "@unpic/pixels";
 import { traverse } from "object-traversal";
 import { isImgUrl } from "@/helpers/apiUtils";
+import { fontClassNames } from "@/helpers/fonts";
 
 type PageProps = ISbStory["data"] & {
   settings?: ISbStoryData["content"];
@@ -19,7 +20,12 @@ type PageProps = ISbStory["data"] & {
 
 const Page: NextPage<PageProps> = ({ story: initialStory }) => {
   const story = useStoryblokState(initialStory);
-  return story ? <StoryblokComponent blok={story.content} /> : null;
+  return story ? (
+    <StoryblokComponent
+      blok={story.content}
+      data-font-class-names={fontClassNames}
+    />
+  ) : null;
 };
 
 export default Page;
@@ -86,6 +92,7 @@ export const getStaticProps = (async ({ params, previewData }) => {
       props: {
         ...pageData,
         blurHashes,
+        fontClassNames,
         settings: settingsData.stories[0]?.content || null,
         key: pageData.story.id,
       },

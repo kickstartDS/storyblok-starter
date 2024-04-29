@@ -25,3 +25,12 @@ export const normalizeSlug = (req: NextApiRequest) => {
   );
   return path + (params.size ? "?" + params : "");
 };
+
+export const isImgUrl = (string: unknown) => {
+  return (
+    string &&
+    typeof string === "string" &&
+    (string.startsWith("//a") || string.startsWith("http")) &&
+    /\.(jpg|jpeg|png|webp|avif|gif)$/.test(string)
+  );
+};

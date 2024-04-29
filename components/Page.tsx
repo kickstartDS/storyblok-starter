@@ -1,6 +1,7 @@
 // import { FC, PropsWithChildren } from "react";
 import { PageStoryblok } from "@/types/components-schema";
 import { storyblokEditable, StoryblokComponent } from "@storyblok/react";
+import { ImagePriorityProvider } from "./ImagePriorityContext";
 // import { render } from "storyblok-rich-text-react-renderer";
 // import { RichtextStoryblok } from "@/types/components-schema";
 // import {
@@ -28,7 +29,12 @@ const Page: React.FC<PageProps> = ({ blok }) => (
   <>
     {/* <StoryblokRichTextProvider> */}
     <main {...storyblokEditable(blok)}>
-      {blok.section?.map((nestedBlok) => (
+      <ImagePriorityProvider priority>
+        {blok.section?.slice(0, 1).map((nestedBlok) => (
+          <StoryblokComponent blok={nestedBlok} key={nestedBlok._uid} />
+        ))}
+      </ImagePriorityProvider>
+      {blok.section?.slice(1).map((nestedBlok) => (
         <StoryblokComponent blok={nestedBlok} key={nestedBlok._uid} />
       ))}
     </main>

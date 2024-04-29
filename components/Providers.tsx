@@ -14,14 +14,13 @@ import { PictureContext } from "@kickstartds/base/lib/picture";
 import { LinkContext, LinkProps } from "@kickstartds/base/lib/link";
 import { PictureProps } from "@kickstartds/base/lib/picture/typing";
 
-import { BlogTeaserContext } from "@kickstartds/ds-agency/blog-teaser";
-import { BlogAsideContext } from "@kickstartds/ds-agency/blog-aside";
-import { BlogHeadContext } from "@kickstartds/ds-agency/blog-head";
-import { CtaContext } from "@kickstartds/ds-agency/cta";
-import { FeatureContext } from "@kickstartds/ds-agency/feature";
-import { LogoContext } from "@kickstartds/ds-agency/logo";
-import { StatContext } from "@kickstartds/ds-agency/stat";
-import { TestimonialContext } from "@kickstartds/ds-agency/testimonial";
+import { BlogTeaserContext } from "@kickstartds/ds-agency-premium/blog-teaser";
+import { BlogAsideContext } from "@kickstartds/ds-agency-premium/blog-aside";
+import { BlogHeadContext } from "@kickstartds/ds-agency-premium/blog-head";
+import { CtaContext } from "@kickstartds/ds-agency-premium/cta";
+import { FeatureContext } from "@kickstartds/ds-agency-premium/feature";
+import { StatContext } from "@kickstartds/ds-agency-premium/stat";
+import { TestimonialContext } from "@kickstartds/ds-agency-premium/testimonial";
 
 import { StoryblokSubComponent } from "./StoryblokSubComponent";
 import { TeaserProvider } from "./TeaserProvider";
@@ -121,24 +120,21 @@ const Providers = (props: PropsWithChildren) => (
           {/* @ts-expect-error */}
           <FeatureContext.Provider value={StoryblokSubComponent}>
             {/* @ts-expect-error */}
-            <LogoContext.Provider value={StoryblokSubComponent}>
+            <StatContext.Provider value={StoryblokSubComponent}>
               {/* @ts-expect-error */}
-              <StatContext.Provider value={StoryblokSubComponent}>
+              <TestimonialContext.Provider value={StoryblokSubComponent}>
                 {/* @ts-expect-error */}
-                <TestimonialContext.Provider value={StoryblokSubComponent}>
+                <BlogHeadContext.Provider value={StoryblokSubComponent}>
                   {/* @ts-expect-error */}
-                  <BlogHeadContext.Provider value={StoryblokSubComponent}>
+                  <BlogAsideContext.Provider value={StoryblokSubComponent}>
                     {/* @ts-expect-error */}
-                    <BlogAsideContext.Provider value={StoryblokSubComponent}>
-                      {/* @ts-expect-error */}
-                      <BlogTeaserContext.Provider value={StoryblokSubComponent}>
-                        {props.children}
-                      </BlogTeaserContext.Provider>
-                    </BlogAsideContext.Provider>
-                  </BlogHeadContext.Provider>
-                </TestimonialContext.Provider>
-              </StatContext.Provider>
-            </LogoContext.Provider>
+                    <BlogTeaserContext.Provider value={StoryblokSubComponent}>
+                      {props.children}
+                    </BlogTeaserContext.Provider>
+                  </BlogAsideContext.Provider>
+                </BlogHeadContext.Provider>
+              </TestimonialContext.Provider>
+            </StatContext.Provider>
           </FeatureContext.Provider>
         </CtaContext.Provider>
       </TeaserProvider>

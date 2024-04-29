@@ -6,7 +6,7 @@ const sizeOf = require("image-size");
 const StoryblokClient = require("storyblok-js-client");
 const { v4: uuidv4 } = require("uuid");
 const jsonpointer = require("jsonpointer");
-const designSystemPresets = require("@kickstartds/ds-agency/presets.json");
+const designSystemPresets = require("@kickstartds/ds-agency-premium/presets.json");
 const generatedComponents = require("../cms/components.123456.json");
 const initialStory = require("../resources/story.json");
 
@@ -54,7 +54,7 @@ const upload = (signed_request, file) => {
 const signedUpload = async (fileName, assetFolderId) => {
   return new Promise(async (resolve) => {
     let dimensions = sizeOf(
-      "./node_modules/@kickstartds/ds-agency/dist/static/" + fileName
+      "./node_modules/@kickstartds/ds-agency-premium/dist/static/" + fileName
     );
 
     const assetResponse = await Storyblok.post(
@@ -67,7 +67,7 @@ const signedUpload = async (fileName, assetFolderId) => {
     );
     await upload(
       assetResponse.data,
-      "./node_modules/@kickstartds/ds-agency/dist/static/" + fileName
+      "./node_modules/@kickstartds/ds-agency-premium/dist/static/" + fileName
     );
 
     return resolve({

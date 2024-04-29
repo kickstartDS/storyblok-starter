@@ -15,7 +15,7 @@ RUN chown node:node /workspaces/energyui-storyblok-starter
 USER node
 
 COPY --from=deps --chown=node:node --link /app /workspaces/storyblok-starter-ds-agency
-COPY --from=deps --chown=node:node --link /app/node_modules /workspaces/storyblok-starter-ds-agency/node_modules
+COPY --from=deps --chown=node:node --link /app/node_modules /workspaces/storyblok-starter-ds-agency-premium/node_modules
 COPY --link --chown=node:node . .
 
 EXPOSE 3000

@@ -1,9 +1,9 @@
 import type { NextPage } from "next";
 import type { AppProps } from "next/app";
 
-import DsaProviders from "@kickstartds/ds-agency/providers";
-import { Header } from "@kickstartds/ds-agency/header";
-import { Footer } from "@kickstartds/ds-agency/footer";
+import DsaProviders from "@kickstartds/ds-agency-premium/providers";
+import { Header } from "@kickstartds/ds-agency-premium/header";
+import { Footer } from "@kickstartds/ds-agency-premium/footer";
 import { initStoryblok } from "@/helpers/storyblok";
 import { unflatten } from "@/helpers/unflatten";
 import Meta from "@/components/Meta";
@@ -11,9 +11,9 @@ import "lazysizes/plugins/attrchange/ls.attrchange";
 
 import StoryblokProviders from "../components/Providers";
 
-import palette from "@kickstartds/ds-agency/global.client.js";
+import palette from "@kickstartds/ds-agency-premium/global.client.js";
 import IconSprite from "../token/IconSprite";
-import "@kickstartds/ds-agency/global.css";
+import "@kickstartds/ds-agency-premium/global.css";
 import "../token/tokens.css";
 import "../index.scss";
 import { BlurHashProvider } from "@/components/BlurHashContext";

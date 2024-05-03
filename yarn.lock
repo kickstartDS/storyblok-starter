@@ -795,10 +795,10 @@
     stringify-entities "^3.0.1"
     stringify-object "^3.3.0"
 
-"@netlify/plugin-nextjs@^5.1.2":
-  version "5.1.2"
-  resolved "https://registry.npmjs.org/@netlify/plugin-nextjs/-/plugin-nextjs-5.1.2.tgz"
-  integrity sha512-rftBlZmrkxy8zeXZ/tT2u/v2iIZd9s0cV7MdtjUFOgizjhtY0fCZEUQ7OIEQIMogzGNMDXFcb84HXX9a8OZ8/w==
+"@netlify/plugin-nextjs@^5.2.1":
+  version "5.2.1"
+  resolved "https://registry.npmjs.org/@netlify/plugin-nextjs/-/plugin-nextjs-5.2.1.tgz"
+  integrity sha512-4sZQoWNA6UfWdun02p+88G+GdUIIgmqkNnyslAQFru1zy4OZHvrg6NRID/iQ/ImxrTfjMWybwpN9d04Rgy/Zbg==
 
 "@next/env@13.5.6":
   version "13.5.6"

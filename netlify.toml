@@ -9,7 +9,7 @@
   STORYBLOK_REGION = "Add the region you used on Storyblok for the newly created Space here"
 
 [build]
-  command = "(npm run netlify-init && npm run build) || npm run build"
+  command = "npm run build"
   publish = ".next"
 
 [[plugins]]

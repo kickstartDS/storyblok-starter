@@ -47,8 +47,8 @@ export default function App({
             <Header
               logo={{}}
               {...unflatten(headerProps)}
-              inverted={story.header.inverted || false}
-              floating={story.header.floating || false}
+              inverted={story.header?.inverted || false}
+              floating={story.header?.floating || false}
             />
           )}
           <Component {...pageProps} />
@@ -56,7 +56,7 @@ export default function App({
             <Footer
               logo={{}}
               {...unflatten(footerProps)}
-              inverted={story.footer.inverted || false}
+              inverted={story.footer?.inverted || false}
             />
           )}
         </StoryblokProviders>

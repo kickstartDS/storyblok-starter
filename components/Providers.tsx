@@ -78,7 +78,7 @@ const LinkProvider: FC<PropsWithChildren> = (props) => (
 const Picture = forwardRef<
   HTMLImageElement,
   PictureProps & ImgHTMLAttributes<HTMLImageElement>
->(({ src, ...props }, ref) => {
+>(({ src, lazy, ...props }, ref) => {
   const blurHashes = useBlurHashes();
   const priority = useImagePriority();
 
@@ -99,7 +99,7 @@ const Picture = forwardRef<
       src={fileUrl}
       width={parseInt(width, 10)}
       height={parseInt(height, 10)}
-      priority={priority}
+      priority={lazy === false || priority}
       background={
         blurHashes[fileUrl]
           ? blurhashToCssGradientString(blurHashes[fileUrl])

@@ -88,8 +88,6 @@ const Picture = forwardRef<
     ? (src as StoryblokAsset)?.filename
     : src;
 
-  console.log("SOURCE", source);
-  if (!source) console.log(src, props);
   const fileUrl = !source.startsWith("http") ? `https:${source}` : source;
 
   const [width, height] = fileUrl.match(/\/(\d+)x(\d+)\//)?.slice(1) || [];

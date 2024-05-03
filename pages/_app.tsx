@@ -14,6 +14,7 @@ import StoryblokProviders from "../components/Providers";
 import palette from "@kickstartds/ds-agency-premium/global.client.js";
 import IconSprite from "../token/IconSprite";
 import "@kickstartds/ds-agency-premium/global.css";
+import IconSprite from "../token/IconSprite";
 import "../token/tokens.css";
 import "../index.scss";
 import { BlurHashProvider } from "@/components/BlurHashContext";

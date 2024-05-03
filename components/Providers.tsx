@@ -82,7 +82,8 @@ const Picture = forwardRef<
   const blurHashes = useBlurHashes();
   const priority = useImagePriority();
 
-  if (!src) return;
+  if (!src || (isStoryblokAsset(src) && !(src as StoryblokAsset)?.filename))
+    return;
   const source = isStoryblokAsset(src)
     ? (src as StoryblokAsset)?.filename
     : src;

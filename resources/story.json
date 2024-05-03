@@ -42,7 +42,7 @@
             {
               "button_chevron": true,
               "button_hidden": false,
-              "button_label": "Learn more",
+              "button_label": "Learn about this starter",
               "type": "teaser-card",
               "component": "teaser-card",
               "headline": "What is this for and why?",

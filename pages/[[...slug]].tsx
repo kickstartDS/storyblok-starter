@@ -6,7 +6,13 @@ import {
   ISbStoryData,
   StoryblokClient,
 } from "@storyblok/react";
+import { Cache } from "file-system-cache";
 import { fetchStories, fetchStory } from "@/helpers/storyblok";
+import { encode } from "blurhash";
+import { getPixels } from "@unpic/pixels";
+import { traverse } from "object-traversal";
+import { isImgUrl } from "@/helpers/apiUtils";
+import { fontClassNames } from "@/helpers/fonts";
 
 type PageProps = ISbStory["data"] & {
   settings?: ISbStoryData["content"];
@@ -14,7 +20,12 @@ type PageProps = ISbStory["data"] & {
 
 const Page: NextPage<PageProps> = ({ story: initialStory }) => {
   const story = useStoryblokState(initialStory);
-  return story ? <StoryblokComponent blok={story.content} /> : null;
+  return story ? (
+    <StoryblokComponent
+      blok={story.content}
+      data-font-class-names={fontClassNames}
+    />
+  ) : null;
 };
 
 export default Page;
@@ -48,13 +59,43 @@ export const getStaticProps = (async ({ params, previewData }) => {
       fetchStory(slug, previewStoryblokApi),
       fetchStories({ content_type: "settings" }, previewStoryblokApi),
     ]);
+
+    const storyImages: string[] = [];
+    traverse(pageData, ({ value }) => {
+      if (isImgUrl(value)) {
+        storyImages.push(value.startsWith("//a") ? `https:${value}` : value);
+      }
+    });
+
+    const blurHashes: Record<string, string> = {};
+
+    if (!previewData) {
+      const cache = new Cache({ basePath: "./public/blurhashes" });
+      await cache.load();
+
+      for (const imageUrl of storyImages) {
+        if (blurHashes[imageUrl]) continue;
+        if (cache.getSync(imageUrl)) {
+          blurHashes[imageUrl] = cache.getSync(imageUrl);
+          continue;
+        }
+
+        const imgData = await getPixels(imageUrl);
+        const data = Uint8ClampedArray.from(imgData.data);
+        const blurHash = encode(data, imgData.width, imgData.height, 4, 4);
+        blurHashes[imageUrl] = blurHash;
+        cache.setSync(imageUrl, blurHash);
+      }
+    }
+
     return {
       props: {
         ...pageData,
+        blurHashes,
+        fontClassNames,
         settings: settingsData.stories[0]?.content || null,
         key: pageData.story.id,
       },
-      revalidate: 3600, // revalidate every hour
     };
   } catch (e) {
     return {

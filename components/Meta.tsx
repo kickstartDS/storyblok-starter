@@ -26,6 +26,7 @@ export default function Meta({
   return (
     <Head>
       <title>{title}</title>
+      <link rel="shortcut icon" href="/favicon/favicon.ico" />
       <meta name="description" content={description} />
       <meta
         name="keywords"

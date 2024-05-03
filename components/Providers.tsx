@@ -7,22 +7,25 @@ import {
   forwardRef,
 } from "react";
 import NextLink from "next/link";
-import {
-  PictureContextDefault,
-  PictureContext,
-} from "@kickstartds/base/lib/picture";
+import { blurhashToCssGradientString } from "@unpic/placeholder";
+import { Image } from "@unpic/react/nextjs";
 
+import { PictureContext } from "@kickstartds/base/lib/picture";
 import { LinkContext, LinkProps } from "@kickstartds/base/lib/link";
 import { PictureProps } from "@kickstartds/base/lib/picture/typing";
-import { StoryblokSubComponent } from "./StoryblokSubComponent";
+
 import { BlogTeaserContext } from "@kickstartds/ds-agency-premium/blog-teaser";
 import { BlogAsideContext } from "@kickstartds/ds-agency-premium/blog-aside";
 import { BlogHeadContext } from "@kickstartds/ds-agency-premium/blog-head";
-import { TeaserProvider } from "./TeaserProvider";
 import { CtaContext } from "@kickstartds/ds-agency-premium/cta";
 import { FeatureContext } from "@kickstartds/ds-agency-premium/feature";
 import { StatContext } from "@kickstartds/ds-agency-premium/stat";
 import { TestimonialContext } from "@kickstartds/ds-agency-premium/testimonial";
+
+import { StoryblokSubComponent } from "./StoryblokSubComponent";
+import { TeaserProvider } from "./TeaserProvider";
+import { useBlurHashes } from "./BlurHashContext";
+import { useImagePriority } from "./ImagePriorityContext";
 
 // TODO look for a better type for `href` in Storyblok
 type StoryblokLink = {
@@ -76,11 +79,32 @@ const Picture = forwardRef<
   HTMLImageElement,
   PictureProps & ImgHTMLAttributes<HTMLImageElement>
 >(({ src, ...props }, ref) => {
-  if (isStoryblokAsset(src)) {
-    const filename = (src as unknown as StoryblokAsset)?.filename;
-    return <PictureContextDefault ref={ref} {...props} src={filename} />;
-  }
-  return <PictureContextDefault ref={ref} {...props} src={src} />;
+  const blurHashes = useBlurHashes();
+  const priority = useImagePriority();
+
+  if (!src) return;
+  const source = isStoryblokAsset(src)
+    ? (src as StoryblokAsset)?.filename
+    : src;
+  const fileUrl = !source.startsWith("http") ? `https:${source}` : source;
+
+  const [width, height] = fileUrl.match(/\/(\d+)x(\d+)\//)?.slice(1) || [];
+  return (
+    <Image
+      ref={ref}
+      alt=""
+      {...props}
+      src={fileUrl}
+      width={parseInt(width, 10)}
+      height={parseInt(height, 10)}
+      priority={priority}
+      background={
+        blurHashes[fileUrl]
+          ? blurhashToCssGradientString(blurHashes[fileUrl])
+          : undefined
+      }
+    />
+  );
 });
 
 const PictureProvider: FC<PropsWithChildren> = (props) => (

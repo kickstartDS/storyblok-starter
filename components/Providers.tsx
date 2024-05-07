@@ -5,6 +5,7 @@ import {
   ImgHTMLAttributes,
   PropsWithChildren,
   forwardRef,
+  useEffect,
 } from "react";
 import NextLink from "next/link";
 import { blurhashToCssGradientString } from "@unpic/placeholder";
@@ -81,6 +82,12 @@ const Picture = forwardRef<
 >(({ src, lazy, ...props }, ref) => {
   const blurHashes = useBlurHashes();
   const priority = useImagePriority();
+
+  useEffect(() => {
+    if (ref && typeof ref !== "function" && ref.current) {
+      ref.current.style.background = "#FF0000";
+    }
+  }, [ref]);
 
   if (!src || (isStoryblokAsset(src) && !(src as StoryblokAsset)?.filename))
     return;

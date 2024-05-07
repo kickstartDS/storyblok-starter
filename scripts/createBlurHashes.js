@@ -68,10 +68,10 @@ const blur = async () => {
         : imageUrl;
       const [width, height] = imageUrl.match(/\/(\d+)x(\d+)\//)?.slice(1) || [];
       const resizedUrl =
-        width > 1000
-          ? `${imageUrl}/m/1000x0`
-          : height > 1000
-          ? `${imageUrl}/m/0x1000`
+        width > 100
+          ? `${imageUrl}/m/100x0`
+          : height > 100
+          ? `${imageUrl}/m/0x100`
           : fileUrl;
 
       const imgData = await getPixels(resizedUrl);

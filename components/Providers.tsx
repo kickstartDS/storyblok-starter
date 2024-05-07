@@ -100,6 +100,9 @@ const Picture = forwardRef<
       width={parseInt(width, 10)}
       height={parseInt(height, 10)}
       priority={lazy === false || priority}
+      onLoad={(event) => {
+        console.log("IMAGE LOADED", fileUrl, event);
+      }}
       background={
         blurHashes[fileUrl]
           ? blurhashToCssGradientString(blurHashes[fileUrl])

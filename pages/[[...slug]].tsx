@@ -78,6 +78,8 @@ export const getStaticProps = (async ({ params, previewData }) => {
       }
     }
 
+    console.log("BLUR HASHES", blurHashes);
+
     return {
       props: {
         ...pageData,

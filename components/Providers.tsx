@@ -77,6 +77,12 @@ const LinkProvider: FC<PropsWithChildren> = (props) => (
   <LinkContext.Provider value={Link} {...props} />
 );
 
+const resetBackgroundBlurHash = (image: HTMLImageElement) => {
+  requestAnimationFrame(() => {
+    image.style.background = "";
+  });
+};
+
 // TODO look for a better type for `src` in Storyblok
 const Picture = forwardRef<
   HTMLImageElement,
@@ -93,9 +99,7 @@ const Picture = forwardRef<
   );
 
   useEffect(() => {
-    if (internalRef.current) {
-      internalRef.current.style.background = "";
-    }
+    if (internalRef.current) resetBackgroundBlurHash(internalRef.current);
   }, []);
 
   if (!src || (isStoryblokAsset(src) && !(src as StoryblokAsset)?.filename))
@@ -118,7 +122,7 @@ const Picture = forwardRef<
       priority={lazy === false || priority}
       onLoad={(event) => {
         if (event.target instanceof HTMLImageElement) {
-          event.target.style.background = "";
+          resetBackgroundBlurHash(event.target);
         }
       }}
       background={

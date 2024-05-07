@@ -6,6 +6,8 @@ import {
   PropsWithChildren,
   forwardRef,
   useEffect,
+  useImperativeHandle,
+  useRef,
 } from "react";
 import NextLink from "next/link";
 import { blurhashToCssGradientString } from "@unpic/placeholder";
@@ -80,15 +82,21 @@ const Picture = forwardRef<
   HTMLImageElement,
   PictureProps & ImgHTMLAttributes<HTMLImageElement>
 >(({ src, lazy, ...props }, ref) => {
+  const internalRef = useRef<HTMLImageElement>(null);
+
   const blurHashes = useBlurHashes();
   const priority = useImagePriority();
 
+  useImperativeHandle<HTMLImageElement | null, HTMLImageElement | null>(
+    ref,
+    () => internalRef.current
+  );
+
   useEffect(() => {
-    console.log("ref", ref);
-    if (ref && typeof ref !== "function" && ref.current) {
-      ref.current.style.background = "#FF0000";
+    if (internalRef.current) {
+      internalRef.current.style.background = "#FF0000";
     }
-  }, [ref]);
+  }, []);
 
   if (!src || (isStoryblokAsset(src) && !(src as StoryblokAsset)?.filename))
     return;
@@ -101,7 +109,7 @@ const Picture = forwardRef<
   const [width, height] = fileUrl.match(/\/(\d+)x(\d+)\//)?.slice(1) || [];
   return (
     <Image
-      ref={ref}
+      ref={internalRef}
       alt=""
       {...props}
       src={fileUrl}

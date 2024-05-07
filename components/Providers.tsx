@@ -94,7 +94,7 @@ const Picture = forwardRef<
 
   useEffect(() => {
     if (internalRef.current) {
-      internalRef.current.style.background = "#FF0000";
+      internalRef.current.style.background = "";
     }
   }, []);
 

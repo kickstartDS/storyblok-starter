@@ -8,11 +8,11 @@ import {
 } from "@storyblok/react";
 import { Cache } from "file-system-cache";
 import { fetchStories, fetchStory } from "@/helpers/storyblok";
-import { encode } from "blurhash";
-import { getPixels } from "@unpic/pixels";
 import { traverse } from "object-traversal";
 import { isImgUrl } from "@/helpers/apiUtils";
 import { fontClassNames } from "@/helpers/fonts";
+
+const INDEX_SLUG = "home";
 
 type PageProps = ISbStory["data"] & {
   settings?: ISbStoryData["content"];
@@ -32,14 +32,13 @@ export default Page;
 
 export const getStaticPaths = (async () => {
   const { data } = await fetchStories();
-  const paths = [
-    // { params: { slug: [] } },
-    ...data.stories
-      .filter((story) => story.content.component !== "settings")
-      .map((story) => ({
-        params: { slug: story.full_slug.split("/") },
-      })),
-  ];
+  const paths = data.stories
+    .filter((story) => story.content.component !== "settings")
+    .map((story) => {
+      const slug =
+        story.full_slug === INDEX_SLUG ? [] : story.full_slug.split("/");
+      return { params: { slug } };
+    });
   return { paths, fallback: false };
 }) satisfies GetStaticPaths;
 
@@ -53,7 +52,7 @@ export const getStaticProps = (async ({ params, previewData }) => {
     previewStoryblokApi = new StoryblokClient({ accessToken: previewData });
   }
 
-  const slug = params?.slug?.join("/") || "getting-started";
+  const slug = params?.slug?.join("/") || INDEX_SLUG;
   try {
     const [{ data: pageData }, { data: settingsData }] = await Promise.all([
       fetchStory(slug, previewStoryblokApi),
@@ -92,4 +91,4 @@ export const getStaticProps = (async ({ params, previewData }) => {
       notFound: true,
     };
   }
-}) satisfies GetStaticProps<ISbStory["data"], NodeJS.Dict<string[]>, string>;
+}) satisfies GetStaticProps<PageProps, NodeJS.Dict<string[]>, string>;

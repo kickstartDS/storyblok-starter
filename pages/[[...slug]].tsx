@@ -78,12 +78,10 @@ export const getStaticProps = (async ({ params, previewData }) => {
       }
     }
 
-    console.log("BLUR HASHES", blurHashes);
-
     return {
       props: {
         ...pageData,
-        blurHashes,
+        // blurHashes,
         fontClassNames,
         settings: settingsData.stories[0]?.content || null,
         key: pageData.story.id,

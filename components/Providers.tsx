@@ -84,6 +84,7 @@ const Picture = forwardRef<
   const priority = useImagePriority();
 
   useEffect(() => {
+    console.log("ref", ref);
     if (ref && typeof ref !== "function" && ref.current) {
       ref.current.style.background = "#FF0000";
     }

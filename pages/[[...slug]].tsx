@@ -74,7 +74,7 @@ export const getStaticProps = (async ({ params, previewData }) => {
       await cache.load();
 
       for (const imageUrl of storyImages) {
-        blurHashes[imageUrl] ||= cache.getSync(imageUrl);
+        blurHashes[imageUrl] ||= cache.getSync(imageUrl) || null;
       }
     }
 

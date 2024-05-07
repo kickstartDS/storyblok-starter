@@ -25,6 +25,8 @@ import { FeatureContext } from "@kickstartds/ds-agency-premium/feature";
 import { StatContext } from "@kickstartds/ds-agency-premium/stat";
 import { TestimonialContext } from "@kickstartds/ds-agency-premium/testimonial";
 
+import { INDEX_SLUG } from "@/helpers/storyblok";
+
 import { StoryblokSubComponent } from "./StoryblokSubComponent";
 import { TeaserProvider } from "./TeaserProvider";
 import { useBlurHashes } from "./BlurHashContext";
@@ -59,6 +61,8 @@ const Link = forwardRef<
     const linkTarget =
       href.linktype === "email"
         ? `mailto:${href.email}`
+        : href.story?.full_slug === INDEX_SLUG
+        ? "/"
         : href.cached_url || href.story?.full_slug;
     return (
       <NextLink

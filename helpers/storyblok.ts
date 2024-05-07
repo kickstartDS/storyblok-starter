@@ -57,3 +57,5 @@ export async function fetchStories(
   lastContentVersion = response.data.cv;
   return response;
 }
+
+export const INDEX_SLUG = "home";

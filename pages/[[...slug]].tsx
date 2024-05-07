@@ -7,12 +7,10 @@ import {
   StoryblokClient,
 } from "@storyblok/react";
 import { Cache } from "file-system-cache";
-import { fetchStories, fetchStory } from "@/helpers/storyblok";
+import { fetchStories, fetchStory, INDEX_SLUG } from "@/helpers/storyblok";
 import { traverse } from "object-traversal";
 import { isImgUrl } from "@/helpers/apiUtils";
 import { fontClassNames } from "@/helpers/fonts";
-
-const INDEX_SLUG = "home";
 
 type PageProps = ISbStory["data"] & {
   settings?: ISbStoryData["content"];

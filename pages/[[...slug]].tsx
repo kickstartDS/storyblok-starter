@@ -69,24 +69,14 @@ export const getStaticProps = (async ({ params, previewData }) => {
 
     const blurHashes: Record<string, string> = {};
 
-    // if (!previewData) {
-    //   const cache = new Cache({ basePath: "./public/blurhashes" });
-    //   await cache.load();
+    if (!previewData) {
+      const cache = new Cache({ basePath: "./public/blurhashes" });
+      await cache.load();
 
-    //   for (const imageUrl of storyImages) {
-    //     if (blurHashes[imageUrl]) continue;
-    //     if (cache.getSync(imageUrl)) {
-    //       blurHashes[imageUrl] = cache.getSync(imageUrl);
-    //       continue;
-    //     }
-
-    //     const imgData = await getPixels(imageUrl);
-    //     const data = Uint8ClampedArray.from(imgData.data);
-    //     const blurHash = encode(data, imgData.width, imgData.height, 4, 4);
-    //     blurHashes[imageUrl] = blurHash;
-    //     cache.setSync(imageUrl, blurHash);
-    //   }
-    // }
+      for (const imageUrl of storyImages) {
+        blurHashes[imageUrl] ||= cache.getSync(imageUrl);
+      }
+    }
 
     return {
       props: {

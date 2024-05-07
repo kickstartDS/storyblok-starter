@@ -19,7 +19,6 @@
 .DS_Store
 *.pem
 .cache
-public/blurhashes
 
 # debug
 npm-debug.log*

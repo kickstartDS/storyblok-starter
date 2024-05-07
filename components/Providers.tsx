@@ -101,7 +101,9 @@ const Picture = forwardRef<
       height={parseInt(height, 10)}
       priority={lazy === false || priority}
       onLoad={(event) => {
-        console.log("IMAGE LOADED", fileUrl, event);
+        if (event.target instanceof HTMLImageElement) {
+          event.target.style.background = "";
+        }
       }}
       background={
         blurHashes[fileUrl]

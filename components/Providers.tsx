@@ -98,14 +98,12 @@ const Picture = forwardRef<
   const fileUrl = !source.startsWith("http") ? `https:${source}` : source;
   const [width, height] = fileUrl.match(/\/(\d+)x(\d+)\//)?.slice(1) || [];
 
-  console.log("fileUrl", fileUrl);
-
   return (
     <Image
       ref={internalRef}
       {...props}
       alt={isStoryblokAsset(src) ? src.alt || "" : props.alt || ""}
-      src={priority ? `${fileUrl}/filters:quality(50)` : fileUrl}
+      src={priority ? `${fileUrl}/m/filters:quality(50)` : fileUrl}
       width={parseInt(width, 10)}
       height={parseInt(height, 10)}
       priority={lazy === false || priority}

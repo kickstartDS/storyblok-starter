@@ -31,26 +31,14 @@ import { StoryblokSubComponent } from "./StoryblokSubComponent";
 import { TeaserProvider } from "./TeaserProvider";
 import { useBlurHashes } from "./BlurHashContext";
 import { useImagePriority } from "./ImagePriorityContext";
+import { AssetStoryblok, MultilinkStoryblok } from "@/types/components-schema";
 
-// TODO look for a better type for `href` in Storyblok
-type StoryblokLink = {
-  cached_url: string;
-  linktype: string;
-  story?: { full_slug: string; url: string; slug: string };
-  target?: string;
-  email?: string;
-};
-
-type StoryblokAsset = {
-  filename: string;
-};
-
-function isStoryblokLink(object: unknown): object is StoryblokLink {
-  return (object as StoryblokLink)?.linktype !== undefined;
+function isStoryblokLink(object: unknown): object is MultilinkStoryblok {
+  return (object as MultilinkStoryblok)?.linktype !== undefined;
 }
 
-function isStoryblokAsset(object: unknown): object is StoryblokAsset {
-  return (object as StoryblokAsset)?.filename !== undefined;
+function isStoryblokAsset(object: unknown): object is AssetStoryblok {
+  return (object as AssetStoryblok)?.filename !== undefined;
 }
 
 const Link = forwardRef<
@@ -87,7 +75,6 @@ const resetBackgroundBlurHash = (image: HTMLImageElement) => {
   });
 };
 
-// TODO look for a better type for `src` in Storyblok
 const Picture = forwardRef<
   HTMLImageElement,
   PictureProps & ImgHTMLAttributes<HTMLImageElement>
@@ -106,21 +93,17 @@ const Picture = forwardRef<
     if (internalRef.current) resetBackgroundBlurHash(internalRef.current);
   }, []);
 
-  if (!src || (isStoryblokAsset(src) && !(src as StoryblokAsset)?.filename))
-    return;
-  const source = isStoryblokAsset(src)
-    ? (src as StoryblokAsset)?.filename
-    : src;
-
+  if (!src || (isStoryblokAsset(src) && !src.filename)) return;
+  const source = isStoryblokAsset(src) ? src.filename : src;
   const fileUrl = !source.startsWith("http") ? `https:${source}` : source;
-
   const [width, height] = fileUrl.match(/\/(\d+)x(\d+)\//)?.slice(1) || [];
+
   return (
     <Image
       ref={internalRef}
-      alt=""
       {...props}
-      src={fileUrl}
+      alt={isStoryblokAsset(src) ? src.alt || "" : props.alt || ""}
+      src={priority ? `${fileUrl}/filters:quality(50)` : fileUrl}
       width={parseInt(width, 10)}
       height={parseInt(height, 10)}
       priority={lazy === false || priority}

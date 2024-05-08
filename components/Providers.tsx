@@ -98,6 +98,8 @@ const Picture = forwardRef<
   const fileUrl = !source.startsWith("http") ? `https:${source}` : source;
   const [width, height] = fileUrl.match(/\/(\d+)x(\d+)\//)?.slice(1) || [];
 
+  console.log("fileUrl", fileUrl);
+
   return (
     <Image
       ref={internalRef}

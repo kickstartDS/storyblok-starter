@@ -1,22 +1,25 @@
 import { GetStaticPaths, GetStaticProps, NextPage } from "next";
-import { StoryblokComponent, ISbStory, ISbStoryData } from "@storyblok/react";
-import { Cache } from "file-system-cache";
+import {
+  useStoryblokState,
+  StoryblokComponent,
+  ISbStory,
+  ISbStoryData,
+} from "@storyblok/react";
 import { fetchPageProps, fetchPaths } from "@/helpers/storyblok";
-import { traverse } from "object-traversal";
-import { isImgUrl } from "@/helpers/apiUtils";
 import { fontClassNames } from "@/helpers/fonts";
 
 type PageProps = ISbStory["data"] & {
   settings?: ISbStoryData["content"];
 };
 
-const Page: NextPage<PageProps> = ({ story }) => {
-  return (
+const Page: NextPage<PageProps> = ({ story: initialStory }) => {
+  const story = useStoryblokState(initialStory);
+  return story ? (
     <StoryblokComponent
       blok={story.content}
       data-font-class-names={fontClassNames}
     />
-  );
+  ) : null;
 };
 
 export default Page;
@@ -25,31 +28,28 @@ export const getStaticPaths = (async () => {
   return { paths: await fetchPaths(), fallback: false };
 }) satisfies GetStaticPaths;
 
-export const getStaticProps = (async ({ params }) => {
+export const getStaticProps = (async ({ params, previewData }) => {
+  if (!previewData) {
+    return {
+      notFound: true,
+    };
+  }
+
+  const StoryblokClient = await import("storyblok-js-client").then(
+    (mod) => mod.default
+  );
+  const previewStoryblokApi = new StoryblokClient({ accessToken: previewData });
   const slug = params?.slug?.join("/");
   try {
-    const { pageData, settingsData } = await fetchPageProps(slug);
-
-    const storyImages: string[] = [];
-    traverse(pageData, ({ value }) => {
-      if (isImgUrl(value)) {
-        storyImages.push(value.startsWith("//a") ? `https:${value}` : value);
-      }
-    });
-
-    const blurHashes: Record<string, string> = {};
-
-    const cache = new Cache({ basePath: "./public/blurhashes" });
-    await cache.load();
-
-    for (const imageUrl of storyImages) {
-      blurHashes[imageUrl] ||= cache.getSync(imageUrl) || null;
-    }
+    const { pageData, settingsData } = await fetchPageProps(
+      slug,
+      previewStoryblokApi
+    );
 
     return {
       props: {
         ...pageData,
-        blurHashes,
+        blurHashes: {},
         fontClassNames,
         settings: settingsData.stories[0]?.content || null,
         key: pageData.story.id,

@@ -58,4 +58,26 @@ export async function fetchStories(
   return response;
 }
 
+export async function fetchPaths() {
+  const { data } = await fetchStories();
+  return data.stories
+    .filter((story) => story.content.component !== "settings")
+    .map((story) => {
+      const slug =
+        story.full_slug === INDEX_SLUG ? [] : story.full_slug.split("/");
+      return { params: { slug } };
+    });
+}
+
+export async function fetchPageProps(
+  slug: string = INDEX_SLUG,
+  previewStoryblokApi?: StoryblokClient
+) {
+  const [{ data: pageData }, { data: settingsData }] = await Promise.all([
+    fetchStory(slug, previewStoryblokApi),
+    fetchStories({ content_type: "settings" }, previewStoryblokApi),
+  ]);
+  return { pageData, settingsData };
+}
+
 export const INDEX_SLUG = "home";

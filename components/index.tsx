@@ -12,9 +12,10 @@ import editablePage from "./Page";
 export const editable =
   (Component: React.ComponentType<any>, nestedBloksKey?: string) =>
   // eslint-disable-next-line react/display-name
-  ({ blok }: { blok: SbBlokData }) =>
-    (
-      <Component {...storyblokEditable(blok)} {...unflatten(blok)}>
+  ({ blok }: { blok: SbBlokData }) => {
+    const { component, components, type, typeProp, _uid, ...props } = unflatten(blok);
+    return (
+      <Component {...storyblokEditable(blok)} {...props} type={typeProp}>
         {nestedBloksKey &&
           (blok[nestedBloksKey] as SbBlokData[] | undefined)?.map(
             (nestedBlok) => (
@@ -23,6 +24,7 @@ export const editable =
           )}
       </Component>
     );
+  };
 
 export const components = {
   page: editablePage,

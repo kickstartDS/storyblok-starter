@@ -33,7 +33,7 @@
     "@kickstartds/blog": "^4.0.2",
     "@kickstartds/content": "^4.0.0",
     "@kickstartds/core": "^4.0.2",
-    "@kickstartds/ds-agency-premium": "^1.3.9",
+    "@kickstartds/ds-agency-premium": "^1.3.13",
     "@kickstartds/form": "^4.0.2",
     "@storyblok/react": "^3.0.9",
     "@unpic/pixels": "^1.2.2",

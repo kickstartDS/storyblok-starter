@@ -65,10 +65,11 @@ export async function fetchPaths() {
     .map((story) => {
       const slug =
         story.full_slug === INDEX_SLUG ? [] : story.full_slug.split("/");
+
       return {
         params: {
           slug,
-          updated_at: story.updated_at,
+          updated_at: story.published_at,
         },
       };
     });

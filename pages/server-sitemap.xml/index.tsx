@@ -12,7 +12,7 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
         loc: `${process.env.NEXT_PUBLIC_SITE_URL}/${path.params.slug.join(
           "/"
         )}`,
-        lastmod: path.params.updated_at,
+        lastmod: path.params.updated_at || new Date().toISOString(),
       };
     })
   );

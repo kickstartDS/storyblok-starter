@@ -25,7 +25,16 @@ const Page: NextPage<PageProps> = ({ story: initialStory }) => {
 export default Page;
 
 export const getStaticPaths = (async () => {
-  return { paths: await fetchPaths(), fallback: false };
+  return {
+    paths: (await fetchPaths()).map((path) => {
+      return {
+        params: {
+          slug: path.params.slug,
+        },
+      };
+    }),
+    fallback: false,
+  };
 }) satisfies GetStaticPaths;
 
 export const getStaticProps = (async ({ params, previewData }) => {

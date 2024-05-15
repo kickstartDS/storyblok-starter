@@ -1,9 +1,0 @@
-# *
-User-agent: *
-Allow: /
-
-# Host
-Host: https://lughausen.netlify.app
-
-# Sitemaps
-Sitemap: https://lughausen.netlify.app/sitemap.xml

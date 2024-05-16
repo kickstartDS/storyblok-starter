@@ -18,6 +18,7 @@ const displayFont = localFont({
     "'Times New Roman'",
     "serif",
   ],
+  adjustFontFallback: false,
 });
 
 const copyFont = localFont({
@@ -37,6 +38,7 @@ const copyFont = localFont({
   display: "optional",
   variable: "--ks-font-family-copy",
   fallback: ["'Helvetica Neue'", "Helvetica", "Arial", "sans-serif"],
+  adjustFontFallback: false,
 });
 
 const interfaceFont = localFont({
@@ -77,6 +79,7 @@ const interfaceFont = localFont({
     "Liberation Sans",
     "sans-serif",
   ],
+  adjustFontFallback: false,
 });
 
 export const fontClassNames = `${displayFont.variable} ${copyFont.variable} ${interfaceFont.variable}`;

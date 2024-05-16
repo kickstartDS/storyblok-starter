@@ -1,5 +1,7 @@
+import { useEffect } from "react";
 import type { NextPage } from "next";
 import type { AppProps } from "next/app";
+import { useRouter } from "next/router";
 
 import DsaProviders from "@kickstartds/ds-agency-premium/providers";
 import { Header } from "@kickstartds/ds-agency-premium/header";
@@ -9,13 +11,13 @@ import { unflatten } from "@/helpers/unflatten";
 import Meta from "@/components/Meta";
 import "lazysizes/plugins/attrchange/ls.attrchange";
 
-import StoryblokProviders from "../components/Providers";
+import StoryblokProviders from "@/components/Providers";
 
 import palette from "@kickstartds/ds-agency-premium/global.client.js";
 import "@kickstartds/ds-agency-premium/global.css";
-import IconSprite from "../token/IconSprite";
-import "../token/tokens.css";
-import "../index.scss";
+import IconSprite from "@/token/IconSprite";
+import "@/token/tokens.css";
+import "@/index.scss";
 import { BlurHashProvider } from "@/components/BlurHashContext";
 
 initStoryblok(process.env.NEXT_STORYBLOK_API_TOKEN);
@@ -23,6 +25,10 @@ if (typeof window !== "undefined") {
   console.log(palette);
 }
 
+const handleRouteChange = (url: string) => {
+  // close mobile nav
+  window._ks.radio.emit("location.change", url);
+};
 export default function App({
   Component,
   pageProps,
@@ -32,6 +38,12 @@ export default function App({
   const { settings, story, blurHashes } = pageProps;
   const headerProps = settings?.header[0];
   const footerProps = settings?.footer[0];
+  const router = useRouter();
+
+  useEffect(() => {
+    router.events.on("routeChangeStart", handleRouteChange);
+    return () => router.events.off("routeChangeStart", handleRouteChange);
+  }, [router.events]);
 
   return (
     <BlurHashProvider blurHashes={blurHashes}>

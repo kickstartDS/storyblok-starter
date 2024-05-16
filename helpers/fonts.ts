@@ -3,7 +3,7 @@ import localFont from "next/font/local";
 const displayFont = localFont({
   src: [
     {
-      path: "../token/fonts/novelpro-regular.woff",
+      path: "../token/fonts/novelpro-regular.woff2",
       weight: "400",
       style: "normal",
     },
@@ -24,12 +24,12 @@ const displayFont = localFont({
 const copyFont = localFont({
   src: [
     {
-      path: "../token/fonts/novelsanspro-regular.woff",
+      path: "../token/fonts/novelsanspro-regular.woff2",
       weight: "400",
       style: "normal",
     },
     {
-      path: "../token/fonts/novelsanspro-bold.woff",
+      path: "../token/fonts/novelsanspro-bold.woff2",
       weight: "700",
       style: "normal",
     },
@@ -44,12 +44,12 @@ const copyFont = localFont({
 const interfaceFont = localFont({
   src: [
     {
-      path: "../token/fonts/novelsanspro-regular.woff",
+      path: "../token/fonts/novelsanspro-regular.woff2",
       weight: "400",
       style: "normal",
     },
     {
-      path: "../token/fonts/novelsanspro-bold.woff",
+      path: "../token/fonts/novelsanspro-bold.woff2",
       weight: "700",
       style: "normal",
     },
@@ -85,7 +85,7 @@ const interfaceFont = localFont({
 const displayFontPreview = localFont({
   src: [
     {
-      path: "../token/fonts/novelpro-regular.woff",
+      path: "../token/fonts/novelpro-regular.woff2",
       weight: "400",
       style: "normal",
     },
@@ -106,12 +106,12 @@ const displayFontPreview = localFont({
 const copyFontPreview = localFont({
   src: [
     {
-      path: "../token/fonts/novelsanspro-regular.woff",
+      path: "../token/fonts/novelsanspro-regular.woff2",
       weight: "400",
       style: "normal",
     },
     {
-      path: "../token/fonts/novelsanspro-bold.woff",
+      path: "../token/fonts/novelsanspro-bold.woff2",
       weight: "700",
       style: "normal",
     },
@@ -126,12 +126,12 @@ const copyFontPreview = localFont({
 const interfaceFontPreview = localFont({
   src: [
     {
-      path: "../token/fonts/novelsanspro-regular.woff",
+      path: "../token/fonts/novelsanspro-regular.woff2",
       weight: "400",
       style: "normal",
     },
     {
-      path: "../token/fonts/novelsanspro-bold.woff",
+      path: "../token/fonts/novelsanspro-bold.woff2",
       weight: "700",
       style: "normal",
     },

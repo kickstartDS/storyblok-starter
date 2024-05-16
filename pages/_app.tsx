@@ -29,6 +29,16 @@ const handleRouteChange = (url: string) => {
   // close mobile nav
   window._ks.radio.emit("location.change", url);
 };
+
+const setActiveNavItem = (navItems: any[] = [], currentRoute: string) => {
+  for (const navItem of navItems) {
+    navItem.active =
+      navItem.href.linktype === "story" &&
+      ("/" + navItem.href.story.url === currentRoute ||
+        navItem.href.story.url === currentRoute);
+  }
+};
+
 export default function App({
   Component,
   pageProps,
@@ -39,6 +49,9 @@ export default function App({
   const headerProps = settings?.header[0];
   const footerProps = settings?.footer[0];
   const router = useRouter();
+
+  setActiveNavItem(headerProps?.navItems, router.asPath);
+  setActiveNavItem(footerProps?.navItems, router.asPath);
 
   useEffect(() => {
     router.events.on("routeChangeStart", handleRouteChange);

@@ -6,7 +6,7 @@ import {
   ISbStoryData,
 } from "@storyblok/react";
 import { fetchPageProps, fetchPaths } from "@/helpers/storyblok";
-import { fontClassNames } from "@/helpers/fonts";
+import { fontClassNamesPreview } from "@/helpers/fonts";
 
 type PageProps = ISbStory["data"] & {
   settings?: ISbStoryData["content"];
@@ -17,7 +17,7 @@ const Page: NextPage<PageProps> = ({ story: initialStory }) => {
   return story ? (
     <StoryblokComponent
       blok={story.content}
-      data-font-class-names={fontClassNames}
+      data-font-class-names={fontClassNamesPreview}
     />
   ) : null;
 };
@@ -59,7 +59,7 @@ export const getStaticProps = (async ({ params, previewData }) => {
       props: {
         ...pageData,
         blurHashes: {},
-        fontClassNames,
+        fontClassNames: fontClassNamesPreview,
         settings: settingsData.stories[0]?.content || null,
         key: pageData.story.id,
       },

@@ -3,9 +3,8 @@
   --dsa-button_primary--color_hover: var(--ks-text-color-default-inverted);
   --dsa-button_primary--color_active: var(--ks-text-color-default-inverted);
 
-  display: inline-block;
-
   span {
-    vertical-align: bottom;
+    transform: translateY(3%);
+    line-height: var(--c-button--icon-size);
   }
 }

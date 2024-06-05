@@ -10,7 +10,10 @@ import NextLink from "next/link";
 import { blurhashToCssGradientString } from "@unpic/placeholder";
 import { Image } from "@unpic/react/nextjs";
 
-import { PictureContext } from "@kickstartds/base/lib/picture";
+import {
+  PictureContext,
+  PictureContextDefault,
+} from "@kickstartds/base/lib/picture";
 import { LinkContext, LinkProps } from "@kickstartds/base/lib/link";
 import { PictureProps } from "@kickstartds/base/lib/picture/typing";
 
@@ -89,7 +92,16 @@ const Picture = forwardRef<
   const fileUrl = !source.startsWith("http") ? `https:${source}` : source;
 
   const [width, height] = fileUrl.match(/\/(\d+)x(\d+)\//)?.slice(1) || [];
-  return (
+  // Don't optimize SVG images - https://github.com/kickstartDS/storyblok-starter/issues/19
+  return fileUrl.endsWith(".svg") ? (
+    <PictureContextDefault
+      ref={ref}
+      {...props}
+      src={fileUrl}
+      width={parseInt(width, 10)}
+      height={parseInt(height, 10)}
+    />
+  ) : (
     <Image
       ref={ref}
       alt=""

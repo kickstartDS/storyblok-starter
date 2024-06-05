@@ -80,8 +80,8 @@ const resetBackgroundBlurHash = (image: HTMLImageElement) => {
 
 const Picture = forwardRef<
   HTMLImageElement,
-  PictureProps & ImgHTMLAttributes<HTMLImageElement>
->(({ src, lazy, ...props }, ref) => {
+  PictureProps & ImgHTMLAttributes<HTMLImageElement> & { autoSize?: boolean }
+>(({ src, lazy, autoSize, ...props }, ref) => {
   const internalRef = useRef<HTMLImageElement>(null);
 
   const blurHashes = useBlurHashes();
@@ -118,8 +118,8 @@ const Picture = forwardRef<
       {...props}
       alt={isStoryblokAsset(src) ? src.alt || "" : props.alt || ""}
       src={priority ? `${fileUrl}/m/filters:quality(50)` : fileUrl}
-      width={parseInt(width, 10)}
-      height={parseInt(height, 10)}
+      width={autoSize ? undefined : parseInt(width, 10)}
+      height={autoSize ? undefined : parseInt(height, 10)}
       priority={lazy === false || priority}
       onLoad={(event) => {
         if (event.target instanceof HTMLImageElement) {

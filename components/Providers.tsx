@@ -131,6 +131,8 @@ const Picture = forwardRef<
           ? blurhashToCssGradientString(blurHashes[fileUrl])
           : undefined
       }
+      // @ts-expect-error `null` is not documented
+      objectFit={null}
     />
   );
 });

@@ -1,0 +1,23 @@
+:root {
+  .dsa-header {
+    --dsa-logo--height: 2.35rem;
+    --dsa-header--spacing-vertical: var(--ks-spacing-l);
+    --dsa-header--spacing-horizontal: var(--ks-spacing-l);
+
+    z-index: 2;
+    @media (min-width: "36rem") {
+      --dsa-header--spacing-vertical: var(--ks-spacing-m);
+    }
+
+    button.nav-toggle {
+      --nav-toggle__icon-bar--offset: 17px;
+    }
+
+    @media (min-width: "36rem") {
+      --dsa-logo--height: 2.5rem;
+      button.nav-toggle {
+        --nav-toggle__icon-bar--offset: 18px;
+      }
+    }
+  }
+}

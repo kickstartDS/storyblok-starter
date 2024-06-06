@@ -3,7 +3,16 @@
   --dsa-nav-main__link--font-weight_active: var(--ks-font-weight-bold);
   --dsa-nav-main__link--font: var(--ks-font-interface-s);
 
+  button.nav-toggle {
+    --nav-toggle__icon-bar--offset: 17px;
+    @media (min-width: "36rem") {
+      --nav-toggle__icon-bar--offset: 18px;
+    }
+  }
+
   .nav-main__link {
     text-transform: uppercase;
   }
+
+  padding: 0 var(--dsa-section__content--padding);
 }

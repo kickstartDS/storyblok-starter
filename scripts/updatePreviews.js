@@ -2,10 +2,7 @@ const fs = require("node:fs");
 const glob = require("fast-glob");
 const PromiseThrottle = require("promise-throttle");
 const FormData = require("form-data");
-const sizeOf = require("image-size");
 const StoryblokClient = require("storyblok-js-client");
-const ffprobe = require("ffprobe");
-const ffprobeStatic = require("ffprobe-static");
 const { basename } = require("node:path");
 
 require("dotenv").config({ path: ".env.local" });

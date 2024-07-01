@@ -60,7 +60,8 @@ You can use this button to deploy the EnergyUI@Storyblok starter repo on Vercel.
    5. `yarn build-storybook` to build a Storybook that can then be used to create screenshots
    6. `yarn create-component-previews` to re-create the existing previews with your branding
    7. `mkdir -p YOUR_WEBSITE/public/img && rm -rf YOUR_WEBSITE/public/img/screenshots && cp -r static/img/screenshots YOUR_WEBSITE/public/img/` to copy the generated screenshots to your project
-   8. `npm run update-previews` to update those newly created screenshots in Storyblok
+   8. `cd YOUR_WEBSITE` to switch to your website project
+   9. `npm run update-previews` to update those newly created screenshots in your Storyblok space
 3. That's it!
 
 ## Working with the content schema

@@ -13,6 +13,7 @@ import { getPixels } from "@unpic/pixels";
 import { traverse } from "object-traversal";
 import { isImgUrl } from "@/helpers/apiUtils";
 import { fontClassNames } from "@/helpers/fonts";
+import { HeadlineLevelProvider } from "@/components/headline/HeadlineLevelContext";
 
 type PageProps = ISbStory["data"] & {
   settings?: ISbStoryData["content"];
@@ -21,10 +22,12 @@ type PageProps = ISbStory["data"] & {
 const Page: NextPage<PageProps> = ({ story: initialStory }) => {
   const story = useStoryblokState(initialStory);
   return story ? (
-    <StoryblokComponent
-      blok={story.content}
-      data-font-class-names={fontClassNames}
-    />
+    <HeadlineLevelProvider>
+      <StoryblokComponent
+        blok={story.content}
+        data-font-class-names={fontClassNames}
+      />
+    </HeadlineLevelProvider>
   ) : null;
 };
 

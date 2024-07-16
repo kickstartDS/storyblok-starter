@@ -5,6 +5,9 @@ import {
   ImgHTMLAttributes,
   PropsWithChildren,
   forwardRef,
+  useEffect,
+  useImperativeHandle,
+  useRef,
 } from "react";
 import NextLink from "next/link";
 import { blurhashToCssGradientString } from "@unpic/placeholder";
@@ -17,39 +20,28 @@ import {
 import { LinkContext, LinkProps } from "@kickstartds/base/lib/link";
 import { PictureProps } from "@kickstartds/base/lib/picture/typing";
 
-import { BlogTeaserContext } from "@kickstartds/ds-agency/blog-teaser";
-import { BlogAsideContext } from "@kickstartds/ds-agency/blog-aside";
-import { BlogHeadContext } from "@kickstartds/ds-agency/blog-head";
-import { CtaContext } from "@kickstartds/ds-agency/cta";
-import { FeatureContext } from "@kickstartds/ds-agency/feature";
-import { LogoContext } from "@kickstartds/ds-agency/logo";
-import { StatContext } from "@kickstartds/ds-agency/stat";
-import { TestimonialContext } from "@kickstartds/ds-agency/testimonial";
+import { BlogTeaserContext } from "@kickstartds/ds-agency-premium/blog-teaser";
+import { BlogAsideContext } from "@kickstartds/ds-agency-premium/blog-aside";
+import { BlogHeadContext } from "@kickstartds/ds-agency-premium/blog-head";
+import { CtaContext } from "@kickstartds/ds-agency-premium/cta";
+import { FeatureContext } from "@kickstartds/ds-agency-premium/feature";
+import { StatContext } from "@kickstartds/ds-agency-premium/stat";
+import { TestimonialContext } from "@kickstartds/ds-agency-premium/testimonial";
+
+import { INDEX_SLUG } from "@/helpers/storyblok";
 
 import { StoryblokSubComponent } from "./StoryblokSubComponent";
 import { TeaserProvider } from "./TeaserProvider";
 import { useBlurHashes } from "./BlurHashContext";
 import { useImagePriority } from "./ImagePriorityContext";
+import { AssetStoryblok, MultilinkStoryblok } from "@/types/components-schema";
 
-// TODO look for a better type for `href` in Storyblok
-type StoryblokLink = {
-  cached_url: string;
-  linktype: string;
-  story?: { full_slug: string; url: string; slug: string };
-  target?: string;
-  email?: string;
-};
-
-type StoryblokAsset = {
-  filename: string;
-};
-
-function isStoryblokLink(object: unknown): object is StoryblokLink {
-  return (object as StoryblokLink)?.linktype !== undefined;
+function isStoryblokLink(object: unknown): object is MultilinkStoryblok {
+  return (object as MultilinkStoryblok)?.linktype !== undefined;
 }
 
-function isStoryblokAsset(object: unknown): object is StoryblokAsset {
-  return (object as StoryblokAsset)?.filename !== undefined;
+function isStoryblokAsset(object: unknown): object is AssetStoryblok {
+  return (object as AssetStoryblok)?.filename !== undefined;
 }
 
 const Link = forwardRef<
@@ -60,6 +52,8 @@ const Link = forwardRef<
     const linkTarget =
       href.linktype === "email"
         ? `mailto:${href.email}`
+        : href.story?.full_slug === INDEX_SLUG
+        ? "/"
         : href.cached_url || href.story?.full_slug;
     return (
       <NextLink
@@ -78,44 +72,67 @@ const LinkProvider: FC<PropsWithChildren> = (props) => (
   <LinkContext.Provider value={Link} {...props} />
 );
 
-// TODO look for a better type for `src` in Storyblok
+const resetBackgroundBlurHash = (image: HTMLImageElement) => {
+  requestAnimationFrame(() => {
+    image.style.background = "";
+  });
+};
+
 const Picture = forwardRef<
   HTMLImageElement,
-  PictureProps & ImgHTMLAttributes<HTMLImageElement>
->(({ src, ...props }, ref) => {
+  PictureProps & ImgHTMLAttributes<HTMLImageElement> & { autoSize?: boolean }
+>(({ src, lazy, autoSize, ...props }, ref) => {
+  const internalRef = useRef<HTMLImageElement>(null);
+
   const blurHashes = useBlurHashes();
   const priority = useImagePriority();
 
-  if (!src) return;
-  const source = isStoryblokAsset(src)
-    ? (src as StoryblokAsset)?.filename
-    : src;
-  const fileUrl = !source.startsWith("http") ? `https:${source}` : source;
+  useImperativeHandle<HTMLImageElement | null, HTMLImageElement | null>(
+    ref,
+    () => internalRef.current
+  );
 
+  useEffect(() => {
+    if (internalRef.current) resetBackgroundBlurHash(internalRef.current);
+  }, []);
+
+  if (!src || (isStoryblokAsset(src) && !src.filename)) return;
+  const source = isStoryblokAsset(src) ? src.filename : src;
+  const fileUrl = !source.startsWith("http") ? `https:${source}` : source;
   const [width, height] = fileUrl.match(/\/(\d+)x(\d+)\//)?.slice(1) || [];
+
   // Don't optimize SVG images - https://github.com/kickstartDS/storyblok-starter/issues/19
   return fileUrl.endsWith(".svg") ? (
     <PictureContextDefault
-      ref={ref}
+      ref={internalRef}
       {...props}
       src={fileUrl}
       width={parseInt(width, 10)}
       height={parseInt(height, 10)}
+      alt={isStoryblokAsset(src) ? src.alt || "" : props.alt || ""}
+      lazy={lazy}
     />
   ) : (
     <Image
-      ref={ref}
-      alt=""
+      ref={internalRef}
       {...props}
-      src={fileUrl}
-      width={parseInt(width, 10)}
-      height={parseInt(height, 10)}
-      priority={priority}
+      alt={isStoryblokAsset(src) ? src.alt || "" : props.alt || ""}
+      src={priority ? `${fileUrl}/m/filters:quality(50)` : fileUrl}
+      width={autoSize ? undefined : parseInt(width, 10)}
+      height={autoSize ? undefined : parseInt(height, 10)}
+      priority={lazy === false || priority}
+      onLoad={(event) => {
+        if (event.target instanceof HTMLImageElement) {
+          resetBackgroundBlurHash(event.target);
+        }
+      }}
       background={
         blurHashes[fileUrl]
           ? blurhashToCssGradientString(blurHashes[fileUrl])
           : undefined
       }
+      // @ts-expect-error `null` is not documented
+      objectFit={null}
     />
   );
 });
@@ -133,24 +150,21 @@ const Providers = (props: PropsWithChildren) => (
           {/* @ts-expect-error */}
           <FeatureContext.Provider value={StoryblokSubComponent}>
             {/* @ts-expect-error */}
-            <LogoContext.Provider value={StoryblokSubComponent}>
+            <StatContext.Provider value={StoryblokSubComponent}>
               {/* @ts-expect-error */}
-              <StatContext.Provider value={StoryblokSubComponent}>
+              <TestimonialContext.Provider value={StoryblokSubComponent}>
                 {/* @ts-expect-error */}
-                <TestimonialContext.Provider value={StoryblokSubComponent}>
+                <BlogHeadContext.Provider value={StoryblokSubComponent}>
                   {/* @ts-expect-error */}
-                  <BlogHeadContext.Provider value={StoryblokSubComponent}>
+                  <BlogAsideContext.Provider value={StoryblokSubComponent}>
                     {/* @ts-expect-error */}
-                    <BlogAsideContext.Provider value={StoryblokSubComponent}>
-                      {/* @ts-expect-error */}
-                      <BlogTeaserContext.Provider value={StoryblokSubComponent}>
-                        {props.children}
-                      </BlogTeaserContext.Provider>
-                    </BlogAsideContext.Provider>
-                  </BlogHeadContext.Provider>
-                </TestimonialContext.Provider>
-              </StatContext.Provider>
-            </LogoContext.Provider>
+                    <BlogTeaserContext.Provider value={StoryblokSubComponent}>
+                      {props.children}
+                    </BlogTeaserContext.Provider>
+                  </BlogAsideContext.Provider>
+                </BlogHeadContext.Provider>
+              </TestimonialContext.Provider>
+            </StatContext.Provider>
           </FeatureContext.Provider>
         </CtaContext.Provider>
       </TeaserProvider>

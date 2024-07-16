@@ -3,7 +3,7 @@
     "border-color": {
       "accent": {
         "base": {
-          "value": "{ks.color.fg.alpha.8.base}",
+          "value": "{ks.color.primary.to-bg.8.base}",
           "attributes": {
             "category": "color"
           },
@@ -15,7 +15,7 @@
       },
       "accent-inverted": {
         "base": {
-          "value": "{ks.color.fg-inverted.alpha.8.base}",
+          "value": "{ks.color.primary-inverted.to-bg.8.base}",
           "attributes": {
             "category": "color"
           },
@@ -171,7 +171,7 @@
       },
       "interface": {
         "base": {
-          "value": "{ks.color.fg.alpha.9.base}",
+          "value": "{ks.color.fg.alpha.8.base}",
           "attributes": {
             "category": "color"
           },
@@ -205,7 +205,7 @@
           },
           "hover": {
             "base": {
-              "value": "{ks.color.fg.alpha.3.base}",
+              "value": "{ks.color.fg.alpha.5.base}",
               "attributes": {
                 "category": "color"
               },
@@ -217,7 +217,79 @@
           },
           "active": {
             "base": {
-              "value": "{ks.color.secondary.base}",
+              "value": "{ks.color.fg.alpha.5.base}",
+              "attributes": {
+                "category": "color"
+              },
+              "token": {
+                "category": "Colors: Border Interface",
+                "presenter": "Color"
+              }
+            }
+          },
+          "selected": {
+            "base": {
+              "value": "{ks.color.primary.base}",
+              "attributes": {
+                "category": "color"
+              },
+              "token": {
+                "category": "Colors: Border Interface",
+                "presenter": "Color"
+              }
+            }
+          }
+        }
+      },
+      "interface-inverted": {
+        "base": {
+          "value": "{ks.color.fg-inverted.alpha.8.base}",
+          "attributes": {
+            "category": "color"
+          },
+          "token": {
+            "category": "Colors: Border Interface",
+            "presenter": "Color"
+          }
+        },
+        "interactive": {
+          "base": {
+            "value": "{ks.color.fg-inverted.alpha.7.base}",
+            "attributes": {
+              "category": "color"
+            },
+            "token": {
+              "category": "Colors: Border Interface",
+              "presenter": "Color"
+            }
+          },
+          "disabled": {
+            "base": {
+              "value": "{ks.color.fg-inverted.alpha.8.base}",
+              "attributes": {
+                "category": "color"
+              },
+              "token": {
+                "category": "Colors: Border Interface",
+                "presenter": "Color"
+              }
+            }
+          },
+          "hover": {
+            "base": {
+              "value": "{ks.color.fg-inverted.alpha.5.base}",
+              "attributes": {
+                "category": "color"
+              },
+              "token": {
+                "category": "Colors: Border Interface",
+                "presenter": "Color"
+              }
+            }
+          },
+          "active": {
+            "base": {
+              "value": "{ks.color.fg-inverted.alpha.5.base}",
               "attributes": {
                 "category": "color"
               },
@@ -241,60 +313,60 @@
           }
         }
       },
-      "interface-inverted": {
+      "card": {
         "base": {
-          "value": "{ks.color.fg-inverted.alpha.9.base}",
+          "value": "{ks.color.fg.alpha.9.base}",
           "attributes": {
             "category": "color"
           },
           "token": {
-            "category": "Colors: Border Interface",
+            "category": "Colors: Border Card",
             "presenter": "Color"
           }
         },
         "interactive": {
           "base": {
-            "value": "{ks.color.fg-inverted.alpha.7.base}",
+            "value": "{ks.color.fg.alpha.7.base}",
             "attributes": {
               "category": "color"
             },
             "token": {
-              "category": "Colors: Border Interface",
+              "category": "Colors: Border Card",
               "presenter": "Color"
             }
           },
           "disabled": {
             "base": {
-              "value": "{ks.color.fg-inverted.alpha.2.base}",
+              "value": "{ks.color.fg.alpha.8.base}",
               "attributes": {
                 "category": "color"
               },
               "token": {
-                "category": "Colors: Border Interface",
+                "category": "Colors: Border Card",
                 "presenter": "Color"
               }
             }
           },
           "hover": {
             "base": {
-              "value": "{ks.color.fg-inverted.alpha.3.base}",
+              "value": "{ks.color.fg.alpha.5.base}",
               "attributes": {
                 "category": "color"
               },
               "token": {
-                "category": "Colors: Border Interface",
+                "category": "Colors: Border Card",
                 "presenter": "Color"
               }
             }
           },
           "active": {
             "base": {
-              "value": "{ks.color.secondary-inverted.base}",
+              "value": "{ks.color.fg.alpha.3.base}",
               "attributes": {
                 "category": "color"
               },
               "token": {
-                "category": "Colors: Border Interface",
+                "category": "Colors: Border Card",
                 "presenter": "Color"
               }
             }
@@ -306,7 +378,79 @@
                 "category": "color"
               },
               "token": {
-                "category": "Colors: Border Interface",
+                "category": "Colors: Border Card",
+                "presenter": "Color"
+              }
+            }
+          }
+        }
+      },
+      "card-inverted": {
+        "base": {
+          "value": "{ks.color.fg-inverted.alpha.9.base}",
+          "attributes": {
+            "category": "color"
+          },
+          "token": {
+            "category": "Colors: Border Card",
+            "presenter": "Color"
+          }
+        },
+        "interactive": {
+          "base": {
+            "value": "{ks.color.fg-inverted.alpha.5.base}",
+            "attributes": {
+              "category": "color"
+            },
+            "token": {
+              "category": "Colors: Border Card",
+              "presenter": "Color"
+            }
+          },
+          "disabled": {
+            "base": {
+              "value": "{ks.color.fg-inverted.alpha.2.base}",
+              "attributes": {
+                "category": "color"
+              },
+              "token": {
+                "category": "Colors: Border Card",
+                "presenter": "Color"
+              }
+            }
+          },
+          "hover": {
+            "base": {
+              "value": "{ks.color.fg-inverted.alpha.3.base}",
+              "attributes": {
+                "category": "color"
+              },
+              "token": {
+                "category": "Colors: Border Card",
+                "presenter": "Color"
+              }
+            }
+          },
+          "active": {
+            "base": {
+              "value": "{ks.color.fg-inverted.alpha.1.base}",
+              "attributes": {
+                "category": "color"
+              },
+              "token": {
+                "category": "Colors: Border Card",
+                "presenter": "Color"
+              }
+            }
+          },
+          "selected": {
+            "base": {
+              "value": "{ks.color.primary-inverted.base}",
+              "attributes": {
+                "category": "color"
+              },
+              "token": {
+                "category": "Colors: Border Card",
                 "presenter": "Color"
               }
             }
@@ -452,6 +596,726 @@
             },
             "token": {
               "category": "Colors: Border Primary",
+              "presenter": "Color"
+            }
+          }
+        }
+      },
+      "positive": {
+        "base": {
+          "value": "{ks.color.positive.base}",
+          "attributes": {
+            "category": "color"
+          },
+          "token": {
+            "category": "Colors: Border Positive",
+            "presenter": "Color"
+          }
+        },
+        "interactive": {
+          "base": {
+            "value": "{ks.color.positive.base}",
+            "attributes": {
+              "category": "color"
+            },
+            "token": {
+              "category": "Colors: Border Positive",
+              "presenter": "Color"
+            }
+          },
+          "hover": {
+            "base": {
+              "value": "{ks.color.positive.to-bg.2.base}",
+              "attributes": {
+                "category": "color"
+              },
+              "token": {
+                "category": "Colors: Border Positive",
+                "presenter": "Color"
+              }
+            }
+          },
+          "active": {
+            "base": {
+              "value": "{ks.color.positive.to-bg.3.base}",
+              "attributes": {
+                "category": "color"
+              },
+              "token": {
+                "category": "Colors: Border Positive",
+                "presenter": "Color"
+              }
+            }
+          },
+          "selected": {
+            "base": {
+              "value": "{ks.color.positive.base}",
+              "attributes": {
+                "category": "color"
+              },
+              "token": {
+                "category": "Colors: Border Positive",
+                "presenter": "Color"
+              }
+            }
+          }
+        },
+        "translucent": {
+          "base": {
+            "value": "{ks.color.positive.alpha.2.base}",
+            "attributes": {
+              "category": "color"
+            },
+            "token": {
+              "category": "Colors: Border Positive",
+              "presenter": "Color"
+            }
+          }
+        }
+      },
+      "positive-inverted": {
+        "base": {
+          "value": "{ks.color.positive-inverted.base}",
+          "attributes": {
+            "category": "color"
+          },
+          "token": {
+            "category": "Colors: Border Positive",
+            "presenter": "Color"
+          }
+        },
+        "interactive": {
+          "base": {
+            "value": "{ks.color.positive-inverted.base}",
+            "attributes": {
+              "category": "color"
+            },
+            "token": {
+              "category": "Colors: Border Positive",
+              "presenter": "Color"
+            }
+          },
+          "hover": {
+            "base": {
+              "value": "{ks.color.positive-inverted.to-bg.2.base}",
+              "attributes": {
+                "category": "color"
+              },
+              "token": {
+                "category": "Colors: Border Positive",
+                "presenter": "Color"
+              }
+            }
+          },
+          "active": {
+            "base": {
+              "value": "{ks.color.positive-inverted.to-bg.3.base}",
+              "attributes": {
+                "category": "color"
+              },
+              "token": {
+                "category": "Colors: Border Positive",
+                "presenter": "Color"
+              }
+            }
+          },
+          "selected": {
+            "base": {
+              "value": "{ks.color.positive-inverted.base}",
+              "attributes": {
+                "category": "color"
+              },
+              "token": {
+                "category": "Colors: Border Positive",
+                "presenter": "Color"
+              }
+            }
+          }
+        },
+        "translucent": {
+          "base": {
+            "value": "{ks.color.positive-inverted.alpha.2.base}",
+            "attributes": {
+              "category": "color"
+            },
+            "token": {
+              "category": "Colors: Border Positive",
+              "presenter": "Color"
+            }
+          }
+        }
+      },
+      "informative": {
+        "base": {
+          "value": "{ks.color.informative.base}",
+          "attributes": {
+            "category": "color"
+          },
+          "token": {
+            "category": "Colors: Border Informative",
+            "presenter": "Color"
+          }
+        },
+        "interactive": {
+          "base": {
+            "value": "{ks.color.informative.base}",
+            "attributes": {
+              "category": "color"
+            },
+            "token": {
+              "category": "Colors: Border Informative",
+              "presenter": "Color"
+            }
+          },
+          "hover": {
+            "base": {
+              "value": "{ks.color.informative.to-bg.2.base}",
+              "attributes": {
+                "category": "color"
+              },
+              "token": {
+                "category": "Colors: Border Informative",
+                "presenter": "Color"
+              }
+            }
+          },
+          "active": {
+            "base": {
+              "value": "{ks.color.informative.to-bg.3.base}",
+              "attributes": {
+                "category": "color"
+              },
+              "token": {
+                "category": "Colors: Border Informative",
+                "presenter": "Color"
+              }
+            }
+          },
+          "selected": {
+            "base": {
+              "value": "{ks.color.informative.base}",
+              "attributes": {
+                "category": "color"
+              },
+              "token": {
+                "category": "Colors: Border Informative",
+                "presenter": "Color"
+              }
+            }
+          }
+        },
+        "translucent": {
+          "base": {
+            "value": "{ks.color.informative.alpha.2.base}",
+            "attributes": {
+              "category": "color"
+            },
+            "token": {
+              "category": "Colors: Border Informative",
+              "presenter": "Color"
+            }
+          }
+        }
+      },
+      "informative-inverted": {
+        "base": {
+          "value": "{ks.color.informative-inverted.base}",
+          "attributes": {
+            "category": "color"
+          },
+          "token": {
+            "category": "Colors: Border Informative",
+            "presenter": "Color"
+          }
+        },
+        "interactive": {
+          "base": {
+            "value": "{ks.color.informative-inverted.base}",
+            "attributes": {
+              "category": "color"
+            },
+            "token": {
+              "category": "Colors: Border Informative",
+              "presenter": "Color"
+            }
+          },
+          "hover": {
+            "base": {
+              "value": "{ks.color.informative-inverted.to-bg.2.base}",
+              "attributes": {
+                "category": "color"
+              },
+              "token": {
+                "category": "Colors: Border Informative",
+                "presenter": "Color"
+              }
+            }
+          },
+          "active": {
+            "base": {
+              "value": "{ks.color.informative-inverted.to-bg.3.base}",
+              "attributes": {
+                "category": "color"
+              },
+              "token": {
+                "category": "Colors: Border Informative",
+                "presenter": "Color"
+              }
+            }
+          },
+          "selected": {
+            "base": {
+              "value": "{ks.color.informative-inverted.base}",
+              "attributes": {
+                "category": "color"
+              },
+              "token": {
+                "category": "Colors: Border Informative",
+                "presenter": "Color"
+              }
+            }
+          }
+        },
+        "translucent": {
+          "base": {
+            "value": "{ks.color.informative-inverted.alpha.2.base}",
+            "attributes": {
+              "category": "color"
+            },
+            "token": {
+              "category": "Colors: Border Informative",
+              "presenter": "Color"
+            }
+          }
+        }
+      },
+      "notice": {
+        "base": {
+          "value": "{ks.color.notice.base}",
+          "attributes": {
+            "category": "color"
+          },
+          "token": {
+            "category": "Colors: Border Notice",
+            "presenter": "Color"
+          }
+        },
+        "interactive": {
+          "base": {
+            "value": "{ks.color.notice.base}",
+            "attributes": {
+              "category": "color"
+            },
+            "token": {
+              "category": "Colors: Border Notice",
+              "presenter": "Color"
+            }
+          },
+          "hover": {
+            "base": {
+              "value": "{ks.color.notice.to-bg.2.base}",
+              "attributes": {
+                "category": "color"
+              },
+              "token": {
+                "category": "Colors: Border Notice",
+                "presenter": "Color"
+              }
+            }
+          },
+          "active": {
+            "base": {
+              "value": "{ks.color.notice.to-bg.3.base}",
+              "attributes": {
+                "category": "color"
+              },
+              "token": {
+                "category": "Colors: Border Notice",
+                "presenter": "Color"
+              }
+            }
+          },
+          "selected": {
+            "base": {
+              "value": "{ks.color.notice.base}",
+              "attributes": {
+                "category": "color"
+              },
+              "token": {
+                "category": "Colors: Border Notice",
+                "presenter": "Color"
+              }
+            }
+          }
+        },
+        "translucent": {
+          "base": {
+            "value": "{ks.color.notice.alpha.2.base}",
+            "attributes": {
+              "category": "color"
+            },
+            "token": {
+              "category": "Colors: Border Notice",
+              "presenter": "Color"
+            }
+          }
+        }
+      },
+      "notice-inverted": {
+        "base": {
+          "value": "{ks.color.notice-inverted.base}",
+          "attributes": {
+            "category": "color"
+          },
+          "token": {
+            "category": "Colors: Border Notice",
+            "presenter": "Color"
+          }
+        },
+        "interactive": {
+          "base": {
+            "value": "{ks.color.notice-inverted.base}",
+            "attributes": {
+              "category": "color"
+            },
+            "token": {
+              "category": "Colors: Border Notice",
+              "presenter": "Color"
+            }
+          },
+          "hover": {
+            "base": {
+              "value": "{ks.color.notice-inverted.to-bg.2.base}",
+              "attributes": {
+                "category": "color"
+              },
+              "token": {
+                "category": "Colors: Border Notice",
+                "presenter": "Color"
+              }
+            }
+          },
+          "active": {
+            "base": {
+              "value": "{ks.color.notice-inverted.to-bg.3.base}",
+              "attributes": {
+                "category": "color"
+              },
+              "token": {
+                "category": "Colors: Border Notice",
+                "presenter": "Color"
+              }
+            }
+          },
+          "selected": {
+            "base": {
+              "value": "{ks.color.notice-inverted.base}",
+              "attributes": {
+                "category": "color"
+              },
+              "token": {
+                "category": "Colors: Border Notice",
+                "presenter": "Color"
+              }
+            }
+          }
+        },
+        "translucent": {
+          "base": {
+            "value": "{ks.color.notice-inverted.alpha.2.base}",
+            "attributes": {
+              "category": "color"
+            },
+            "token": {
+              "category": "Colors: Border Notice",
+              "presenter": "Color"
+            }
+          }
+        }
+      },
+      "negative": {
+        "base": {
+          "value": "{ks.color.negative.base}",
+          "attributes": {
+            "category": "color"
+          },
+          "token": {
+            "category": "Colors: Border Negative",
+            "presenter": "Color"
+          }
+        },
+        "interactive": {
+          "base": {
+            "value": "{ks.color.negative.base}",
+            "attributes": {
+              "category": "color"
+            },
+            "token": {
+              "category": "Colors: Border Negative",
+              "presenter": "Color"
+            }
+          },
+          "hover": {
+            "base": {
+              "value": "{ks.color.negative.to-bg.2.base}",
+              "attributes": {
+                "category": "color"
+              },
+              "token": {
+                "category": "Colors: Border Negative",
+                "presenter": "Color"
+              }
+            }
+          },
+          "active": {
+            "base": {
+              "value": "{ks.color.negative.to-bg.3.base}",
+              "attributes": {
+                "category": "color"
+              },
+              "token": {
+                "category": "Colors: Border Negative",
+                "presenter": "Color"
+              }
+            }
+          },
+          "selected": {
+            "base": {
+              "value": "{ks.color.negative.base}",
+              "attributes": {
+                "category": "color"
+              },
+              "token": {
+                "category": "Colors: Border Negative",
+                "presenter": "Color"
+              }
+            }
+          }
+        },
+        "translucent": {
+          "base": {
+            "value": "{ks.color.negative.alpha.2.base}",
+            "attributes": {
+              "category": "color"
+            },
+            "token": {
+              "category": "Colors: Border Negative",
+              "presenter": "Color"
+            }
+          }
+        }
+      },
+      "negative-inverted": {
+        "base": {
+          "value": "{ks.color.negative-inverted.base}",
+          "attributes": {
+            "category": "color"
+          },
+          "token": {
+            "category": "Colors: Border Negative",
+            "presenter": "Color"
+          }
+        },
+        "interactive": {
+          "base": {
+            "value": "{ks.color.negative-inverted.base}",
+            "attributes": {
+              "category": "color"
+            },
+            "token": {
+              "category": "Colors: Border Negative",
+              "presenter": "Color"
+            }
+          },
+          "hover": {
+            "base": {
+              "value": "{ks.color.negative-inverted.to-bg.2.base}",
+              "attributes": {
+                "category": "color"
+              },
+              "token": {
+                "category": "Colors: Border Negative",
+                "presenter": "Color"
+              }
+            }
+          },
+          "active": {
+            "base": {
+              "value": "{ks.color.negative-inverted.to-bg.3.base}",
+              "attributes": {
+                "category": "color"
+              },
+              "token": {
+                "category": "Colors: Border Negative",
+                "presenter": "Color"
+              }
+            }
+          },
+          "selected": {
+            "base": {
+              "value": "{ks.color.negative-inverted.base}",
+              "attributes": {
+                "category": "color"
+              },
+              "token": {
+                "category": "Colors: Border Negative",
+                "presenter": "Color"
+              }
+            }
+          }
+        },
+        "translucent": {
+          "base": {
+            "value": "{ks.color.negative-inverted.alpha.2.base}",
+            "attributes": {
+              "category": "color"
+            },
+            "token": {
+              "category": "Colors: Border Negative",
+              "presenter": "Color"
+            }
+          }
+        }
+      },
+      "secondary": {
+        "base": {
+          "value": "{ks.color.secondary.base}",
+          "attributes": {
+            "category": "color"
+          },
+          "token": {
+            "category": "Colors: Border Secondary",
+            "presenter": "Color"
+          }
+        },
+        "interactive": {
+          "base": {
+            "value": "{ks.color.secondary.base}",
+            "attributes": {
+              "category": "color"
+            },
+            "token": {
+              "category": "Colors: Border Secondary",
+              "presenter": "Color"
+            }
+          },
+          "hover": {
+            "base": {
+              "value": "{ks.color.secondary.to-bg.2.base}",
+              "attributes": {
+                "category": "color"
+              },
+              "token": {
+                "category": "Colors: Border Secondary",
+                "presenter": "Color"
+              }
+            }
+          },
+          "active": {
+            "base": {
+              "value": "{ks.color.secondary.to-bg.3.base}",
+              "attributes": {
+                "category": "color"
+              },
+              "token": {
+                "category": "Colors: Border Secondary",
+                "presenter": "Color"
+              }
+            }
+          },
+          "selected": {
+            "base": {
+              "value": "{ks.color.secondary.base}",
+              "attributes": {
+                "category": "color"
+              },
+              "token": {
+                "category": "Colors: Border Secondary",
+                "presenter": "Color"
+              }
+            }
+          }
+        },
+        "translucent": {
+          "base": {
+            "value": "{ks.color.secondary.alpha.2.base}",
+            "attributes": {
+              "category": "color"
+            },
+            "token": {
+              "category": "Colors: Border Secondary",
+              "presenter": "Color"
+            }
+          }
+        }
+      },
+      "secondary-inverted": {
+        "base": {
+          "value": "{ks.color.secondary-inverted.base}",
+          "attributes": {
+            "category": "color"
+          },
+          "token": {
+            "category": "Colors: Border Secondary",
+            "presenter": "Color"
+          }
+        },
+        "interactive": {
+          "base": {
+            "value": "{ks.color.secondary-inverted.base}",
+            "attributes": {
+              "category": "color"
+            },
+            "token": {
+              "category": "Colors: Border Secondary",
+              "presenter": "Color"
+            }
+          },
+          "hover": {
+            "base": {
+              "value": "{ks.color.secondary-inverted.to-bg.2.base}",
+              "attributes": {
+                "category": "color"
+              },
+              "token": {
+                "category": "Colors: Border Secondary",
+                "presenter": "Color"
+              }
+            }
+          },
+          "active": {
+            "base": {
+              "value": "{ks.color.secondary-inverted.to-bg.3.base}",
+              "attributes": {
+                "category": "color"
+              },
+              "token": {
+                "category": "Colors: Border Secondary",
+                "presenter": "Color"
+              }
+            }
+          },
+          "selected": {
+            "base": {
+              "value": "{ks.color.secondary-inverted.base}",
+              "attributes": {
+                "category": "color"
+              },
+              "token": {
+                "category": "Colors: Border Secondary",
+                "presenter": "Color"
+              }
+            }
+          }
+        },
+        "translucent": {
+          "base": {
+            "value": "{ks.color.secondary-inverted.alpha.2.base}",
+            "attributes": {
+              "category": "color"
+            },
+            "token": {
+              "category": "Colors: Border Secondary",
               "presenter": "Color"
             }
           }

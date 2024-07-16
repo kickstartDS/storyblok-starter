@@ -3,7 +3,7 @@ import {
   TagLabelContext,
   TagLabelContextDefault,
 } from "@kickstartds/base/lib/tag-label";
-import { BlogOverview as BlogOverviewComponent } from "@kickstartds/ds-agency/blog-overview";
+import { BlogOverview as BlogOverviewComponent } from "@kickstartds/ds-agency-premium/blog-overview";
 import { BlogOverviewStoryblok } from "@/types/components-schema";
 
 type PageProps = {

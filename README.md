@@ -47,6 +47,23 @@ You can use this button to deploy the EnergyUI@Storyblok starter repo on Vercel.
 5. In storyblok change the preview URL to "Dev".
 6. Run `storyblok login` for being able to use the storyblok-cli.
 
+### Creating branded component and preset previews
+
+`YOUR_WEBSITE` should be the path pointing to your website project, the one you want to update the previews for.
+
+1. Clone the Design System this is based on locally: https://github.com/kickstartDS/ds-agency
+2. Switch to the freshly cloned directory, and inside (ensure you're using the correct Node version 18+; `nvs use`, `nvm use` for automatic selection, if you use one of those tools):
+   1. `yarn` to install dependencies
+   2. `rm -rf src/token` to remove the existing default theme
+   3. `cp -r YOUR_WEBSITE/token src/token` to copy your Design Token / Style Dictionary configuration to the Design System project
+   4. Adjust the `background-color` for the `.preview--wrapper` CSS class in `global.scss`, to a color suitable for your component screenshots (depends on your applied design)
+   5. `yarn build-storybook` to build a Storybook that can then be used to create screenshots
+   6. `yarn create-component-previews` to re-create the existing previews with your branding
+   7. `mkdir -p YOUR_WEBSITE/public/img && rm -rf YOUR_WEBSITE/public/img/screenshots && cp -r static/img/screenshots YOUR_WEBSITE/public/img/` to copy the generated screenshots to your project
+   8. `cd YOUR_WEBSITE` to switch to your website project
+   9. `npm run update-previews` to update those newly created screenshots in your Storyblok space
+3. That's it!
+
 ## Working with the content schema
 
 ### Typescript Support

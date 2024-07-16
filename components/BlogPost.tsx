@@ -1,5 +1,5 @@
 import { storyblokEditable } from "@storyblok/react";
-import { BlogPost as BlogPostComponent } from "@kickstartds/ds-agency/blog-post";
+import { BlogPost as BlogPostComponent } from "@kickstartds/ds-agency-premium/blog-post";
 import { BlogPostStoryblok } from "@/types/components-schema";
 
 type PageProps = {

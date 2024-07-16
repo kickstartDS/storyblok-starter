@@ -6,7 +6,9 @@ const sizeOf = require("image-size");
 const StoryblokClient = require("storyblok-js-client");
 const { v4: uuidv4 } = require("uuid");
 const jsonpointer = require("jsonpointer");
-const designSystemPresets = require("@kickstartds/ds-agency/presets.json");
+const designSystemPresets = require("@kickstartds/ds-agency-premium/presets.json");
+const ffprobe = require("ffprobe");
+const ffprobeStatic = require("ffprobe-static");
 const generatedComponents = require("../cms/components.123456.json");
 const initialStory = require("../resources/story.json");
 
@@ -53,21 +55,28 @@ const upload = (signed_request, file) => {
 
 const signedUpload = async (fileName, assetFolderId) => {
   return new Promise(async (resolve) => {
-    let dimensions = sizeOf(
-      "./node_modules/@kickstartds/ds-agency/dist/static/" + fileName
-    );
+    const fullPath = `./node_modules/@kickstartds/ds-agency-premium/dist/static/${fileName}`;
+    let size = "";
+    if (fileName.includes("mp4")) {
+      const probe = await ffprobe(fullPath, { path: ffprobeStatic.path });
+      size = `${probe.streams[0].width}x${probe.streams[0].height}`;
+    } else {
+      const dimensions = sizeOf(fullPath);
+      size = `${dimensions.width}x${dimensions.height}`;
+    }
 
     const assetResponse = await Storyblok.post(
       `spaces/${process.env.NEXT_STORYBLOK_SPACE_ID}/assets/`,
       {
         filename: fileName,
-        size: `${dimensions.width}x${dimensions.height}`,
+        size,
         asset_folder_id: assetFolderId || null,
       }
     );
+
     await upload(
       assetResponse.data,
-      "./node_modules/@kickstartds/ds-agency/dist/static/" + fileName
+      "./node_modules/@kickstartds/ds-agency-premium/dist/static/" + fileName
     );
 
     return resolve({

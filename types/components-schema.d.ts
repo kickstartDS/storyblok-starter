@@ -1,13 +1,20 @@
 import {StoryblokStory} from 'storyblok-generate-ts'
 
 export interface AssetStoryblok {
-  alt?: string;
-  copyright?: string;
+  _uid?: string;
   id: number;
-  filename: string;
+  alt?: string;
   name: string;
-  title?: string;
   focus?: string;
+  source?: string;
+  title?: string;
+  filename: string;
+  copyright?: string;
+  fieldtype?: string;
+  meta_data?: null | {
+    [k: string]: any;
+  };
+  is_external_url?: boolean;
   [k: string]: any;
 }
 
@@ -20,6 +27,7 @@ export interface BlogAsideStoryblok {
   socialSharing?: SocialSharingStoryblok[];
   readingTime?: string;
   date?: string;
+  className?: string;
   type?: string;
   _uid: string;
   component: "blog-aside";
@@ -67,35 +75,7 @@ export type MultilinkStoryblok =
       cached_url?: string;
       anchor?: string;
       linktype?: "story";
-      story?: {
-        name: string;
-        created_at?: string;
-        published_at?: string;
-        id: number;
-        uuid: string;
-        content?: {
-          [k: string]: any;
-        };
-        slug: string;
-        full_slug: string;
-        sort_by_date?: null | string;
-        position?: number;
-        tag_list?: string[];
-        is_startpage?: boolean;
-        parent_id?: null | number;
-        meta_data?: null | {
-          [k: string]: any;
-        };
-        group_id?: string;
-        first_published_at?: string;
-        release_id?: null | number;
-        lang?: string;
-        path?: null | string;
-        alternates?: any[];
-        default_full_slug?: null | string;
-        translated_slugs?: null | any[];
-        [k: string]: any;
-      };
+      target?: "_self" | "_blank";
       [k: string]: any;
     }
   | {
@@ -103,11 +83,13 @@ export type MultilinkStoryblok =
       cached_url?: string;
       anchor?: string;
       linktype?: "asset" | "url";
+      target?: "_self" | "_blank";
       [k: string]: any;
     }
   | {
       email?: string;
       linktype?: "email";
+      target?: "_self" | "_blank";
       [k: string]: any;
     };
 
@@ -123,6 +105,7 @@ export interface BlogTeaserStoryblok {
   author_name?: string;
   author_title?: string;
   author_image?: AssetStoryblok;
+  className?: string;
   type?: string;
   _uid: string;
   component: "blog-teaser";
@@ -143,8 +126,18 @@ export interface CtaStoryblok {
   sub?: string;
   text?: string;
   highlightText?: boolean;
+  colorNeutral?: boolean;
+  fullWidth?: boolean;
   buttons?: ButtonsStoryblok[];
+  backgroundColor?: string;
+  backgroundImage?: AssetStoryblok;
+  image_src?: AssetStoryblok;
+  image_padding?: boolean;
+  image_alt?: string;
+  order_mobileImageLast?: boolean;
+  order_desktopImageLast?: boolean;
   textAlign?: "" | "left" | "center";
+  contentAlign?: "" | "center" | "top" | "bottom";
   type?: string;
   _uid: string;
   component: "cta";
@@ -258,6 +251,7 @@ export interface LogosStoryblok {
   tagline?: string;
   logo?: LogoStoryblok[];
   align?: "" | "left" | "center";
+  logosPerRow?: string;
   cta_toggle?: boolean;
   cta_text?: string;
   cta_link?: MultilinkStoryblok;
@@ -272,6 +266,7 @@ export interface LogosStoryblok {
 export interface NavItemsStoryblok {
   href?: MultilinkStoryblok;
   label?: string;
+  active?: boolean;
   _uid: string;
   component: "navItems";
   [k: string]: any;
@@ -333,6 +328,11 @@ export interface SectionStoryblok {
     | ImageTextStoryblok
     | LogosStoryblok
     | StatsStoryblok
+    | Tab0210B3AeEbb2467387F0Bab9555Ec309Storyblok
+    | Tab1468E511C96840A1B267Ea720C1Ca9EdStoryblok
+    | Tab8726807F12Bd4D53Ae343Df7360494C9Storyblok
+    | TabB5Ece91F9Fc346FdBcfc107686351188Storyblok
+    | TabFb45D4759Bc54D998Ba553C6149B34C0Storyblok
     | TeaserCardStoryblok
     | TestimonialsStoryblok
     | TextStoryblok
@@ -379,6 +379,7 @@ export interface StatStoryblok {
   number?: string;
   description?: string;
   title?: string;
+  icon?: string;
   type?: string;
   _uid: string;
   component: "stat";
@@ -390,6 +391,93 @@ export interface StatsStoryblok {
   type?: string;
   _uid: string;
   component: "stats";
+  [k: string]: any;
+}
+
+export interface Tab0210B3AeEbb2467387F0Bab9555Ec309Storyblok {
+  hero_headline?: string;
+  hero_sub?: string;
+  hero_text?: string;
+  hero_highlightText?: boolean;
+  hero_colorNeutral?: boolean;
+  hero_height?: "" | "small" | "default" | "fullImage" | "fullScreen";
+  hero_textbox?: boolean;
+  hero_buttons?: ButtonsStoryblok[];
+  hero_overlay?: boolean;
+  "hero_tab-7ddc9fb5-a2a6-41a3-b779-114aaf465e66"?: any;
+  image_srcMobile?: AssetStoryblok;
+  image_srcTablet?: AssetStoryblok;
+  image_srcDesktop?: AssetStoryblok;
+  image_src?: AssetStoryblok;
+  image_indent?: "" | "none" | "left" | "right";
+  image_alt?: string;
+  hero_textPosition?: "" | "center" | "below" | "left" | "right";
+  hero_type?: string;
+  _uid: string;
+  component: "tab-0210b3ae-ebb2-4673-87f0-bab9555ec309";
+  [k: string]: any;
+}
+
+export interface Tab1468E511C96840A1B267Ea720C1Ca9EdStoryblok {
+  mosaic_layout?: "" | "alternate" | "textLeft" | "textRight";
+  mosaic_largeHeadlines?: boolean;
+  mosaic_tiles?: TilesStoryblok[];
+  mosaic_type?: string;
+  _uid: string;
+  component: "tab-1468e511-c968-40a1-b267-ea720c1ca9ed";
+  [k: string]: any;
+}
+
+export interface Tab8726807F12Bd4D53Ae343Df7360494C9Storyblok {
+  "video-curtain_headline"?: string;
+  "video-curtain_sub"?: string;
+  "video-curtain_text"?: string;
+  "video-curtain_highlightText"?: boolean;
+  "video-curtain_colorNeutral"?: boolean;
+  "video-curtain_buttons"?: ButtonsStoryblok[];
+  "video-curtain_overlay"?: boolean;
+  "video-curtain_tab-bf9d0675-1df7-4f54-8eef-07de14cbda68"?: any;
+  video_srcMobile?: AssetStoryblok;
+  video_srcTablet?: AssetStoryblok;
+  video_srcDesktop?: AssetStoryblok;
+  "video-curtain_textPosition"?: "" | "center" | "left" | "right";
+  "video-curtain_type"?: string;
+  _uid: string;
+  component: "tab-8726807f-12bd-4d53-ae34-3df7360494c9";
+  [k: string]: any;
+}
+
+export interface TabB5Ece91F9Fc346FdBcfc107686351188Storyblok {
+  "image-story_headline"?: string;
+  "image-story_largeHeadline"?: boolean;
+  "image-story_sub"?: string;
+  "image-story_text"?: string;
+  "image-story_layout"?: "" | "textLeft" | "imageLeft";
+  "image-story_padding"?: boolean;
+  "image-story_buttons"?: ButtonsStoryblok[];
+  "image-story_tab-e81d87ae-553a-4cb2-b064-750d3ecfd872"?: any;
+  image_src?: AssetStoryblok;
+  image_ratio?: "" | "VALUE_4_3" | "VALUE_3_2" | "VALUE_16_9" | "VALUE_1_1" | "none";
+  image_alt?: string;
+  "image-story_textAlign"?: "" | "left" | "center";
+  "image-story_type"?: string;
+  _uid: string;
+  component: "tab-b5ece91f-9fc3-46fd-bcfc-107686351188";
+  [k: string]: any;
+}
+
+export interface TabFb45D4759Bc54D998Ba553C6149B34C0Storyblok {
+  slider_autoplay?: boolean;
+  slider_nav?: boolean;
+  slider_teaseNeighbours?: boolean;
+  slider_equalHeight?: boolean;
+  slider_gap?: string;
+  slider_arrows?: boolean;
+  slider_type?: string;
+  slider_className?: string;
+  slider_typeProp?: "" | "slider" | "carousel";
+  _uid: string;
+  component: "tab-fb45d475-9bc5-4d99-8ba5-53c6149b34c0";
   [k: string]: any;
 }
 
@@ -423,6 +511,7 @@ export interface TestimonialStoryblok {
   title?: string;
   image_src?: AssetStoryblok;
   image_alt?: string;
+  rating?: string;
   type?: string;
   _uid: string;
   component: "testimonial";
@@ -430,6 +519,7 @@ export interface TestimonialStoryblok {
 }
 
 export interface TestimonialsStoryblok {
+  layout?: "" | "slider" | "list" | "alternating";
   testimonial?: TestimonialStoryblok[];
   type?: string;
   _uid: string;
@@ -445,5 +535,23 @@ export interface TextStoryblok {
   type?: string;
   _uid: string;
   component: "text";
+  [k: string]: any;
+}
+
+export interface TilesStoryblok {
+  headline?: string;
+  sub?: string;
+  text?: string;
+  image_src?: AssetStoryblok;
+  image_alt?: string;
+  button_toggle?: boolean;
+  button_label?: string;
+  button_target?: MultilinkStoryblok;
+  button_icon?: string;
+  backgroundColor?: string;
+  backgroundImage?: AssetStoryblok;
+  textColor?: string;
+  _uid: string;
+  component: "tiles";
   [k: string]: any;
 }

@@ -1,15 +1,7 @@
 import { GetStaticPaths, GetStaticProps, NextPage } from "next";
-import {
-  useStoryblokState,
-  StoryblokComponent,
-  ISbStory,
-  ISbStoryData,
-  StoryblokClient,
-} from "@storyblok/react";
+import { StoryblokComponent, ISbStory, ISbStoryData } from "@storyblok/react";
 import { Cache } from "file-system-cache";
-import { fetchStories, fetchStory } from "@/helpers/storyblok";
-import { encode } from "blurhash";
-import { getPixels } from "@unpic/pixels";
+import { fetchPageProps, fetchPaths } from "@/helpers/storyblok";
 import { traverse } from "object-traversal";
 import { isImgUrl } from "@/helpers/apiUtils";
 import { fontClassNames } from "@/helpers/fonts";
@@ -19,49 +11,36 @@ type PageProps = ISbStory["data"] & {
   settings?: ISbStoryData["content"];
 };
 
-const Page: NextPage<PageProps> = ({ story: initialStory }) => {
-  const story = useStoryblokState(initialStory);
-  return story ? (
+const Page: NextPage<PageProps> = ({ story }) => {
+  return (
     <HeadlineLevelProvider>
       <StoryblokComponent
         blok={story.content}
         data-font-class-names={fontClassNames}
       />
     </HeadlineLevelProvider>
-  ) : null;
+  );
 };
 
 export default Page;
 
 export const getStaticPaths = (async () => {
-  const { data } = await fetchStories();
-  const paths = [
-    // { params: { slug: [] } },
-    ...data.stories
-      .filter((story) => story.content.component !== "settings")
-      .map((story) => ({
-        params: { slug: story.full_slug.split("/") },
-      })),
-  ];
-  return { paths, fallback: false };
+  return {
+    paths: (await fetchPaths()).map((path) => {
+      return {
+        params: {
+          slug: path.params.slug,
+        },
+      };
+    }),
+    fallback: false,
+  };
 }) satisfies GetStaticPaths;
 
-export const getStaticProps = (async ({ params, previewData }) => {
-  let previewStoryblokApi: StoryblokClient | undefined;
-
-  if (previewData) {
-    const StoryblokClient = await import("storyblok-js-client").then(
-      (mod) => mod.default
-    );
-    previewStoryblokApi = new StoryblokClient({ accessToken: previewData });
-  }
-
-  const slug = params?.slug?.join("/") || "getting-started";
+export const getStaticProps = (async ({ params }) => {
+  const slug = params?.slug?.join("/");
   try {
-    const [{ data: pageData }, { data: settingsData }] = await Promise.all([
-      fetchStory(slug, previewStoryblokApi),
-      fetchStories({ content_type: "settings" }, previewStoryblokApi),
-    ]);
+    const { pageData, settingsData } = await fetchPageProps(slug);
 
     const storyImages: string[] = [];
     traverse(pageData, ({ value }) => {
@@ -72,23 +51,11 @@ export const getStaticProps = (async ({ params, previewData }) => {
 
     const blurHashes: Record<string, string> = {};
 
-    if (!previewData) {
-      const cache = new Cache({ basePath: "./public/blurhashes" });
-      await cache.load();
+    const cache = new Cache({ basePath: "./public/blurhashes" });
+    await cache.load();
 
-      for (const imageUrl of storyImages) {
-        if (blurHashes[imageUrl]) continue;
-        if (cache.getSync(imageUrl)) {
-          blurHashes[imageUrl] = cache.getSync(imageUrl);
-          continue;
-        }
-
-        const imgData = await getPixels(imageUrl);
-        const data = Uint8ClampedArray.from(imgData.data);
-        const blurHash = encode(data, imgData.width, imgData.height, 4, 4);
-        blurHashes[imageUrl] = blurHash;
-        cache.setSync(imageUrl, blurHash);
-      }
+    for (const imageUrl of storyImages) {
+      blurHashes[imageUrl] ||= cache.getSync(imageUrl) || null;
     }
 
     return {
@@ -105,4 +72,4 @@ export const getStaticProps = (async ({ params, previewData }) => {
       notFound: true,
     };
   }
-}) satisfies GetStaticProps<ISbStory["data"], NodeJS.Dict<string[]>, string>;
+}) satisfies GetStaticProps<PageProps, NodeJS.Dict<string[]>, string>;

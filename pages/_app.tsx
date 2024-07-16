@@ -1,5 +1,7 @@
+import { useEffect } from "react";
 import type { NextPage } from "next";
 import type { AppProps } from "next/app";
+import { useRouter } from "next/router";
 
 import DsaProviders from "@kickstartds/ds-agency-premium/providers";
 import { Header } from "@kickstartds/ds-agency-premium/header";
@@ -9,20 +11,33 @@ import { unflatten } from "@/helpers/unflatten";
 import Meta from "@/components/Meta";
 import "lazysizes/plugins/attrchange/ls.attrchange";
 
-import StoryblokProviders from "../components/Providers";
+import StoryblokProviders from "@/components/Providers";
 
 import palette from "@kickstartds/ds-agency-premium/global.client.js";
-import IconSprite from "../token/IconSprite";
 import "@kickstartds/ds-agency-premium/global.css";
-import IconSprite from "../token/IconSprite";
-import "../token/tokens.css";
-import "../index.scss";
+import IconSprite from "@/token/IconSprite";
+import "@/token/tokens.css";
+import "@/index.scss";
 import { BlurHashProvider } from "@/components/BlurHashContext";
 
 initStoryblok(process.env.NEXT_STORYBLOK_API_TOKEN);
 if (typeof window !== "undefined") {
   console.log(palette);
 }
+
+const handleRouteChange = (url: string) => {
+  // close mobile nav
+  window._ks.radio.emit("location.change", url);
+};
+
+const setActiveNavItem = (navItems: any[] = [], currentRoute: string) => {
+  for (const navItem of navItems) {
+    navItem.active =
+      navItem.href.linktype === "story" &&
+      ("/" + navItem.href.story.url === currentRoute ||
+        navItem.href.story.url === currentRoute);
+  }
+};
 
 export default function App({
   Component,
@@ -33,6 +48,15 @@ export default function App({
   const { settings, story, blurHashes } = pageProps;
   const headerProps = settings?.header[0];
   const footerProps = settings?.footer[0];
+  const router = useRouter();
+
+  setActiveNavItem(headerProps?.navItems, router.asPath);
+  setActiveNavItem(footerProps?.navItems, router.asPath);
+
+  useEffect(() => {
+    router.events.on("routeChangeStart", handleRouteChange);
+    return () => router.events.off("routeChangeStart", handleRouteChange);
+  }, [router.events]);
 
   return (
     <BlurHashProvider blurHashes={blurHashes}>
@@ -48,8 +72,8 @@ export default function App({
             <Header
               logo={{}}
               {...unflatten(headerProps)}
-              inverted={story.header.inverted || false}
-              floating={story.header.floating || false}
+              inverted={story.header?.inverted?.toString() || false}
+              floating={story.header?.floating?.toString() || false}
             />
           )}
           <Component {...pageProps} />
@@ -57,7 +81,7 @@ export default function App({
             <Footer
               logo={{}}
               {...unflatten(footerProps)}
-              inverted={story.footer.inverted || false}
+              inverted={story.footer?.inverted?.toString() || false}
             />
           )}
         </StoryblokProviders>

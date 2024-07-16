@@ -6,7 +6,7 @@ const sizeOf = require("image-size");
 const StoryblokClient = require("storyblok-js-client");
 const { v4: uuidv4 } = require("uuid");
 const jsonpointer = require("jsonpointer");
-const designSystemPresets = require("@kickstartds/ds-agency-premium/presets.json");
+const designSystemPresets = require("@kickstartds/ds-agency/presets.json");
 const generatedComponents = require("../cms/components.123456.json");
 const initialStory = require("../resources/story.json");
 
@@ -54,7 +54,7 @@ const upload = (signed_request, file) => {
 const signedUpload = async (fileName, assetFolderId) => {
   return new Promise(async (resolve) => {
     let dimensions = sizeOf(
-      "./node_modules/@kickstartds/ds-agency-premium/dist/static/" + fileName
+      "./node_modules/@kickstartds/ds-agency/dist/static/" + fileName
     );
 
     const assetResponse = await Storyblok.post(
@@ -67,7 +67,7 @@ const signedUpload = async (fileName, assetFolderId) => {
     );
     await upload(
       assetResponse.data,
-      "./node_modules/@kickstartds/ds-agency-premium/dist/static/" + fileName
+      "./node_modules/@kickstartds/ds-agency/dist/static/" + fileName
     );
 
     return resolve({
@@ -112,6 +112,12 @@ const deleteComponent = async (componentId) =>
     `spaces/${process.env.NEXT_STORYBLOK_SPACE_ID}/components/${componentId}`
   );
 
+const updateComponent = async (componentId, componentDefinition) =>
+  Storyblok.put(
+    `spaces/${process.env.NEXT_STORYBLOK_SPACE_ID}/components/${componentId}`,
+    componentDefinition
+  );
+
 const prepare = async () => {
   try {
     // Clean up default content in space
@@ -136,7 +142,20 @@ const prepare = async () => {
     ).data?.components;
 
     const defaultComponents = components.filter((component) =>
-      ["feature", "grid", "page", "teaser"].includes(component.name)
+      ["feature", "grid", "teaser"].includes(component.name)
+    );
+    const defaultPageComponent = components.filter(
+      (component) => component.name === "page"
+    );
+
+    await promiseThrottle.add(
+      updateComponent.bind(
+        this,
+        defaultPageComponent[0].id,
+        generatedComponents.components.find(
+          (component) => component.name === "page"
+        )
+      )
     );
 
     for (const defaultComponent of defaultComponents) {

@@ -1,3 +1,4 @@
+import { ComponentProps } from "react";
 import dynamic from "next/dynamic";
 import {
   SbBlokData,
@@ -8,13 +9,16 @@ import { unflatten } from "@/helpers/unflatten";
 import { Section } from "@kickstartds/ds-agency-premium/section";
 import { Slider } from "@kickstartds/ds-agency-premium/slider";
 import editablePage from "./Page";
+import { ImageAutoSizeProvider } from "./ImageAutoSizeProvider";
 
 export const editable =
   (Component: React.ComponentType<any>, nestedBloksKey?: string) =>
   // eslint-disable-next-line react/display-name
-  ({ blok }: { blok: SbBlokData }) =>
-    (
-      <Component {...storyblokEditable(blok)} {...unflatten(blok)}>
+  ({ blok }: { blok: SbBlokData }) => {
+    const { component, components, type, typeProp, _uid, ...props } =
+      unflatten(blok);
+    return (
+      <Component {...storyblokEditable(blok)} {...props} type={typeProp}>
         {nestedBloksKey &&
           (blok[nestedBloksKey] as SbBlokData[] | undefined)?.map(
             (nestedBlok) => (
@@ -23,6 +27,13 @@ export const editable =
           )}
       </Component>
     );
+  };
+
+const Hero = dynamic(() =>
+  import("@kickstartds/ds-agency-premium/hero").then(
+    (mod) => mod.HeroContextDefault
+  )
+);
 
 export const components = {
   page: editablePage,
@@ -153,13 +164,11 @@ export const components = {
       )
     )
   ),
-  hero: editable(
-    dynamic(() =>
-      import("@kickstartds/ds-agency-premium/hero").then(
-        (mod) => mod.HeroContextDefault
-      )
-    )
-  ),
+  hero: editable((props: ComponentProps<typeof Hero>) => (
+    <ImageAutoSizeProvider>
+      <Hero {...props} />
+    </ImageAutoSizeProvider>
+  )),
   mosaic: editable(
     dynamic(() =>
       import("@kickstartds/ds-agency-premium/mosaic").then(

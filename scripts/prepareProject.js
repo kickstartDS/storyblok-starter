@@ -112,6 +112,12 @@ const deleteComponent = async (componentId) =>
     `spaces/${process.env.NEXT_STORYBLOK_SPACE_ID}/components/${componentId}`
   );
 
+const updateComponent = async (componentId, componentDefinition) =>
+  Storyblok.put(
+    `spaces/${process.env.NEXT_STORYBLOK_SPACE_ID}/components/${componentId}`,
+    componentDefinition
+  );
+
 const prepare = async () => {
   try {
     // Clean up default content in space
@@ -136,7 +142,20 @@ const prepare = async () => {
     ).data?.components;
 
     const defaultComponents = components.filter((component) =>
-      ["feature", "grid", "page", "teaser"].includes(component.name)
+      ["feature", "grid", "teaser"].includes(component.name)
+    );
+    const defaultPageComponent = components.filter(
+      (component) => component.name === "page"
+    );
+
+    await promiseThrottle.add(
+      updateComponent.bind(
+        this,
+        defaultPageComponent[0].id,
+        generatedComponents.components.find(
+          (component) => component.name === "page"
+        )
+      )
     );
 
     for (const defaultComponent of defaultComponents) {

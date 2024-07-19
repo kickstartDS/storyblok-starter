@@ -174,6 +174,7 @@ const Hero = forwardRef<
         srcMobile,
         srcTablet,
         srcDesktop,
+        src: image?.srcDesktop || "",
       }}
       ref={ref}
     />

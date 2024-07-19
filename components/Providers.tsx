@@ -123,7 +123,13 @@ const Picture = forwardRef<
       ref={internalRef}
       {...props}
       alt={isStoryblokAsset(src) ? src.alt || "" : props.alt || ""}
-      src={priority ? `${fileUrl}/m/filters:quality(50)` : fileUrl}
+      src={
+        priority
+          ? `${fileUrl}/${
+              fileUrl.includes("/m/") ? "" : "m/"
+            }filters:quality(50)`
+          : fileUrl
+      }
       width={autoSize ? undefined : parseInt(width, 10)}
       height={autoSize ? undefined : parseInt(height, 10)}
       priority={lazy === false || priority}
@@ -174,7 +180,7 @@ const Hero = forwardRef<
         srcMobile,
         srcTablet,
         srcDesktop,
-        src: image?.srcMobile || "",
+        src: image?.srcDesktop || "",
       }}
       ref={ref}
     />

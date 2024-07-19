@@ -30,9 +30,7 @@ export const editable =
   };
 
 const Hero = dynamic(() =>
-  import("@kickstartds/ds-agency-premium/hero").then(
-    (mod) => mod.HeroContextDefault
-  )
+  import("@kickstartds/ds-agency-premium/hero").then((mod) => mod.Hero)
 );
 
 export const components = {

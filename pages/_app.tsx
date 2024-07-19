@@ -52,14 +52,14 @@ export default function App({
   const router = useRouter();
 
   const invertHeader = storyProps?.header?.inverted
-    ? (!headerProps?.inverted)?.toString() || "true"
-    : headerProps?.inverted?.toString() || "false";
+    ? !headerProps?.inverted || true
+    : headerProps?.inverted || false;
   const floatHeader = storyProps?.header?.floating
-    ? (!headerProps?.floating)?.toString() || "true"
-    : headerProps?.floating?.toString() || "false";
+    ? !headerProps?.floating || true
+    : headerProps?.floating || false;
   const invertFooter = storyProps?.footer?.inverted
-    ? (!footerProps?.inverted)?.toString() || "true"
-    : footerProps?.inverted?.toString() || "false";
+    ? !footerProps?.inverted || true
+    : footerProps?.inverted || false;
 
   setActiveNavItem(headerProps?.navItems, router.asPath);
   setActiveNavItem(footerProps?.navItems, router.asPath);

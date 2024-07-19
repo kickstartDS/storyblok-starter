@@ -2,6 +2,7 @@
 import {
   AnchorHTMLAttributes,
   FC,
+  HTMLAttributes,
   ImgHTMLAttributes,
   PropsWithChildren,
   forwardRef,
@@ -35,6 +36,11 @@ import { TeaserProvider } from "./TeaserProvider";
 import { useBlurHashes } from "./BlurHashContext";
 import { useImagePriority } from "./ImagePriorityContext";
 import { AssetStoryblok, MultilinkStoryblok } from "@/types/components-schema";
+import { HeroProps } from "@kickstartds/ds-agency-premium/HeroProps-cf82a16d.js";
+import {
+  HeroContextDefault as DsaHero,
+  HeroContext,
+} from "@kickstartds/ds-agency-premium/hero";
 
 function isStoryblokLink(object: unknown): object is MultilinkStoryblok {
   return (object as MultilinkStoryblok)?.linktype !== undefined;
@@ -141,34 +147,73 @@ const PictureProvider: FC<PropsWithChildren> = (props) => (
   <PictureContext.Provider {...props} value={Picture} />
 );
 
+const Hero = forwardRef<
+  HTMLDivElement,
+  HeroProps & HTMLAttributes<HTMLDivElement>
+>((props, ref) => {
+  const { image, ...rest } = props;
+
+  const srcMobile =
+    image && image.srcMobile && isStoryblokAsset(image?.srcMobile)
+      ? `${image.srcMobile.filename}/m/1600x0`
+      : image?.srcMobile || "";
+  const srcTablet =
+    image && image.srcTablet && isStoryblokAsset(image?.srcTablet)
+      ? `${image.srcTablet.filename}/m/950x0`
+      : image?.srcTablet || "";
+  const srcDesktop =
+    image && image.srcDesktop && isStoryblokAsset(image?.srcDesktop)
+      ? `${image.srcDesktop.filename}/m/600x0`
+      : image?.srcDesktop || "";
+
+  return (
+    <DsaHero
+      {...rest}
+      image={{
+        ...image,
+        srcMobile,
+        srcTablet,
+        srcDesktop,
+      }}
+      ref={ref}
+    />
+  );
+});
+
+const HeroProvider: FC<PropsWithChildren> = (props) => (
+  <HeroContext.Provider {...props} value={Hero} />
+);
+
 const Providers = (props: PropsWithChildren) => (
   <PictureProvider>
-    <LinkProvider>
-      <TeaserProvider>
-        {/* @ts-expect-error */}
-        <CtaContext.Provider value={StoryblokSubComponent}>
+    <HeroProvider>
+      <LinkProvider>
+        <TeaserProvider>
           {/* @ts-expect-error */}
-          <FeatureContext.Provider value={StoryblokSubComponent}>
+          <CtaContext.Provider value={StoryblokSubComponent}>
             {/* @ts-expect-error */}
-            <StatContext.Provider value={StoryblokSubComponent}>
+            <FeatureContext.Provider value={StoryblokSubComponent}>
               {/* @ts-expect-error */}
-              <TestimonialContext.Provider value={StoryblokSubComponent}>
+              <StatContext.Provider value={StoryblokSubComponent}>
                 {/* @ts-expect-error */}
-                <BlogHeadContext.Provider value={StoryblokSubComponent}>
+                <TestimonialContext.Provider value={StoryblokSubComponent}>
                   {/* @ts-expect-error */}
-                  <BlogAsideContext.Provider value={StoryblokSubComponent}>
+                  <BlogHeadContext.Provider value={StoryblokSubComponent}>
                     {/* @ts-expect-error */}
-                    <BlogTeaserContext.Provider value={StoryblokSubComponent}>
-                      {props.children}
-                    </BlogTeaserContext.Provider>
-                  </BlogAsideContext.Provider>
-                </BlogHeadContext.Provider>
-              </TestimonialContext.Provider>
-            </StatContext.Provider>
-          </FeatureContext.Provider>
-        </CtaContext.Provider>
-      </TeaserProvider>
-    </LinkProvider>
+                    <BlogAsideContext.Provider value={StoryblokSubComponent}>
+                      {/* @ts-expect-error */}
+                      <BlogTeaserContext.Provider value={StoryblokSubComponent}>
+                        {props.children}
+                      </BlogTeaserContext.Provider>
+                    </BlogAsideContext.Provider>
+                  </BlogHeadContext.Provider>
+                </TestimonialContext.Provider>
+              </StatContext.Provider>
+            </FeatureContext.Provider>
+          </CtaContext.Provider>
+        </TeaserProvider>
+      </LinkProvider>
+    </HeroProvider>
   </PictureProvider>
 );
 

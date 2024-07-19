@@ -17,3 +17,8 @@
 
 [[plugins]]
   package = "/plugins/netlify-plugin-ksds-storyblok"
+
+[[redirects]]
+  from = "/*"
+  to = "/404"
+  status = 404

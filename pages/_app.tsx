@@ -46,10 +46,20 @@ export default function App({
   Component: NextPage;
 }) {
   const { settings, story, blurHashes } = pageProps;
-  const headerProps = unflatten(settings?.header[0]);
-  const footerProps = unflatten(settings?.footer[0]);
-  const storyProps = unflatten(story?.content);
+  const headerProps = settings?.header[0] ? unflatten(settings?.header[0]) : {};
+  const footerProps = settings?.footer[0] ? unflatten(settings?.footer[0]) : {};
+  const storyProps = story?.content ? unflatten(story?.content) : {};
   const router = useRouter();
+
+  const invertHeader = storyProps?.header?.inverted
+    ? (!headerProps?.inverted)?.toString() || "true"
+    : headerProps?.inverted?.toString() || "false";
+  const floatHeader = storyProps?.header?.floating
+    ? (!headerProps?.floating)?.toString() || "true"
+    : headerProps?.floating?.toString() || "false";
+  const invertFooter = storyProps?.footer?.inverted
+    ? (!footerProps?.inverted)?.toString() || "true"
+    : footerProps?.inverted?.toString() || "false";
 
   setActiveNavItem(headerProps?.navItems, router.asPath);
   setActiveNavItem(footerProps?.navItems, router.asPath);
@@ -73,32 +83,13 @@ export default function App({
             <Header
               logo={{}}
               {...headerProps}
-              inverted={
-                (storyProps.header?.inverted?.toString() === "true" &&
-                  storyProps.header?.inverted?.toString()) ||
-                headerProps.inverted?.toString() ||
-                false
-              }
-              floating={
-                (storyProps.header?.floating?.toString() === "true" &&
-                  storyProps.header?.floating?.toString()) ||
-                headerProps.floating?.toString() ||
-                false
-              }
+              inverted={invertHeader}
+              floating={floatHeader}
             />
           )}
           <Component {...pageProps} />
           {footerProps && (
-            <Footer
-              logo={{}}
-              {...footerProps}
-              inverted={
-                (storyProps.footer?.inverted?.toString() === "true" &&
-                  storyProps.footer?.inverted?.toString()) ||
-                footerProps.inverted?.toString() ||
-                false
-              }
-            />
+            <Footer logo={{}} {...footerProps} inverted={invertFooter} />
           )}
         </StoryblokProviders>
       </DsaProviders>

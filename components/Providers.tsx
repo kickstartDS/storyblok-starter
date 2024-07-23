@@ -159,33 +159,40 @@ const Hero = forwardRef<
 >((props, ref) => {
   const { image, ...rest } = props;
 
+  const src =
+    (image &&
+      ((image.src &&
+        isStoryblokAsset(image.src) &&
+        `${image.src.filename}/m/600x0`) ||
+        image.src)) ||
+    undefined;
   const srcMobile =
     (image &&
       ((image.srcMobile &&
         isStoryblokAsset(image.srcMobile) &&
-        `${image.srcMobile.filename}/m/1600x0`) ||
+        image.srcMobile.filename &&
+        `${image.srcMobile.filename}/m/600x0`) ||
         image.srcMobile)) ||
+    src ||
     "";
   const srcTablet =
     (image &&
       ((image.srcTablet &&
         isStoryblokAsset(image.srcTablet) &&
+        image.srcTablet.filename &&
         `${image.srcTablet.filename}/m/950x0`) ||
         image.srcTablet)) ||
-    "";
+    src ||
+    undefined;
   const srcDesktop =
     (image &&
       ((image.srcDesktop &&
         isStoryblokAsset(image.srcDesktop) &&
-        `${image.srcDesktop.filename}/m/600x0`) ||
+        image.srcDesktop.filename &&
+        `${image.srcDesktop.filename}/m/1600x0`) ||
         image.srcDesktop)) ||
-    "";
-  const src =
-    image &&
-    ((image.src &&
-      isStoryblokAsset(image.src) &&
-      `${image.src.filename}/m/1600x0`) ||
-      image.src);
+    src ||
+    undefined;
 
   return (
     <DsaHero
@@ -195,7 +202,7 @@ const Hero = forwardRef<
         srcMobile,
         srcTablet,
         srcDesktop,
-        src: src || image?.srcDesktop || "",
+        src,
       }}
       ref={ref}
     />

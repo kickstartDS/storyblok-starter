@@ -182,7 +182,6 @@ const Hero = forwardRef<
         image.srcTablet.filename &&
         `${image.srcTablet.filename}/m/950x0`) ||
         image.srcTablet)) ||
-    src ||
     undefined;
   const srcDesktop =
     (image &&
@@ -191,7 +190,6 @@ const Hero = forwardRef<
         image.srcDesktop.filename &&
         `${image.srcDesktop.filename}/m/1600x0`) ||
         image.srcDesktop)) ||
-    src ||
     undefined;
 
   return (

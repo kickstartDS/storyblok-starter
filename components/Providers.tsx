@@ -117,6 +117,7 @@ const Picture = forwardRef<
       height={parseInt(height, 10)}
       alt={isStoryblokAsset(src) ? src.alt || "" : props.alt || ""}
       lazy={lazy}
+      fetchPriority="high"
     />
   ) : (
     <Image

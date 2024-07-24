@@ -38,7 +38,7 @@ const copyFont = localFont({
   display: "optional",
   variable: "--ks-font-family-copy",
   fallback: ["'Helvetica Neue'", "Helvetica", "Arial", "sans-serif"],
-  adjustFontFallback: false,
+  adjustFontFallback: "Arial",
 });
 
 const interfaceFont = localFont({
@@ -79,7 +79,7 @@ const interfaceFont = localFont({
     "Liberation Sans",
     "sans-serif",
   ],
-  adjustFontFallback: false,
+  adjustFontFallback: "Arial",
 });
 
 const displayFontPreview = localFont({

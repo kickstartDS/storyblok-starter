@@ -157,9 +157,7 @@ export const components = {
   ),
   logos: editable(
     dynamic(() =>
-      import("@kickstartds/ds-agency-premium/logos").then(
-        (mod) => mod.LogosContextDefault
-      )
+      import("@kickstartds/ds-agency-premium/logos").then((mod) => mod.Logos)
     )
   ),
   hero: editable((props: ComponentProps<typeof Hero>) => (

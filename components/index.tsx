@@ -182,7 +182,7 @@ export const components = {
   "image-story": editable(
     dynamic(() =>
       import("@kickstartds/ds-agency-premium/image-story").then(
-        (mod) => mod.ImageStoryContextDefault
+        (mod) => mod.ImageStory
       )
     )
   ),

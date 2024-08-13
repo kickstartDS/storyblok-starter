@@ -6,7 +6,12 @@ import {
   PropsWithChildren,
 } from "react";
 import { ImageSizeProvider, useImageSize } from "./ImageSizeContext";
-import { getPxSize, getPropertyValue, getSectionWidth } from "@/helpers/token";
+import {
+  getPxSize,
+  getPropertyValue,
+  getSectionWidth,
+  baseFontSizePx,
+} from "@/helpers/token";
 import {
   SectionContext,
   SectionContextDefault,
@@ -34,7 +39,7 @@ const Section = forwardRef<
         getSectionWidth(props.width || "default")
       ? props.width || "default"
       : props.content?.width || "default";
-  const sectionWidth = getSectionWidth(sectionWidthName);
+  const sectionWidth = getSectionWidth(sectionWidthName) * baseFontSizePx;
 
   const componentWidth =
     props.content?.mode === "list"

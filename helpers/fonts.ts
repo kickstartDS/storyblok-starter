@@ -9,7 +9,7 @@ const displayFont = localFont({
     },
   ],
   preload: true,
-  display: "optional",
+  display: "swap",
   variable: "--ks-font-family-display",
   fallback: [
     "Baskerville",
@@ -35,7 +35,7 @@ const copyFont = localFont({
     },
   ],
   preload: true,
-  display: "optional",
+  display: "swap",
   variable: "--ks-font-family-copy",
   fallback: ["'Helvetica Neue'", "Helvetica", "Arial", "sans-serif"],
   adjustFontFallback: "Arial",

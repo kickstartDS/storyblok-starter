@@ -19,7 +19,6 @@ const Storyblok = new StoryblokClient({
   oauthToken: process.env.NEXT_STORYBLOK_OAUTH_TOKEN,
 });
 
-const images = new Map();
 const promiseThrottle = new PromiseThrottle({
   requestsPerSecond: 2,
   promiseImplementation: Promise,

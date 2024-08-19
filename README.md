@@ -141,7 +141,7 @@ TODO
 `YOUR_WEBSITE` should be the path pointing to your website project, the one you want to update the previews for.
 
 1. Clone the Design System this is based on locally: https://github.com/kickstartDS/ds-agency
-2. Switch to the freshly cloned directory, and inside:
+2. Switch to the freshly cloned directory, and inside (ensure you're using the correct Node version 18+; `nvs use`, `nvm use` for automatic selection, if you use one of those tools):
    1. `yarn` to install dependencies
    2. `rm -rf src/token` to remove the existing default theme
    3. `cp -r YOUR_WEBSITE/token src/token` to copy your Design Token / Style Dictionary configuration to the Design System project

@@ -46,9 +46,20 @@ export default function App({
   Component: NextPage;
 }) {
   const { settings, story, blurHashes } = pageProps;
-  const headerProps = settings?.header[0];
-  const footerProps = settings?.footer[0];
+  const headerProps = settings?.header[0] ? unflatten(settings?.header[0]) : {};
+  const footerProps = settings?.footer[0] ? unflatten(settings?.footer[0]) : {};
+  const storyProps = story?.content ? unflatten(story?.content) : {};
   const router = useRouter();
+
+  const invertHeader = storyProps?.header?.inverted
+    ? !headerProps?.inverted || true
+    : headerProps?.inverted || false;
+  const floatHeader = storyProps?.header?.floating
+    ? !headerProps?.floating || true
+    : headerProps?.floating || false;
+  const invertFooter = storyProps?.footer?.inverted
+    ? !footerProps?.inverted || true
+    : footerProps?.inverted || false;
 
   setActiveNavItem(headerProps?.navItems, router.asPath);
   setActiveNavItem(footerProps?.navItems, router.asPath);
@@ -71,18 +82,14 @@ export default function App({
           {headerProps && (
             <Header
               logo={{}}
-              {...unflatten(headerProps)}
-              inverted={story.header?.inverted?.toString() || false}
-              floating={story.header?.floating?.toString() || false}
+              {...headerProps}
+              inverted={invertHeader}
+              floating={floatHeader}
             />
           )}
           <Component {...pageProps} />
           {footerProps && (
-            <Footer
-              logo={{}}
-              {...unflatten(footerProps)}
-              inverted={story.footer?.inverted?.toString() || false}
-            />
+            <Footer logo={{}} {...footerProps} inverted={invertFooter} />
           )}
         </StoryblokProviders>
       </DsaProviders>

@@ -140,7 +140,7 @@ const prepare = async () => {
     if (defaultStory) {
       await promiseThrottle.add(deleteStory.bind(this, defaultStory.id));
     } else {
-      // process.exit(1);
+      process.exit(1);
     }
 
     const components = (

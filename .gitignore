@@ -52,6 +52,7 @@ token/icon-sprite.html
 token/storybook/tokens.css
 token/storybook/tokens.js
 token/storybook/icons.svg
+token/components.ts
 
 # Next
 public/sitemap*

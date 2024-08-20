@@ -33,7 +33,7 @@
     },
     "transition": {
       "collapse": {
-        "value": "{ks.duration.medium} {ks.timing-function.ease-out}"
+        "value": "{ks.duration.slow} {ks.timing-function.ease-out}"
       },
       "hover": {
         "value": "{ks.duration.fast} {ks.timing-function.ease-in-out}"

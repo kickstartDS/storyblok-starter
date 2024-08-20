@@ -28,7 +28,7 @@ class KsDocument extends Document<any> {
     const { pageProps } = this.props;
 
     return (
-      <Html className={pageProps.fontClassNames} lang="en">
+      <Html className={pageProps?.fontClassNames} lang="en">
         <Head />
         <body>
           <Main />

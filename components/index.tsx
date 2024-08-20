@@ -30,9 +30,7 @@ export const editable =
   };
 
 const Hero = dynamic(() =>
-  import("@kickstartds/ds-agency-premium/hero").then(
-    (mod) => mod.HeroContextDefault
-  )
+  import("@kickstartds/ds-agency-premium/hero").then((mod) => mod.Hero)
 );
 
 export const components = {
@@ -159,9 +157,7 @@ export const components = {
   ),
   logos: editable(
     dynamic(() =>
-      import("@kickstartds/ds-agency-premium/logos").then(
-        (mod) => mod.LogosContextDefault
-      )
+      import("@kickstartds/ds-agency-premium/logos").then((mod) => mod.Logos)
     )
   ),
   hero: editable((props: ComponentProps<typeof Hero>) => (
@@ -186,7 +182,7 @@ export const components = {
   "image-story": editable(
     dynamic(() =>
       import("@kickstartds/ds-agency-premium/image-story").then(
-        (mod) => mod.ImageStoryContextDefault
+        (mod) => mod.ImageStory
       )
     )
   ),

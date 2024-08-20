@@ -54,7 +54,7 @@ const displayFont = localFont({
     },
   ],
   preload: true,
-  display: "optional",
+  display: "swap",
   variable: "--ks-font-family-display",
   fallback: [
     "Baskerville",
@@ -98,7 +98,7 @@ const copyFont = localFont({
     { path: "../token/fonts/Mulish-300.woff", weight: "300", style: "normal" },
   ],
   preload: true,
-  display: "optional",
+  display: "swap",
   variable: "--ks-font-family-copy",
   fallback: ["'Helvetica Neue'", "Helvetica", "Arial", "sans-serif"],
   adjustFontFallback: false,

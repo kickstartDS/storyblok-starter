@@ -7,12 +7,12 @@ const StoryblokClient = require("storyblok-js-client");
 const { v4: uuidv4 } = require("uuid");
 const jsonpointer = require("jsonpointer");
 const designSystemPresets = require("@kickstartds/ds-agency-premium/presets.json");
-const ffprobe = require("ffprobe");
-const ffprobeStatic = require("ffprobe-static");
 const generatedComponents = require("../cms/components.123456.json");
 const initialStory = require("../resources/story.json");
+const ffprobe = require("ffprobe");
+const ffprobeStatic = require("ffprobe-static");
 
-require("dotenv").config({ path: ".env.local" });
+require("@dotenvx/dotenvx").config({ path: ".env.local" });
 
 if (!process.env.NEXT_STORYBLOK_SPACE_ID)
   throw new Error("Missing NEXT_STORYBLOK_SPACE_ID env variable");
@@ -42,7 +42,7 @@ const groupToComponentName = (name) => name.split("/").pop().trim();
 const upload = (signed_request, file) => {
   return new Promise((resolve, reject) => {
     const form = new FormData();
-    for (let key in signed_request.fields) {
+    for (const key in signed_request.fields) {
       form.append(key, signed_request.fields[key]);
     }
     form.append("file", fs.createReadStream(file));
@@ -73,7 +73,6 @@ const signedUpload = async (fileName, assetFolderId) => {
         asset_folder_id: assetFolderId || null,
       }
     );
-
     await upload(
       assetResponse.data,
       "./node_modules/@kickstartds/ds-agency-premium/dist/static/" + fileName
@@ -121,6 +120,12 @@ const deleteComponent = async (componentId) =>
     `spaces/${process.env.NEXT_STORYBLOK_SPACE_ID}/components/${componentId}`
   );
 
+const updateComponent = async (componentId, componentDefinition) =>
+  Storyblok.put(
+    `spaces/${process.env.NEXT_STORYBLOK_SPACE_ID}/components/${componentId}`,
+    componentDefinition
+  );
+
 const prepare = async () => {
   try {
     // Clean up default content in space
@@ -135,7 +140,7 @@ const prepare = async () => {
     if (defaultStory) {
       await promiseThrottle.add(deleteStory.bind(this, defaultStory.id));
     } else {
-      process.exit(1);
+      // process.exit(1);
     }
 
     const components = (
@@ -145,7 +150,20 @@ const prepare = async () => {
     ).data?.components;
 
     const defaultComponents = components.filter((component) =>
-      ["feature", "grid", "page", "teaser"].includes(component.name)
+      ["feature", "grid", "teaser"].includes(component.name)
+    );
+    const defaultPageComponent = components.filter(
+      (component) => component.name === "page"
+    );
+
+    await promiseThrottle.add(
+      updateComponent.bind(
+        this,
+        defaultPageComponent[0].id,
+        generatedComponents.components.find(
+          (component) => component.name === "page"
+        )
+      )
     );
 
     for (const defaultComponent of defaultComponents) {

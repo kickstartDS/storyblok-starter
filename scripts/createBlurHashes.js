@@ -5,7 +5,7 @@ const { traverse } = require("object-traversal");
 const StoryblokClient = require("storyblok-js-client");
 const PromiseThrottle = require("promise-throttle");
 
-require("dotenv").config({ path: ".env.local" });
+require("@dotenvx/dotenvx").config({ path: ".env.local" });
 
 if (!process.env.NEXT_STORYBLOK_SPACE_ID)
   throw new Error("Missing NEXT_STORYBLOK_SPACE_ID env variable");

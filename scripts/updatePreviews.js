@@ -5,7 +5,7 @@ const FormData = require("form-data");
 const StoryblokClient = require("storyblok-js-client");
 const { basename } = require("node:path");
 
-require("dotenv").config({ path: ".env.local" });
+require("@dotenvx/dotenvx").config({ path: ".env.local" });
 
 if (!process.env.NEXT_STORYBLOK_SPACE_ID)
   throw new Error("Missing NEXT_STORYBLOK_SPACE_ID env variable");

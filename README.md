@@ -121,6 +121,8 @@ From now on your build process in Netlify should be automatically triggered, dep
 - maybe add info about exit preview-URL, to preview / compare with published content... and to remove the cookie that might stick outside of the preview, too
 - move initial demo page to slug `/`?
 - add section pointing at and explaining DSA DS
+- mention mp4-requirement for premium (project has to be verified by Storyblok)
+- add note about initial initialization taking a while (without any feedback currently)
 
 ### Adding initial content
 

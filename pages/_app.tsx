@@ -11,7 +11,8 @@ import { unflatten } from "@/helpers/unflatten";
 import Meta from "@/components/Meta";
 import "lazysizes/plugins/attrchange/ls.attrchange";
 
-import StoryblokProviders from "@/components/Providers";
+import ComponentProviders from "@/components/ComponentProviders";
+import ImageSizeProviders from "@/components/ImageSizeProviders";
 
 import palette from "@kickstartds/ds-agency-premium/global.client.js";
 import "@kickstartds/ds-agency-premium/global.css";
@@ -46,9 +47,20 @@ export default function App({
   Component: NextPage;
 }) {
   const { settings, story, blurHashes } = pageProps;
-  const headerProps = settings?.header[0];
-  const footerProps = settings?.footer[0];
+  const headerProps = settings?.header[0] ? unflatten(settings?.header[0]) : {};
+  const footerProps = settings?.footer[0] ? unflatten(settings?.footer[0]) : {};
+  const storyProps = story?.content ? unflatten(story?.content) : {};
   const router = useRouter();
+
+  const invertHeader = storyProps?.header?.inverted
+    ? !headerProps?.inverted
+    : headerProps?.inverted;
+  const floatHeader = storyProps?.header?.floating
+    ? !headerProps?.floating
+    : headerProps?.floating;
+  const invertFooter = storyProps?.footer?.inverted
+    ? !footerProps?.inverted
+    : footerProps?.inverted;
 
   setActiveNavItem(headerProps?.navItems, router.asPath);
   setActiveNavItem(footerProps?.navItems, router.asPath);
@@ -61,30 +73,28 @@ export default function App({
   return (
     <BlurHashProvider blurHashes={blurHashes}>
       <DsaProviders>
-        <StoryblokProviders>
-          <Meta
-            globalSeo={settings?.seo[0]}
-            pageSeo={story?.content.seo?.[0]}
-            fallbackName={story?.name}
-          />
-          <IconSprite />
-          {headerProps && (
-            <Header
-              logo={{}}
-              {...unflatten(headerProps)}
-              inverted={story.header?.inverted?.toString() || false}
-              floating={story.header?.floating?.toString() || false}
+        <ComponentProviders>
+          <ImageSizeProviders>
+            <Meta
+              globalSeo={settings?.seo[0]}
+              pageSeo={story?.content.seo?.[0]}
+              fallbackName={story?.name}
             />
-          )}
-          <Component {...pageProps} />
-          {footerProps && (
-            <Footer
-              logo={{}}
-              {...unflatten(footerProps)}
-              inverted={story.footer?.inverted?.toString() || false}
-            />
-          )}
-        </StoryblokProviders>
+            <IconSprite />
+            {headerProps && (
+              <Header
+                logo={{}}
+                {...headerProps}
+                inverted={invertHeader}
+                floating={floatHeader}
+              />
+            )}
+            <Component {...pageProps} />
+            {footerProps && (
+              <Footer logo={{}} {...footerProps} inverted={invertFooter} />
+            )}
+          </ImageSizeProviders>
+        </ComponentProviders>
       </DsaProviders>
     </BlurHashProvider>
   );

@@ -2,6 +2,7 @@
 import {
   AnchorHTMLAttributes,
   FC,
+  HTMLAttributes,
   ImgHTMLAttributes,
   PropsWithChildren,
   forwardRef,
@@ -34,7 +35,13 @@ import { StoryblokSubComponent } from "./StoryblokSubComponent";
 import { TeaserProvider } from "./TeaserProvider";
 import { useBlurHashes } from "./BlurHashContext";
 import { useImagePriority } from "./ImagePriorityContext";
+import { useImageSize } from "./ImageSizeContext";
 import { AssetStoryblok, MultilinkStoryblok } from "@/types/components-schema";
+import { HeroProps } from "@kickstartds/ds-agency-premium/HeroProps-cf82a16d.js";
+import {
+  HeroContextDefault as DsaHero,
+  HeroContext,
+} from "@kickstartds/ds-agency-premium/hero";
 
 function isStoryblokLink(object: unknown): object is MultilinkStoryblok {
   return (object as MultilinkStoryblok)?.linktype !== undefined;
@@ -86,6 +93,7 @@ const Picture = forwardRef<
 
   const blurHashes = useBlurHashes();
   const priority = useImagePriority();
+  const size = useImageSize();
 
   useImperativeHandle<HTMLImageElement | null, HTMLImageElement | null>(
     ref,
@@ -100,6 +108,11 @@ const Picture = forwardRef<
   const source = isStoryblokAsset(src) ? src.filename : src;
   const fileUrl = !source.startsWith("http") ? `https:${source}` : source;
   const [width, height] = fileUrl.match(/\/(\d+)x(\d+)\//)?.slice(1) || [];
+  const maxWidth = parseInt(width) > size ? size : parseInt(width);
+  const maxHeight =
+    parseInt(width) > size
+      ? Math.floor((parseInt(height) * size) / parseInt(width))
+      : parseInt(height);
 
   // Don't optimize SVG images - https://github.com/kickstartDS/storyblok-starter/issues/19
   return fileUrl.endsWith(".svg") ? (
@@ -107,19 +120,26 @@ const Picture = forwardRef<
       ref={internalRef}
       {...props}
       src={fileUrl}
-      width={parseInt(width, 10)}
-      height={parseInt(height, 10)}
+      width={maxWidth}
+      height={maxHeight}
       alt={isStoryblokAsset(src) ? src.alt || "" : props.alt || ""}
       lazy={lazy}
+      fetchPriority="high"
     />
   ) : (
     <Image
       ref={internalRef}
       {...props}
       alt={isStoryblokAsset(src) ? src.alt || "" : props.alt || ""}
-      src={priority ? `${fileUrl}/m/filters:quality(50)` : fileUrl}
-      width={autoSize ? undefined : parseInt(width, 10)}
-      height={autoSize ? undefined : parseInt(height, 10)}
+      src={
+        priority
+          ? `${fileUrl}/${
+              fileUrl.includes("/m/") ? "" : "m/"
+            }filters:quality(50)`
+          : fileUrl
+      }
+      width={autoSize ? undefined : maxWidth}
+      height={autoSize ? undefined : maxHeight}
       priority={lazy === false || priority}
       onLoad={(event) => {
         if (event.target instanceof HTMLImageElement) {
@@ -141,34 +161,98 @@ const PictureProvider: FC<PropsWithChildren> = (props) => (
   <PictureContext.Provider {...props} value={Picture} />
 );
 
+const Hero = forwardRef<
+  HTMLDivElement,
+  HeroProps & HTMLAttributes<HTMLDivElement>
+>((props, ref) => {
+  const { image, ...rest } = props;
+
+  const src =
+    (image &&
+      ((image.src &&
+        isStoryblokAsset(image.src) &&
+        `${image.src.filename}/m/600x0`) ||
+        image.src)) ||
+    undefined;
+  const srcMobile =
+    (image &&
+      ((image.srcMobile &&
+        isStoryblokAsset(image.srcMobile) &&
+        image.srcMobile.filename &&
+        `${image.srcMobile.filename}/m/600x0`) ||
+        image.srcMobile)) ||
+    src ||
+    "";
+  const srcTablet =
+    (image &&
+      ((image.srcTablet &&
+        isStoryblokAsset(image.srcTablet) &&
+        image.srcTablet.filename &&
+        `${image.srcTablet.filename}/m/950x0`) ||
+        image.srcTablet)) ||
+    undefined;
+  const srcDesktop =
+    (image &&
+      ((image.srcDesktop &&
+        isStoryblokAsset(image.srcDesktop) &&
+        image.srcDesktop.filename &&
+        `${image.srcDesktop.filename}/m/1600x0`) ||
+        image.srcDesktop)) ||
+    undefined;
+
+  return (
+    <DsaHero
+      {...rest}
+      image={{
+        ...image,
+        srcMobile,
+        srcTablet,
+        srcDesktop,
+        src,
+      }}
+      ref={ref}
+    />
+  );
+});
+
+const HeroProvider: FC<PropsWithChildren> = (props) => (
+  <HeroContext.Provider {...props} value={Hero} />
+);
+
 const Providers = (props: PropsWithChildren) => (
   <PictureProvider>
-    <LinkProvider>
-      <TeaserProvider>
-        {/* @ts-expect-error */}
-        <CtaContext.Provider value={StoryblokSubComponent}>
+    <HeroProvider>
+      <LinkProvider>
+        <TeaserProvider>
           {/* @ts-expect-error */}
-          <FeatureContext.Provider value={StoryblokSubComponent}>
+          <CtaContext.Provider value={StoryblokSubComponent}>
             {/* @ts-expect-error */}
-            <StatContext.Provider value={StoryblokSubComponent}>
+            <FeatureContext.Provider value={StoryblokSubComponent}>
               {/* @ts-expect-error */}
-              <TestimonialContext.Provider value={StoryblokSubComponent}>
+              <StatContext.Provider value={StoryblokSubComponent}>
                 {/* @ts-expect-error */}
-                <BlogHeadContext.Provider value={StoryblokSubComponent}>
+                <TestimonialContext.Provider value={StoryblokSubComponent}>
                   {/* @ts-expect-error */}
-                  <BlogAsideContext.Provider value={StoryblokSubComponent}>
-                    {/* @ts-expect-error */}
-                    <BlogTeaserContext.Provider value={StoryblokSubComponent}>
-                      {props.children}
-                    </BlogTeaserContext.Provider>
-                  </BlogAsideContext.Provider>
-                </BlogHeadContext.Provider>
-              </TestimonialContext.Provider>
-            </StatContext.Provider>
-          </FeatureContext.Provider>
-        </CtaContext.Provider>
-      </TeaserProvider>
-    </LinkProvider>
+                  <BlogHeadContext.Provider value={StoryblokSubComponent}>
+                    <BlogAsideContext.Provider
+                      // @ts-expect-error
+                      value={StoryblokSubComponent}
+                    >
+                      <BlogTeaserContext.Provider
+                        // @ts-expect-error
+                        value={StoryblokSubComponent}
+                      >
+                        {props.children}
+                      </BlogTeaserContext.Provider>
+                    </BlogAsideContext.Provider>
+                  </BlogHeadContext.Provider>
+                </TestimonialContext.Provider>
+              </StatContext.Provider>
+            </FeatureContext.Provider>
+          </CtaContext.Provider>
+        </TeaserProvider>
+      </LinkProvider>
+    </HeroProvider>
   </PictureProvider>
 );
 

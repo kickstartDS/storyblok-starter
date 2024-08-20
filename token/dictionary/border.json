@@ -10,7 +10,7 @@
     },
     "border-radius": {
       "control": {
-        "value": "2px",
+        "value": "16px",
         "token": {
           "category": "Border Radius",
           "presenter": "BorderRadius"
@@ -24,7 +24,7 @@
         }
       },
       "surface": {
-        "value": "20px",
+        "value": "32px",
         "token": {
           "category": "Border Radius",
           "presenter": "BorderRadius"

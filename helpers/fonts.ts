@@ -44,12 +44,12 @@ const displayFont = localFont({
     },
     {
       path: "../token/fonts/Fredoka-Bold.woff2",
-      weight: "bold",
+      weight: "700",
       style: "normal",
     },
     {
       path: "../token/fonts/Fredoka-Bold.woff",
-      weight: "bold",
+      weight: "700",
       style: "normal",
     },
   ],
@@ -207,12 +207,12 @@ const displayFontPreview = localFont({
     },
     {
       path: "../token/fonts/Fredoka-Bold.woff2",
-      weight: "bold",
+      weight: "700",
       style: "normal",
     },
     {
       path: "../token/fonts/Fredoka-Bold.woff",
-      weight: "bold",
+      weight: "700",
       style: "normal",
     },
   ],

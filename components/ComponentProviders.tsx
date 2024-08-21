@@ -28,6 +28,10 @@ import { CtaContext } from "@kickstartds/ds-agency-premium/cta";
 import { FeatureContext } from "@kickstartds/ds-agency-premium/feature";
 import { StatContext } from "@kickstartds/ds-agency-premium/stat";
 import { TestimonialContext } from "@kickstartds/ds-agency-premium/testimonial";
+import {
+  StorytellingContext,
+  StorytellingContextDefault,
+} from "@kickstartds/content/lib/storytelling";
 
 import { INDEX_SLUG } from "@/helpers/storyblok";
 
@@ -38,6 +42,7 @@ import { useImagePriority } from "./ImagePriorityContext";
 import { useImageSize } from "./ImageSizeContext";
 import { AssetStoryblok, MultilinkStoryblok } from "@/types/components-schema";
 import { HeroProps } from "@kickstartds/ds-agency-premium/HeroProps-cf82a16d.js";
+import { StorytellingProps } from "@kickstartds/content/lib/storytelling/typing";
 import {
   HeroContextDefault as DsaHero,
   HeroContext,
@@ -122,7 +127,7 @@ const Picture = forwardRef<
       src={fileUrl}
       width={maxWidth}
       height={maxHeight}
-      alt={isStoryblokAsset(src) ? src.alt || "" : props.alt || ""}
+      alt={isStoryblokAsset(src) && src.alt ? src.alt : props.alt || ""}
       lazy={lazy}
       fetchPriority="high"
     />
@@ -130,7 +135,7 @@ const Picture = forwardRef<
     <Image
       ref={internalRef}
       {...props}
-      alt={isStoryblokAsset(src) ? src.alt || "" : props.alt || ""}
+      alt={isStoryblokAsset(src) && src.alt ? src.alt : props.alt || ""}
       src={
         priority
           ? `${fileUrl}/${
@@ -219,41 +224,64 @@ const HeroProvider: FC<PropsWithChildren> = (props) => (
   <HeroContext.Provider {...props} value={Hero} />
 );
 
-const Providers = (props: PropsWithChildren) => (
-  <PictureProvider>
-    <HeroProvider>
-      <LinkProvider>
-        <TeaserProvider>
-          {/* @ts-expect-error */}
-          <CtaContext.Provider value={StoryblokSubComponent}>
+const Storytelling = forwardRef<
+  HTMLDivElement,
+  StorytellingProps & HTMLAttributes<HTMLDivElement>
+>(({ backgroundImage, ...props }, ref) => {
+  return (
+    <StorytellingContextDefault
+      {...props}
+      backgroundImage={
+        isStoryblokAsset(backgroundImage)
+          ? backgroundImage.filename
+          : backgroundImage
+      }
+      ref={ref}
+    />
+  );
+});
+
+const StorytellingProvider: FC<PropsWithChildren> = (props) => (
+  <StorytellingContext.Provider {...props} value={Storytelling} />
+);
+
+const ComponentProviders = (props: PropsWithChildren) => (
+  <StorytellingProvider>
+    <PictureProvider>
+      <HeroProvider>
+        <LinkProvider>
+          <TeaserProvider>
             {/* @ts-expect-error */}
-            <FeatureContext.Provider value={StoryblokSubComponent}>
+            <CtaContext.Provider value={StoryblokSubComponent}>
               {/* @ts-expect-error */}
-              <StatContext.Provider value={StoryblokSubComponent}>
+              <FeatureContext.Provider value={StoryblokSubComponent}>
                 {/* @ts-expect-error */}
-                <TestimonialContext.Provider value={StoryblokSubComponent}>
+                <StatContext.Provider value={StoryblokSubComponent}>
                   {/* @ts-expect-error */}
-                  <BlogHeadContext.Provider value={StoryblokSubComponent}>
-                    <BlogAsideContext.Provider
-                      // @ts-expect-error
-                      value={StoryblokSubComponent}
-                    >
-                      <BlogTeaserContext.Provider
+                  <TestimonialContext.Provider value={StoryblokSubComponent}>
+                    {/* @ts-expect-error */}
+                    <BlogHeadContext.Provider value={StoryblokSubComponent}>
+                      <BlogAsideContext.Provider
                         // @ts-expect-error
                         value={StoryblokSubComponent}
                       >
-                        {props.children}
-                      </BlogTeaserContext.Provider>
-                    </BlogAsideContext.Provider>
-                  </BlogHeadContext.Provider>
-                </TestimonialContext.Provider>
-              </StatContext.Provider>
-            </FeatureContext.Provider>
-          </CtaContext.Provider>
-        </TeaserProvider>
-      </LinkProvider>
-    </HeroProvider>
-  </PictureProvider>
+                        <BlogTeaserContext.Provider
+                          // @ts-expect-error
+                          value={StoryblokSubComponent}
+                        >
+                          {props.children}
+                        </BlogTeaserContext.Provider>
+                      </BlogAsideContext.Provider>
+                    </BlogHeadContext.Provider>
+                  </TestimonialContext.Provider>
+                </StatContext.Provider>
+              </FeatureContext.Provider>
+            </CtaContext.Provider>
+          </TeaserProvider>
+        </LinkProvider>
+      </HeroProvider>
+    </PictureProvider>
+  </StorytellingProvider>
 );
 
-export default Providers;
+export default ComponentProviders;

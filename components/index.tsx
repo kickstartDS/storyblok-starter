@@ -10,13 +10,38 @@ import { Section } from "@kickstartds/ds-agency-premium/section";
 import { Slider } from "@kickstartds/ds-agency-premium/slider";
 import editablePage from "./Page";
 import { ImageAutoSizeProvider } from "./ImageAutoSizeProvider";
+import { traverse } from "object-traversal";
+
+const removeEmptyImages = (blok: Record<string, any>) => {
+  traverse(blok, ({ parent, key, value }) => {
+    if (
+      parent &&
+      key &&
+      value &&
+      typeof value === "object" &&
+      value.fieldtype === "asset" &&
+      value.id === null
+    ) {
+      delete parent[key];
+    }
+  });
+
+  return blok;
+};
+
+export const isStoryblokComponent = (
+  blok: any
+): blok is { content: Record<string, any> } =>
+  blok.content !== undefined && blok.id !== undefined;
 
 export const editable =
   (Component: React.ComponentType<any>, nestedBloksKey?: string) =>
   // eslint-disable-next-line react/display-name
   ({ blok }: { blok: SbBlokData }) => {
     const { component, components, type, typeProp, _uid, ...props } =
-      unflatten(blok);
+      removeEmptyImages(
+        unflatten(isStoryblokComponent(blok) ? blok.content : blok)
+      );
     return (
       <Component {...storyblokEditable(blok)} {...props} type={typeProp}>
         {nestedBloksKey &&

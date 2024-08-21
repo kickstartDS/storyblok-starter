@@ -106,7 +106,7 @@ const ImageStoryProvider: FC<PropsWithChildren> = (props) => (
   <ImageStoryContext.Provider {...props} value={ImageStory} />
 );
 
-const Providers = (props: PropsWithChildren) => (
+const ImageSizeProviders = (props: PropsWithChildren) => (
   <SectionProvider>
     <LogosProvider>
       <ImageStoryProvider>{props.children}</ImageStoryProvider>
@@ -114,4 +114,4 @@ const Providers = (props: PropsWithChildren) => (
   </SectionProvider>
 );
 
-export default Providers;
+export default ImageSizeProviders;

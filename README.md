@@ -42,7 +42,7 @@ You can use this button to deploy the EnergyUI@Storyblok starter repo on Vercel.
    3. (Re-)login to the Storyblok CLI: `npm run storyblok-logout` followed by `npm run storyblok-logout`. The logout first ensures the CLI can actually see all projects, especially newly created ones (which would be likely for a starter like this) can error out otherwise. Use your Storyblok-Login and the region chosen when creating your Space here
    4. Run the project initialization: `npm run init`. This removes demo content, adds all the needed preset and demo content images (into distinct folders, as not to pollute your future project), all components and preset configuration, and creates an initial demo page
    5. Final small adjustment you need to make is to add your future site url in `.env` (variable `NEXT_PUBLIC_SITE_URL`)
-   6. You can now commit & push all the locally updated files (`git add --all && git commit -m "Initial Storyblok setup" && git push remote origin`):
+   6. You can now commit & push all the locally updated files (`git add --all && git commit -m "Initial Storyblok setup" && git push origin main`):
       - `cms/components.123456.json` is the automatically generated component schema, which was already part of the repository when forked (you can regenerate it with `npm run create-storyblok-config`). It now includes the correct asset references for visual component previews
       - `cms/presets.123456.json` is the same for presets, now with updated asset references for visual preset previews and correct space and component id references
       - `types/components-schema.json` is your live component schema pulled from Storyblok (seeded by `cms/components.123456.json`, this now includes all correct ids and references, pulled by `npm run pull-content-schema`)
@@ -78,7 +78,7 @@ TODO: check initial `npm run init` locally again... failed for `push-components`
    - `STORYBLOK_LOGIN_EMAIL`: the email for the account you created the Space with
    - `STORYBLOK_REGION`: region your Space is hosted in. You should have selected this when creating it
 4. Run the first deployment for your project by hitting the final button
-5. You should be able to open the site url configured in Netlify now, adding `/getting-started` to it to open the initial demo page
+5. You should be able to open the site url configured in Netlify now
 
 #### Netlify Webhook on Storyblok change
 
@@ -144,18 +144,24 @@ TODO
 
 `YOUR_WEBSITE` should be the path pointing to your website project, the one you want to update the previews for.
 
-1. Clone the Design System this is based on locally: https://github.com/kickstartDS/ds-agency
+TODO adjust this to `ds-agency` on non-premium version
+
+1. Clone the Design System this is based on locally: https://github.com/kickstartDS/ds-agency-premium
 2. Switch to the freshly cloned directory, and inside (ensure you're using the correct Node version 18+; `nvs use`, `nvm use` for automatic selection, if you use one of those tools):
    1. `yarn` to install dependencies
    2. `rm -rf src/token` to remove the existing default theme
    3. `cp -r YOUR_WEBSITE/token src/token` to copy your Design Token / Style Dictionary configuration to the Design System project
    4. Adjust the `background-color` for the `.preview--wrapper` CSS class in `global.scss`, to a color suitable for your component screenshots (depends on your applied design)
+      1. Optionally, if you've done customizations in `index.scss`, you should add an import to the file `.storybook/preview.tsx` (e.g. right after the already existing `import "./preview.css";`): `import YOUR_WEBSITE/index.scss`
+      2. If you've also changed your fonts, you should probably change the content of `fonts.scss` accordingly (if not done already). Finally uncomment the font import in `index.scss` temporarily, to include the correct fonts in preview generation. Fonts are normally loaded by Next.js, which is missing when building from Storybook.
    5. `yarn build-storybook` to build a Storybook that can then be used to create screenshots
    6. `yarn create-component-previews` to re-create the existing previews with your branding
    7. `mkdir -p YOUR_WEBSITE/public/img && rm -rf YOUR_WEBSITE/public/img/screenshots && cp -r static/img/screenshots YOUR_WEBSITE/public/img/` to copy the generated screenshots to your project
    8. `cd YOUR_WEBSITE` to switch to your website project
    9. `npm run update-previews` to update those newly created screenshots in your Storyblok space
 3. That's it!
+
+Reminder: Undo the import for `fonts.scss` in `index.scss` if you had to change that for your previews, otherwise you'd load redundant fonts on your page later.
 
 ## Working with the content schema
 

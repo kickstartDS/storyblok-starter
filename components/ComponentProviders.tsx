@@ -122,7 +122,7 @@ const Picture = forwardRef<
       src={fileUrl}
       width={maxWidth}
       height={maxHeight}
-      alt={isStoryblokAsset(src) ? src.alt || "" : props.alt || ""}
+      alt={isStoryblokAsset(src) && src.alt ? src.alt : props.alt || ""}
       lazy={lazy}
       fetchPriority="high"
     />
@@ -130,7 +130,7 @@ const Picture = forwardRef<
     <Image
       ref={internalRef}
       {...props}
-      alt={isStoryblokAsset(src) ? src.alt || "" : props.alt || ""}
+      alt={isStoryblokAsset(src) && src.alt ? src.alt : props.alt || ""}
       src={
         priority
           ? `${fileUrl}/${

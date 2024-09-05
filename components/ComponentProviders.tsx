@@ -9,6 +9,7 @@ import {
   useEffect,
   useImperativeHandle,
   useRef,
+  ComponentProps,
 } from "react";
 import NextLink from "next/link";
 import { blurhashToCssGradientString } from "@unpic/placeholder";
@@ -20,65 +21,39 @@ import {
 } from "@kickstartds/base/lib/picture";
 import { LinkContext, LinkProps } from "@kickstartds/base/lib/link";
 import { PictureProps } from "@kickstartds/base/lib/picture/typing";
+import {
+  StorytellingContext,
+  StorytellingContextDefault,
+} from "@kickstartds/content/lib/storytelling";
+import { StorytellingProps } from "@kickstartds/content/lib/storytelling/typing";
 
 import { BlogTeaserContext } from "@kickstartds/ds-agency-premium/blog-teaser";
 import { BlogAsideContext } from "@kickstartds/ds-agency-premium/blog-aside";
+import { BlogAuthorContext } from "@kickstartds/ds-agency-premium/blog-author";
 import { BlogHeadContext } from "@kickstartds/ds-agency-premium/blog-head";
 import { CtaContext } from "@kickstartds/ds-agency-premium/cta";
 import { FeatureContext } from "@kickstartds/ds-agency-premium/feature";
 import { StatContext } from "@kickstartds/ds-agency-premium/stat";
 import { TestimonialContext } from "@kickstartds/ds-agency-premium/testimonial";
 import {
-  StorytellingContext,
-  StorytellingContextDefault,
-} from "@kickstartds/content/lib/storytelling";
+  HeroContextDefault,
+  HeroContext,
+} from "@kickstartds/ds-agency-premium/hero";
 
-import { INDEX_SLUG } from "@/helpers/storyblok";
+import { isStoryblokAsset } from "@/helpers/storyblok";
 
 import { StoryblokSubComponent } from "./StoryblokSubComponent";
 import { TeaserProvider } from "./TeaserProvider";
 import { useBlurHashes } from "./BlurHashContext";
 import { useImagePriority } from "./ImagePriorityContext";
 import { useImageSize } from "./ImageSizeContext";
-import { AssetStoryblok, MultilinkStoryblok } from "@/types/components-schema";
-import { HeroProps } from "@kickstartds/ds-agency-premium/HeroProps-cf82a16d.js";
-import { StorytellingProps } from "@kickstartds/content/lib/storytelling/typing";
-import {
-  HeroContextDefault as DsaHero,
-  HeroContext,
-} from "@kickstartds/ds-agency-premium/hero";
-
-function isStoryblokLink(object: unknown): object is MultilinkStoryblok {
-  return (object as MultilinkStoryblok)?.linktype !== undefined;
-}
-
-function isStoryblokAsset(object: unknown): object is AssetStoryblok {
-  return (object as AssetStoryblok)?.filename !== undefined;
-}
 
 const Link = forwardRef<
   HTMLAnchorElement,
   LinkProps & AnchorHTMLAttributes<HTMLAnchorElement>
->(({ href, ...props }, ref) => {
-  if (isStoryblokLink(href)) {
-    const linkTarget =
-      href.linktype === "email"
-        ? `mailto:${href.email}`
-        : href.story?.full_slug === INDEX_SLUG
-        ? "/"
-        : href.cached_url || href.story?.full_slug;
-    return (
-      <NextLink
-        {...props}
-        ref={ref}
-        href={linkTarget || ""}
-        target={href.target}
-      />
-    );
-  }
-
-  return <NextLink ref={ref} {...props} href={href || ""} />;
-});
+>(({ href, ...props }, ref) => (
+  <NextLink ref={ref} href={href || "#"} {...props} />
+));
 
 const LinkProvider: FC<PropsWithChildren> = (props) => (
   <LinkContext.Provider value={Link} {...props} />
@@ -168,7 +143,7 @@ const PictureProvider: FC<PropsWithChildren> = (props) => (
 
 const Hero = forwardRef<
   HTMLDivElement,
-  HeroProps & HTMLAttributes<HTMLDivElement>
+  ComponentProps<typeof HeroContextDefault> & HTMLAttributes<HTMLDivElement>
 >((props, ref) => {
   const { image, ...rest } = props;
 
@@ -206,7 +181,7 @@ const Hero = forwardRef<
     undefined;
 
   return (
-    <DsaHero
+    <HeroContextDefault
       {...rest}
       image={{
         ...image,
@@ -257,8 +232,10 @@ const ComponentProviders = (props: PropsWithChildren) => (
               <FeatureContext.Provider value={StoryblokSubComponent}>
                 {/* @ts-expect-error */}
                 <StatContext.Provider value={StoryblokSubComponent}>
-                  {/* @ts-expect-error */}
-                  <TestimonialContext.Provider value={StoryblokSubComponent}>
+                  <TestimonialContext.Provider
+                    // @ts-expect-error
+                    value={StoryblokSubComponent}
+                  >
                     {/* @ts-expect-error */}
                     <BlogHeadContext.Provider value={StoryblokSubComponent}>
                       <BlogAsideContext.Provider
@@ -269,7 +246,12 @@ const ComponentProviders = (props: PropsWithChildren) => (
                           // @ts-expect-error
                           value={StoryblokSubComponent}
                         >
-                          {props.children}
+                          <BlogAuthorContext.Provider
+                            // @ts-expect-error
+                            value={StoryblokSubComponent}
+                          >
+                            {props.children}
+                          </BlogAuthorContext.Provider>
                         </BlogTeaserContext.Provider>
                       </BlogAsideContext.Provider>
                     </BlogHeadContext.Provider>

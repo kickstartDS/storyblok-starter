@@ -34,9 +34,12 @@ const handleRouteChange = (url: string) => {
 const setActiveNavItem = (navItems: any[] = [], currentRoute: string) => {
   for (const navItem of navItems) {
     navItem.active =
-      navItem.href.linktype === "story" &&
-      ("/" + navItem.href.story.url === currentRoute ||
-        navItem.href.story.url === currentRoute);
+      "/" + navItem.href === currentRoute || navItem.href === currentRoute;
+
+    for (const item of navItem.items) {
+      item.active =
+        "/" + item.href === currentRoute || item.href === currentRoute;
+    }
   }
 };
 
@@ -47,8 +50,8 @@ export default function App({
   Component: NextPage;
 }) {
   const { settings, story, blurHashes } = pageProps;
-  const headerProps = settings?.header[0] ? unflatten(settings?.header[0]) : {};
-  const footerProps = settings?.footer[0] ? unflatten(settings?.footer[0]) : {};
+  const headerProps = settings?.header ? unflatten(settings?.header) : {};
+  const footerProps = settings?.footer ? unflatten(settings?.footer) : {};
   const storyProps = story?.content ? unflatten(story?.content) : {};
   const router = useRouter();
 
@@ -76,8 +79,8 @@ export default function App({
         <ComponentProviders>
           <ImageSizeProviders>
             <Meta
-              globalSeo={settings?.seo[0]}
-              pageSeo={story?.content.seo?.[0]}
+              globalSeo={settings?.seo}
+              pageSeo={story?.content.seo}
               fallbackName={story?.name}
             />
             <IconSprite />

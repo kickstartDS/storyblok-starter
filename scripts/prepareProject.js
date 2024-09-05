@@ -140,7 +140,10 @@ const prepare = async () => {
     if (defaultStory) {
       await promiseThrottle.add(deleteStory.bind(this, defaultStory.id));
     } else {
-      process.exit(1);
+      console.log(
+        "Project already prepared, not running preparation script again."
+      );
+      process.exit(0);
     }
 
     const components = (
@@ -289,17 +292,25 @@ const prepare = async () => {
             jsonpointer.set(
               preset.preset,
               `/${meta.nodePath}`,
-              jsonpointer
-                .get(preset.preset, `/${meta.nodePath}`)
-                .map((entry) => {
-                  if (typeof entry !== "object") return entry;
-                  return {
-                    ...entry,
+              Array.isArray(jsonpointer.get(preset.preset, `/${meta.nodePath}`))
+                ? jsonpointer
+                    .get(preset.preset, `/${meta.nodePath}`)
+                    .map((entry) => {
+                      console.log("mapping entry", entry);
+                      if (typeof entry !== "object") return entry;
+                      return {
+                        ...entry,
+                        _uid: uuidv4(),
+                        type: config.component_whitelist[0],
+                        component: config.component_whitelist[0],
+                      };
+                    })
+                : {
+                    ...jsonpointer.get(preset.preset, `/${meta.nodePath}`),
                     _uid: uuidv4(),
                     type: config.component_whitelist[0],
                     component: config.component_whitelist[0],
-                  };
-                })
+                  }
             );
           }
         },

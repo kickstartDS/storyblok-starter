@@ -1,7 +1,12 @@
-// import { FC, PropsWithChildren } from "react";
-import { PageStoryblok } from "@/types/components-schema";
-import { storyblokEditable, StoryblokComponent } from "@storyblok/react";
+import { ComponentProps } from "react";
+import {
+  storyblokEditable,
+  StoryblokComponent,
+  SbBlokData,
+} from "@storyblok/react";
 import { ImagePriorityProvider } from "./ImagePriorityContext";
+import { Page as DsaPage } from "@kickstartds/ds-agency-premium/components/page/index.js";
+
 // import { render } from "storyblok-rich-text-react-renderer";
 // import { RichtextStoryblok } from "@/types/components-schema";
 // import {
@@ -22,7 +27,12 @@ import { ImagePriorityProvider } from "./ImagePriorityContext";
 // );
 
 type PageProps = {
-  blok: PageStoryblok;
+  blok: Omit<ComponentProps<typeof DsaPage>, "section"> &
+    SbBlokData & {
+      section?: (ComponentProps<typeof DsaPage>["section"] & {
+        _uid: string;
+      })[];
+    };
 };
 
 const Page: React.FC<PageProps> = ({ blok }) => (

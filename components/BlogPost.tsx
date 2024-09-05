@@ -1,43 +1,52 @@
-import { StoryblokComponent, storyblokEditable } from "@storyblok/react";
-import { BlogPost as BlogPostComponent } from "@kickstartds/ds-agency-premium/blog-post";
-import { BlogPostStoryblok } from "@/types/components-schema";
+import { ComponentProps } from "react";
 import {
-  TagLabelContext,
-  TagLabelContextDefault,
-} from "@kickstartds/base/lib/tag-label";
+  SbBlokData,
+  StoryblokComponent,
+  storyblokEditable,
+} from "@storyblok/react";
+import { Section } from "@kickstartds/ds-agency-premium/components/section/index.js";
+import { Split } from "@kickstartds/ds-agency-premium/components/split/index.js";
+import { BlogAside } from "@kickstartds/ds-agency-premium/components/blog-aside/index.js";
+import { Text } from "@kickstartds/ds-agency-premium/components/text/index.js";
+import { BlogHead } from "@kickstartds/ds-agency-premium/components/blog-head/index.js";
+import { Cta } from "@kickstartds/ds-agency-premium/components/cta/index.js";
+import { BlogPost as DsaBlogPost } from "@kickstartds/ds-agency-premium/components/blog-post/index.js";
 
 type PageProps = {
-  blok: BlogPostStoryblok;
+  blok: Omit<ComponentProps<typeof DsaBlogPost>, "section"> &
+    SbBlokData & {
+      section?: (ComponentProps<typeof DsaBlogPost>["section"] & {
+        _uid: string;
+      })[];
+    };
 };
-
-const Tag = ({ label, ...props }: any) => (
-  <TagLabelContextDefault label={label?.entry} {...props} />
-);
 
 const BlogPost: React.FC<PageProps> = ({ blok }) => {
   if (blok) {
-    const { cta, seo, aside, head, content } = blok;
+    const { cta, aside, head, content } = blok;
 
     return (
       <main {...storyblokEditable(blok)}>
-        {/* @ts-expect-error */}
-        <TagLabelContext.Provider value={Tag}>
-          <BlogPostComponent
-            // @ts-expect-error
-            head={head && head[0]}
-            // @ts-expect-error
-            cta={cta && cta[0]}
-            // @ts-expect-error
-            seo={seo && seo[0]}
-            // @ts-expect-error
-            aside={aside && aside[0]}
-            content={content}
-          >
-            {blok.section?.map((nestedBlok) => (
-              <StoryblokComponent blok={nestedBlok} key={nestedBlok._uid} />
-            ))}
-          </BlogPostComponent>
-        </TagLabelContext.Provider>
+        <Section width="wide">
+          <Split layout="sidebarRight">
+            <div>
+              {head && <BlogHead {...head} />}
+              {content ? (
+                <Text text={content} />
+              ) : (
+                blok.section?.map((nestedBlok) => (
+                  <StoryblokComponent blok={nestedBlok} key={nestedBlok._uid} />
+                ))
+              )}
+            </div>
+            {aside && <BlogAside {...aside} />}
+          </Split>
+        </Section>
+        {cta && (
+          <Section content={{ mode: "list" }}>
+            <Cta {...cta} />
+          </Section>
+        )}
       </main>
     );
   }

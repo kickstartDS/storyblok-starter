@@ -143,7 +143,7 @@ const prepare = async () => {
       console.log(
         "Project already prepared, not running preparation script again."
       );
-      process.exit(0);
+      process.exit(1);
     }
 
     const components = (

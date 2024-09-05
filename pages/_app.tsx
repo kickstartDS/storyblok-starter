@@ -36,9 +36,11 @@ const setActiveNavItem = (navItems: any[] = [], currentRoute: string) => {
     navItem.active =
       "/" + navItem.href === currentRoute || navItem.href === currentRoute;
 
-    for (const item of navItem.items) {
-      item.active =
-        "/" + item.href === currentRoute || item.href === currentRoute;
+    if (navItem.items && Array.isArray(navItem.items)) {
+      for (const item of navItem.items) {
+        item.active =
+          "/" + item.href === currentRoute || item.href === currentRoute;
+      }
     }
   }
 };

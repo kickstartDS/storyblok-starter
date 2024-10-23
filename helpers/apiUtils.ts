@@ -17,7 +17,8 @@ export const easeCookies = (res: NextApiResponse) => {
 
 export const normalizeSlug = (req: NextApiRequest) => {
   const { slug, ...query } = req.query;
-  const path = "/_preview/" + (slug ? (isString(slug) ? slug : slug.join("/")) : "");
+  const path =
+    "/_preview/" + (slug ? (isString(slug) ? slug : slug.join("/")) : "");
   const params = new URLSearchParams(
     Object.entries(query).filter((item): item is [string, string] =>
       isString(item[1])

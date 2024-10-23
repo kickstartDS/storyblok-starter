@@ -1,4 +1,4 @@
-import { ComponentProps } from "react";
+import { ComponentProps, FC } from "react";
 import dynamic from "next/dynamic";
 import {
   SbBlokData,
@@ -10,20 +10,77 @@ import { Section } from "@kickstartds/ds-agency-premium/section";
 import { Slider } from "@kickstartds/ds-agency-premium/slider";
 import editablePage from "./Page";
 import { ImageAutoSizeProvider } from "./ImageAutoSizeProvider";
+import {
+  isGlobal,
+  isGlobalReference,
+  isStoryblokComponent,
+} from "@/helpers/storyblok";
+import {
+  GlobalReferenceStoryblok,
+  GlobalStoryblok,
+} from "@/types/components-schema";
+
+export const Global: FC<GlobalStoryblok & SbBlokData> = (props) =>
+  isGlobal(props.blok) &&
+  props.blok.global &&
+  props.blok.global.map((global) => (
+    <StoryblokComponent blok={global} key={global._uid} />
+  ));
+
+export const GlobalReference: FC<GlobalReferenceStoryblok & SbBlokData> = (
+  props
+) =>
+  isGlobalReference(props.blok) &&
+  props.blok.reference?.map(
+    (reference) =>
+      isGlobal(reference) &&
+      reference.global?.map((global) => (
+        <StoryblokComponent blok={global} key={global._uid} />
+      ))
+  );
 
 export const editable =
   (Component: React.ComponentType<any>, nestedBloksKey?: string) =>
   // eslint-disable-next-line react/display-name
   ({ blok }: { blok: SbBlokData }) => {
-    const { component, components, type, typeProp, _uid, ...props } =
-      unflatten(blok);
+    const { component, components, type, typeProp, _uid, ...props } = unflatten(
+      isStoryblokComponent(blok) ? blok.content : blok
+    );
+
+    if (isGlobalReference(blok)) {
+      return (
+        <div className="editable">
+          {blok.reference?.map(
+            (reference) =>
+              isGlobal(reference) &&
+              reference.global?.map((global) => (
+                <StoryblokComponent blok={global} key={global._uid} />
+              ))
+          )}
+        </div>
+      );
+    }
+
     return (
       <Component {...storyblokEditable(blok)} {...props} type={typeProp}>
         {nestedBloksKey &&
           (blok[nestedBloksKey] as SbBlokData[] | undefined)?.map(
-            (nestedBlok) => (
-              <StoryblokComponent blok={nestedBlok} key={nestedBlok._uid} />
-            )
+            (nestedBlok) => {
+              if (isGlobalReference(nestedBlok)) {
+                return nestedBlok.reference?.map((reference) =>
+                  reference
+                    ? isGlobal(reference) &&
+                      reference.global?.map((global) => (
+                        <StoryblokComponent blok={global} key={global._uid} />
+                      ))
+                    : ""
+                );
+              }
+
+              return (
+                <StoryblokComponent blok={nestedBlok} key={nestedBlok._uid} />
+              );
+            }
           )}
       </Component>
     );
@@ -35,12 +92,14 @@ const Hero = dynamic(() =>
 
 export const components = {
   page: editablePage,
+  global: Global,
+  global_reference: GlobalReference,
   "blog-overview": dynamic(() => import("./BlogOverview")),
   "blog-post": dynamic(() => import("./BlogPost")),
   "blog-teaser": editable(
     dynamic(() =>
       import("@kickstartds/ds-agency-premium/blog-teaser").then(
-        (mod) => mod.BlogTeaserContextDefault
+        (mod) => mod.BlogTeaser
       )
     )
   ),
@@ -48,6 +107,13 @@ export const components = {
     dynamic(() =>
       import("@kickstartds/ds-agency-premium/blog-aside").then(
         (mod) => mod.BlogAsideContextDefault
+      )
+    )
+  ),
+  "blog-author": editable(
+    dynamic(() =>
+      import("@kickstartds/ds-agency-premium/blog-author").then(
+        (mod) => mod.BlogAuthorContextDefault
       )
     )
   ),
@@ -59,6 +125,13 @@ export const components = {
     )
   ),
   section: editable(Section, "components"),
+  contact: editable(
+    dynamic(() =>
+      import("@kickstartds/ds-agency-premium/contact").then(
+        (mod) => mod.ContactContextDefault
+      )
+    )
+  ),
   cta: editable(
     dynamic(() =>
       import("@kickstartds/ds-agency-premium/cta").then(

@@ -20,13 +20,13 @@ import {
   LogosContext,
   LogosContextDefault,
 } from "@kickstartds/ds-agency-premium/logos";
-import { SectionProps } from "@kickstartds/ds-agency-premium/SectionProps-93230a76.js";
 import {
   ImageStoryContext,
   ImageStoryContextDefault,
 } from "@kickstartds/ds-agency-premium/components/image-story/index.js";
-import { ImageStoryProps } from "@kickstartds/ds-agency-premium/ImageStoryProps-24e0335c.js";
 import { LogosProps } from "@kickstartds/ds-agency-premium/LogosProps-f9474fe2.js";
+import { SectionProps } from "@kickstartds/ds-agency-premium/SectionProps-83d399b4.js";
+import { ImageStoryProps } from "@kickstartds/ds-agency-premium/ImageStoryProps-e853e1e7.js";
 
 const Section = forwardRef<
   HTMLDivElement,
@@ -106,7 +106,7 @@ const ImageStoryProvider: FC<PropsWithChildren> = (props) => (
   <ImageStoryContext.Provider {...props} value={ImageStory} />
 );
 
-const Providers = (props: PropsWithChildren) => (
+const ImageSizeProviders = (props: PropsWithChildren) => (
   <SectionProvider>
     <LogosProvider>
       <ImageStoryProvider>{props.children}</ImageStoryProvider>
@@ -114,4 +114,4 @@ const Providers = (props: PropsWithChildren) => (
   </SectionProvider>
 );
 
-export default Providers;
+export default ImageSizeProviders;

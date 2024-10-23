@@ -5,7 +5,12 @@ import {
   ISbStory,
   ISbStoryData,
 } from "@storyblok/react";
-import { fetchPageProps, fetchPaths } from "@/helpers/storyblok";
+import {
+  fetchPageProps,
+  fetchPaths,
+  resolvableRelations,
+  storyProcessing,
+} from "@/helpers/storyblok";
 import { fontClassNamesPreview } from "@/helpers/fonts";
 
 type PageProps = ISbStory["data"] & {
@@ -13,7 +18,12 @@ type PageProps = ISbStory["data"] & {
 };
 
 const Page: NextPage<PageProps> = ({ story: initialStory }) => {
-  const story = useStoryblokState(initialStory);
+  const story = useStoryblokState(initialStory, {
+    resolveRelations: resolvableRelations.join(","),
+  });
+
+  if (story && story.content) storyProcessing(story.content);
+
   return story ? (
     <StoryblokComponent
       blok={story.content}

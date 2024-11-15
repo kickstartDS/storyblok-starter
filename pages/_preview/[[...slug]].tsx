@@ -35,14 +35,18 @@ const Page: NextPage<PageProps> = ({ story: initialStory }) => {
 export default Page;
 
 export const getStaticPaths = (async () => {
+  const exclude = ["not-found"];
+
   return {
-    paths: (await fetchPaths()).map((path) => {
-      return {
-        params: {
-          slug: path.params.slug,
-        },
-      };
-    }),
+    paths: (await fetchPaths())
+      .filter((path) => !exclude.includes(path.params.slug.join("/")))
+      .map((path) => {
+        return {
+          params: {
+            slug: path.params.slug,
+          },
+        };
+      }),
     fallback: "blocking",
   };
 }) satisfies GetStaticPaths;

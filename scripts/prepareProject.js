@@ -12,7 +12,7 @@ const initialStory = require("../resources/story.json");
 const ffprobe = require("ffprobe");
 const ffprobeStatic = require("ffprobe-static");
 
-require("dotenv").config({ path: ".env.local" });
+require("@dotenvx/dotenvx").config({ path: ".env.local" });
 
 if (!process.env.NEXT_STORYBLOK_SPACE_ID)
   throw new Error("Missing NEXT_STORYBLOK_SPACE_ID env variable");
@@ -55,7 +55,7 @@ const upload = (signed_request, file) => {
 
 const signedUpload = async (fileName, assetFolderId) => {
   return new Promise(async (resolve) => {
-    const fullPath = `./node_modules/@kickstartds/ds-agency-premium/dist/static/${fileName}`;
+    const fullPath = `./node_modules/@kickstartds/ds-agency/dist/static/${fileName}`;
     let size = "";
     if (fileName.includes("mp4")) {
       const probe = await ffprobe(fullPath, { path: ffprobeStatic.path });
@@ -140,6 +140,9 @@ const prepare = async () => {
     if (defaultStory) {
       await promiseThrottle.add(deleteStory.bind(this, defaultStory.id));
     } else {
+      console.log(
+        "Project already prepared, not running preparation script again."
+      );
       process.exit(1);
     }
 
@@ -289,17 +292,24 @@ const prepare = async () => {
             jsonpointer.set(
               preset.preset,
               `/${meta.nodePath}`,
-              jsonpointer
-                .get(preset.preset, `/${meta.nodePath}`)
-                .map((entry) => {
-                  if (typeof entry !== "object") return entry;
-                  return {
-                    ...entry,
+              Array.isArray(jsonpointer.get(preset.preset, `/${meta.nodePath}`))
+                ? jsonpointer
+                    .get(preset.preset, `/${meta.nodePath}`)
+                    .map((entry) => {
+                      if (typeof entry !== "object") return entry;
+                      return {
+                        ...entry,
+                        _uid: uuidv4(),
+                        type: config.component_whitelist[0],
+                        component: config.component_whitelist[0],
+                      };
+                    })
+                : {
+                    ...jsonpointer.get(preset.preset, `/${meta.nodePath}`),
                     _uid: uuidv4(),
                     type: config.component_whitelist[0],
                     component: config.component_whitelist[0],
-                  };
-                })
+                  }
             );
           }
         },
@@ -382,6 +392,61 @@ const prepare = async () => {
         }
       );
     }
+
+    const section = generatedComponents.components.find(
+      (component) => component.name === "section"
+    );
+
+    generatedComponents.components.push({
+      name: "global",
+      display_name: "Global",
+      created_at: new Date().toISOString(),
+      updated_at: new Date().toISOString(),
+      id: 0,
+      schema: {
+        global: {
+          id: 0,
+          pos: 0,
+          type: "bloks",
+          restrict_type: "groups",
+          restrict_components: true,
+          component_group_whitelist: [
+            section.schema.components.component_group_whitelist[0],
+          ],
+        },
+      },
+      is_root: true,
+      is_nestable: false,
+      real_name: "Global",
+    });
+
+    const globalReferenceUuid = uuidv4();
+    generatedComponents.components.push({
+      name: "global_reference",
+      display_name: "Global Reference",
+      created_at: new Date().toISOString(),
+      updated_at: new Date().toISOString(),
+      id: 0,
+      schema: {
+        reference: {
+          type: "options",
+          pos: 0,
+          is_reference_type: true,
+          source: "internal_stories",
+          entry_appearance: "card",
+          allow_advanced_search: true,
+          folder_slug: "global/",
+        },
+      },
+      is_nestable: true,
+      real_name: "Global Rereference",
+      component_group_uuid: globalReferenceUuid,
+      component_group_name: "Global",
+    });
+
+    section.schema.components.component_group_whitelist.push(
+      globalReferenceUuid
+    );
 
     // Write preset configuration to disk
     fs.writeFileSync(

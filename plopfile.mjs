@@ -5,7 +5,7 @@ export default function netrc(plop) {
       {
         type: "input",
         name: "email",
-        message: "Email Adress for Storyblok user",
+        message: "Email Address for Storyblok user",
       },
       {
         type: "input",

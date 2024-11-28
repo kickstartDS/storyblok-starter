@@ -1,4 +1,4 @@
-import { ComponentProps } from "react";
+import { FC } from "react";
 import dynamic from "next/dynamic";
 import {
   SbBlokData,
@@ -6,23 +6,81 @@ import {
   StoryblokComponent,
 } from "@storyblok/react";
 import { unflatten } from "@/helpers/unflatten";
-import { Section } from "@kickstartds/ds-agency/section";
+import { SectionContextDefault } from "@kickstartds/ds-agency/section";
 import editablePage from "./Page";
-import { ImageAutoSizeProvider } from "./ImageAutoSizeProvider";
+import {
+  isGlobal,
+  isGlobalReference,
+  isStoryblokComponent,
+} from "@/helpers/storyblok";
+import {
+  GlobalReferenceStoryblok,
+  GlobalStoryblok,
+} from "@/types/components-schema";
+
+export const locale = "en";
+
+export const Global: FC<GlobalStoryblok & SbBlokData> = (props) =>
+  isGlobal(props.blok) &&
+  props.blok.global &&
+  props.blok.global.map((global) => (
+    <StoryblokComponent blok={global} key={global._uid} />
+  ));
+
+export const GlobalReference: FC<GlobalReferenceStoryblok & SbBlokData> = (
+  props
+) =>
+  isGlobalReference(props.blok) &&
+  props.blok.reference?.map(
+    (reference) =>
+      isGlobal(reference) &&
+      reference.global?.map((global) => (
+        <StoryblokComponent blok={global} key={global._uid} />
+      ))
+  );
 
 export const editable =
   (Component: React.ComponentType<any>, nestedBloksKey?: string) =>
   // eslint-disable-next-line react/display-name
   ({ blok }: { blok: SbBlokData }) => {
-    const { component, components, type, typeProp, _uid, ...props } =
-      unflatten(blok);
+    const { component, components, type, typeProp, _uid, ...props } = unflatten(
+      isStoryblokComponent(blok) ? blok.content : blok
+    );
+
+    if (isGlobalReference(blok)) {
+      return (
+        <div className="editable">
+          {blok.reference?.map(
+            (reference) =>
+              isGlobal(reference) &&
+              reference.global?.map((global) => (
+                <StoryblokComponent blok={global} key={global._uid} />
+              ))
+          )}
+        </div>
+      );
+    }
+
     return (
       <Component {...storyblokEditable(blok)} {...props} type={typeProp}>
         {nestedBloksKey &&
           (blok[nestedBloksKey] as SbBlokData[] | undefined)?.map(
-            (nestedBlok) => (
-              <StoryblokComponent blok={nestedBlok} key={nestedBlok._uid} />
-            )
+            (nestedBlok) => {
+              if (isGlobalReference(nestedBlok)) {
+                return nestedBlok.reference?.map((reference) =>
+                  reference
+                    ? isGlobal(reference) &&
+                      reference.global?.map((global) => (
+                        <StoryblokComponent blok={global} key={global._uid} />
+                      ))
+                    : ""
+                );
+              }
+
+              return (
+                <StoryblokComponent blok={nestedBlok} key={nestedBlok._uid} />
+              );
+            }
           )}
       </Component>
     );
@@ -30,6 +88,8 @@ export const editable =
 
 export const components = {
   page: editablePage,
+  global: Global,
+  global_reference: GlobalReference,
   "blog-overview": dynamic(() => import("./BlogOverview")),
   "blog-post": dynamic(() => import("./BlogPost")),
   "blog-teaser": editable(
@@ -46,6 +106,13 @@ export const components = {
       )
     )
   ),
+  "blog-author": editable(
+    dynamic(() =>
+      import("@kickstartds/ds-agency/blog-author").then(
+        (mod) => mod.BlogAuthorContextDefault
+      )
+    )
+  ),
   "blog-head": editable(
     dynamic(() =>
       import("@kickstartds/ds-agency/blog-head").then(
@@ -53,10 +120,24 @@ export const components = {
       )
     )
   ),
-  section: editable(Section, "components"),
+  section: editable(SectionContextDefault, "components"),
+  contact: editable(
+    dynamic(() =>
+      import("@kickstartds/ds-agency/contact").then(
+        (mod) => mod.ContactContextDefault
+      )
+    )
+  ),
   cta: editable(
     dynamic(() =>
       import("@kickstartds/ds-agency/cta").then((mod) => mod.CtaContextDefault)
+    )
+  ),
+  divider: editable(
+    dynamic(() =>
+      import("@kickstartds/ds-agency/divider").then(
+        (mod) => mod.DividerContextDefault
+      )
     )
   ),
   faq: editable(
@@ -90,6 +171,13 @@ export const components = {
       import("@kickstartds/ds-agency/headline").then((mod) => mod.Headline)
     )
   ),
+  html: editable(
+    dynamic(() =>
+      import("@kickstartds/ds-agency/html").then(
+        (mod) => mod.HtmlContextDefault
+      )
+    )
+  ),
   split: editable(
     dynamic(() =>
       import("@kickstartds/ds-agency/split").then((mod) => mod.Split)
@@ -106,6 +194,13 @@ export const components = {
     dynamic(() =>
       import("@kickstartds/ds-agency/stat").then(
         (mod) => mod.StatContextDefault
+      )
+    )
+  ),
+  "info-table": editable(
+    dynamic(() =>
+      import("./info-table/InfoTableComponent").then(
+        (mod) => mod.InfoTableContextDefault
       )
     )
   ),
@@ -146,16 +241,7 @@ export const components = {
   ),
   logos: editable(
     dynamic(() =>
-      import("@kickstartds/ds-agency/logos").then(
-        (mod) => mod.LogosContextDefault
-      )
-    )
-  ),
-  logo: editable(
-    dynamic(() =>
-      import("@kickstartds/ds-agency/logo").then(
-        (mod) => mod.LogoContextDefault
-      )
+      import("@kickstartds/ds-agency/logos").then((mod) => mod.Logos)
     )
   ),
 };

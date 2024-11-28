@@ -2,6 +2,7 @@
 import {
   AnchorHTMLAttributes,
   FC,
+  HTMLAttributes,
   ImgHTMLAttributes,
   PropsWithChildren,
   forwardRef,
@@ -19,55 +20,34 @@ import {
 } from "@kickstartds/base/lib/picture";
 import { LinkContext, LinkProps } from "@kickstartds/base/lib/link";
 import { PictureProps } from "@kickstartds/base/lib/picture/typing";
+import {
+  StorytellingContext,
+  StorytellingContextDefault,
+} from "@kickstartds/content/lib/storytelling";
+import { StorytellingProps } from "@kickstartds/content/lib/storytelling/typing";
 
 import { BlogTeaserContext } from "@kickstartds/ds-agency/blog-teaser";
 import { BlogAsideContext } from "@kickstartds/ds-agency/blog-aside";
+import { BlogAuthorContext } from "@kickstartds/ds-agency/blog-author";
 import { BlogHeadContext } from "@kickstartds/ds-agency/blog-head";
 import { CtaContext } from "@kickstartds/ds-agency/cta";
 import { FeatureContext } from "@kickstartds/ds-agency/feature";
-import { LogoContext } from "@kickstartds/ds-agency/logo";
 import { StatContext } from "@kickstartds/ds-agency/stat";
 import { TestimonialContext } from "@kickstartds/ds-agency/testimonial";
-
-import { INDEX_SLUG } from "@/helpers/storyblok";
 
 import { StoryblokSubComponent } from "./StoryblokSubComponent";
 import { TeaserProvider } from "./TeaserProvider";
 import { useBlurHashes } from "./BlurHashContext";
 import { useImagePriority } from "./ImagePriorityContext";
-import { AssetStoryblok, MultilinkStoryblok } from "@/types/components-schema";
-
-function isStoryblokLink(object: unknown): object is MultilinkStoryblok {
-  return (object as MultilinkStoryblok)?.linktype !== undefined;
-}
-
-function isStoryblokAsset(object: unknown): object is AssetStoryblok {
-  return (object as AssetStoryblok)?.filename !== undefined;
-}
+import { useImageSize } from "./ImageSizeContext";
+import { useImageRatio } from "./ImageRatioContext";
 
 const Link = forwardRef<
   HTMLAnchorElement,
   LinkProps & AnchorHTMLAttributes<HTMLAnchorElement>
->(({ href, ...props }, ref) => {
-  if (isStoryblokLink(href)) {
-    const linkTarget =
-      href.linktype === "email"
-        ? `mailto:${href.email}`
-        : href.story?.full_slug === INDEX_SLUG
-        ? "/"
-        : href.cached_url || href.story?.full_slug;
-    return (
-      <NextLink
-        {...props}
-        ref={ref}
-        href={linkTarget || ""}
-        target={href.target}
-      />
-    );
-  }
-
-  return <NextLink ref={ref} {...props} href={href || ""} />;
-});
+>(({ href, ...props }, ref) => (
+  <NextLink ref={ref} href={href || "#"} {...props} />
+));
 
 const LinkProvider: FC<PropsWithChildren> = (props) => (
   <LinkContext.Provider value={Link} {...props} />
@@ -87,6 +67,8 @@ const Picture = forwardRef<
 
   const blurHashes = useBlurHashes();
   const priority = useImagePriority();
+  const size = useImageSize();
+  const ratio = useImageRatio();
 
   useImperativeHandle<HTMLImageElement | null, HTMLImageElement | null>(
     ref,
@@ -97,10 +79,14 @@ const Picture = forwardRef<
     if (internalRef.current) resetBackgroundBlurHash(internalRef.current);
   }, []);
 
-  if (!src || (isStoryblokAsset(src) && !src.filename)) return;
-  const source = isStoryblokAsset(src) ? src.filename : src;
-  const fileUrl = !source.startsWith("http") ? `https:${source}` : source;
+  if (!src) return;
+  const fileUrl = !src.startsWith("http") ? `https:${src}` : src;
   const [width, height] = fileUrl.match(/\/(\d+)x(\d+)\//)?.slice(1) || [];
+  const maxWidth = parseInt(width) > size ? Math.floor(size) : parseInt(width);
+  const maxHeight =
+    parseInt(width) > size
+      ? Math.floor((parseInt(height) * size) / parseInt(width))
+      : parseInt(height);
 
   // Don't optimize SVG images - https://github.com/kickstartDS/storyblok-starter/issues/19
   return fileUrl.endsWith(".svg") ? (
@@ -108,19 +94,29 @@ const Picture = forwardRef<
       ref={internalRef}
       {...props}
       src={fileUrl}
-      width={parseInt(width, 10)}
-      height={parseInt(height, 10)}
-      alt={isStoryblokAsset(src) ? src.alt || "" : props.alt || ""}
-      lazy={lazy}
+      width={maxWidth}
+      height={maxHeight}
+      alt={props.alt || ""}
+      lazy={priority ? false : lazy}
+      fetchPriority="high"
+      loading={priority ? "eager" : "lazy"}
     />
   ) : (
     <Image
       ref={internalRef}
       {...props}
-      alt={isStoryblokAsset(src) ? src.alt || "" : props.alt || ""}
-      src={priority ? `${fileUrl}/m/filters:quality(50)` : fileUrl}
-      width={autoSize ? undefined : parseInt(width, 10)}
-      height={autoSize ? undefined : parseInt(height, 10)}
+      alt={props.alt || ""}
+      src={
+        priority
+          ? `${fileUrl}/${
+              fileUrl.includes("/m/") ? "" : "m/"
+            }filters:quality(50)`
+          : fileUrl
+      }
+      layout={autoSize ? "fullWidth" : "constrained"}
+      aspectRatio={ratio > 0 ? ratio : undefined}
+      width={maxWidth}
+      height={autoSize || ratio > 0 ? undefined : maxHeight}
       priority={lazy === false || priority}
       onLoad={(event) => {
         if (event.target instanceof HTMLImageElement) {
@@ -142,38 +138,67 @@ const PictureProvider: FC<PropsWithChildren> = (props) => (
   <PictureContext.Provider {...props} value={Picture} />
 );
 
-const Providers = (props: PropsWithChildren) => (
-  <PictureProvider>
-    <LinkProvider>
-      <TeaserProvider>
-        {/* @ts-expect-error */}
-        <CtaContext.Provider value={StoryblokSubComponent}>
+const Storytelling = forwardRef<
+  HTMLDivElement,
+  StorytellingProps & HTMLAttributes<HTMLDivElement>
+>(({ backgroundImage, ...props }, ref) => {
+  return (
+    <StorytellingContextDefault
+      {...props}
+      backgroundImage={backgroundImage}
+      ref={ref}
+    />
+  );
+});
+
+const StorytellingProvider: FC<PropsWithChildren> = (props) => (
+  <StorytellingContext.Provider {...props} value={Storytelling} />
+);
+
+const ComponentProviders = (props: PropsWithChildren) => (
+  <StorytellingProvider>
+    <PictureProvider>
+      <LinkProvider>
+        <TeaserProvider>
           {/* @ts-expect-error */}
-          <FeatureContext.Provider value={StoryblokSubComponent}>
+          <CtaContext.Provider value={StoryblokSubComponent}>
             {/* @ts-expect-error */}
-            <LogoContext.Provider value={StoryblokSubComponent}>
+            <FeatureContext.Provider value={StoryblokSubComponent}>
               {/* @ts-expect-error */}
               <StatContext.Provider value={StoryblokSubComponent}>
-                {/* @ts-expect-error */}
-                <TestimonialContext.Provider value={StoryblokSubComponent}>
-                  {/* @ts-expect-error */}
-                  <BlogHeadContext.Provider value={StoryblokSubComponent}>
-                    {/* @ts-expect-error */}
-                    <BlogAsideContext.Provider value={StoryblokSubComponent}>
-                      {/* @ts-expect-error */}
-                      <BlogTeaserContext.Provider value={StoryblokSubComponent}>
-                        {props.children}
+                <TestimonialContext.Provider
+                  // @ts-expect-error
+                  value={StoryblokSubComponent}
+                >
+                  <BlogHeadContext.Provider
+                    // @ts-expect-error
+                    value={StoryblokSubComponent}
+                  >
+                    <BlogAsideContext.Provider
+                      // @ts-expect-error
+                      value={StoryblokSubComponent}
+                    >
+                      <BlogTeaserContext.Provider
+                        // @ts-expect-error
+                        value={StoryblokSubComponent}
+                      >
+                        <BlogAuthorContext.Provider
+                          // @ts-expect-error
+                          value={StoryblokSubComponent}
+                        >
+                          {props.children}
+                        </BlogAuthorContext.Provider>
                       </BlogTeaserContext.Provider>
                     </BlogAsideContext.Provider>
                   </BlogHeadContext.Provider>
                 </TestimonialContext.Provider>
               </StatContext.Provider>
-            </LogoContext.Provider>
-          </FeatureContext.Provider>
-        </CtaContext.Provider>
-      </TeaserProvider>
-    </LinkProvider>
-  </PictureProvider>
+            </FeatureContext.Provider>
+          </CtaContext.Provider>
+        </TeaserProvider>
+      </LinkProvider>
+    </PictureProvider>
+  </StorytellingProvider>
 );
 
-export default Providers;
+export default ComponentProviders;

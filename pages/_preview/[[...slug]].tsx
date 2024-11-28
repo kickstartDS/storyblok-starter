@@ -5,15 +5,27 @@ import {
   ISbStory,
   ISbStoryData,
 } from "@storyblok/react";
-import { fetchPageProps, fetchPaths } from "@/helpers/storyblok";
+import {
+  fetchPageProps,
+  fetchPaths,
+  resolvableRelations,
+  storyProcessing,
+} from "@/helpers/storyblok";
 import { fontClassNamesPreview } from "@/helpers/fonts";
+import { locale } from "@/components";
 
 type PageProps = ISbStory["data"] & {
   settings?: ISbStoryData["content"];
+  language: typeof locale;
 };
 
 const Page: NextPage<PageProps> = ({ story: initialStory }) => {
-  const story = useStoryblokState(initialStory);
+  const story = useStoryblokState(initialStory, {
+    resolveRelations: resolvableRelations.join(","),
+  });
+
+  if (story && story.content) storyProcessing(story.content);
+
   return story ? (
     <StoryblokComponent
       blok={story.content}
@@ -25,15 +37,19 @@ const Page: NextPage<PageProps> = ({ story: initialStory }) => {
 export default Page;
 
 export const getStaticPaths = (async () => {
+  const exclude = ["not-found"];
+
   return {
-    paths: (await fetchPaths()).map((path) => {
-      return {
-        params: {
-          slug: path.params.slug,
-        },
-      };
-    }),
-    fallback: false,
+    paths: (await fetchPaths())
+      .filter((path) => !exclude.includes(path.params.slug.join("/")))
+      .map((path) => {
+        return {
+          params: {
+            slug: path.params.slug,
+          },
+        };
+      }),
+    fallback: "blocking",
   };
 }) satisfies GetStaticPaths;
 
@@ -49,6 +65,7 @@ export const getStaticProps = (async ({ params, previewData }) => {
   );
   const previewStoryblokApi = new StoryblokClient({ accessToken: previewData });
   const slug = params?.slug?.join("/");
+
   try {
     const { pageData, settingsData } = await fetchPageProps(
       slug,
@@ -62,6 +79,7 @@ export const getStaticProps = (async ({ params, previewData }) => {
         fontClassNames: fontClassNamesPreview,
         settings: settingsData.stories[0]?.content || null,
         key: pageData.story.id,
+        language: locale,
       },
     };
   } catch (e) {

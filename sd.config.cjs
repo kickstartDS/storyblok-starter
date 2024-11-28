@@ -6,10 +6,6 @@ module.exports = StyleDictionary.extend(config).extend({
   source: [
     "token/dictionary/**/*.json",
     path.join(__dirname, "token/dictionary/**/*.svg"),
-    path.join(
-      path.dirname(require.resolve("@kickstartds/core/package.json")),
-      "source/design-tokens/icons/*.svg"
-    ),
   ],
   platforms: {
     css: {

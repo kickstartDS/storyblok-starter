@@ -1,0 +1,16 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "http://cms.schema.mydesignsystem.com/info-table.schema.json",
+  "title": "Info Table",
+  "description": "Component used to display tabular data",
+  "type": "object",
+  "properties": {
+    "data": {
+      "title": "data",
+      "description": "Data to display inside table",
+      "type": "string",
+      "format": "table"
+    }
+  },
+  "additionalProperties": false
+}

@@ -1,0 +1,25 @@
+@use "./info-table-tokens.scss";
+
+table {
+  color: var(--dsa-table--color);
+  width: 100%;
+  font: var(--dsa-table--font);
+  border-spacing: 0px;
+  border-top: var(--ks-border-width-default) solid var(--ks-border-color-accent);
+  border-bottom: var(--ks-border-width-default) solid
+    var(--ks-border-color-accent);
+
+  td,
+  th {
+    padding: 0.5em;
+    vertical-align: top;
+  }
+
+  th {
+    background-color: var(--ks-color-primary-alpha-8);
+  }
+
+  tr:nth-child(even) {
+    background-color: var(--ks-color-primary-alpha-9);
+  }
+}

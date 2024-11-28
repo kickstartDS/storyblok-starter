@@ -3,73 +3,25 @@
     {
       "name": "blog-aside",
       "display_name": "Blog Aside",
-      "created_at": "2024-02-06T22:37:22.622Z",
-      "updated_at": "2024-02-06T22:37:22.622Z",
-      "id": 5299152,
+      "description": null,
+      "created_at": "2024-11-27T13:23:07.205Z",
+      "updated_at": "2024-11-27T13:23:07.205Z",
+      "id": 6616838,
       "schema": {
-        "tab-953fcc9c-dac4-4961-85b2-834b087da123": {
+        "author": {
           "id": 0,
           "pos": 0,
           "display_name": "Author",
-          "key": "tab-953fcc9c-dac4-4961-85b2-834b087da123",
-          "keys": [
-            "author_name",
-            "author_byline",
-            "author_image",
-            "author_twitter",
-            "author_email"
+          "key": "author",
+          "type": "bloks",
+          "restrict_type": "",
+          "restrict_components": true,
+          "component_whitelist": [
+            "blog-author"
           ],
-          "type": "tab",
-          "description": "The author of the blog post",
-          "required": false
-        },
-        "author_name": {
-          "id": 0,
-          "pos": 0,
-          "display_name": "Name",
-          "key": "author_name",
-          "type": "text",
-          "description": "The name of the author",
-          "required": false
-        },
-        "author_byline": {
-          "id": 0,
-          "pos": 0,
-          "display_name": "Byline",
-          "key": "author_byline",
-          "type": "text",
-          "description": "The byline of the author",
-          "required": false
-        },
-        "author_image": {
-          "id": 0,
-          "pos": 0,
-          "display_name": "Image",
-          "key": "author_image",
-          "type": "asset",
-          "filetypes": [
-            "images"
-          ],
-          "description": "The image URL of the author",
-          "required": false
-        },
-        "author_twitter": {
-          "id": 0,
-          "pos": 0,
-          "display_name": "Twitter",
-          "key": "author_twitter",
-          "type": "text",
-          "description": "The Twitter name of the author",
-          "required": false
-        },
-        "author_email": {
-          "id": 0,
-          "pos": 0,
-          "display_name": "Email",
-          "key": "author_email",
-          "type": "text",
-          "description": "The Email of the author",
-          "required": false
+          "maximum": 1,
+          "minimum": 0,
+          "description": "The author of the blog post"
         },
         "socialSharing": {
           "id": 0,
@@ -102,6 +54,14 @@
           "description": "The date when the blog post was published",
           "required": false
         },
+        "className": {
+          "id": 0,
+          "pos": 0,
+          "display_name": "ClassName",
+          "key": "className",
+          "type": "text",
+          "required": false
+        },
         "type": {
           "id": 0,
           "pos": 0,
@@ -112,17 +72,17 @@
           "default_value": "blog-aside"
         }
       },
-      "image": "//a.storyblok.com/f/274567/390x646/32c1ea4dd8/blog-blog-aside-default.png",
+      "image": "//a.storyblok.com/f/315006/390x646/e9cceecc1e/blog-blog-aside-default.png",
       "preview_field": null,
       "is_root": false,
       "preview_tmpl": null,
-      "is_nestable": false,
+      "is_nestable": true,
       "all_presets": [
         {
-          "id": 2050287,
+          "id": 2366973,
           "name": "Default",
-          "component_id": 5299152,
-          "image": "//a.storyblok.com/f/274567/390x646/32c1ea4dd8/blog-blog-aside-default.png",
+          "component_id": 6616838,
+          "image": "//a.storyblok.com/f/315006/390x646/e9cceecc1e/blog-blog-aside-default.png",
           "icon": null,
           "color": null,
           "description": null
@@ -132,14 +92,162 @@
       "real_name": "Blog Aside",
       "component_group_uuid": null,
       "color": "#05566a",
-      "icon": "block-wallet"
+      "icon": "block-wallet",
+      "internal_tags_list": [],
+      "internal_tag_ids": [],
+      "content_type_asset_preview": null
+    },
+    {
+      "name": "blog-author",
+      "display_name": "Blog Author",
+      "description": null,
+      "created_at": "2024-11-27T13:23:06.194Z",
+      "updated_at": "2024-11-27T13:23:06.194Z",
+      "id": 6616836,
+      "schema": {
+        "name": {
+          "id": 0,
+          "pos": 0,
+          "display_name": "Name",
+          "key": "name",
+          "type": "text",
+          "description": "The name of the author",
+          "required": false
+        },
+        "byline": {
+          "id": 0,
+          "pos": 0,
+          "display_name": "Byline",
+          "key": "byline",
+          "type": "text",
+          "description": "The byline of the author",
+          "required": false
+        },
+        "tab-73f3b991-c858-4e93-adf4-34610812b65b": {
+          "id": 0,
+          "pos": 0,
+          "display_name": "Image",
+          "key": "tab-73f3b991-c858-4e93-adf4-34610812b65b",
+          "keys": [
+            "image_src",
+            "image_alt",
+            "image_fullWidth",
+            "image_aspectRatio"
+          ],
+          "type": "tab",
+          "required": false
+        },
+        "image_src": {
+          "id": 0,
+          "pos": 0,
+          "display_name": "Src",
+          "key": "image_src",
+          "type": "asset",
+          "filetypes": [
+            "images"
+          ],
+          "description": "URL of the image to display",
+          "required": false
+        },
+        "image_alt": {
+          "id": 0,
+          "pos": 0,
+          "display_name": "Alt",
+          "key": "image_alt",
+          "type": "text",
+          "description": "Alt text of the image",
+          "required": false
+        },
+        "image_fullWidth": {
+          "id": 0,
+          "pos": 0,
+          "display_name": "FullWidth",
+          "key": "image_fullWidth",
+          "type": "boolean",
+          "description": "Image uses all the horizontal space vailable",
+          "required": false
+        },
+        "image_aspectRatio": {
+          "id": 0,
+          "pos": 0,
+          "display_name": "AspectRatio",
+          "key": "image_aspectRatio",
+          "type": "option",
+          "default_value": "square",
+          "description": "Aspect Ratio of the Images",
+          "options": [
+            {
+              "name": "wide",
+              "value": "wide",
+              "_uid": "c0d7b35b-0d73-4152-aee0-49da677f9239"
+            },
+            {
+              "name": "square",
+              "value": "square",
+              "_uid": "458d9260-1850-4aa1-bf9b-7d556e0d5bf2"
+            },
+            {
+              "name": "vertical",
+              "value": "vertical",
+              "_uid": "33be5833-73a3-430c-830d-050ee6fdfd52"
+            }
+          ],
+          "required": false
+        },
+        "links": {
+          "id": 0,
+          "pos": 0,
+          "display_name": "Links",
+          "key": "links",
+          "type": "bloks",
+          "restrict_type": "",
+          "restrict_components": true,
+          "component_whitelist": [
+            "links"
+          ]
+        },
+        "type": {
+          "id": 0,
+          "pos": 0,
+          "display_name": "Type",
+          "key": "type",
+          "type": "text",
+          "description": "Internal type for interface resolution",
+          "default_value": "blog-author"
+        }
+      },
+      "image": "//a.storyblok.com/f/315006/390x646/5b06a54115/blog-blog-author-default.png",
+      "preview_field": null,
+      "is_root": false,
+      "preview_tmpl": null,
+      "is_nestable": true,
+      "all_presets": [
+        {
+          "id": 2366972,
+          "name": "Default",
+          "component_id": 6616836,
+          "image": "//a.storyblok.com/f/315006/390x646/5b06a54115/blog-blog-author-default.png",
+          "icon": null,
+          "color": null,
+          "description": null
+        }
+      ],
+      "preset_id": null,
+      "real_name": "Blog Author",
+      "component_group_uuid": null,
+      "color": "#05566a",
+      "icon": "block-wallet",
+      "internal_tags_list": [],
+      "internal_tag_ids": [],
+      "content_type_asset_preview": null
     },
     {
       "name": "blog-head",
       "display_name": "Blog Head",
-      "created_at": "2024-02-06T22:37:22.445Z",
-      "updated_at": "2024-02-06T22:37:22.445Z",
-      "id": 5299150,
+      "description": null,
+      "created_at": "2024-11-27T13:23:05.197Z",
+      "updated_at": "2024-11-27T13:23:05.197Z",
+      "id": 6616834,
       "schema": {
         "date": {
           "id": 0,
@@ -161,7 +269,8 @@
           "restrict_components": true,
           "component_whitelist": [
             "tags"
-          ]
+          ],
+          "description": "Tag given to a blog post"
         },
         "headline": {
           "id": 0,
@@ -184,6 +293,15 @@
           "description": "The source of the cover image for the blog post",
           "required": false
         },
+        "alt": {
+          "id": 0,
+          "pos": 0,
+          "display_name": "Alt",
+          "key": "alt",
+          "type": "text",
+          "description": "The alt text for the cover image",
+          "required": false
+        },
         "type": {
           "id": 0,
           "pos": 0,
@@ -194,17 +312,17 @@
           "default_value": "blog-head"
         }
       },
-      "image": "//a.storyblok.com/f/274567/1000x863/90a04201ff/blog-blog-head-default.png",
+      "image": "//a.storyblok.com/f/315006/1000x863/5ec62b1619/blog-blog-head-default.png",
       "preview_field": null,
       "is_root": false,
       "preview_tmpl": null,
-      "is_nestable": false,
+      "is_nestable": true,
       "all_presets": [
         {
-          "id": 2050286,
+          "id": 2366971,
           "name": "Default",
-          "component_id": 5299150,
-          "image": "//a.storyblok.com/f/274567/1000x863/90a04201ff/blog-blog-head-default.png",
+          "component_id": 6616834,
+          "image": "//a.storyblok.com/f/315006/1000x863/5ec62b1619/blog-blog-head-default.png",
           "icon": null,
           "color": null,
           "description": null
@@ -214,15 +332,42 @@
       "real_name": "Blog Head",
       "component_group_uuid": null,
       "color": "#05566a",
-      "icon": "block-wallet"
+      "icon": "block-wallet",
+      "internal_tags_list": [],
+      "internal_tag_ids": [],
+      "content_type_asset_preview": null
     },
     {
       "name": "blog-overview",
       "display_name": "Blog Overview",
-      "created_at": "2024-02-06T22:37:37.797Z",
-      "updated_at": "2024-02-06T22:37:37.797Z",
-      "id": 5299177,
+      "description": null,
+      "created_at": "2024-11-27T13:23:09.918Z",
+      "updated_at": "2024-11-27T13:23:09.918Z",
+      "id": 6616843,
       "schema": {
+        "section": {
+          "id": 0,
+          "pos": 0,
+          "display_name": "Section",
+          "key": "section",
+          "type": "bloks",
+          "restrict_type": "",
+          "restrict_components": true,
+          "component_whitelist": [
+            "section"
+          ],
+          "description": "Component used to layout components into pages"
+        },
+        "latestTitle": {
+          "id": 0,
+          "pos": 0,
+          "display_name": "LatestTitle",
+          "key": "latestTitle",
+          "type": "text",
+          "default_value": "Latest Post",
+          "description": "Title for the latest post section",
+          "required": false
+        },
         "latest": {
           "id": 0,
           "pos": 0,
@@ -234,7 +379,19 @@
           "component_whitelist": [
             "blog-teaser"
           ],
+          "maximum": 1,
+          "minimum": 0,
           "description": "Display a blog teaser with date, tags, headline, teaser text and author"
+        },
+        "listTitle": {
+          "id": 0,
+          "pos": 0,
+          "display_name": "ListTitle",
+          "key": "listTitle",
+          "type": "text",
+          "default_value": "Recent Posts",
+          "description": "Title for the list of posts section",
+          "required": false
         },
         "list": {
           "id": 0,
@@ -248,6 +405,16 @@
             "blog-teaser"
           ],
           "description": "Display a blog teaser with date, tags, headline, teaser text and author"
+        },
+        "moreTitle": {
+          "id": 0,
+          "pos": 0,
+          "display_name": "MoreTitle",
+          "key": "moreTitle",
+          "type": "text",
+          "default_value": "Featured Posts",
+          "description": "Title for the more featured posts section",
+          "required": false
         },
         "more": {
           "id": 0,
@@ -273,6 +440,8 @@
           "component_whitelist": [
             "cta"
           ],
+          "maximum": 1,
+          "minimum": 0,
           "description": "Cta"
         },
         "seo": {
@@ -286,6 +455,8 @@
           "component_whitelist": [
             "seo"
           ],
+          "maximum": 1,
+          "minimum": 0,
           "description": "Abstracts SEO settings for a website into JSON schema"
         },
         "type": {
@@ -308,14 +479,18 @@
       "real_name": "Blog Overview",
       "component_group_uuid": null,
       "color": null,
-      "icon": null
+      "icon": null,
+      "internal_tags_list": [],
+      "internal_tag_ids": [],
+      "content_type_asset_preview": null
     },
     {
       "name": "blog-post",
       "display_name": "Blog Post",
-      "created_at": "2024-02-06T22:37:37.745Z",
-      "updated_at": "2024-02-06T22:37:37.745Z",
-      "id": 5299176,
+      "description": null,
+      "created_at": "2024-11-27T13:23:10.204Z",
+      "updated_at": "2024-11-27T13:23:10.204Z",
+      "id": 6616844,
       "schema": {
         "head": {
           "id": 0,
@@ -328,6 +503,8 @@
           "component_whitelist": [
             "blog-head"
           ],
+          "maximum": 1,
+          "minimum": 0,
           "description": "Intro portion of a singular blog entry"
         },
         "aside": {
@@ -341,6 +518,8 @@
           "component_whitelist": [
             "blog-aside"
           ],
+          "maximum": 1,
+          "minimum": 0,
           "description": "Meta info for a singular blog entry"
         },
         "content": {
@@ -349,8 +528,21 @@
           "display_name": "Content",
           "key": "content",
           "type": "markdown",
-          "description": "Body text for the blog post",
+          "description": "Body text for the blog post, overwrites sections if present",
           "required": false
+        },
+        "section": {
+          "id": 0,
+          "pos": 0,
+          "display_name": "Section",
+          "key": "section",
+          "type": "bloks",
+          "restrict_type": "",
+          "restrict_components": true,
+          "component_whitelist": [
+            "section"
+          ],
+          "description": "Component used to layout components into pages"
         },
         "cta": {
           "id": 0,
@@ -363,6 +555,8 @@
           "component_whitelist": [
             "cta"
           ],
+          "maximum": 1,
+          "minimum": 0,
           "description": "Cta"
         },
         "seo": {
@@ -376,6 +570,8 @@
           "component_whitelist": [
             "seo"
           ],
+          "maximum": 1,
+          "minimum": 0,
           "description": "Abstracts SEO settings for a website into JSON schema"
         },
         "type": {
@@ -398,14 +594,18 @@
       "real_name": "Blog Post",
       "component_group_uuid": null,
       "color": null,
-      "icon": null
+      "icon": null,
+      "internal_tags_list": [],
+      "internal_tag_ids": [],
+      "content_type_asset_preview": null
     },
     {
       "name": "blog-teaser",
       "display_name": "Blog Teaser",
-      "created_at": "2024-02-06T22:37:23.783Z",
-      "updated_at": "2024-02-06T22:37:23.783Z",
-      "id": 5299156,
+      "description": null,
+      "created_at": "2024-11-27T13:23:04.198Z",
+      "updated_at": "2024-11-27T13:23:04.198Z",
+      "id": 6616832,
       "schema": {
         "date": {
           "id": 0,
@@ -427,7 +627,8 @@
           "restrict_components": true,
           "component_whitelist": [
             "tags"
-          ]
+          ],
+          "description": "Tag given to a blog post"
         },
         "headline": {
           "id": 0,
@@ -459,14 +660,23 @@
           "description": "The preview image for the blog post",
           "required": false
         },
-        "tab-35d36783-ce7b-4608-94e6-608f6e1b7a33": {
+        "alt": {
+          "id": 0,
+          "pos": 0,
+          "display_name": "Alt",
+          "key": "alt",
+          "type": "text",
+          "description": "The alt text for the preview image",
+          "required": false
+        },
+        "tab-082239a8-1d9e-42b0-aecd-410b9db507fa": {
           "id": 0,
           "pos": 0,
           "display_name": "Link",
-          "key": "tab-35d36783-ce7b-4608-94e6-608f6e1b7a33",
+          "key": "tab-082239a8-1d9e-42b0-aecd-410b9db507fa",
           "keys": [
             "link_url",
-            "link_label"
+            "link_text"
           ],
           "type": "tab",
           "description": "URL and label for the blog post linked",
@@ -485,14 +695,14 @@
           "description": "The blog entry URL to link",
           "required": false
         },
-        "link_label": {
+        "link_text": {
           "id": 0,
           "pos": 0,
-          "display_name": "Label",
-          "key": "link_label",
+          "display_name": "Text",
+          "key": "link_text",
           "type": "text",
-          "default_value": "Read more",
-          "description": "The label to use for the link",
+          "default_value": "Read article",
+          "description": "The text for the link",
           "required": false
         },
         "readingTime": {
@@ -504,11 +714,11 @@
           "description": "Time to read for the blog post",
           "required": false
         },
-        "tab-b1a4ee3d-1b4e-4692-9c2b-4121eee028ef": {
+        "tab-c7d050ea-fe16-4484-b42a-979ddfe8b8c9": {
           "id": 0,
           "pos": 0,
           "display_name": "Author",
-          "key": "tab-b1a4ee3d-1b4e-4692-9c2b-4121eee028ef",
+          "key": "tab-c7d050ea-fe16-4484-b42a-979ddfe8b8c9",
           "keys": [
             "author_name",
             "author_title",
@@ -548,6 +758,14 @@
           "description": "The image URL of the author",
           "required": false
         },
+        "className": {
+          "id": 0,
+          "pos": 0,
+          "display_name": "ClassName",
+          "key": "className",
+          "type": "text",
+          "required": false
+        },
         "type": {
           "id": 0,
           "pos": 0,
@@ -558,17 +776,17 @@
           "default_value": "blog-teaser"
         }
       },
-      "image": "//a.storyblok.com/f/274567/1000x504/e9d0a512e6/blog-blog-teaser-default.png",
+      "image": "//a.storyblok.com/f/315006/1000x504/2f99430baf/blog-blog-teaser-default.png",
       "preview_field": null,
       "is_root": false,
       "preview_tmpl": null,
-      "is_nestable": false,
+      "is_nestable": true,
       "all_presets": [
         {
-          "id": 2050291,
+          "id": 2366970,
           "name": "Default",
-          "component_id": 5299156,
-          "image": "//a.storyblok.com/f/274567/1000x504/e9d0a512e6/blog-blog-teaser-default.png",
+          "component_id": 6616832,
+          "image": "//a.storyblok.com/f/315006/1000x504/2f99430baf/blog-blog-teaser-default.png",
           "icon": null,
           "color": null,
           "description": null
@@ -576,17 +794,21 @@
       ],
       "preset_id": null,
       "real_name": "Blog Teaser",
-      "component_group_uuid": "d401396c-d417-4f3c-816b-65026e7217d3",
+      "component_group_uuid": "a0d1cdca-480d-4d4e-8333-79b23ed4fbf5",
       "color": "#05566a",
       "icon": "block-wallet",
+      "internal_tags_list": [],
+      "internal_tag_ids": [],
+      "content_type_asset_preview": null,
       "component_group_name": "Components"
     },
     {
       "name": "buttons",
       "display_name": "Buttons",
-      "created_at": "2024-02-06T22:37:22.741Z",
-      "updated_at": "2024-02-06T22:37:22.741Z",
-      "id": 5299153,
+      "description": null,
+      "created_at": "2024-11-27T13:22:32.123Z",
+      "updated_at": "2024-11-27T13:22:32.123Z",
+      "id": 6616801,
       "schema": {
         "label": {
           "id": 0,
@@ -602,7 +824,14 @@
           "pos": 0,
           "display_name": "Icon",
           "key": "icon",
-          "type": "text",
+          "type": "custom",
+          "field_type": "storyblok-icon-sprite-picker-field-plugin",
+          "options": [
+            {
+              "name": "allowedIcons",
+              "_uid": "53de4a51-83fb-427d-8dd8-58b5529c111d"
+            }
+          ],
           "description": "Choose an icon",
           "required": false
         },
@@ -624,20 +853,24 @@
       "preview_field": null,
       "is_root": false,
       "preview_tmpl": null,
-      "is_nestable": false,
+      "is_nestable": true,
       "all_presets": [],
       "preset_id": null,
       "real_name": "Buttons",
       "component_group_uuid": null,
       "color": "#05566a",
-      "icon": "block-wallet"
+      "icon": "block-wallet",
+      "internal_tags_list": [],
+      "internal_tag_ids": [],
+      "content_type_asset_preview": null
     },
     {
       "name": "cta",
       "display_name": "Cta",
-      "created_at": "2024-02-06T22:37:22.793Z",
-      "updated_at": "2024-02-06T22:37:22.793Z",
-      "id": 5299154,
+      "description": null,
+      "created_at": "2024-11-27T13:22:34.900Z",
+      "updated_at": "2024-11-27T13:22:34.900Z",
+      "id": 6616809,
       "schema": {
         "headline": {
           "id": 0,
@@ -675,6 +908,24 @@
           "description": "Visually highlight the text",
           "required": false
         },
+        "colorNeutral": {
+          "id": 0,
+          "pos": 0,
+          "display_name": "ColorNeutral",
+          "key": "colorNeutral",
+          "type": "boolean",
+          "description": "Make the text and buttons color neutral",
+          "required": false
+        },
+        "fullWidth": {
+          "id": 0,
+          "pos": 0,
+          "display_name": "FullWidth",
+          "key": "fullWidth",
+          "type": "boolean",
+          "description": "Set the width of the content to the full width of the element",
+          "required": false
+        },
         "buttons": {
           "id": 0,
           "pos": 0,
@@ -688,6 +939,104 @@
           ],
           "description": "Button"
         },
+        "backgroundColor": {
+          "id": 0,
+          "pos": 0,
+          "display_name": "BackgroundColor",
+          "key": "backgroundColor",
+          "type": "text",
+          "description": "Background color for the whole element",
+          "required": false
+        },
+        "backgroundImage": {
+          "id": 0,
+          "pos": 0,
+          "display_name": "BackgroundImage",
+          "key": "backgroundImage",
+          "type": "asset",
+          "filetypes": [
+            "images"
+          ],
+          "description": "Background image for the whole element",
+          "required": false
+        },
+        "tab-0e6133ab-f1b7-45d1-b4e3-467dcf7eac40": {
+          "id": 0,
+          "pos": 0,
+          "display_name": "Image",
+          "key": "tab-0e6133ab-f1b7-45d1-b4e3-467dcf7eac40",
+          "keys": [
+            "image_src",
+            "image_padding",
+            "image_alt"
+          ],
+          "type": "tab",
+          "description": "Image displayed alongside the text content",
+          "required": false
+        },
+        "image_src": {
+          "id": 0,
+          "pos": 0,
+          "display_name": "Src",
+          "key": "image_src",
+          "type": "asset",
+          "filetypes": [
+            "images"
+          ],
+          "description": "Image source to use",
+          "required": false
+        },
+        "image_padding": {
+          "id": 0,
+          "pos": 0,
+          "display_name": "Padding",
+          "key": "image_padding",
+          "type": "boolean",
+          "default_value": true,
+          "description": "Toggle padding of the image",
+          "required": false
+        },
+        "image_alt": {
+          "id": 0,
+          "pos": 0,
+          "display_name": "Alt",
+          "key": "image_alt",
+          "type": "text",
+          "description": "Image description",
+          "required": false
+        },
+        "tab-3f77b0ec-8a2d-4c0a-b095-3a6275f19031": {
+          "id": 0,
+          "pos": 0,
+          "display_name": "Order",
+          "key": "tab-3f77b0ec-8a2d-4c0a-b095-3a6275f19031",
+          "keys": [
+            "order_mobileImageLast",
+            "order_desktopImageLast"
+          ],
+          "type": "tab",
+          "description": "Choose what comes first on mobile and desktop: image or text",
+          "required": false
+        },
+        "order_mobileImageLast": {
+          "id": 0,
+          "pos": 0,
+          "display_name": "MobileImageLast",
+          "key": "order_mobileImageLast",
+          "type": "boolean",
+          "description": "Switch to displaying the image after the text on mobile",
+          "required": false
+        },
+        "order_desktopImageLast": {
+          "id": 0,
+          "pos": 0,
+          "display_name": "DesktopImageLast",
+          "key": "order_desktopImageLast",
+          "type": "boolean",
+          "default_value": true,
+          "description": "Switch to displaying the image after the text on desktop",
+          "required": false
+        },
         "textAlign": {
           "id": 0,
           "pos": 0,
@@ -700,12 +1049,39 @@
             {
               "name": "left",
               "value": "left",
-              "_uid": "4ecff26b-b39b-456e-9002-51d95bad2b14"
+              "_uid": "4b7960e5-5e42-4679-b6f1-c83961e92264"
             },
             {
               "name": "center",
               "value": "center",
-              "_uid": "ea5bd305-f0b3-4826-bb7a-ba89b84138a8"
+              "_uid": "f3fc7df9-cf5a-4449-82a5-01b63a05b93d"
+            }
+          ],
+          "required": false
+        },
+        "contentAlign": {
+          "id": 0,
+          "pos": 0,
+          "display_name": "ContentAlign",
+          "key": "contentAlign",
+          "type": "option",
+          "default_value": "center",
+          "description": "Select a vertical alignment for the image",
+          "options": [
+            {
+              "name": "center",
+              "value": "center",
+              "_uid": "d4046b7e-7754-4b08-8b54-a94c99f14da8"
+            },
+            {
+              "name": "top",
+              "value": "top",
+              "_uid": "1a1a72fd-433a-400d-bb73-97bda88e46fa"
+            },
+            {
+              "name": "bottom",
+              "value": "bottom",
+              "_uid": "4f0a5aff-3f30-43cf-8e44-8e2c26d7f6a1"
             }
           ],
           "required": false
@@ -720,35 +1096,89 @@
           "default_value": "cta"
         }
       },
-      "image": "//a.storyblok.com/f/274567/1000x472/837fb16007/components-cta-banner.png",
+      "image": "//a.storyblok.com/f/315006/1000x472/c527e3bceb/components-cta-banner.png",
       "preview_field": null,
       "is_root": false,
       "preview_tmpl": null,
-      "is_nestable": false,
+      "is_nestable": true,
       "all_presets": [
         {
-          "id": 2050288,
+          "id": 2366910,
+          "name": "AlignBottom",
+          "component_id": 6616809,
+          "image": "//a.storyblok.com/f/315006/1680x1040/ae3c865b04/components-cta-align-bottom.png",
+          "icon": null,
+          "color": null,
+          "description": null
+        },
+        {
+          "id": 2366908,
+          "name": "AngledImage",
+          "component_id": 6616809,
+          "image": "//a.storyblok.com/f/315006/1670x910/51018867e5/components-cta-angled-image.png",
+          "icon": null,
+          "color": null,
+          "description": null
+        },
+        {
+          "id": 2366902,
           "name": "Banner",
-          "component_id": 5299154,
-          "image": "//a.storyblok.com/f/274567/1000x472/837fb16007/components-cta-banner.png",
+          "component_id": 6616809,
+          "image": "//a.storyblok.com/f/315006/1000x472/c527e3bceb/components-cta-banner.png",
           "icon": null,
           "color": null,
           "description": null
         },
         {
-          "id": 2050289,
+          "id": 2366909,
+          "name": "ColoredBanner",
+          "component_id": 6616809,
+          "image": "//a.storyblok.com/f/315006/1350x500/8f1addf737/components-cta-colored-banner.png",
+          "icon": null,
+          "color": null,
+          "description": null
+        },
+        {
+          "id": 2366906,
+          "name": "ContactBanner",
+          "component_id": 6616809,
+          "image": "//a.storyblok.com/f/315006/1600x560/adb019c946/components-cta-contact-banner.png",
+          "icon": null,
+          "color": null,
+          "description": null
+        },
+        {
+          "id": 2366903,
           "name": "Highlighted",
-          "component_id": 5299154,
-          "image": "//a.storyblok.com/f/274567/1000x551/3926e6e928/components-cta-highlighted.png",
+          "component_id": 6616809,
+          "image": "//a.storyblok.com/f/315006/1000x551/fcfa5a48b9/components-cta-highlighted.png",
           "icon": null,
           "color": null,
           "description": null
         },
         {
-          "id": 2050290,
+          "id": 2366904,
           "name": "LeftAligned",
-          "component_id": 5299154,
-          "image": "//a.storyblok.com/f/274567/1000x443/e1480aa191/components-cta-left-aligned.png",
+          "component_id": 6616809,
+          "image": "//a.storyblok.com/f/315006/1000x443/91891f251e/components-cta-left-aligned.png",
+          "icon": null,
+          "color": null,
+          "description": null
+        },
+        {
+          "id": 2366905,
+          "name": "ProductAdvertisement",
+          "component_id": 6616809,
+          "image": "//a.storyblok.com/f/315006/1400x660/ab1626449f/components-cta-product-advertisement.png",
+          "icon": null,
+          "color": null,
+          "description": null
+        },
+        {
+          "id": 2366907,
+          "name": "SplitBanner",
+          "component_id": 6616809,
+          "image": "//a.storyblok.com/f/315006/1680x850/b74fcfa3f4/components-cta-split-banner.png",
           "icon": null,
           "color": null,
           "description": null
@@ -756,17 +1186,114 @@
       ],
       "preset_id": null,
       "real_name": "Cta",
-      "component_group_uuid": "d401396c-d417-4f3c-816b-65026e7217d3",
+      "component_group_uuid": "a0d1cdca-480d-4d4e-8333-79b23ed4fbf5",
       "color": "#05566a",
       "icon": "block-wallet",
+      "internal_tags_list": [],
+      "internal_tag_ids": [],
+      "content_type_asset_preview": null,
+      "component_group_name": "Components"
+    },
+    {
+      "name": "divider",
+      "display_name": "Divider",
+      "description": null,
+      "created_at": "2024-11-27T13:22:52.191Z",
+      "updated_at": "2024-11-27T13:22:52.191Z",
+      "id": 6616821,
+      "schema": {
+        "variant": {
+          "id": 0,
+          "pos": 0,
+          "display_name": "Variant",
+          "key": "variant",
+          "type": "option",
+          "default_value": "default",
+          "description": "Choose a variant for the divider",
+          "options": [
+            {
+              "name": "default",
+              "value": "default",
+              "_uid": "010850c1-0416-4de8-a901-40e3dd78dbdd"
+            },
+            {
+              "name": "accent",
+              "value": "accent",
+              "_uid": "975e0d04-79c1-4843-b74c-e5b6a820a0c7"
+            }
+          ],
+          "required": false
+        },
+        "className": {
+          "id": 0,
+          "pos": 0,
+          "display_name": "ClassName",
+          "key": "className",
+          "type": "text",
+          "description": "Add additional css classes that should be applied to the divider",
+          "required": false
+        },
+        "component": {
+          "id": 0,
+          "pos": 0,
+          "display_name": "Component",
+          "key": "component",
+          "type": "text",
+          "description": "Optional custom component identifier",
+          "required": false
+        },
+        "type": {
+          "id": 0,
+          "pos": 0,
+          "display_name": "Type",
+          "key": "type",
+          "type": "text",
+          "description": "Internal type for interface resolution",
+          "default_value": "divider"
+        }
+      },
+      "image": "//a.storyblok.com/f/315006/770x100/31a2e50b32/layout-divider-accent.png",
+      "preview_field": null,
+      "is_root": false,
+      "preview_tmpl": null,
+      "is_nestable": true,
+      "all_presets": [
+        {
+          "id": 2366944,
+          "name": "Accent",
+          "component_id": 6616821,
+          "image": "//a.storyblok.com/f/315006/770x100/31a2e50b32/layout-divider-accent.png",
+          "icon": null,
+          "color": null,
+          "description": null
+        },
+        {
+          "id": 2366945,
+          "name": "Default",
+          "component_id": 6616821,
+          "image": "//a.storyblok.com/f/315006/770x100/3b1aa83b1a/layout-divider-default.png",
+          "icon": null,
+          "color": null,
+          "description": null
+        }
+      ],
+      "preset_id": null,
+      "real_name": "Divider",
+      "component_group_uuid": "a0d1cdca-480d-4d4e-8333-79b23ed4fbf5",
+      "color": "#05566a",
+      "icon": "block-wallet",
+      "internal_tags_list": [],
+      "internal_tag_ids": [],
+      "content_type_asset_preview": null,
       "component_group_name": "Components"
     },
     {
       "name": "faq",
       "display_name": "Faq",
-      "created_at": "2024-02-06T22:37:24.254Z",
-      "updated_at": "2024-02-06T22:37:24.254Z",
-      "id": 5299163,
+      "description": null,
+      "created_at": "2024-11-27T13:22:53.202Z",
+      "updated_at": "2024-11-27T13:22:53.202Z",
+      "id": 6616822,
       "schema": {
         "questions": {
           "id": 0,
@@ -790,26 +1317,26 @@
           "default_value": "faq"
         }
       },
-      "image": "//a.storyblok.com/f/274567/820x455/e3e3d9df00/components-faq-dropdown-list.png",
+      "image": "//a.storyblok.com/f/315006/820x455/e10eff9e60/components-faq-dropdown-list.png",
       "preview_field": null,
       "is_root": false,
       "preview_tmpl": null,
-      "is_nestable": false,
+      "is_nestable": true,
       "all_presets": [
         {
-          "id": 2050292,
+          "id": 2366946,
           "name": "DropdownList",
-          "component_id": 5299163,
-          "image": "//a.storyblok.com/f/274567/820x455/e3e3d9df00/components-faq-dropdown-list.png",
+          "component_id": 6616822,
+          "image": "//a.storyblok.com/f/315006/820x455/e10eff9e60/components-faq-dropdown-list.png",
           "icon": null,
           "color": null,
           "description": null
         },
         {
-          "id": 2050293,
+          "id": 2366947,
           "name": "SingleDropdown",
-          "component_id": 5299163,
-          "image": "//a.storyblok.com/f/274567/820x228/a54939c6e3/components-faq-single-dropdown.png",
+          "component_id": 6616822,
+          "image": "//a.storyblok.com/f/315006/820x228/c0e3726b65/components-faq-single-dropdown.png",
           "icon": null,
           "color": null,
           "description": null
@@ -817,24 +1344,35 @@
       ],
       "preset_id": null,
       "real_name": "Faq",
-      "component_group_uuid": "d401396c-d417-4f3c-816b-65026e7217d3",
+      "component_group_uuid": "a0d1cdca-480d-4d4e-8333-79b23ed4fbf5",
       "color": "#05566a",
       "icon": "block-wallet",
+      "internal_tags_list": [],
+      "internal_tag_ids": [],
+      "content_type_asset_preview": null,
       "component_group_name": "Components"
     },
     {
       "name": "feature",
       "display_name": "Feature",
-      "created_at": "2024-02-06T22:37:23.961Z",
-      "updated_at": "2024-02-06T22:37:23.961Z",
-      "id": 5299158,
+      "description": null,
+      "created_at": "2024-11-27T13:22:32.911Z",
+      "updated_at": "2024-11-27T13:22:32.911Z",
+      "id": 6616803,
       "schema": {
         "icon": {
           "id": 0,
           "pos": 0,
           "display_name": "Icon",
           "key": "icon",
-          "type": "text",
+          "type": "custom",
+          "field_type": "storyblok-icon-sprite-picker-field-plugin",
+          "options": [
+            {
+              "name": "allowedIcons",
+              "_uid": "1bacf652-956f-4c69-b782-aac110cee29c"
+            }
+          ],
           "description": "The icon for the feature",
           "required": false
         },
@@ -852,59 +1390,20 @@
           "pos": 0,
           "display_name": "Text",
           "key": "text",
-          "type": "text",
+          "type": "markdown",
           "description": "The description of the feature",
           "required": false
         },
-        "style": {
-          "id": 0,
-          "pos": 0,
-          "display_name": "Style",
-          "key": "style",
-          "type": "option",
-          "default_value": "stack",
-          "options": [
-            {
-              "name": "intext",
-              "value": "intext",
-              "_uid": "e4cb8fd2-8f07-4047-b614-7aef6d5355d0"
-            },
-            {
-              "name": "stack",
-              "value": "stack",
-              "_uid": "3d91a157-ac75-44dd-b4a6-b625bfc739eb"
-            },
-            {
-              "name": "centered",
-              "value": "centered",
-              "_uid": "adf6e98f-e6a3-4e13-839d-e4cebf327a68"
-            },
-            {
-              "name": "besideLarge",
-              "value": "besideLarge",
-              "_uid": "4bf6b9ff-d2d4-475f-8f78-5bd819072eb5"
-            },
-            {
-              "name": "besideSmall",
-              "value": "besideSmall",
-              "_uid": "576eaaed-127d-4975-836d-4d86d546c47f"
-            }
-          ],
-          "required": false
-        },
-        "tab-91323b9f-0a18-4dc6-8a34-59feb277fd94": {
+        "tab-d60b5e7b-33b2-49a2-b3b6-c9b24cb42fd2": {
           "id": 0,
           "pos": 0,
           "display_name": "Cta",
-          "key": "tab-91323b9f-0a18-4dc6-8a34-59feb277fd94",
+          "key": "tab-d60b5e7b-33b2-49a2-b3b6-c9b24cb42fd2",
           "keys": [
             "cta_target",
-            "cta_label",
-            "cta_toggle",
-            "cta_style"
+            "cta_label"
           ],
           "type": "tab",
-          "description": "The call to action",
           "required": false
         },
         "cta_target": {
@@ -930,72 +1429,30 @@
           "default_value": "See more",
           "description": "The text label displayed on the link",
           "required": false
-        },
-        "cta_toggle": {
-          "id": 0,
-          "pos": 0,
-          "display_name": "Toggle",
-          "key": "cta_toggle",
-          "type": "boolean",
-          "default_value": true,
-          "description": "Activate/disable the CTAs",
-          "required": false
-        },
-        "cta_style": {
-          "id": 0,
-          "pos": 0,
-          "display_name": "Style",
-          "key": "cta_style",
-          "type": "option",
-          "default_value": "link",
-          "description": "Choose the style of the CTA",
-          "options": [
-            {
-              "name": "button",
-              "value": "button",
-              "_uid": "2a10df2a-a512-488d-bf85-a5353c4257e5"
-            },
-            {
-              "name": "link",
-              "value": "link",
-              "_uid": "08d84db3-3551-4923-b149-dcac3e5fdb79"
-            },
-            {
-              "name": "intext",
-              "value": "intext",
-              "_uid": "331b5ab2-b2fa-4ccb-afd2-67bb6095cd9e"
-            }
-          ],
-          "required": false
-        },
-        "type": {
-          "id": 0,
-          "pos": 0,
-          "display_name": "Type",
-          "key": "type",
-          "type": "text",
-          "description": "Internal type for interface resolution",
-          "default_value": "feature"
         }
       },
       "image": null,
       "preview_field": null,
       "is_root": false,
       "preview_tmpl": null,
-      "is_nestable": false,
+      "is_nestable": true,
       "all_presets": [],
       "preset_id": null,
       "real_name": "Feature",
       "component_group_uuid": null,
       "color": "#05566a",
-      "icon": "block-wallet"
+      "icon": "block-wallet",
+      "internal_tags_list": [],
+      "internal_tag_ids": [],
+      "content_type_asset_preview": null
     },
     {
       "name": "features",
       "display_name": "Features",
-      "created_at": "2024-02-06T22:37:24.742Z",
-      "updated_at": "2024-02-06T22:37:24.742Z",
-      "id": 5299164,
+      "description": null,
+      "created_at": "2024-11-27T13:22:38.106Z",
+      "updated_at": "2024-11-27T13:22:38.106Z",
+      "id": 6616810,
       "schema": {
         "layout": {
           "id": 0,
@@ -1009,17 +1466,17 @@
             {
               "name": "largeTiles",
               "value": "largeTiles",
-              "_uid": "a5cbeb9b-52c7-4cd5-89a0-a9561c536b9d"
+              "_uid": "71b01bcf-ea4a-4ebc-8b1c-c8132d95d665"
             },
             {
               "name": "smallTiles",
               "value": "smallTiles",
-              "_uid": "7abfa437-75ed-4e15-9ea0-b5339bf241db"
+              "_uid": "8de7d021-0296-43ba-bbf1-0affdaea72d7"
             },
             {
               "name": "list",
               "value": "list",
-              "_uid": "dba5a821-2f01-4e0a-abdd-f4e5c27b5f75"
+              "_uid": "c88a9f24-d76b-4f99-8af4-95bb10de62aa"
             }
           ],
           "required": false
@@ -1035,36 +1492,36 @@
             {
               "name": "intext",
               "value": "intext",
-              "_uid": "3370d2b4-172c-4560-88e8-77acdfcae712"
+              "_uid": "b6c30207-87c2-462e-bb99-7b1db7f48e54"
             },
             {
               "name": "stack",
               "value": "stack",
-              "_uid": "f8039149-d57d-44a6-a37a-8318dbedbbcf"
+              "_uid": "c7380933-9bfd-4c4d-9286-9f9a97e79fca"
             },
             {
               "name": "centered",
               "value": "centered",
-              "_uid": "df066511-fb26-4087-ac01-648998b7445f"
+              "_uid": "f40a4bdd-d83f-452f-a3de-88ee3a5722b7"
             },
             {
               "name": "besideLarge",
               "value": "besideLarge",
-              "_uid": "60fb0483-f85a-4551-ba4c-54121e63f946"
+              "_uid": "efa321ed-01d9-46db-8eac-bb330072db8e"
             },
             {
               "name": "besideSmall",
               "value": "besideSmall",
-              "_uid": "348e24b8-bb38-4514-85ae-7287aa19f21b"
+              "_uid": "f4924b36-da4b-483d-b262-f3fcd4a04a20"
             }
           ],
           "required": false
         },
-        "tab-adf0e38b-f2c2-460b-9ca7-6655b78d0479": {
+        "tab-ecab153e-5481-420b-be60-eae445db949f": {
           "id": 0,
           "pos": 0,
           "display_name": "Ctas",
-          "key": "tab-adf0e38b-f2c2-460b-9ca7-6655b78d0479",
+          "key": "tab-ecab153e-5481-420b-be60-eae445db949f",
           "keys": [
             "ctas_toggle",
             "ctas_style"
@@ -1093,17 +1550,17 @@
             {
               "name": "button",
               "value": "button",
-              "_uid": "f858c79d-7511-4071-b9e0-750badde9fe3"
+              "_uid": "3dd088a4-a1ee-47f8-9103-adc34409923f"
             },
             {
               "name": "link",
               "value": "link",
-              "_uid": "56f6543d-c63d-4130-a4e2-9b84e4e80442"
+              "_uid": "2da01e19-0bab-462e-be03-39bf0a296a50"
             },
             {
               "name": "intext",
               "value": "intext",
-              "_uid": "2c65ef9d-2eee-4acd-8296-306c727974d7"
+              "_uid": "1b2dbb4d-0b2e-452b-83c5-b78c61679413"
             }
           ],
           "required": false
@@ -1119,7 +1576,7 @@
           "component_whitelist": [
             "feature"
           ],
-          "description": "Partial Component used to display a feature"
+          "description": "Feature"
         },
         "type": {
           "id": 0,
@@ -1131,53 +1588,53 @@
           "default_value": "features"
         }
       },
-      "image": "//a.storyblok.com/f/274567/1440x666/dea2410be0/components-features-icon-centered.png",
+      "image": "//a.storyblok.com/f/315006/1440x666/d7f96614e4/components-features-icon-centered.png",
       "preview_field": null,
       "is_root": false,
       "preview_tmpl": null,
-      "is_nestable": false,
+      "is_nestable": true,
       "all_presets": [
         {
-          "id": 2050297,
+          "id": 2366914,
           "name": "IconBesideWithLinkInText",
-          "component_id": 5299164,
-          "image": "//a.storyblok.com/f/274567/1000x506/c89be82b58/components-features-icon-beside-with-link-in-text.png",
+          "component_id": 6616810,
+          "image": "//a.storyblok.com/f/315006/1000x506/e95255f3a0/components-features-icon-beside-with-link-in-text.png",
           "icon": null,
           "color": null,
           "description": null
         },
         {
-          "id": 2050294,
+          "id": 2366911,
           "name": "IconCentered",
-          "component_id": 5299164,
-          "image": "//a.storyblok.com/f/274567/1440x666/dea2410be0/components-features-icon-centered.png",
+          "component_id": 6616810,
+          "image": "//a.storyblok.com/f/315006/1440x666/d7f96614e4/components-features-icon-centered.png",
           "icon": null,
           "color": null,
           "description": null
         },
         {
-          "id": 2050298,
+          "id": 2366915,
           "name": "IconIntextWithLink",
-          "component_id": 5299164,
-          "image": "//a.storyblok.com/f/274567/1232x524/58c3ece91f/components-features-icon-intext-with-link.png",
+          "component_id": 6616810,
+          "image": "//a.storyblok.com/f/315006/1232x524/30cb518a8c/components-features-icon-intext-with-link.png",
           "icon": null,
           "color": null,
           "description": null
         },
         {
-          "id": 2050296,
+          "id": 2366913,
           "name": "ListView",
-          "component_id": 5299164,
-          "image": "//a.storyblok.com/f/274567/768x755/bcf40b4327/components-features-list-view.png",
+          "component_id": 6616810,
+          "image": "//a.storyblok.com/f/315006/768x755/e74da76887/components-features-list-view.png",
           "icon": null,
           "color": null,
           "description": null
         },
         {
-          "id": 2050295,
+          "id": 2366912,
           "name": "StackWithButton",
-          "component_id": 5299164,
-          "image": "//a.storyblok.com/f/274567/1230x463/d32b7f549c/components-features-stack-with-button.png",
+          "component_id": 6616810,
+          "image": "//a.storyblok.com/f/315006/1230x463/16cbe6f222/components-features-stack-with-button.png",
           "icon": null,
           "color": null,
           "description": null
@@ -1185,26 +1642,32 @@
       ],
       "preset_id": null,
       "real_name": "Features",
-      "component_group_uuid": "d401396c-d417-4f3c-816b-65026e7217d3",
+      "component_group_uuid": "a0d1cdca-480d-4d4e-8333-79b23ed4fbf5",
       "color": "#05566a",
       "icon": "block-wallet",
+      "internal_tags_list": [],
+      "internal_tag_ids": [],
+      "content_type_asset_preview": null,
       "component_group_name": "Components"
     },
     {
       "name": "footer",
       "display_name": "Footer",
-      "created_at": "2024-02-06T22:37:37.576Z",
-      "updated_at": "2024-02-06T22:37:37.576Z",
-      "id": 5299175,
+      "description": null,
+      "created_at": "2024-11-27T13:23:09.201Z",
+      "updated_at": "2024-11-27T13:23:09.201Z",
+      "id": 6616842,
       "schema": {
-        "tab-9d3a76ca-c806-420a-973c-164824c56baa": {
+        "tab-74648a7b-aab8-48c9-be88-29876cfa24bf": {
           "id": 0,
           "pos": 0,
           "display_name": "Logo",
-          "key": "tab-9d3a76ca-c806-420a-973c-164824c56baa",
+          "key": "tab-74648a7b-aab8-48c9-be88-29876cfa24bf",
           "keys": [
             "logo_src",
+            "logo_srcInverted",
             "logo_alt",
+            "logo_homepageHref",
             "logo_width",
             "logo_height"
           ],
@@ -1224,6 +1687,18 @@
           "description": "Picture source",
           "required": false
         },
+        "logo_srcInverted": {
+          "id": 0,
+          "pos": 0,
+          "display_name": "SrcInverted",
+          "key": "logo_srcInverted",
+          "type": "asset",
+          "filetypes": [
+            "images"
+          ],
+          "description": "Picture source",
+          "required": false
+        },
         "logo_alt": {
           "id": 0,
           "pos": 0,
@@ -1231,6 +1706,19 @@
           "key": "logo_alt",
           "type": "text",
           "description": "Alt text to display for picture",
+          "required": false
+        },
+        "logo_homepageHref": {
+          "id": 0,
+          "pos": 0,
+          "display_name": "HomepageHref",
+          "key": "logo_homepageHref",
+          "type": "multilink",
+          "allow_target_blank": true,
+          "email_link_type": true,
+          "asset_link_type": true,
+          "show_anchor": true,
+          "default_value": "/",
           "required": false
         },
         "logo_width": {
@@ -1251,17 +1739,23 @@
           "description": "Height of the picture",
           "required": false
         },
-        "logoHref": {
+        "byline": {
           "id": 0,
           "pos": 0,
-          "display_name": "LogoHref",
-          "key": "logoHref",
-          "type": "multilink",
-          "allow_target_blank": true,
-          "email_link_type": true,
-          "asset_link_type": true,
-          "show_anchor": true,
-          "default_value": "/",
+          "display_name": "Byline",
+          "key": "byline",
+          "type": "text",
+          "default_value": "© 2024 systemics Inc. All rights reserved.",
+          "description": "Small line of text displayed below the logo",
+          "required": false
+        },
+        "inverted": {
+          "id": 0,
+          "pos": 0,
+          "display_name": "Inverted",
+          "key": "inverted",
+          "type": "boolean",
+          "description": "Invert the color scheme of the footer",
           "required": false
         },
         "navItems": {
@@ -1286,17 +1780,17 @@
           "default_value": "footer"
         }
       },
-      "image": "//a.storyblok.com/f/274567/1280x371/73c03f4d55/layout-footer-footer.png",
+      "image": "//a.storyblok.com/f/315006/1280x371/d658b7026e/layout-footer-footer.png",
       "preview_field": null,
       "is_root": false,
       "preview_tmpl": null,
-      "is_nestable": false,
+      "is_nestable": true,
       "all_presets": [
         {
-          "id": 2050332,
+          "id": 2366975,
           "name": "Footer",
-          "component_id": 5299175,
-          "image": "//a.storyblok.com/f/274567/1280x371/73c03f4d55/layout-footer-footer.png",
+          "component_id": 6616842,
+          "image": "//a.storyblok.com/f/315006/1280x371/d658b7026e/layout-footer-footer.png",
           "icon": null,
           "color": null,
           "description": null
@@ -1306,14 +1800,18 @@
       "real_name": "Footer",
       "component_group_uuid": null,
       "color": "#05566a",
-      "icon": "block-wallet"
+      "icon": "block-wallet",
+      "internal_tags_list": [],
+      "internal_tag_ids": [],
+      "content_type_asset_preview": null
     },
     {
       "name": "gallery",
       "display_name": "Gallery",
-      "created_at": "2024-02-06T22:37:26.554Z",
-      "updated_at": "2024-02-06T22:37:26.554Z",
-      "id": 5299165,
+      "description": null,
+      "created_at": "2024-11-27T13:22:40.155Z",
+      "updated_at": "2024-11-27T13:22:40.155Z",
+      "id": 6616812,
       "schema": {
         "images": {
           "id": 0,
@@ -1338,17 +1836,17 @@
             {
               "name": "stack",
               "value": "stack",
-              "_uid": "d12c8dfa-4aa8-41b6-b16a-637dd839a834"
+              "_uid": "c5aad242-0710-45e3-bc39-d64b4293838d"
             },
             {
               "name": "smallTiles",
               "value": "smallTiles",
-              "_uid": "c29ee5fa-2db5-49df-8fa7-44d114ef89d6"
+              "_uid": "e6e28fca-eb86-4492-aad7-b0aa3d104758"
             },
             {
               "name": "largeTiles",
               "value": "largeTiles",
-              "_uid": "dc5804ea-1d80-4dde-ba73-2e6e00aec409"
+              "_uid": "d811493a-0619-4554-b802-e4999b9171f9"
             }
           ],
           "required": false
@@ -1365,22 +1863,22 @@
             {
               "name": "unset",
               "value": "unset",
-              "_uid": "0236e733-7cc1-46b8-a237-498b97a15580"
+              "_uid": "ddf18136-e80e-4c14-bfae-83ffb7b0913f"
             },
             {
               "name": "square",
               "value": "square",
-              "_uid": "361655c0-3fba-46b0-bb4d-87d8bcc4a6e6"
+              "_uid": "c017a323-f1c4-444d-96fd-2774d060bc20"
             },
             {
               "name": "wide",
               "value": "wide",
-              "_uid": "5477e1ff-6030-4fdb-9df5-32607bcb2d38"
+              "_uid": "782e6f93-5376-4455-816e-3574df182a58"
             },
             {
               "name": "landscape",
               "value": "landscape",
-              "_uid": "fb098442-9309-42d8-af47-f23215cebb0f"
+              "_uid": "4380c835-097c-48ec-ae17-31ba48668ee9"
             }
           ],
           "required": false
@@ -1404,44 +1902,44 @@
           "default_value": "gallery"
         }
       },
-      "image": "//a.storyblok.com/f/274567/1100x702/8462ee4f10/components-gallery-small-squares-with-lightbox.png",
+      "image": "//a.storyblok.com/f/315006/1100x702/16797c0f0d/components-gallery-small-squares-with-lightbox.png",
       "preview_field": null,
       "is_root": false,
       "preview_tmpl": null,
-      "is_nestable": false,
+      "is_nestable": true,
       "all_presets": [
         {
-          "id": 2050301,
+          "id": 2366918,
           "name": "FreeAspectRatio",
-          "component_id": 5299165,
-          "image": "//a.storyblok.com/f/274567/1040x779/f4f659386d/components-gallery-free-aspect-ratio.png",
+          "component_id": 6616812,
+          "image": "//a.storyblok.com/f/315006/1040x779/63682e3fd2/components-gallery-free-aspect-ratio.png",
           "icon": null,
           "color": null,
           "description": null
         },
         {
-          "id": 2050300,
+          "id": 2366917,
           "name": "LargeLandscapeTiles",
-          "component_id": 5299165,
-          "image": "//a.storyblok.com/f/274567/1440x735/00154573bb/components-gallery-large-landscape-tiles.png",
+          "component_id": 6616812,
+          "image": "//a.storyblok.com/f/315006/1440x735/9cc57c5f49/components-gallery-large-landscape-tiles.png",
           "icon": null,
           "color": null,
           "description": null
         },
         {
-          "id": 2050299,
+          "id": 2366916,
           "name": "SmallSquaresWithLightbox",
-          "component_id": 5299165,
-          "image": "//a.storyblok.com/f/274567/1100x702/8462ee4f10/components-gallery-small-squares-with-lightbox.png",
+          "component_id": 6616812,
+          "image": "//a.storyblok.com/f/315006/1100x702/16797c0f0d/components-gallery-small-squares-with-lightbox.png",
           "icon": null,
           "color": null,
           "description": null
         },
         {
-          "id": 2050302,
+          "id": 2366919,
           "name": "StackLandscape",
-          "component_id": 5299165,
-          "image": "//a.storyblok.com/f/274567/846x1512/ac1a983a15/components-gallery-stack-landscape.png",
+          "component_id": 6616812,
+          "image": "//a.storyblok.com/f/315006/846x1512/f7f05b6849/components-gallery-stack-landscape.png",
           "icon": null,
           "color": null,
           "description": null
@@ -1449,26 +1947,100 @@
       ],
       "preset_id": null,
       "real_name": "Gallery",
-      "component_group_uuid": "d401396c-d417-4f3c-816b-65026e7217d3",
+      "component_group_uuid": "a0d1cdca-480d-4d4e-8333-79b23ed4fbf5",
       "color": "#05566a",
       "icon": "block-wallet",
+      "internal_tags_list": [],
+      "internal_tag_ids": [],
+      "content_type_asset_preview": null,
       "component_group_name": "Components"
+    },
+    {
+      "name": "global",
+      "display_name": "Global",
+      "description": null,
+      "created_at": "2024-11-27T13:23:11.456Z",
+      "updated_at": "2024-11-27T13:23:11.456Z",
+      "id": 6616847,
+      "schema": {
+        "global": {
+          "id": 0,
+          "pos": 0,
+          "type": "bloks",
+          "restrict_type": "groups",
+          "restrict_components": true,
+          "component_group_whitelist": [
+            "a0d1cdca-480d-4d4e-8333-79b23ed4fbf5"
+          ]
+        }
+      },
+      "image": null,
+      "preview_field": null,
+      "is_root": true,
+      "preview_tmpl": null,
+      "is_nestable": false,
+      "all_presets": [],
+      "preset_id": null,
+      "real_name": "Global",
+      "component_group_uuid": null,
+      "color": null,
+      "icon": null,
+      "internal_tags_list": [],
+      "internal_tag_ids": [],
+      "content_type_asset_preview": null
+    },
+    {
+      "name": "global_reference",
+      "display_name": "Global Reference",
+      "description": null,
+      "created_at": "2024-11-27T13:23:11.924Z",
+      "updated_at": "2024-11-27T13:23:11.924Z",
+      "id": 6616848,
+      "schema": {
+        "reference": {
+          "type": "options",
+          "pos": 0,
+          "is_reference_type": true,
+          "source": "internal_stories",
+          "entry_appearance": "card",
+          "allow_advanced_search": true,
+          "folder_slug": "global/"
+        }
+      },
+      "image": null,
+      "preview_field": null,
+      "is_root": false,
+      "preview_tmpl": null,
+      "is_nestable": true,
+      "all_presets": [],
+      "preset_id": null,
+      "real_name": "Global Reference",
+      "component_group_uuid": "97e0dbfb-15ba-4149-a307-c83f88c1a71b",
+      "color": null,
+      "icon": null,
+      "internal_tags_list": [],
+      "internal_tag_ids": [],
+      "content_type_asset_preview": null,
+      "component_group_name": "Global"
     },
     {
       "name": "header",
       "display_name": "Header",
-      "created_at": "2024-02-06T22:37:36.968Z",
-      "updated_at": "2024-02-06T22:37:36.968Z",
-      "id": 5299174,
+      "description": null,
+      "created_at": "2024-11-27T13:23:08.465Z",
+      "updated_at": "2024-11-27T13:23:08.465Z",
+      "id": 6616841,
       "schema": {
-        "tab-2b47525e-baa4-4e2c-a6f2-a79a5a90b06e": {
+        "tab-bb7a9265-321c-4b93-8650-9ee3f126481d": {
           "id": 0,
           "pos": 0,
           "display_name": "Logo",
-          "key": "tab-2b47525e-baa4-4e2c-a6f2-a79a5a90b06e",
+          "key": "tab-bb7a9265-321c-4b93-8650-9ee3f126481d",
           "keys": [
             "logo_src",
+            "logo_srcInverted",
             "logo_alt",
+            "logo_homepageHref",
             "logo_width",
             "logo_height"
           ],
@@ -1488,6 +2060,18 @@
           "description": "Picture source",
           "required": false
         },
+        "logo_srcInverted": {
+          "id": 0,
+          "pos": 0,
+          "display_name": "SrcInverted",
+          "key": "logo_srcInverted",
+          "type": "asset",
+          "filetypes": [
+            "images"
+          ],
+          "description": "Picture source",
+          "required": false
+        },
         "logo_alt": {
           "id": 0,
           "pos": 0,
@@ -1495,6 +2079,19 @@
           "key": "logo_alt",
           "type": "text",
           "description": "Alt text to display for picture",
+          "required": false
+        },
+        "logo_homepageHref": {
+          "id": 0,
+          "pos": 0,
+          "display_name": "HomepageHref",
+          "key": "logo_homepageHref",
+          "type": "multilink",
+          "allow_target_blank": true,
+          "email_link_type": true,
+          "asset_link_type": true,
+          "show_anchor": true,
+          "default_value": "/",
           "required": false
         },
         "logo_width": {
@@ -1515,17 +2112,22 @@
           "description": "Height of the picture",
           "required": false
         },
-        "logoHref": {
+        "flyoutInverted": {
           "id": 0,
           "pos": 0,
-          "display_name": "LogoHref",
-          "key": "logoHref",
-          "type": "multilink",
-          "allow_target_blank": true,
-          "email_link_type": true,
-          "asset_link_type": true,
-          "show_anchor": true,
-          "default_value": "/",
+          "display_name": "FlyoutInverted",
+          "key": "flyoutInverted",
+          "type": "boolean",
+          "description": "Toggle the inversion of the flyout navigation",
+          "required": false
+        },
+        "dropdownInverted": {
+          "id": 0,
+          "pos": 0,
+          "display_name": "DropdownInverted",
+          "key": "dropdownInverted",
+          "type": "boolean",
+          "description": "Toggle the inversion of the dropdown navigation",
           "required": false
         },
         "floating": {
@@ -1535,6 +2137,15 @@
           "key": "floating",
           "type": "boolean",
           "description": "Make the header float over the first Section",
+          "required": false
+        },
+        "inverted": {
+          "id": 0,
+          "pos": 0,
+          "display_name": "Inverted",
+          "key": "inverted",
+          "type": "boolean",
+          "description": "Invert the color scheme of the header",
           "required": false
         },
         "navItems": {
@@ -1559,17 +2170,17 @@
           "default_value": "header"
         }
       },
-      "image": "//a.storyblok.com/f/274567/1280x255/8425a29084/layout-header-header.png",
+      "image": "//a.storyblok.com/f/315006/1280x255/f11f4d7d42/layout-header-header.png",
       "preview_field": null,
       "is_root": false,
       "preview_tmpl": null,
-      "is_nestable": false,
+      "is_nestable": true,
       "all_presets": [
         {
-          "id": 2050331,
+          "id": 2366974,
           "name": "Header",
-          "component_id": 5299174,
-          "image": "//a.storyblok.com/f/274567/1280x255/8425a29084/layout-header-header.png",
+          "component_id": 6616841,
+          "image": "//a.storyblok.com/f/315006/1280x255/f11f4d7d42/layout-header-header.png",
           "icon": null,
           "color": null,
           "description": null
@@ -1579,14 +2190,450 @@
       "real_name": "Header",
       "component_group_uuid": null,
       "color": "#05566a",
-      "icon": "block-wallet"
+      "icon": "block-wallet",
+      "internal_tags_list": [],
+      "internal_tag_ids": [],
+      "content_type_asset_preview": null
+    },
+    {
+      "name": "hero",
+      "display_name": "Hero",
+      "description": null,
+      "created_at": "2024-11-27T13:22:41.906Z",
+      "updated_at": "2024-11-27T13:22:41.906Z",
+      "id": 6616814,
+      "schema": {
+        "headline": {
+          "id": 0,
+          "pos": 0,
+          "display_name": "Headline",
+          "key": "headline",
+          "type": "markdown",
+          "description": "Headline for the visual",
+          "required": false
+        },
+        "sub": {
+          "id": 0,
+          "pos": 0,
+          "display_name": "Sub",
+          "key": "sub",
+          "type": "markdown",
+          "description": "Subheadline below the module headline",
+          "required": false
+        },
+        "text": {
+          "id": 0,
+          "pos": 0,
+          "display_name": "Text",
+          "key": "text",
+          "type": "markdown",
+          "description": "Info text for the module element",
+          "required": false
+        },
+        "highlightText": {
+          "id": 0,
+          "pos": 0,
+          "display_name": "HighlightText",
+          "key": "highlightText",
+          "type": "boolean",
+          "description": "Visually highlight the text",
+          "required": false
+        },
+        "colorNeutral": {
+          "id": 0,
+          "pos": 0,
+          "display_name": "ColorNeutral",
+          "key": "colorNeutral",
+          "type": "boolean",
+          "description": "Make the text and buttons color neutral",
+          "required": false
+        },
+        "height": {
+          "id": 0,
+          "pos": 0,
+          "display_name": "Height",
+          "key": "height",
+          "type": "option",
+          "default_value": "default",
+          "description": "Height",
+          "options": [
+            {
+              "name": "small",
+              "value": "small",
+              "_uid": "813ae5d2-1fc1-472a-b96a-54588144edf1"
+            },
+            {
+              "name": "default",
+              "value": "default",
+              "_uid": "469c27b6-01db-44c4-8922-85ea3f06fdd0"
+            },
+            {
+              "name": "fullImage",
+              "value": "fullImage",
+              "_uid": "5e82346f-8c5c-41ec-8462-ad46e4fe8d68"
+            },
+            {
+              "name": "fullScreen",
+              "value": "fullScreen",
+              "_uid": "4a5e623a-cecb-4862-9717-e4c5eba13122"
+            }
+          ],
+          "required": false
+        },
+        "textbox": {
+          "id": 0,
+          "pos": 0,
+          "display_name": "Textbox",
+          "key": "textbox",
+          "type": "boolean",
+          "default_value": true,
+          "description": "Toggle wether you want your text to be displayed within in box",
+          "required": false
+        },
+        "buttons": {
+          "id": 0,
+          "pos": 0,
+          "display_name": "Buttons",
+          "key": "buttons",
+          "type": "bloks",
+          "restrict_type": "",
+          "restrict_components": true,
+          "component_whitelist": [
+            "buttons"
+          ],
+          "description": "Button"
+        },
+        "overlay": {
+          "id": 0,
+          "pos": 0,
+          "display_name": "Overlay",
+          "key": "overlay",
+          "type": "boolean",
+          "description": "Enable grid layer",
+          "required": false
+        },
+        "tab-a881b170-8b77-4443-81a7-4b3f9065e00d": {
+          "id": 0,
+          "pos": 0,
+          "display_name": "Image",
+          "key": "tab-a881b170-8b77-4443-81a7-4b3f9065e00d",
+          "keys": [
+            "image_srcMobile",
+            "image_srcTablet",
+            "image_srcDesktop",
+            "image_src",
+            "image_indent",
+            "image_alt"
+          ],
+          "type": "tab",
+          "description": "Sources of background images for different screen sizes",
+          "required": false
+        },
+        "image_srcMobile": {
+          "id": 0,
+          "pos": 0,
+          "display_name": "SrcMobile",
+          "key": "image_srcMobile",
+          "type": "asset",
+          "filetypes": [
+            "images"
+          ],
+          "description": "Background image source for small screens",
+          "required": false
+        },
+        "image_srcTablet": {
+          "id": 0,
+          "pos": 0,
+          "display_name": "SrcTablet",
+          "key": "image_srcTablet",
+          "type": "asset",
+          "filetypes": [
+            "images"
+          ],
+          "description": "Background image source for medium screens",
+          "required": false
+        },
+        "image_srcDesktop": {
+          "id": 0,
+          "pos": 0,
+          "display_name": "SrcDesktop",
+          "key": "image_srcDesktop",
+          "type": "asset",
+          "filetypes": [
+            "images"
+          ],
+          "description": "Background image source for large screens",
+          "required": false
+        },
+        "image_src": {
+          "id": 0,
+          "pos": 0,
+          "display_name": "Src",
+          "key": "image_src",
+          "type": "asset",
+          "filetypes": [
+            "images"
+          ],
+          "description": "Override for img tag of picture element, if needed",
+          "required": false
+        },
+        "image_indent": {
+          "id": 0,
+          "pos": 0,
+          "display_name": "Indent",
+          "key": "image_indent",
+          "type": "option",
+          "default_value": "none",
+          "description": "Choose to indent the image horizontally on small screens",
+          "options": [
+            {
+              "name": "none",
+              "value": "none",
+              "_uid": "5eb96a5e-c75c-4726-85ac-67a5fc61d7da"
+            },
+            {
+              "name": "left",
+              "value": "left",
+              "_uid": "78142e6f-97d4-4410-b8d7-aa2876b080b7"
+            },
+            {
+              "name": "right",
+              "value": "right",
+              "_uid": "ac12e119-bb61-4330-9280-cbbfce944087"
+            }
+          ],
+          "required": false
+        },
+        "image_alt": {
+          "id": 0,
+          "pos": 0,
+          "display_name": "Alt",
+          "key": "image_alt",
+          "type": "text",
+          "description": "Alt text to display for picture",
+          "required": false
+        },
+        "textPosition": {
+          "id": 0,
+          "pos": 0,
+          "display_name": "TextPosition",
+          "key": "textPosition",
+          "type": "option",
+          "default_value": "bottom",
+          "description": "Choose the alginment of the module content",
+          "options": [
+            {
+              "name": "center",
+              "value": "center",
+              "_uid": "b3555567-9d4f-49c5-bf0b-1f16728c7e1f"
+            },
+            {
+              "name": "below",
+              "value": "below",
+              "_uid": "51c72dfb-e416-4936-b278-e77de3c4ceaf"
+            },
+            {
+              "name": "left",
+              "value": "left",
+              "_uid": "30837917-f05a-4d27-bb72-02c210710927"
+            },
+            {
+              "name": "right",
+              "value": "right",
+              "_uid": "3294bde1-98f0-4c68-9fe7-aa2c336b38e8"
+            }
+          ],
+          "required": false
+        },
+        "type": {
+          "id": 0,
+          "pos": 0,
+          "display_name": "Type",
+          "key": "type",
+          "type": "text",
+          "description": "Internal type for interface resolution",
+          "default_value": "hero"
+        }
+      },
+      "image": "//a.storyblok.com/f/315006/1165x780/1c91b04bdc/components-hero-text-below-image.png",
+      "preview_field": null,
+      "is_root": false,
+      "preview_tmpl": null,
+      "is_nestable": true,
+      "all_presets": [
+        {
+          "id": 2366920,
+          "name": "TextBelowImage",
+          "component_id": 6616814,
+          "image": "//a.storyblok.com/f/315006/1165x780/1c91b04bdc/components-hero-text-below-image.png",
+          "icon": null,
+          "color": null,
+          "description": null
+        },
+        {
+          "id": 2366922,
+          "name": "TextBoxOnFullScreen",
+          "component_id": 6616814,
+          "image": "//a.storyblok.com/f/315006/1160x1080/683ebb0b76/components-hero-text-box-on-full-screen.png",
+          "icon": null,
+          "color": null,
+          "description": null
+        },
+        {
+          "id": 2366921,
+          "name": "TextOnImageWithOverlay",
+          "component_id": 6616814,
+          "image": "//a.storyblok.com/f/315006/1165x780/8e79c1eff3/components-hero-text-on-image-with-overlay.png",
+          "icon": null,
+          "color": null,
+          "description": null
+        }
+      ],
+      "preset_id": null,
+      "real_name": "Hero",
+      "component_group_uuid": "a0d1cdca-480d-4d4e-8333-79b23ed4fbf5",
+      "color": "#05566a",
+      "icon": "block-wallet",
+      "internal_tags_list": [],
+      "internal_tag_ids": [],
+      "content_type_asset_preview": null,
+      "component_group_name": "Components"
+    },
+    {
+      "name": "html",
+      "display_name": "Html",
+      "description": null,
+      "created_at": "2024-11-27T13:22:54.193Z",
+      "updated_at": "2024-11-27T13:22:54.193Z",
+      "id": 6616823,
+      "schema": {
+        "html": {
+          "id": 0,
+          "pos": 0,
+          "display_name": "Html",
+          "key": "html",
+          "type": "text",
+          "description": "HTML string",
+          "required": false
+        },
+        "consent": {
+          "id": 0,
+          "pos": 0,
+          "display_name": "Consent",
+          "key": "consent",
+          "type": "boolean",
+          "description": "Show HTML after consent",
+          "required": false
+        },
+        "consentText": {
+          "id": 0,
+          "pos": 0,
+          "display_name": "ConsentText",
+          "key": "consentText",
+          "type": "text",
+          "required": false
+        },
+        "consentButtonLabel": {
+          "id": 0,
+          "pos": 0,
+          "display_name": "ConsentButtonLabel",
+          "key": "consentButtonLabel",
+          "type": "text",
+          "required": false
+        },
+        "consentBackgroundImage": {
+          "id": 0,
+          "pos": 0,
+          "display_name": "ConsentBackgroundImage",
+          "key": "consentBackgroundImage",
+          "type": "asset",
+          "filetypes": [
+            "images"
+          ],
+          "required": false
+        },
+        "consentAspectRatio": {
+          "id": 0,
+          "pos": 0,
+          "display_name": "ConsentAspectRatio",
+          "key": "consentAspectRatio",
+          "type": "option",
+          "default_value": "VALUE_16_9",
+          "options": [
+            {
+              "name": "16:9",
+              "value": "VALUE_16_9",
+              "_uid": "9db3cdf2-e1b5-4b0c-8a80-43dbcee5546f"
+            },
+            {
+              "name": "16:10",
+              "value": "VALUE_16_10",
+              "_uid": "1ad5a8dd-b4c1-45aa-a99c-8cc488e1290c"
+            },
+            {
+              "name": "4:3",
+              "value": "VALUE_4_3",
+              "_uid": "28c58c3d-6a74-4217-9016-4fe3a28db514"
+            },
+            {
+              "name": "1:1",
+              "value": "VALUE_1_1",
+              "_uid": "3b35b407-ae3e-442d-841f-36e920eeae60"
+            }
+          ],
+          "required": false
+        },
+        "className": {
+          "id": 0,
+          "pos": 0,
+          "display_name": "ClassName",
+          "key": "className",
+          "type": "text",
+          "description": "Add additional css classes that should be applied to the element",
+          "required": false
+        },
+        "component": {
+          "id": 0,
+          "pos": 0,
+          "display_name": "Component",
+          "key": "component",
+          "type": "text",
+          "description": "Optional custom component identifier",
+          "required": false
+        },
+        "type": {
+          "id": 0,
+          "pos": 0,
+          "display_name": "Type",
+          "key": "type",
+          "type": "text",
+          "description": "Internal type for interface resolution",
+          "default_value": "html"
+        }
+      },
+      "image": null,
+      "preview_field": null,
+      "is_root": false,
+      "preview_tmpl": null,
+      "is_nestable": true,
+      "all_presets": [],
+      "preset_id": null,
+      "real_name": "Html",
+      "component_group_uuid": "a0d1cdca-480d-4d4e-8333-79b23ed4fbf5",
+      "color": "#05566a",
+      "icon": "block-wallet",
+      "internal_tags_list": [],
+      "internal_tag_ids": [],
+      "content_type_asset_preview": null,
+      "component_group_name": "Components"
     },
     {
       "name": "images",
       "display_name": "Images",
-      "created_at": "2024-02-06T22:37:24.018Z",
-      "updated_at": "2024-02-06T22:37:24.018Z",
-      "id": 5299159,
+      "description": null,
+      "created_at": "2024-11-27T13:22:33.073Z",
+      "updated_at": "2024-11-27T13:22:33.073Z",
+      "id": 6616804,
       "schema": {
         "src": {
           "id": 0,
@@ -1623,20 +2670,265 @@
       "preview_field": null,
       "is_root": false,
       "preview_tmpl": null,
-      "is_nestable": false,
+      "is_nestable": true,
       "all_presets": [],
       "preset_id": null,
       "real_name": "Images",
       "component_group_uuid": null,
       "color": "#05566a",
-      "icon": "block-wallet"
+      "icon": "block-wallet",
+      "internal_tags_list": [],
+      "internal_tag_ids": [],
+      "content_type_asset_preview": null
+    },
+    {
+      "name": "image-story",
+      "display_name": "Image Story",
+      "description": null,
+      "created_at": "2024-11-27T13:22:54.358Z",
+      "updated_at": "2024-11-27T13:22:54.358Z",
+      "id": 6616824,
+      "schema": {
+        "headline": {
+          "id": 0,
+          "pos": 0,
+          "display_name": "Headline",
+          "key": "headline",
+          "type": "markdown",
+          "description": "Headline for the module element",
+          "required": false
+        },
+        "largeHeadline": {
+          "id": 0,
+          "pos": 0,
+          "display_name": "LargeHeadline",
+          "key": "largeHeadline",
+          "type": "boolean",
+          "description": "Make the headline larger",
+          "required": false
+        },
+        "sub": {
+          "id": 0,
+          "pos": 0,
+          "display_name": "Sub",
+          "key": "sub",
+          "type": "markdown",
+          "description": "Subheadline below the module headline",
+          "required": false
+        },
+        "text": {
+          "id": 0,
+          "pos": 0,
+          "display_name": "Text",
+          "key": "text",
+          "type": "markdown",
+          "description": "Info text for the module element",
+          "required": false
+        },
+        "layout": {
+          "id": 0,
+          "pos": 0,
+          "display_name": "Layout",
+          "key": "layout",
+          "type": "option",
+          "default_value": "imageLeft",
+          "description": "Choose the layout for the component",
+          "options": [
+            {
+              "name": "textLeft",
+              "value": "textLeft",
+              "_uid": "0f1fd183-c26c-45d0-af03-9ae3f7d99fc2"
+            },
+            {
+              "name": "imageLeft",
+              "value": "imageLeft",
+              "_uid": "16cfa901-44f8-4126-bf48-10139b77adff"
+            }
+          ],
+          "required": false
+        },
+        "padding": {
+          "id": 0,
+          "pos": 0,
+          "display_name": "Padding",
+          "key": "padding",
+          "type": "boolean",
+          "description": "Give the component padding",
+          "required": false
+        },
+        "buttons": {
+          "id": 0,
+          "pos": 0,
+          "display_name": "Buttons",
+          "key": "buttons",
+          "type": "bloks",
+          "restrict_type": "",
+          "restrict_components": true,
+          "component_whitelist": [
+            "buttons"
+          ],
+          "description": "Component used for user interaction"
+        },
+        "tab-36fbee75-c741-4ada-8417-500edf7965bb": {
+          "id": 0,
+          "pos": 0,
+          "display_name": "Image",
+          "key": "tab-36fbee75-c741-4ada-8417-500edf7965bb",
+          "keys": [
+            "image_src",
+            "image_aspectRatio",
+            "image_alt",
+            "image_vAlign"
+          ],
+          "type": "tab",
+          "description": "Image displayed alongside the text content",
+          "required": false
+        },
+        "image_src": {
+          "id": 0,
+          "pos": 0,
+          "display_name": "Src",
+          "key": "image_src",
+          "type": "asset",
+          "filetypes": [
+            "images"
+          ],
+          "description": "Image source to use",
+          "required": false
+        },
+        "image_aspectRatio": {
+          "id": 0,
+          "pos": 0,
+          "display_name": "AspectRatio",
+          "key": "image_aspectRatio",
+          "type": "option",
+          "default_value": "unset",
+          "description": "The aspect ratio of the image",
+          "options": [
+            {
+              "name": "unset",
+              "value": "unset",
+              "_uid": "a5dcbf05-2c34-4dae-bb6a-1dacdf40ed0a"
+            },
+            {
+              "name": "square",
+              "value": "square",
+              "_uid": "8f2ff37d-7d0d-4dc3-9a3b-09472e26ca47"
+            },
+            {
+              "name": "wide",
+              "value": "wide",
+              "_uid": "91400d61-22da-4996-9fca-94ad2f615595"
+            },
+            {
+              "name": "landscape",
+              "value": "landscape",
+              "_uid": "7e2ead03-d5a7-4f9e-b3e5-8233d599d6d9"
+            }
+          ],
+          "required": false
+        },
+        "image_alt": {
+          "id": 0,
+          "pos": 0,
+          "display_name": "Alt",
+          "key": "image_alt",
+          "type": "text",
+          "description": "Image description",
+          "required": false
+        },
+        "image_vAlign": {
+          "id": 0,
+          "pos": 0,
+          "display_name": "VAlign",
+          "key": "image_vAlign",
+          "type": "option",
+          "default_value": "top",
+          "description": "Select a vertical alignment for the image",
+          "options": [
+            {
+              "name": "center",
+              "value": "center",
+              "_uid": "2bcebac6-474e-4295-a513-1540dcd427e5"
+            },
+            {
+              "name": "top",
+              "value": "top",
+              "_uid": "cfa988a0-9934-4b3e-830a-b5fb5386fb55"
+            },
+            {
+              "name": "bottom",
+              "value": "bottom",
+              "_uid": "80d9c130-f85d-428e-becf-23edb54f0966"
+            }
+          ],
+          "required": false
+        },
+        "textAlign": {
+          "id": 0,
+          "pos": 0,
+          "display_name": "TextAlign",
+          "key": "textAlign",
+          "type": "option",
+          "default_value": "left",
+          "description": "Choose the alginment of the text",
+          "options": [
+            {
+              "name": "left",
+              "value": "left",
+              "_uid": "c59b7eda-8159-40d5-8ed3-21134cb33128"
+            },
+            {
+              "name": "center",
+              "value": "center",
+              "_uid": "db3a246e-4efc-40f0-b08e-2432d0454c6e"
+            }
+          ],
+          "required": false
+        },
+        "type": {
+          "id": 0,
+          "pos": 0,
+          "display_name": "Type",
+          "key": "type",
+          "type": "text",
+          "description": "Internal type for interface resolution",
+          "default_value": "image-story"
+        }
+      },
+      "image": "//a.storyblok.com/f/315006/1160x960/9ab939eaee/components-image-story-sticky-image-next-to-scrolling-text.png",
+      "preview_field": null,
+      "is_root": false,
+      "preview_tmpl": null,
+      "is_nestable": true,
+      "all_presets": [
+        {
+          "id": 2366948,
+          "name": "StickyImageNextToScrollingText",
+          "component_id": 6616824,
+          "image": "//a.storyblok.com/f/315006/1160x960/9ab939eaee/components-image-story-sticky-image-next-to-scrolling-text.png",
+          "icon": null,
+          "color": null,
+          "description": null
+        }
+      ],
+      "preset_id": null,
+      "real_name": "Image Story",
+      "component_group_uuid": "a0d1cdca-480d-4d4e-8333-79b23ed4fbf5",
+      "color": "#05566a",
+      "icon": "block-wallet",
+      "internal_tags_list": [],
+      "internal_tag_ids": [],
+      "content_type_asset_preview": null,
+      "component_group_name": "Components"
     },
     {
       "name": "image-text",
       "display_name": "Image Text",
-      "created_at": "2024-02-06T22:37:27.734Z",
-      "updated_at": "2024-02-06T22:37:27.734Z",
-      "id": 5299166,
+      "description": null,
+      "created_at": "2024-11-27T13:22:43.146Z",
+      "updated_at": "2024-11-27T13:22:43.146Z",
+      "id": 6616815,
       "schema": {
         "text": {
           "id": 0,
@@ -1656,11 +2948,11 @@
           "description": "Visually highlight the text",
           "required": false
         },
-        "tab-e994b31b-e519-44c9-9335-0228ac2d8027": {
+        "tab-4b40f98e-d958-499e-91e8-a54a7622d1ed": {
           "id": 0,
           "pos": 0,
           "display_name": "Image",
-          "key": "tab-e994b31b-e519-44c9-9335-0228ac2d8027",
+          "key": "tab-4b40f98e-d958-499e-91e8-a54a7622d1ed",
           "keys": [
             "image_src",
             "image_alt"
@@ -1700,22 +2992,22 @@
             {
               "name": "above",
               "value": "above",
-              "_uid": "9cd16fc8-2939-450b-a3ee-8ad9445b8df0"
+              "_uid": "b23e38d3-3ca3-48b9-b27e-6a910c7a69ff"
             },
             {
               "name": "below",
               "value": "below",
-              "_uid": "73c7734a-b1c7-4bea-a010-9d297f18ed7a"
+              "_uid": "9bb473f1-f414-42e4-887f-0d93df9566d4"
             },
             {
               "name": "beside-right",
               "value": "beside_right",
-              "_uid": "bf57ad07-9d74-4108-bf5b-b07537bc085b"
+              "_uid": "62e14cbc-0141-4198-affa-57299a7e6644"
             },
             {
               "name": "beside-left",
               "value": "beside_left",
-              "_uid": "538720af-8d52-418b-bb6c-961d84e3d3ae"
+              "_uid": "9448e0c7-15e7-43aa-97ad-8e3f3975c7dd"
             }
           ],
           "required": false
@@ -1730,26 +3022,26 @@
           "default_value": "image-text"
         }
       },
-      "image": "//a.storyblok.com/f/274567/1240x515/44d07af08f/components-image-text-beside-right-layout.png",
+      "image": "//a.storyblok.com/f/315006/1240x515/9c78b7bada/components-image-text-beside-right-layout.png",
       "preview_field": null,
       "is_root": false,
       "preview_tmpl": null,
-      "is_nestable": false,
+      "is_nestable": true,
       "all_presets": [
         {
-          "id": 2050304,
+          "id": 2366924,
           "name": "AboveLayout",
-          "component_id": 5299166,
-          "image": "//a.storyblok.com/f/274567/760x829/1237d18264/components-image-text-above-layout.png",
+          "component_id": 6616815,
+          "image": "//a.storyblok.com/f/315006/760x829/28aea6add0/components-image-text-above-layout.png",
           "icon": null,
           "color": null,
           "description": null
         },
         {
-          "id": 2050303,
+          "id": 2366923,
           "name": "BesideRightLayout",
-          "component_id": 5299166,
-          "image": "//a.storyblok.com/f/274567/1240x515/44d07af08f/components-image-text-beside-right-layout.png",
+          "component_id": 6616815,
+          "image": "//a.storyblok.com/f/315006/1240x515/9c78b7bada/components-image-text-beside-right-layout.png",
           "icon": null,
           "color": null,
           "description": null
@@ -1757,17 +3049,184 @@
       ],
       "preset_id": null,
       "real_name": "Image Text",
-      "component_group_uuid": "d401396c-d417-4f3c-816b-65026e7217d3",
+      "component_group_uuid": "a0d1cdca-480d-4d4e-8333-79b23ed4fbf5",
       "color": "#05566a",
       "icon": "block-wallet",
+      "internal_tags_list": [],
+      "internal_tag_ids": [],
+      "content_type_asset_preview": null,
       "component_group_name": "Components"
+    },
+    {
+      "name": "info-table",
+      "display_name": "Info Table",
+      "description": null,
+      "created_at": "2024-11-27T13:22:59.196Z",
+      "updated_at": "2024-11-27T13:22:59.196Z",
+      "id": 6616829,
+      "schema": {
+        "data": {
+          "id": 0,
+          "pos": 0,
+          "display_name": "Data",
+          "key": "data",
+          "type": "table",
+          "description": "Data to display inside table",
+          "required": false
+        },
+        "type": {
+          "id": 0,
+          "pos": 0,
+          "display_name": "Type",
+          "key": "type",
+          "type": "text",
+          "description": "Internal type for interface resolution",
+          "default_value": "info-table"
+        }
+      },
+      "image": null,
+      "preview_field": null,
+      "is_root": false,
+      "preview_tmpl": null,
+      "is_nestable": true,
+      "all_presets": [],
+      "preset_id": null,
+      "real_name": "Info Table",
+      "component_group_uuid": "a0d1cdca-480d-4d4e-8333-79b23ed4fbf5",
+      "color": "#05566a",
+      "icon": "block-wallet",
+      "internal_tags_list": [],
+      "internal_tag_ids": [],
+      "content_type_asset_preview": null,
+      "component_group_name": "Components"
+    },
+    {
+      "name": "items",
+      "display_name": "Items",
+      "description": null,
+      "created_at": "2024-11-27T13:23:07.918Z",
+      "updated_at": "2024-11-27T13:23:07.918Z",
+      "id": 6616839,
+      "schema": {
+        "href": {
+          "id": 0,
+          "pos": 0,
+          "display_name": "Href",
+          "key": "href",
+          "type": "multilink",
+          "allow_target_blank": true,
+          "email_link_type": true,
+          "asset_link_type": true,
+          "show_anchor": true,
+          "required": false
+        },
+        "label": {
+          "id": 0,
+          "pos": 0,
+          "display_name": "Label",
+          "key": "label",
+          "type": "text",
+          "required": false
+        },
+        "active": {
+          "id": 0,
+          "pos": 0,
+          "display_name": "Active",
+          "key": "active",
+          "type": "boolean",
+          "required": false
+        }
+      },
+      "image": null,
+      "preview_field": null,
+      "is_root": false,
+      "preview_tmpl": null,
+      "is_nestable": true,
+      "all_presets": [],
+      "preset_id": null,
+      "real_name": "Items",
+      "component_group_uuid": null,
+      "color": "#05566a",
+      "icon": "block-wallet",
+      "internal_tags_list": [],
+      "internal_tag_ids": [],
+      "content_type_asset_preview": null
+    },
+    {
+      "name": "links",
+      "display_name": "Links",
+      "description": null,
+      "created_at": "2024-11-27T13:23:05.913Z",
+      "updated_at": "2024-11-27T13:23:05.913Z",
+      "id": 6616835,
+      "schema": {
+        "icon": {
+          "id": 0,
+          "pos": 0,
+          "display_name": "Icon",
+          "key": "icon",
+          "type": "custom",
+          "field_type": "storyblok-icon-sprite-picker-field-plugin",
+          "options": [
+            {
+              "name": "allowedIcons",
+              "_uid": "1e2f32a6-a0c9-437a-8605-d4100792a457"
+            }
+          ],
+          "required": false
+        },
+        "label": {
+          "id": 0,
+          "pos": 0,
+          "display_name": "Label",
+          "key": "label",
+          "type": "text",
+          "required": false
+        },
+        "href": {
+          "id": 0,
+          "pos": 0,
+          "display_name": "Href",
+          "key": "href",
+          "type": "multilink",
+          "allow_target_blank": true,
+          "email_link_type": true,
+          "asset_link_type": true,
+          "show_anchor": true,
+          "required": false
+        },
+        "newTab": {
+          "id": 0,
+          "pos": 0,
+          "display_name": "NewTab",
+          "key": "newTab",
+          "type": "boolean",
+          "description": "Open link in new Tab",
+          "required": false
+        }
+      },
+      "image": null,
+      "preview_field": null,
+      "is_root": false,
+      "preview_tmpl": null,
+      "is_nestable": true,
+      "all_presets": [],
+      "preset_id": null,
+      "real_name": "Links",
+      "component_group_uuid": null,
+      "color": "#05566a",
+      "icon": "block-wallet",
+      "internal_tags_list": [],
+      "internal_tag_ids": [],
+      "content_type_asset_preview": null
     },
     {
       "name": "logo",
       "display_name": "Logo",
-      "created_at": "2024-02-06T22:37:24.073Z",
-      "updated_at": "2024-02-06T22:37:24.073Z",
-      "id": 5299160,
+      "description": null,
+      "created_at": "2024-11-27T13:22:33.344Z",
+      "updated_at": "2024-11-27T13:22:33.344Z",
+      "id": 6616805,
       "schema": {
         "src": {
           "id": 0,
@@ -1789,35 +3248,30 @@
           "type": "text",
           "description": "The alt text of the logo",
           "required": false
-        },
-        "type": {
-          "id": 0,
-          "pos": 0,
-          "display_name": "Type",
-          "key": "type",
-          "type": "text",
-          "description": "Internal type for interface resolution",
-          "default_value": "logo"
         }
       },
       "image": null,
       "preview_field": null,
       "is_root": false,
       "preview_tmpl": null,
-      "is_nestable": false,
+      "is_nestable": true,
       "all_presets": [],
       "preset_id": null,
       "real_name": "Logo",
       "component_group_uuid": null,
       "color": "#05566a",
-      "icon": "block-wallet"
+      "icon": "block-wallet",
+      "internal_tags_list": [],
+      "internal_tag_ids": [],
+      "content_type_asset_preview": null
     },
     {
       "name": "logos",
       "display_name": "Logos",
-      "created_at": "2024-02-06T22:37:28.559Z",
-      "updated_at": "2024-02-06T22:37:28.559Z",
-      "id": 5299167,
+      "description": null,
+      "created_at": "2024-11-27T13:22:44.156Z",
+      "updated_at": "2024-11-27T13:22:44.156Z",
+      "id": 6616816,
       "schema": {
         "tagline": {
           "id": 0,
@@ -1853,21 +3307,30 @@
             {
               "name": "left",
               "value": "left",
-              "_uid": "9e8aa0f2-2b78-4dc4-8da1-dcfbee5d8a25"
+              "_uid": "53433169-c2fc-40c6-ae98-47dcf80a7200"
             },
             {
               "name": "center",
               "value": "center",
-              "_uid": "2df51c9e-6305-4998-8523-353ddac8de85"
+              "_uid": "40f81559-e8c2-4c3a-9814-aa39bb58b8f2"
             }
           ],
           "required": false
         },
-        "tab-86cb320c-a215-45ed-b9a8-f8af361b226f": {
+        "logosPerRow": {
+          "id": 0,
+          "pos": 0,
+          "display_name": "LogosPerRow",
+          "key": "logosPerRow",
+          "type": "number",
+          "description": "The amount of logos to display per row",
+          "required": false
+        },
+        "tab-1eaaacf5-b9a6-48ec-91ea-648cb2f5514b": {
           "id": 0,
           "pos": 0,
           "display_name": "Cta",
-          "key": "tab-86cb320c-a215-45ed-b9a8-f8af361b226f",
+          "key": "tab-1eaaacf5-b9a6-48ec-91ea-648cb2f5514b",
           "keys": [
             "cta_toggle",
             "cta_text",
@@ -1893,7 +3356,7 @@
           "pos": 0,
           "display_name": "Text",
           "key": "cta_text",
-          "type": "markdown",
+          "type": "text",
           "description": "A short CTA text",
           "required": false
         },
@@ -1931,12 +3394,12 @@
             {
               "name": "button",
               "value": "button",
-              "_uid": "336980c4-0615-4659-b982-f6b89fe4343b"
+              "_uid": "79c3849a-f726-48b0-a4dc-23ec99402306"
             },
             {
               "name": "text",
               "value": "text",
-              "_uid": "e90060fb-3c8f-4350-82ce-93c07c9a9e04"
+              "_uid": "0a1a323f-de83-47f3-8437-28b33b726db1"
             }
           ],
           "required": false
@@ -1951,26 +3414,44 @@
           "default_value": "logos"
         }
       },
-      "image": "//a.storyblok.com/f/274567/1000x598/feb740e1f4/components-logos-centered-with-button.png",
+      "image": "//a.storyblok.com/f/315006/1000x598/8ecbb436e4/components-logos-centered-with-button.png",
       "preview_field": null,
       "is_root": false,
       "preview_tmpl": null,
-      "is_nestable": false,
+      "is_nestable": true,
       "all_presets": [
         {
-          "id": 2050305,
+          "id": 2366925,
           "name": "CenteredWithButton",
-          "component_id": 5299167,
-          "image": "//a.storyblok.com/f/274567/1000x598/feb740e1f4/components-logos-centered-with-button.png",
+          "component_id": 6616816,
+          "image": "//a.storyblok.com/f/315006/1000x598/8ecbb436e4/components-logos-centered-with-button.png",
           "icon": null,
           "color": null,
           "description": null
         },
         {
-          "id": 2050306,
+          "id": 2366926,
           "name": "LeftAlignedWithTextLink",
-          "component_id": 5299167,
-          "image": "//a.storyblok.com/f/274567/1000x517/6d2cc99b78/components-logos-left-aligned-with-text-link.png",
+          "component_id": 6616816,
+          "image": "//a.storyblok.com/f/315006/1000x517/4c0e066aa5/components-logos-left-aligned-with-text-link.png",
+          "icon": null,
+          "color": null,
+          "description": null
+        },
+        {
+          "id": 2366928,
+          "name": "LogoRow",
+          "component_id": 6616816,
+          "image": "//a.storyblok.com/f/315006/1000x450/b2a2ee3d10/components-logos-logo-row.png",
+          "icon": null,
+          "color": null,
+          "description": null
+        },
+        {
+          "id": 2366927,
+          "name": "LogoWall",
+          "component_id": 6616816,
+          "image": "//a.storyblok.com/f/315006/1080x860/181c05b647/components-logos-logo-wall.png",
           "icon": null,
           "color": null,
           "description": null
@@ -1978,17 +3459,123 @@
       ],
       "preset_id": null,
       "real_name": "Logos",
-      "component_group_uuid": "d401396c-d417-4f3c-816b-65026e7217d3",
+      "component_group_uuid": "a0d1cdca-480d-4d4e-8333-79b23ed4fbf5",
       "color": "#05566a",
       "icon": "block-wallet",
+      "internal_tags_list": [],
+      "internal_tag_ids": [],
+      "content_type_asset_preview": null,
+      "component_group_name": "Components"
+    },
+    {
+      "name": "mosaic",
+      "display_name": "Mosaic",
+      "description": null,
+      "created_at": "2024-11-27T13:22:55.195Z",
+      "updated_at": "2024-11-27T13:22:55.195Z",
+      "id": 6616825,
+      "schema": {
+        "layout": {
+          "id": 0,
+          "pos": 0,
+          "display_name": "Layout",
+          "key": "layout",
+          "type": "option",
+          "default_value": "alternate",
+          "description": "Layout of the mosaic component",
+          "options": [
+            {
+              "name": "alternate",
+              "value": "alternate",
+              "_uid": "4a4c9a9e-09a4-48f4-9777-0b37d7716ff6"
+            },
+            {
+              "name": "textLeft",
+              "value": "textLeft",
+              "_uid": "16d93eee-4d56-4602-8d4d-14b1cbfbc408"
+            },
+            {
+              "name": "textRight",
+              "value": "textRight",
+              "_uid": "39178613-bcf9-419c-8103-ffddeec8f33b"
+            }
+          ],
+          "required": false
+        },
+        "largeHeadlines": {
+          "id": 0,
+          "pos": 0,
+          "display_name": "LargeHeadlines",
+          "key": "largeHeadlines",
+          "type": "boolean",
+          "description": "Make the headlines larger",
+          "required": false
+        },
+        "tile": {
+          "id": 0,
+          "pos": 0,
+          "display_name": "Tile",
+          "key": "tile",
+          "type": "bloks",
+          "restrict_type": "",
+          "restrict_components": true,
+          "component_whitelist": [
+            "tile"
+          ],
+          "description": "Tile"
+        },
+        "type": {
+          "id": 0,
+          "pos": 0,
+          "display_name": "Type",
+          "key": "type",
+          "type": "text",
+          "description": "Internal type for interface resolution",
+          "default_value": "mosaic"
+        }
+      },
+      "image": "//a.storyblok.com/f/315006/1010x1520/4bf3d047de/components-mosaic-colorful-tiles.png",
+      "preview_field": null,
+      "is_root": false,
+      "preview_tmpl": null,
+      "is_nestable": true,
+      "all_presets": [
+        {
+          "id": 2366950,
+          "name": "ColorfulTextWithIllustrations",
+          "component_id": 6616825,
+          "image": "//a.storyblok.com/f/315006/1010x1520/13c5b4752b/components-mosaic-colorful-text-with-illustrations.png",
+          "icon": null,
+          "color": null,
+          "description": null
+        },
+        {
+          "id": 2366949,
+          "name": "ColorfulTiles",
+          "component_id": 6616825,
+          "image": "//a.storyblok.com/f/315006/1010x1520/4bf3d047de/components-mosaic-colorful-tiles.png",
+          "icon": null,
+          "color": null,
+          "description": null
+        }
+      ],
+      "preset_id": null,
+      "real_name": "Mosaic",
+      "component_group_uuid": "a0d1cdca-480d-4d4e-8333-79b23ed4fbf5",
+      "color": "#05566a",
+      "icon": "block-wallet",
+      "internal_tags_list": [],
+      "internal_tag_ids": [],
+      "content_type_asset_preview": null,
       "component_group_name": "Components"
     },
     {
       "name": "navItems",
       "display_name": "NavItems",
-      "created_at": "2024-02-06T22:37:36.917Z",
-      "updated_at": "2024-02-06T22:37:36.917Z",
-      "id": 5299173,
+      "description": null,
+      "created_at": "2024-11-27T13:23:08.196Z",
+      "updated_at": "2024-11-27T13:23:08.196Z",
+      "id": 6616840,
       "schema": {
         "href": {
           "id": 0,
@@ -2009,26 +3596,50 @@
           "key": "label",
           "type": "text",
           "required": false
+        },
+        "active": {
+          "id": 0,
+          "pos": 0,
+          "display_name": "Active",
+          "key": "active",
+          "type": "boolean",
+          "required": false
+        },
+        "items": {
+          "id": 0,
+          "pos": 0,
+          "display_name": "Items",
+          "key": "items",
+          "type": "bloks",
+          "restrict_type": "",
+          "restrict_components": true,
+          "component_whitelist": [
+            "items"
+          ]
         }
       },
       "image": null,
       "preview_field": null,
       "is_root": false,
       "preview_tmpl": null,
-      "is_nestable": false,
+      "is_nestable": true,
       "all_presets": [],
       "preset_id": null,
       "real_name": "NavItems",
       "component_group_uuid": null,
       "color": "#05566a",
-      "icon": "block-wallet"
+      "icon": "block-wallet",
+      "internal_tags_list": [],
+      "internal_tag_ids": [],
+      "content_type_asset_preview": null
     },
     {
       "name": "page",
       "display_name": "Page",
-      "created_at": "2024-02-06T22:37:37.846Z",
-      "updated_at": "2024-02-06T22:37:37.846Z",
-      "id": 5299178,
+      "description": null,
+      "created_at": "2024-11-27T13:15:11.903Z",
+      "updated_at": "2024-11-27T13:20:09.750Z",
+      "id": 6616700,
       "schema": {
         "section": {
           "id": 0,
@@ -2043,6 +3654,58 @@
           ],
           "description": "Component used to layout components into pages"
         },
+        "tab-bd349cd9-4c4e-490a-a1c4-723de7dbcff0": {
+          "id": 0,
+          "pos": 0,
+          "display_name": "Header",
+          "key": "tab-bd349cd9-4c4e-490a-a1c4-723de7dbcff0",
+          "keys": [
+            "header_floating",
+            "header_inverted"
+          ],
+          "type": "tab",
+          "description": "Header settings for the page",
+          "required": false
+        },
+        "header_floating": {
+          "id": 0,
+          "pos": 0,
+          "display_name": "Floating",
+          "key": "header_floating",
+          "type": "boolean",
+          "description": "Toggle default floating header behaviour set in global settings",
+          "required": false
+        },
+        "header_inverted": {
+          "id": 0,
+          "pos": 0,
+          "display_name": "Inverted",
+          "key": "header_inverted",
+          "type": "boolean",
+          "description": "Toggle default inverted header behaviour set in global settings",
+          "required": false
+        },
+        "tab-1f5e5547-e5e9-46fc-8f6d-4763e4c36b8c": {
+          "id": 0,
+          "pos": 0,
+          "display_name": "Footer",
+          "key": "tab-1f5e5547-e5e9-46fc-8f6d-4763e4c36b8c",
+          "keys": [
+            "footer_inverted"
+          ],
+          "type": "tab",
+          "description": "Footer settings for the page",
+          "required": false
+        },
+        "footer_inverted": {
+          "id": 0,
+          "pos": 0,
+          "display_name": "Inverted",
+          "key": "footer_inverted",
+          "type": "boolean",
+          "description": "Toggle default inverted footer behaviour set in global settings",
+          "required": false
+        },
         "seo": {
           "id": 0,
           "pos": 0,
@@ -2054,6 +3717,8 @@
           "component_whitelist": [
             "seo"
           ],
+          "maximum": 1,
+          "minimum": 0,
           "description": "Abstracts SEO settings for a website into JSON schema"
         },
         "type": {
@@ -2076,14 +3741,18 @@
       "real_name": "Page",
       "component_group_uuid": null,
       "color": null,
-      "icon": null
+      "icon": null,
+      "internal_tags_list": [],
+      "internal_tag_ids": [],
+      "content_type_asset_preview": null
     },
     {
       "name": "questions",
       "display_name": "Questions",
-      "created_at": "2024-02-06T22:37:23.901Z",
-      "updated_at": "2024-02-06T22:37:23.901Z",
-      "id": 5299157,
+      "description": null,
+      "created_at": "2024-11-27T13:22:32.346Z",
+      "updated_at": "2024-11-27T13:22:32.346Z",
+      "id": 6616802,
       "schema": {
         "question": {
           "id": 0,
@@ -2108,21 +3777,34 @@
       "preview_field": null,
       "is_root": false,
       "preview_tmpl": null,
-      "is_nestable": false,
+      "is_nestable": true,
       "all_presets": [],
       "preset_id": null,
       "real_name": "Questions",
       "component_group_uuid": null,
       "color": "#05566a",
-      "icon": "block-wallet"
+      "icon": "block-wallet",
+      "internal_tags_list": [],
+      "internal_tag_ids": [],
+      "content_type_asset_preview": null
     },
     {
       "name": "section",
       "display_name": "Section",
-      "created_at": "2024-02-06T22:37:32.919Z",
-      "updated_at": "2024-02-06T22:37:32.919Z",
-      "id": 5299172,
+      "description": null,
+      "created_at": "2024-11-27T13:22:59.362Z",
+      "updated_at": "2024-11-27T13:22:59.362Z",
+      "id": 6616830,
       "schema": {
+        "type": {
+          "id": 0,
+          "pos": 0,
+          "display_name": "Type",
+          "key": "type",
+          "type": "text",
+          "description": "Internal type for interface resolution",
+          "default_value": "section"
+        },
         "width": {
           "id": 0,
           "pos": 0,
@@ -2135,27 +3817,27 @@
             {
               "name": "full",
               "value": "full",
-              "_uid": "c69f3b05-61ba-4c1f-9a7d-65ae02f85ec1"
+              "_uid": "dcce857a-4e83-49f0-b829-1e0826d5b08d"
             },
             {
               "name": "max",
               "value": "max",
-              "_uid": "73861ffa-3ea4-417e-a05a-7509f7f41690"
+              "_uid": "ba8ab8df-ac0a-4ae3-8b0c-65575a201494"
             },
             {
               "name": "wide",
               "value": "wide",
-              "_uid": "010d82df-6b7f-4e69-9d0f-cc67d41a17f4"
+              "_uid": "58b65ec1-dcdc-4b2a-a143-7a32027d93e2"
             },
             {
               "name": "default",
               "value": "default",
-              "_uid": "8272de05-42a9-4734-93e1-4497aff07614"
+              "_uid": "23e8cb1c-5f20-4d10-830b-913f9e1db8a7"
             },
             {
               "name": "narrow",
               "value": "narrow",
-              "_uid": "b19960b1-cbe8-43fb-8026-ac2bae0365fe"
+              "_uid": "1c7ef908-de5b-40ca-9b4b-a9a5c202131c"
             }
           ],
           "required": false
@@ -2172,37 +3854,37 @@
             {
               "name": "stagelights",
               "value": "stagelights",
-              "_uid": "96c17161-ccbf-4de1-9a48-aec0ed851d44"
+              "_uid": "07c7ae2b-b00d-4f4e-b2c1-58581c166bdc"
             },
             {
               "name": "horizontalGradient",
               "value": "horizontalGradient",
-              "_uid": "fbed0a97-fd23-4d98-8146-1cfb4eb0c046"
+              "_uid": "136974fd-ecc7-437b-b2b0-75dab6909079"
             },
             {
               "name": "verticalGradient",
               "value": "verticalGradient",
-              "_uid": "c2f56c50-a594-4270-b517-10ded2f28cc0"
+              "_uid": "dcc58c37-d180-4c8a-b0a2-8ac1005f989c"
             },
             {
               "name": "accentTransition",
               "value": "accentTransition",
-              "_uid": "ca4b8e52-2eb4-4941-beb9-374ab0bfa9f0"
+              "_uid": "c94f1262-8bed-4842-81a7-6c13d77e4896"
             },
             {
               "name": "boldTransition",
               "value": "boldTransition",
-              "_uid": "14a8479b-0bd6-40d0-b3b6-5ad083f4fd7f"
+              "_uid": "8082b195-0880-4133-b106-839d430c8280"
             },
             {
               "name": "symmetricGlow",
               "value": "symmetricGlow",
-              "_uid": "5d7b237e-f67b-4c69-b681-e92b9d0c4806"
+              "_uid": "e2b40878-b041-4916-8488-270e9bcc871b"
             },
             {
               "name": "anchorGlow",
               "value": "anchorGlow",
-              "_uid": "9a672e14-686f-4486-a089-e23a5a82ba81"
+              "_uid": "37aac56f-b067-4720-9137-a52a879358b4"
             }
           ],
           "required": false
@@ -2219,17 +3901,17 @@
             {
               "name": "default",
               "value": "default",
-              "_uid": "600890cd-7fd4-4a25-8139-41ba1f614b29"
+              "_uid": "7072e0e4-5d9a-4b7d-8abe-6f5e69e0fb47"
             },
             {
               "name": "accent",
               "value": "accent",
-              "_uid": "67eecad3-ee7d-407e-b499-5c6174d9f2ba"
+              "_uid": "6f8ec2b2-836a-4a62-8f10-2994d70d4fc5"
             },
             {
               "name": "bold",
               "value": "bold",
-              "_uid": "1004f39d-7947-4f96-960c-8fb8bf948fd7"
+              "_uid": "55ffd28a-0a70-4ba4-852d-267cb3420084"
             }
           ],
           "required": false
@@ -2255,17 +3937,17 @@
             {
               "name": "default",
               "value": "default",
-              "_uid": "9eb3d67f-fe62-4fd8-8b98-5a277cdc20bd"
+              "_uid": "2d307850-9492-473b-9b85-3ff75a60cf91"
             },
             {
               "name": "small",
               "value": "small",
-              "_uid": "69846a2d-54f7-4694-87c7-ec32d9ad15fc"
+              "_uid": "19eeca33-90ff-45b9-be1e-3753a6952484"
             },
             {
               "name": "none",
               "value": "none",
-              "_uid": "c492346a-656f-418d-8434-32f3bf57eaa5"
+              "_uid": "092f2863-256c-4e71-bb8e-2fa82004023c"
             }
           ],
           "required": false
@@ -2282,17 +3964,17 @@
             {
               "name": "default",
               "value": "default",
-              "_uid": "4672a9b6-8342-4d5a-beeb-de378d5ade8f"
+              "_uid": "47b03412-5209-450e-b55a-4f76d392cbd0"
             },
             {
               "name": "small",
               "value": "small",
-              "_uid": "60197d02-1299-4e8f-bcdc-cd66a063f47c"
+              "_uid": "f2053362-6d82-4b4a-83bb-43aca41363f7"
             },
             {
               "name": "none",
               "value": "none",
-              "_uid": "7d809804-f945-47c1-8549-061383429773"
+              "_uid": "78df30eb-8869-45ab-aec6-385ada897a36"
             }
           ],
           "required": false
@@ -2315,11 +3997,11 @@
           "description": "Reserve additional spacing for a floating header",
           "required": false
         },
-        "tab-2c09360f-5a1a-47d8-a135-d70608b96d72": {
+        "tab-729fac1d-fd73-46cc-92ca-a27189576883": {
           "id": 0,
           "pos": 0,
           "display_name": "Headline",
-          "key": "tab-2c09360f-5a1a-47d8-a135-d70608b96d72",
+          "key": "tab-729fac1d-fd73-46cc-92ca-a27189576883",
           "keys": [
             "headline_text",
             "headline_large",
@@ -2362,22 +4044,22 @@
             {
               "name": "unset",
               "value": "unset",
-              "_uid": "fcac53bf-94e7-40f4-b7a9-99967ed28c80"
+              "_uid": "e7d72228-5d64-4d0e-a7f9-e2d11019d60f"
             },
             {
               "name": "narrow",
               "value": "narrow",
-              "_uid": "2e60312c-c32a-4783-8468-1d80f256c60a"
+              "_uid": "4d949d9b-463f-4f8a-8d15-417c286226c7"
             },
             {
               "name": "default",
               "value": "default",
-              "_uid": "c1997e30-0e91-4ae7-a52f-48d3d6ff3024"
+              "_uid": "17c139aa-2103-4381-983c-1d6ba3522f80"
             },
             {
               "name": "wide",
               "value": "wide",
-              "_uid": "d761d579-8e07-4782-9c53-5af7d7376d2d"
+              "_uid": "a512c90c-6bbe-4a2d-bbbc-4697e96cb357"
             }
           ],
           "required": false
@@ -2393,17 +4075,17 @@
             {
               "name": "left",
               "value": "left",
-              "_uid": "7be493d0-8295-4789-a591-66bac1dbc603"
+              "_uid": "c4b10a7c-dab5-456a-8ca3-3b631a1edf7b"
             },
             {
               "name": "center",
               "value": "center",
-              "_uid": "5c42782a-1080-48a6-87b2-2970193cb5a9"
+              "_uid": "c1bda9cf-33dd-4254-bb02-98dce516db02"
             },
             {
               "name": "right",
               "value": "right",
-              "_uid": "f27483cc-e847-4c9d-82c6-a71eb7aa35c7"
+              "_uid": "9011ba7c-cbbc-4069-a8b9-f8d97ebbb9f9"
             }
           ],
           "required": false
@@ -2419,17 +4101,17 @@
             {
               "name": "left",
               "value": "left",
-              "_uid": "5c05edd2-e715-4415-8fbe-ef5cfd7244c3"
+              "_uid": "c982c6dd-5e69-455e-bb69-26bab7ede8c4"
             },
             {
               "name": "center",
               "value": "center",
-              "_uid": "dfc5435b-d1aa-4f71-a215-96b591d0a8da"
+              "_uid": "35c3f293-f33d-436a-9907-f44ecacdbe56"
             },
             {
               "name": "right",
               "value": "right",
-              "_uid": "e9bae95a-b891-4b3a-8bbb-0617657331d8"
+              "_uid": "59564004-4ec2-46db-9c12-68bf9b1bf7b6"
             }
           ],
           "required": false
@@ -2452,11 +4134,11 @@
           "description": "Switch the order of headline and subheadline",
           "required": false
         },
-        "tab-e658f809-4a9a-4abd-8e04-5ec23de08ec2": {
+        "tab-34098d83-a2fb-436a-a370-74691d72408a": {
           "id": 0,
           "pos": 0,
           "display_name": "Content",
-          "key": "tab-e658f809-4a9a-4abd-8e04-5ec23de08ec2",
+          "key": "tab-34098d83-a2fb-436a-a370-74691d72408a",
           "keys": [
             "content_width",
             "content_align",
@@ -2479,22 +4161,22 @@
             {
               "name": "unset",
               "value": "unset",
-              "_uid": "9abfc0a9-2d25-4c92-ae81-0b6d400fefb3"
+              "_uid": "6946c49c-5bac-41e9-af10-c2150ea94228"
             },
             {
               "name": "narrow",
               "value": "narrow",
-              "_uid": "ffdb2f46-1a21-47f5-86a8-9cf62e6e584d"
+              "_uid": "24157027-d24f-4272-bced-e9e5d25cb7e8"
             },
             {
               "name": "default",
               "value": "default",
-              "_uid": "762fc941-7d3d-48c0-8626-8e3cd01e24b3"
+              "_uid": "99c38fdc-ab12-401a-bd2b-f3f32f99bc23"
             },
             {
               "name": "wide",
               "value": "wide",
-              "_uid": "dc799b5a-20ed-428b-a415-a4717ed6e56e"
+              "_uid": "61a3f386-4fb9-4728-81d0-c9b344318503"
             }
           ],
           "required": false
@@ -2511,17 +4193,17 @@
             {
               "name": "left",
               "value": "left",
-              "_uid": "ca079383-143f-4bd2-98cd-4c2ef0ff242b"
+              "_uid": "3328d801-b58d-417f-a143-5097f83b3728"
             },
             {
               "name": "center",
               "value": "center",
-              "_uid": "1231d3c3-bb64-4613-ab7e-e7b5d8a60b3f"
+              "_uid": "7708577c-ff64-4f74-a7f1-bec5c7d24b25"
             },
             {
               "name": "right",
               "value": "right",
-              "_uid": "d0fa6ff9-6960-4973-be4e-4ded9c25e3ce"
+              "_uid": "1f582a5b-3c79-44dc-99f4-2b8a854dd8a1"
             }
           ],
           "required": false
@@ -2538,22 +4220,22 @@
             {
               "name": "large",
               "value": "large",
-              "_uid": "aa43648f-4a37-4f61-9458-77e3ff1dab3b"
+              "_uid": "8600ad0e-b533-4faf-8093-1a4b385260a8"
             },
             {
               "name": "default",
               "value": "default",
-              "_uid": "949b2075-fed8-44d1-8d57-d14bfae2f70a"
+              "_uid": "8db331b6-71b0-4909-b26b-7183674be330"
             },
             {
               "name": "small",
               "value": "small",
-              "_uid": "c9628761-a6dc-482a-a039-25b387cca920"
+              "_uid": "21d6c324-dd87-4fd8-8f2c-3124cafca847"
             },
             {
               "name": "none",
               "value": "none",
-              "_uid": "735407b8-598b-415c-9e7c-29622d9ed99a"
+              "_uid": "94743d2e-a5de-481d-8e92-3f20632e562e"
             }
           ],
           "required": false
@@ -2564,28 +4246,28 @@
           "display_name": "Mode",
           "key": "content_mode",
           "type": "option",
-          "default_value": "default",
+          "default_value": "list",
           "description": "Layout mode used for section contents",
           "options": [
             {
               "name": "default",
               "value": "default",
-              "_uid": "30868969-c28a-4bd1-98fa-75c659ce7003"
+              "_uid": "768d0c93-b2e1-4ef2-a0fd-ca6cf1363e8d"
             },
             {
               "name": "tile",
               "value": "tile",
-              "_uid": "fca6d60e-676f-4a41-818d-19fa044097e2"
+              "_uid": "a4d0d7b7-7494-4790-bec3-cbda3eb87cea"
             },
             {
               "name": "list",
               "value": "list",
-              "_uid": "320ad48e-7995-4937-a596-2a53ca063ae8"
+              "_uid": "752ddae3-ce8a-44e1-8901-ef2bcccf4022"
             },
             {
               "name": "slider",
               "value": "slider",
-              "_uid": "6129d6ae-f826-486d-ae68-999d6b8e800d"
+              "_uid": "de6441ee-6065-43a1-96f5-4f2c7ede8d6a"
             }
           ],
           "required": false
@@ -2602,27 +4284,27 @@
             {
               "name": "smallest",
               "value": "smallest",
-              "_uid": "40ea6b57-318a-444e-9cef-e11aeaba2bf4"
+              "_uid": "40ee8344-fb18-4061-98fb-c2c3b7bebf3b"
             },
             {
               "name": "default",
               "value": "default",
-              "_uid": "5208296a-17ad-4be7-b089-b6dccfd6b3d0"
+              "_uid": "47f09cfa-6c64-457e-9f24-2315f68a6790"
             },
             {
               "name": "medium",
               "value": "medium",
-              "_uid": "4588a390-58ec-42ff-ba10-880acd842da3"
+              "_uid": "67c96e68-db35-4e13-91cd-57c4e6d37fc5"
             },
             {
               "name": "large",
               "value": "large",
-              "_uid": "9d208cee-32f0-40c1-b82e-ed368b8001fd"
+              "_uid": "6fe2ae5d-9eed-4979-8263-0695f213a8bd"
             },
             {
               "name": "largest",
               "value": "largest",
-              "_uid": "1d7afc2d-3423-48fd-b53e-7e5debae6e24"
+              "_uid": "8f2626c6-fdbe-4d50-8c03-2fffb2246110"
             }
           ],
           "required": false
@@ -2636,9 +4318,10 @@
           "restrict_type": "groups",
           "restrict_components": true,
           "component_group_whitelist": [
-            "d401396c-d417-4f3c-816b-65026e7217d3"
+            "a0d1cdca-480d-4d4e-8333-79b23ed4fbf5",
+            "97e0dbfb-15ba-4149-a307-c83f88c1a71b"
           ],
-          "description": "Abstracts a page concept into JSON schema",
+          "description": "Abstracts a blog overview concept into JSON schema",
           "required": false
         },
         "buttons": {
@@ -2653,127 +4336,118 @@
             "buttons"
           ],
           "description": "Component used for user interaction"
-        },
-        "type": {
-          "id": 0,
-          "pos": 0,
-          "display_name": "Type",
-          "key": "type",
-          "type": "text",
-          "description": "Internal type for interface resolution",
-          "default_value": "section"
         }
       },
-      "image": "//a.storyblok.com/f/274567/1440x928/c8aba163b9/layout-section-cards.png",
+      "image": "//a.storyblok.com/f/315006/1440x928/72632b2bb6/layout-section-cards.png",
       "preview_field": null,
       "is_root": false,
       "preview_tmpl": null,
-      "is_nestable": false,
+      "is_nestable": true,
       "all_presets": [
         {
-          "id": 2050324,
+          "id": 2366963,
           "name": "AccentBackground",
-          "component_id": 5299172,
-          "image": "//a.storyblok.com/f/274567/1440x928/fa67eec34c/layout-section-accent-background.png",
+          "component_id": 6616830,
+          "image": "//a.storyblok.com/f/315006/1440x928/96b4c96a67/layout-section-accent-background.png",
           "icon": null,
           "color": null,
           "description": null
         },
         {
-          "id": 2050325,
+          "id": 2366964,
           "name": "BoldBackground",
-          "component_id": 5299172,
-          "image": "//a.storyblok.com/f/274567/1440x928/27bb13b7c3/layout-section-bold-background.png",
+          "component_id": 6616830,
+          "image": "//a.storyblok.com/f/315006/1440x928/e5d65f426e/layout-section-bold-background.png",
           "icon": null,
           "color": null,
           "description": null
         },
         {
-          "id": 2050319,
+          "id": 2366958,
           "name": "Cards",
-          "component_id": 5299172,
-          "image": "//a.storyblok.com/f/274567/1440x928/c8aba163b9/layout-section-cards.png",
+          "component_id": 6616830,
+          "image": "//a.storyblok.com/f/315006/1440x928/72632b2bb6/layout-section-cards.png",
           "icon": null,
           "color": null,
           "description": null
         },
         {
-          "id": 2050326,
+          "id": 2366965,
           "name": "ColorfulGradient",
-          "component_id": 5299172,
-          "image": "//a.storyblok.com/f/274567/1440x928/ae17f3398c/layout-section-colorful-gradient.png",
+          "component_id": 6616830,
+          "image": "//a.storyblok.com/f/315006/1440x928/8713b5d613/layout-section-colorful-gradient.png",
           "icon": null,
           "color": null,
           "description": null
         },
         {
-          "id": 2050329,
+          "id": 2366968,
           "name": "FlexLayout",
-          "component_id": 5299172,
-          "image": "//a.storyblok.com/f/274567/1440x928/adef99c1e1/layout-section-flex-layout.png",
+          "component_id": 6616830,
+          "image": "//a.storyblok.com/f/315006/1440x928/25b17c0b4b/layout-section-flex-layout.png",
           "icon": null,
           "color": null,
           "description": null
         },
         {
-          "id": 2050321,
+          "id": 2366960,
           "name": "Inverted",
-          "component_id": 5299172,
-          "image": "//a.storyblok.com/f/274567/1440x928/a387367f35/layout-section-inverted.png",
+          "component_id": 6616830,
+          "image": "//a.storyblok.com/f/315006/1440x928/edecbd7c56/layout-section-inverted.png",
           "icon": null,
           "color": null,
           "description": null
         },
         {
-          "id": 2050330,
+          "id": 2366969,
           "name": "ListLayout",
-          "component_id": 5299172,
-          "image": "//a.storyblok.com/f/274567/1440x1658/b5bc45d87b/layout-section-list-layout.png",
+          "component_id": 6616830,
+          "image": "//a.storyblok.com/f/315006/1440x1658/2fae58d81a/layout-section-list-layout.png",
           "icon": null,
           "color": null,
           "description": null
         },
         {
-          "id": 2050320,
+          "id": 2366959,
           "name": "Slider",
-          "component_id": 5299172,
-          "image": "//a.storyblok.com/f/274567/1440x938/f21bbfe491/layout-section-slider.png",
+          "component_id": 6616830,
+          "image": "//a.storyblok.com/f/315006/1440x938/5c859ddd81/layout-section-slider.png",
           "icon": null,
           "color": null,
           "description": null
         },
         {
-          "id": 2050322,
+          "id": 2366961,
           "name": "Spotlight",
-          "component_id": 5299172,
-          "image": "//a.storyblok.com/f/274567/1440x928/a2c01e37b4/layout-section-spotlight.png",
+          "component_id": 6616830,
+          "image": "//a.storyblok.com/f/315006/1440x928/7724ac6959/layout-section-spotlight.png",
           "icon": null,
           "color": null,
           "description": null
         },
         {
-          "id": 2050323,
+          "id": 2366962,
           "name": "Stagelights",
-          "component_id": 5299172,
-          "image": "//a.storyblok.com/f/274567/1440x928/c7bf94a603/layout-section-stagelights.png",
+          "component_id": 6616830,
+          "image": "//a.storyblok.com/f/315006/1440x928/58f2dd42db/layout-section-stagelights.png",
           "icon": null,
           "color": null,
           "description": null
         },
         {
-          "id": 2050328,
+          "id": 2366967,
           "name": "TileLayout",
-          "component_id": 5299172,
-          "image": "//a.storyblok.com/f/274567/1440x928/1a348783de/layout-section-tile-layout.png",
+          "component_id": 6616830,
+          "image": "//a.storyblok.com/f/315006/1440x445/29d8ecd3ff/layout-section-tile-layout.png",
           "icon": null,
           "color": null,
           "description": null
         },
         {
-          "id": 2050327,
+          "id": 2366966,
           "name": "WithButtons",
-          "component_id": 5299172,
-          "image": "//a.storyblok.com/f/274567/1440x1016/66270f20e7/layout-section-with-buttons.png",
+          "component_id": 6616830,
+          "image": "//a.storyblok.com/f/315006/1440x1016/fdcd737671/layout-section-with-buttons.png",
           "icon": null,
           "color": null,
           "description": null
@@ -2783,14 +4457,18 @@
       "real_name": "Section",
       "component_group_uuid": null,
       "color": "#05566a",
-      "icon": "gallery-vertical"
+      "icon": "gallery-vertical",
+      "internal_tags_list": [],
+      "internal_tag_ids": [],
+      "content_type_asset_preview": null
     },
     {
       "name": "seo",
       "display_name": "Seo",
-      "created_at": "2024-02-06T22:37:23.729Z",
-      "updated_at": "2024-02-06T22:37:23.729Z",
-      "id": 5299155,
+      "description": null,
+      "created_at": "2024-11-27T13:23:04.907Z",
+      "updated_at": "2024-11-27T13:23:04.907Z",
+      "id": 6616833,
       "schema": {
         "title": {
           "id": 0,
@@ -2836,7 +4514,10 @@
           "pos": 0,
           "display_name": "CardImage",
           "key": "cardImage",
-          "type": "text",
+          "type": "asset",
+          "filetypes": [
+            "images"
+          ],
           "description": "Card preview image (larger, e.g. Twitter) used for the page",
           "required": false
         },
@@ -2854,20 +4535,24 @@
       "preview_field": null,
       "is_root": false,
       "preview_tmpl": null,
-      "is_nestable": false,
+      "is_nestable": true,
       "all_presets": [],
       "preset_id": null,
       "real_name": "Seo",
       "component_group_uuid": null,
       "color": "#05566a",
-      "icon": "block-wallet"
+      "icon": "block-wallet",
+      "internal_tags_list": [],
+      "internal_tag_ids": [],
+      "content_type_asset_preview": null
     },
     {
       "name": "settings",
       "display_name": "Settings",
-      "created_at": "2024-02-06T22:37:37.900Z",
-      "updated_at": "2024-02-06T22:37:37.900Z",
-      "id": 5299179,
+      "description": null,
+      "created_at": "2024-11-27T13:23:11.204Z",
+      "updated_at": "2024-11-27T13:23:11.204Z",
+      "id": 6616846,
       "schema": {
         "header": {
           "id": 0,
@@ -2880,7 +4565,9 @@
           "component_whitelist": [
             "header"
           ],
-          "description": "Header"
+          "maximum": 1,
+          "minimum": 0,
+          "description": "Header layered on top by the CMS"
         },
         "footer": {
           "id": 0,
@@ -2893,6 +4580,8 @@
           "component_whitelist": [
             "footer"
           ],
+          "maximum": 1,
+          "minimum": 0,
           "description": "Footer"
         },
         "seo": {
@@ -2906,7 +4595,18 @@
           "component_whitelist": [
             "seo"
           ],
+          "maximum": 1,
+          "minimum": 0,
           "description": "Abstracts SEO settings for a website into JSON schema"
+        },
+        "iconSprite": {
+          "id": 0,
+          "pos": 0,
+          "display_name": "IconSprite",
+          "key": "iconSprite",
+          "type": "text",
+          "description": "Content of the icon sprite for this project",
+          "required": false
         },
         "type": {
           "id": 0,
@@ -2928,21 +4628,203 @@
       "real_name": "Settings",
       "component_group_uuid": null,
       "color": null,
-      "icon": null
+      "icon": null,
+      "internal_tags_list": [],
+      "internal_tag_ids": [],
+      "content_type_asset_preview": null
+    },
+    {
+      "name": "slider",
+      "display_name": "Slider",
+      "description": null,
+      "created_at": "2024-11-27T13:22:56.201Z",
+      "updated_at": "2024-11-27T13:22:56.201Z",
+      "id": 6616827,
+      "schema": {
+        "autoplay": {
+          "id": 0,
+          "pos": 0,
+          "display_name": "Autoplay",
+          "key": "autoplay",
+          "type": "boolean",
+          "description": "Automatically move to next slide after 4 seconds without user interaction",
+          "required": false
+        },
+        "nav": {
+          "id": 0,
+          "pos": 0,
+          "display_name": "Nav",
+          "key": "nav",
+          "type": "boolean",
+          "description": "Add bullet navigation",
+          "required": false
+        },
+        "teaseNeighbours": {
+          "id": 0,
+          "pos": 0,
+          "display_name": "TeaseNeighbours",
+          "key": "teaseNeighbours",
+          "type": "boolean",
+          "description": "Tease Neighbour Slides",
+          "required": false
+        },
+        "equalHeight": {
+          "id": 0,
+          "pos": 0,
+          "display_name": "EqualHeight",
+          "key": "equalHeight",
+          "type": "boolean",
+          "default_value": true,
+          "description": "Equalize slides heights",
+          "required": false
+        },
+        "gap": {
+          "id": 0,
+          "pos": 0,
+          "display_name": "Gap",
+          "key": "gap",
+          "type": "number",
+          "description": "Size of the gap added between slides in pixels",
+          "required": false
+        },
+        "arrows": {
+          "id": 0,
+          "pos": 0,
+          "display_name": "Arrows",
+          "key": "arrows",
+          "type": "boolean",
+          "description": "Add arrows on the left and right to navigate to next or previous slide",
+          "required": false
+        },
+        "type": {
+          "id": 0,
+          "pos": 0,
+          "display_name": "Type",
+          "key": "type",
+          "type": "text",
+          "description": "Internal type for interface resolution",
+          "default_value": "slider"
+        },
+        "className": {
+          "id": 0,
+          "pos": 0,
+          "display_name": "ClassName",
+          "key": "className",
+          "type": "text",
+          "description": "Additional css classes attached to the wrapping element",
+          "required": false
+        },
+        "components": {
+          "id": 0,
+          "pos": 0,
+          "display_name": "Components",
+          "key": "components",
+          "type": "bloks",
+          "restrict_type": "groups",
+          "restrict_components": true,
+          "component_group_whitelist": [
+            "a0d1cdca-480d-4d4e-8333-79b23ed4fbf5"
+          ],
+          "description": "Abstracts a blog overview concept into JSON schema",
+          "required": false
+        },
+        "typeProp": {
+          "id": 0,
+          "pos": 0,
+          "display_name": "TypeProp",
+          "key": "typeProp",
+          "type": "option",
+          "default_value": "carousel",
+          "description": "Type of the movement",
+          "options": [
+            {
+              "name": "slider",
+              "value": "slider",
+              "_uid": "ec580e16-7ac6-48b1-8ff1-f55643e8bb9a"
+            },
+            {
+              "name": "carousel",
+              "value": "carousel",
+              "_uid": "7993d6d5-5ece-49e3-a0f5-2d186087b202"
+            }
+          ],
+          "required": false
+        }
+      },
+      "image": "//a.storyblok.com/f/315006/1110x400/8426598c63/layout-slider-with-arrows.png",
+      "preview_field": null,
+      "is_root": false,
+      "preview_tmpl": null,
+      "is_nestable": true,
+      "all_presets": [
+        {
+          "id": 2366951,
+          "name": "WithArrows",
+          "component_id": 6616827,
+          "image": "//a.storyblok.com/f/315006/1110x400/8426598c63/layout-slider-with-arrows.png",
+          "icon": null,
+          "color": null,
+          "description": null
+        },
+        {
+          "id": 2366954,
+          "name": "WithAutoplay",
+          "component_id": 6616827,
+          "image": "//a.storyblok.com/f/315006/1110x400/29c76d35c1/layout-slider-with-autoplay.png",
+          "icon": null,
+          "color": null,
+          "description": null
+        },
+        {
+          "id": 2366953,
+          "name": "WithNav",
+          "component_id": 6616827,
+          "image": "//a.storyblok.com/f/315006/1110x400/05cf5bf0d0/layout-slider-with-nav.png",
+          "icon": null,
+          "color": null,
+          "description": null
+        },
+        {
+          "id": 2366952,
+          "name": "WithTeasedNeighbours",
+          "component_id": 6616827,
+          "image": "//a.storyblok.com/f/315006/1110x400/b6ae2b8f7f/layout-slider-with-teased-neighbours.png",
+          "icon": null,
+          "color": null,
+          "description": null
+        }
+      ],
+      "preset_id": null,
+      "real_name": "Slider",
+      "component_group_uuid": "a0d1cdca-480d-4d4e-8333-79b23ed4fbf5",
+      "color": "#05566a",
+      "icon": "block-wallet",
+      "internal_tags_list": [],
+      "internal_tag_ids": [],
+      "content_type_asset_preview": null,
+      "component_group_name": "Components"
     },
     {
       "name": "socialSharing",
       "display_name": "SocialSharing",
-      "created_at": "2024-02-06T22:37:22.562Z",
-      "updated_at": "2024-02-06T22:37:22.562Z",
-      "id": 5299151,
+      "description": null,
+      "created_at": "2024-11-27T13:23:06.907Z",
+      "updated_at": "2024-11-27T13:23:06.907Z",
+      "id": 6616837,
       "schema": {
         "icon": {
           "id": 0,
           "pos": 0,
           "display_name": "Icon",
           "key": "icon",
-          "type": "text",
+          "type": "custom",
+          "field_type": "storyblok-icon-sprite-picker-field-plugin",
+          "options": [
+            {
+              "name": "allowedIcons",
+              "_uid": "e3b15ed4-8d26-45cc-b50c-4600f285260e"
+            }
+          ],
           "description": "The icon name for the social link",
           "required": false
         },
@@ -2973,20 +4855,24 @@
       "preview_field": null,
       "is_root": false,
       "preview_tmpl": null,
-      "is_nestable": false,
+      "is_nestable": true,
       "all_presets": [],
       "preset_id": null,
       "real_name": "SocialSharing",
       "component_group_uuid": null,
       "color": "#05566a",
-      "icon": "block-wallet"
+      "icon": "block-wallet",
+      "internal_tags_list": [],
+      "internal_tag_ids": [],
+      "content_type_asset_preview": null
     },
     {
       "name": "stat",
       "display_name": "Stat",
-      "created_at": "2024-02-06T22:37:24.132Z",
-      "updated_at": "2024-02-06T22:37:24.132Z",
-      "id": 5299161,
+      "description": null,
+      "created_at": "2024-11-27T13:22:34.056Z",
+      "updated_at": "2024-11-27T13:22:34.056Z",
+      "id": 6616807,
       "schema": {
         "number": {
           "id": 0,
@@ -3015,6 +4901,22 @@
           "description": "Title of the stat",
           "required": false
         },
+        "icon": {
+          "id": 0,
+          "pos": 0,
+          "display_name": "Icon",
+          "key": "icon",
+          "type": "custom",
+          "field_type": "storyblok-icon-sprite-picker-field-plugin",
+          "options": [
+            {
+              "name": "allowedIcons",
+              "_uid": "461df361-8247-4f51-9efd-ce6212ae257a"
+            }
+          ],
+          "description": "Optional icon of the stat",
+          "required": false
+        },
         "type": {
           "id": 0,
           "pos": 0,
@@ -3029,20 +4931,24 @@
       "preview_field": null,
       "is_root": false,
       "preview_tmpl": null,
-      "is_nestable": false,
+      "is_nestable": true,
       "all_presets": [],
       "preset_id": null,
       "real_name": "Stat",
       "component_group_uuid": null,
       "color": "#05566a",
-      "icon": "block-wallet"
+      "icon": "block-wallet",
+      "internal_tags_list": [],
+      "internal_tag_ids": [],
+      "content_type_asset_preview": null
     },
     {
       "name": "stats",
       "display_name": "Stats",
-      "created_at": "2024-02-06T22:37:28.927Z",
-      "updated_at": "2024-02-06T22:37:28.927Z",
-      "id": 5299168,
+      "description": null,
+      "created_at": "2024-11-27T13:22:45.909Z",
+      "updated_at": "2024-11-27T13:22:45.909Z",
+      "id": 6616817,
       "schema": {
         "stat": {
           "id": 0,
@@ -3067,26 +4973,26 @@
           "default_value": "stats"
         }
       },
-      "image": "//a.storyblok.com/f/274567/790x400/9bb95b1993/components-stats-with-description.png",
+      "image": "//a.storyblok.com/f/315006/790x480/1e89587aad/components-stats-count-up-with-icons.png",
       "preview_field": null,
       "is_root": false,
       "preview_tmpl": null,
-      "is_nestable": false,
+      "is_nestable": true,
       "all_presets": [
         {
-          "id": 2050308,
-          "name": "Simple",
-          "component_id": 5299168,
-          "image": "//a.storyblok.com/f/274567/700x340/a978aee684/components-stats-simple.png",
+          "id": 2366930,
+          "name": "CountUpWithDescription",
+          "component_id": 6616817,
+          "image": "//a.storyblok.com/f/315006/700x480/ec278b0afc/components-stats-count-up-with-description.png",
           "icon": null,
           "color": null,
           "description": null
         },
         {
-          "id": 2050307,
-          "name": "WithDescription",
-          "component_id": 5299168,
-          "image": "//a.storyblok.com/f/274567/790x400/9bb95b1993/components-stats-with-description.png",
+          "id": 2366929,
+          "name": "CountUpWithIcons",
+          "component_id": 6616817,
+          "image": "//a.storyblok.com/f/315006/790x480/1e89587aad/components-stats-count-up-with-icons.png",
           "icon": null,
           "color": null,
           "description": null
@@ -3094,45 +5000,63 @@
       ],
       "preset_id": null,
       "real_name": "Stats",
-      "component_group_uuid": "d401396c-d417-4f3c-816b-65026e7217d3",
+      "component_group_uuid": "a0d1cdca-480d-4d4e-8333-79b23ed4fbf5",
       "color": "#05566a",
       "icon": "block-wallet",
+      "internal_tags_list": [],
+      "internal_tag_ids": [],
+      "content_type_asset_preview": null,
       "component_group_name": "Components"
     },
     {
       "name": "tags",
       "display_name": "Tags",
-      "created_at": "2024-02-06T22:37:22.385Z",
-      "updated_at": "2024-02-06T22:37:22.385Z",
-      "id": 5299149,
+      "description": null,
+      "created_at": "2024-11-27T13:23:03.909Z",
+      "updated_at": "2024-11-27T13:23:03.909Z",
+      "id": 6616831,
       "schema": {
         "entry": {
           "id": 0,
           "pos": 0,
-          "display_name": "Tags",
-          "key": "tags",
+          "display_name": "Entry",
+          "key": "entry",
           "type": "text",
+          "description": "Name of the tag entry",
           "required": false
+        },
+        "type": {
+          "id": 0,
+          "pos": 0,
+          "display_name": "Type",
+          "key": "type",
+          "type": "text",
+          "description": "Internal type for interface resolution",
+          "default_value": "blog-tag"
         }
       },
       "image": null,
       "preview_field": null,
       "is_root": false,
       "preview_tmpl": null,
-      "is_nestable": false,
+      "is_nestable": true,
       "all_presets": [],
       "preset_id": null,
       "real_name": "Tags",
       "component_group_uuid": null,
       "color": "#05566a",
-      "icon": "block-wallet"
+      "icon": "block-wallet",
+      "internal_tags_list": [],
+      "internal_tag_ids": [],
+      "content_type_asset_preview": null
     },
     {
       "name": "teaser-card",
       "display_name": "Teaser Card",
-      "created_at": "2024-02-06T22:37:29.739Z",
-      "updated_at": "2024-02-06T22:37:29.739Z",
-      "id": 5299169,
+      "description": null,
+      "created_at": "2024-11-27T13:22:46.897Z",
+      "updated_at": "2024-11-27T13:22:46.897Z",
+      "id": 6616818,
       "schema": {
         "headline": {
           "id": 0,
@@ -3173,12 +5097,12 @@
             {
               "name": "stack",
               "value": "stack",
-              "_uid": "62d8e354-20f0-4cfd-b8a0-fa81c57d5ad5"
+              "_uid": "6b3adf33-e1d2-42c6-960f-a8ac433aa510"
             },
             {
               "name": "row",
               "value": "row",
-              "_uid": "9309093d-a6e0-4609-a8bb-d05790ed7cc1"
+              "_uid": "3a4add5d-f4db-4e3e-8e16-906be0d193ca"
             }
           ],
           "required": false
@@ -3196,11 +5120,11 @@
           "description": "Target that should be linked",
           "required": false
         },
-        "tab-24524b25-01ea-486a-96d1-2c3103a0a579": {
+        "tab-99f14c31-8c31-4418-8d47-ddc7d9608314": {
           "id": 0,
           "pos": 0,
           "display_name": "Button",
-          "key": "tab-24524b25-01ea-486a-96d1-2c3103a0a579",
+          "key": "tab-99f14c31-8c31-4418-8d47-ddc7d9608314",
           "keys": [
             "button_label",
             "button_chevron",
@@ -3260,22 +5184,22 @@
             {
               "name": "wide",
               "value": "wide",
-              "_uid": "487ed099-991a-4ad2-85f3-bd53ae204116"
+              "_uid": "698b2b65-a2fa-4645-a936-1d7d8f3c1e99"
             },
             {
               "name": "landscape",
               "value": "landscape",
-              "_uid": "824624d1-59af-4cac-8b24-7b233630df47"
+              "_uid": "7f61fd15-c1e4-4062-918c-0a218a372511"
             },
             {
               "name": "square",
               "value": "square",
-              "_uid": "bd4fbb64-b6f8-49f9-88e3-01182febc0aa"
+              "_uid": "74204a78-a830-444e-b0cd-c40508e34748"
             },
             {
               "name": "unset",
               "value": "unset",
-              "_uid": "75aa5189-fc05-4b94-84a8-8985328313be"
+              "_uid": "e3f5687d-be47-4bf1-bba0-178b23c03fe1"
             }
           ],
           "required": false
@@ -3290,35 +5214,35 @@
           "default_value": "teaser-card"
         }
       },
-      "image": "//a.storyblok.com/f/274567/650x653/99c0f9e8d0/components-teaser-card-product-tiles.png",
+      "image": "//a.storyblok.com/f/315006/650x653/53f85c3658/components-teaser-card-product-tiles.png",
       "preview_field": null,
       "is_root": false,
       "preview_tmpl": null,
-      "is_nestable": false,
+      "is_nestable": true,
       "all_presets": [
         {
-          "id": 2050310,
+          "id": 2366932,
           "name": "PageNavigation",
-          "component_id": 5299169,
-          "image": "//a.storyblok.com/f/274567/650x678/fb939fc706/components-teaser-card-page-navigation.png",
+          "component_id": 6616818,
+          "image": "//a.storyblok.com/f/315006/650x678/cca9af7eb3/components-teaser-card-page-navigation.png",
           "icon": null,
           "color": null,
           "description": null
         },
         {
-          "id": 2050309,
+          "id": 2366931,
           "name": "ProductTiles",
-          "component_id": 5299169,
-          "image": "//a.storyblok.com/f/274567/650x653/99c0f9e8d0/components-teaser-card-product-tiles.png",
+          "component_id": 6616818,
+          "image": "//a.storyblok.com/f/315006/650x653/53f85c3658/components-teaser-card-product-tiles.png",
           "icon": null,
           "color": null,
           "description": null
         },
         {
-          "id": 2050311,
+          "id": 2366933,
           "name": "ShowcasePreview",
-          "component_id": 5299169,
-          "image": "//a.storyblok.com/f/274567/650x750/7216ad7dc2/components-teaser-card-showcase-preview.png",
+          "component_id": 6616818,
+          "image": "//a.storyblok.com/f/315006/650x750/a0fe7471e8/components-teaser-card-showcase-preview.png",
           "icon": null,
           "color": null,
           "description": null
@@ -3326,17 +5250,21 @@
       ],
       "preset_id": null,
       "real_name": "Teaser Card",
-      "component_group_uuid": "d401396c-d417-4f3c-816b-65026e7217d3",
+      "component_group_uuid": "a0d1cdca-480d-4d4e-8333-79b23ed4fbf5",
       "color": "#05566a",
       "icon": "block-wallet",
+      "internal_tags_list": [],
+      "internal_tag_ids": [],
+      "content_type_asset_preview": null,
       "component_group_name": "Components"
     },
     {
       "name": "testimonial",
       "display_name": "Testimonial",
-      "created_at": "2024-02-06T22:37:24.193Z",
-      "updated_at": "2024-02-06T22:37:24.193Z",
-      "id": 5299162,
+      "description": null,
+      "created_at": "2024-11-27T13:22:34.345Z",
+      "updated_at": "2024-11-27T13:22:34.345Z",
+      "id": 6616808,
       "schema": {
         "quote": {
           "id": 0,
@@ -3365,11 +5293,11 @@
           "description": "The title of the quote author",
           "required": false
         },
-        "tab-5bb4893c-9d36-49c2-adca-5f0b7fe28529": {
+        "tab-c1902677-35b5-489d-b110-2162f6a3d146": {
           "id": 0,
           "pos": 0,
           "display_name": "Image",
-          "key": "tab-5bb4893c-9d36-49c2-adca-5f0b7fe28529",
+          "key": "tab-c1902677-35b5-489d-b110-2162f6a3d146",
           "keys": [
             "image_src",
             "image_alt"
@@ -3398,6 +5326,15 @@
           "description": "The alt text of the image file",
           "required": false
         },
+        "rating": {
+          "id": 0,
+          "pos": 0,
+          "display_name": "Rating",
+          "key": "rating",
+          "type": "number",
+          "description": "The rating of the testimonial, from 1 to 5",
+          "required": false
+        },
         "type": {
           "id": 0,
           "pos": 0,
@@ -3412,21 +5349,52 @@
       "preview_field": null,
       "is_root": false,
       "preview_tmpl": null,
-      "is_nestable": false,
+      "is_nestable": true,
       "all_presets": [],
       "preset_id": null,
       "real_name": "Testimonial",
       "component_group_uuid": null,
       "color": "#05566a",
-      "icon": "block-wallet"
+      "icon": "block-wallet",
+      "internal_tags_list": [],
+      "internal_tag_ids": [],
+      "content_type_asset_preview": null
     },
     {
       "name": "testimonials",
       "display_name": "Testimonials",
-      "created_at": "2024-02-06T22:37:30.730Z",
-      "updated_at": "2024-02-06T22:37:30.730Z",
-      "id": 5299170,
+      "description": null,
+      "created_at": "2024-11-27T13:22:48.153Z",
+      "updated_at": "2024-11-27T13:22:48.153Z",
+      "id": 6616819,
       "schema": {
+        "layout": {
+          "id": 0,
+          "pos": 0,
+          "display_name": "Layout",
+          "key": "layout",
+          "type": "option",
+          "default_value": "slider",
+          "description": "The testimonial layout",
+          "options": [
+            {
+              "name": "slider",
+              "value": "slider",
+              "_uid": "5cb09b5a-66df-461e-97c9-ec800d9afed9"
+            },
+            {
+              "name": "list",
+              "value": "list",
+              "_uid": "6e4a8dc8-5fc5-4447-9227-011734e36880"
+            },
+            {
+              "name": "alternating",
+              "value": "alternating",
+              "_uid": "dc087ec3-43b2-4382-827b-60bade59ee27"
+            }
+          ],
+          "required": false
+        },
         "testimonial": {
           "id": 0,
           "pos": 0,
@@ -3450,35 +5418,62 @@
           "default_value": "testimonials"
         }
       },
-      "image": "//a.storyblok.com/f/274567/1000x409/24415eb213/components-testimonials-simple.png",
+      "image": "//a.storyblok.com/f/315006/1000x409/9683ebc28c/components-testimonials-simple.png",
       "preview_field": null,
       "is_root": false,
       "preview_tmpl": null,
-      "is_nestable": false,
+      "is_nestable": true,
       "all_presets": [
         {
-          "id": 2050314,
+          "id": 2366939,
+          "name": "AlternatingLayout",
+          "component_id": 6616819,
+          "image": "//a.storyblok.com/f/315006/1000x1080/5361b13ebe/components-testimonials-alternating-layout.png",
+          "icon": null,
+          "color": null,
+          "description": null
+        },
+        {
+          "id": 2366936,
           "name": "ListLayout",
-          "component_id": 5299170,
-          "image": "//a.storyblok.com/f/274567/1000x979/3ae089e9c6/components-testimonials-list-layout.png",
+          "component_id": 6616819,
+          "image": "//a.storyblok.com/f/315006/1000x1080/edc2c690aa/components-testimonials-list-layout.png",
           "icon": null,
           "color": null,
           "description": null
         },
         {
-          "id": 2050312,
+          "id": 2366934,
           "name": "Simple",
-          "component_id": 5299170,
-          "image": "//a.storyblok.com/f/274567/1000x409/24415eb213/components-testimonials-simple.png",
+          "component_id": 6616819,
+          "image": "//a.storyblok.com/f/315006/1000x409/9683ebc28c/components-testimonials-simple.png",
           "icon": null,
           "color": null,
           "description": null
         },
         {
-          "id": 2050313,
+          "id": 2366937,
+          "name": "SliderLayout",
+          "component_id": 6616819,
+          "image": "//a.storyblok.com/f/315006/1000x1080/a80f871bf7/components-testimonials-slider-layout.png",
+          "icon": null,
+          "color": null,
+          "description": null
+        },
+        {
+          "id": 2366938,
+          "name": "WithRating",
+          "component_id": 6616819,
+          "image": "//a.storyblok.com/f/315006/1000x1080/307e1adcda/components-testimonials-with-rating.png",
+          "icon": null,
+          "color": null,
+          "description": null
+        },
+        {
+          "id": 2366935,
           "name": "WithTitle",
-          "component_id": 5299170,
-          "image": "//a.storyblok.com/f/274567/1000x409/b6e20e9f8a/components-testimonials-with-title.png",
+          "component_id": 6616819,
+          "image": "//a.storyblok.com/f/315006/1000x409/066609612c/components-testimonials-with-title.png",
           "icon": null,
           "color": null,
           "description": null
@@ -3486,17 +5481,21 @@
       ],
       "preset_id": null,
       "real_name": "Testimonials",
-      "component_group_uuid": "d401396c-d417-4f3c-816b-65026e7217d3",
+      "component_group_uuid": "a0d1cdca-480d-4d4e-8333-79b23ed4fbf5",
       "color": "#05566a",
       "icon": "block-wallet",
+      "internal_tags_list": [],
+      "internal_tag_ids": [],
+      "content_type_asset_preview": null,
       "component_group_name": "Components"
     },
     {
       "name": "text",
       "display_name": "Text",
-      "created_at": "2024-02-06T22:37:31.735Z",
-      "updated_at": "2024-02-06T22:37:31.735Z",
-      "id": 5299171,
+      "description": null,
+      "created_at": "2024-11-27T13:22:50.393Z",
+      "updated_at": "2024-11-27T13:22:50.393Z",
+      "id": 6616820,
       "schema": {
         "text": {
           "id": 0,
@@ -3519,12 +5518,12 @@
             {
               "name": "singleColumn",
               "value": "singleColumn",
-              "_uid": "3462c727-1245-4c23-a191-91e2bb1d2e05"
+              "_uid": "456081cd-2ad4-45d1-b308-cf403e3196b4"
             },
             {
               "name": "multiColumn",
               "value": "multiColumn",
-              "_uid": "e0a80d7f-1793-4754-b4b6-b66c1bc5caa4"
+              "_uid": "f636cadb-73ef-404c-8349-b23bfc0af5f1"
             }
           ],
           "required": false
@@ -3541,12 +5540,12 @@
             {
               "name": "left",
               "value": "left",
-              "_uid": "3048f75b-f7f2-42d2-aa38-c60e0011c38d"
+              "_uid": "192cddb9-aeb3-4e31-9d88-06fe10b982b9"
             },
             {
               "name": "center",
               "value": "center",
-              "_uid": "b15e67f3-3fdf-4278-9154-ea2e6c361c60"
+              "_uid": "24d4e657-d044-4c98-8aa9-39c2d6f81324"
             }
           ],
           "required": false
@@ -3570,44 +5569,44 @@
           "default_value": "text"
         }
       },
-      "image": "//a.storyblok.com/f/274567/1000x407/a81f36ce10/components-text-single-column.png",
+      "image": "//a.storyblok.com/f/315006/1000x407/ccafcf3519/components-text-single-column.png",
       "preview_field": null,
       "is_root": false,
       "preview_tmpl": null,
-      "is_nestable": false,
+      "is_nestable": true,
       "all_presets": [
         {
-          "id": 2050316,
+          "id": 2366941,
           "name": "Centered",
-          "component_id": 5299171,
-          "image": "//a.storyblok.com/f/274567/1000x407/240833c9c9/components-text-centered.png",
+          "component_id": 6616820,
+          "image": "//a.storyblok.com/f/315006/1000x407/e1c1b10554/components-text-centered.png",
           "icon": null,
           "color": null,
           "description": null
         },
         {
-          "id": 2050318,
+          "id": 2366943,
           "name": "Highlight",
-          "component_id": 5299171,
-          "image": "//a.storyblok.com/f/274567/1000x482/fe888d7e63/components-text-highlight.png",
+          "component_id": 6616820,
+          "image": "//a.storyblok.com/f/315006/1000x482/18d0105840/components-text-highlight.png",
           "icon": null,
           "color": null,
           "description": null
         },
         {
-          "id": 2050317,
+          "id": 2366942,
           "name": "MultiColumn",
-          "component_id": 5299171,
-          "image": "//a.storyblok.com/f/274567/1000x330/89e18c66f3/components-text-multi-column.png",
+          "component_id": 6616820,
+          "image": "//a.storyblok.com/f/315006/1000x330/3d66c01822/components-text-multi-column.png",
           "icon": null,
           "color": null,
           "description": null
         },
         {
-          "id": 2050315,
+          "id": 2366940,
           "name": "SingleColumn",
-          "component_id": 5299171,
-          "image": "//a.storyblok.com/f/274567/1000x407/a81f36ce10/components-text-single-column.png",
+          "component_id": 6616820,
+          "image": "//a.storyblok.com/f/315006/1000x407/ccafcf3519/components-text-single-column.png",
           "icon": null,
           "color": null,
           "description": null
@@ -3615,9 +5614,403 @@
       ],
       "preset_id": null,
       "real_name": "Text",
-      "component_group_uuid": "d401396c-d417-4f3c-816b-65026e7217d3",
+      "component_group_uuid": "a0d1cdca-480d-4d4e-8333-79b23ed4fbf5",
       "color": "#05566a",
       "icon": "block-wallet",
+      "internal_tags_list": [],
+      "internal_tag_ids": [],
+      "content_type_asset_preview": null,
+      "component_group_name": "Components"
+    },
+    {
+      "name": "tile",
+      "display_name": "Tile",
+      "description": null,
+      "created_at": "2024-11-27T13:22:33.898Z",
+      "updated_at": "2024-11-27T13:22:33.898Z",
+      "id": 6616806,
+      "schema": {
+        "headline": {
+          "id": 0,
+          "pos": 0,
+          "display_name": "Headline",
+          "key": "headline",
+          "type": "markdown",
+          "description": "Headline for the tile",
+          "required": false
+        },
+        "sub": {
+          "id": 0,
+          "pos": 0,
+          "display_name": "Sub",
+          "key": "sub",
+          "type": "markdown",
+          "description": "Subheadline below the tile headline",
+          "required": false
+        },
+        "text": {
+          "id": 0,
+          "pos": 0,
+          "display_name": "Text",
+          "key": "text",
+          "type": "markdown",
+          "description": "Text for tile",
+          "required": false
+        },
+        "tab-b0dd4a07-64f9-4a0a-9af4-b985202dd5f1": {
+          "id": 0,
+          "pos": 0,
+          "display_name": "Image",
+          "key": "tab-b0dd4a07-64f9-4a0a-9af4-b985202dd5f1",
+          "keys": [
+            "image_src",
+            "image_alt"
+          ],
+          "type": "tab",
+          "required": false
+        },
+        "image_src": {
+          "id": 0,
+          "pos": 0,
+          "display_name": "Src",
+          "key": "image_src",
+          "type": "asset",
+          "filetypes": [
+            "images"
+          ],
+          "description": "Picture source",
+          "required": false
+        },
+        "image_alt": {
+          "id": 0,
+          "pos": 0,
+          "display_name": "Alt",
+          "key": "image_alt",
+          "type": "text",
+          "description": "Alt text to display for picture",
+          "required": false
+        },
+        "tab-19653eff-e124-4042-84fc-9bd5a22e9a1e": {
+          "id": 0,
+          "pos": 0,
+          "display_name": "Button",
+          "key": "tab-19653eff-e124-4042-84fc-9bd5a22e9a1e",
+          "keys": [
+            "button_toggle",
+            "button_label",
+            "button_target",
+            "button_icon"
+          ],
+          "type": "tab",
+          "required": false
+        },
+        "button_toggle": {
+          "id": 0,
+          "pos": 0,
+          "display_name": "Toggle",
+          "key": "button_toggle",
+          "type": "boolean",
+          "default_value": true,
+          "description": "Toggle wether the Button is displayed or not",
+          "required": false
+        },
+        "button_label": {
+          "id": 0,
+          "pos": 0,
+          "display_name": "Label",
+          "key": "button_label",
+          "type": "text",
+          "description": "Text content to display inside the button",
+          "required": false
+        },
+        "button_target": {
+          "id": 0,
+          "pos": 0,
+          "display_name": "Target",
+          "key": "button_target",
+          "type": "multilink",
+          "allow_target_blank": true,
+          "email_link_type": true,
+          "asset_link_type": true,
+          "show_anchor": true,
+          "description": "Target that should be linked, makes the button behave like a link semantically",
+          "required": false
+        },
+        "button_icon": {
+          "id": 0,
+          "pos": 0,
+          "display_name": "Icon",
+          "key": "button_icon",
+          "type": "custom",
+          "field_type": "storyblok-icon-sprite-picker-field-plugin",
+          "options": [
+            {
+              "name": "allowedIcons",
+              "_uid": "380f311f-0e09-4845-9ec8-c3d3ce87b56e"
+            }
+          ],
+          "description": "Choose an icon",
+          "required": false
+        },
+        "backgroundColor": {
+          "id": 0,
+          "pos": 0,
+          "display_name": "BackgroundColor",
+          "key": "backgroundColor",
+          "type": "text",
+          "description": "Background color for the whole element",
+          "required": false
+        },
+        "backgroundImage": {
+          "id": 0,
+          "pos": 0,
+          "display_name": "BackgroundImage",
+          "key": "backgroundImage",
+          "type": "asset",
+          "filetypes": [
+            "images"
+          ],
+          "description": "Background image for the whole element",
+          "required": false
+        },
+        "textColor": {
+          "id": 0,
+          "pos": 0,
+          "display_name": "TextColor",
+          "key": "textColor",
+          "type": "text",
+          "description": "Overwrite the color to use for the text content",
+          "required": false
+        },
+        "type": {
+          "id": 0,
+          "pos": 0,
+          "display_name": "Type",
+          "key": "type",
+          "type": "text",
+          "description": "Internal type for interface resolution",
+          "default_value": "tile"
+        }
+      },
+      "image": null,
+      "preview_field": null,
+      "is_root": false,
+      "preview_tmpl": null,
+      "is_nestable": true,
+      "all_presets": [],
+      "preset_id": null,
+      "real_name": "Tile",
+      "component_group_uuid": null,
+      "color": "#05566a",
+      "icon": "block-wallet",
+      "internal_tags_list": [],
+      "internal_tag_ids": [],
+      "content_type_asset_preview": null
+    },
+    {
+      "name": "video-curtain",
+      "display_name": "Video Curtain",
+      "description": null,
+      "created_at": "2024-11-27T13:22:57.902Z",
+      "updated_at": "2024-11-27T13:22:57.902Z",
+      "id": 6616828,
+      "schema": {
+        "headline": {
+          "id": 0,
+          "pos": 0,
+          "display_name": "Headline",
+          "key": "headline",
+          "type": "markdown",
+          "description": "Headline for the visual",
+          "required": false
+        },
+        "sub": {
+          "id": 0,
+          "pos": 0,
+          "display_name": "Sub",
+          "key": "sub",
+          "type": "markdown",
+          "description": "Subheadline below the module headline",
+          "required": false
+        },
+        "text": {
+          "id": 0,
+          "pos": 0,
+          "display_name": "Text",
+          "key": "text",
+          "type": "markdown",
+          "description": "Info text for the module element",
+          "required": false
+        },
+        "highlightText": {
+          "id": 0,
+          "pos": 0,
+          "display_name": "HighlightText",
+          "key": "highlightText",
+          "type": "boolean",
+          "description": "Visually highlight the text",
+          "required": false
+        },
+        "colorNeutral": {
+          "id": 0,
+          "pos": 0,
+          "display_name": "ColorNeutral",
+          "key": "colorNeutral",
+          "type": "boolean",
+          "description": "Make the text and buttons color neutral",
+          "required": false
+        },
+        "buttons": {
+          "id": 0,
+          "pos": 0,
+          "display_name": "Buttons",
+          "key": "buttons",
+          "type": "bloks",
+          "restrict_type": "",
+          "restrict_components": true,
+          "component_whitelist": [
+            "buttons"
+          ],
+          "description": "Button"
+        },
+        "overlay": {
+          "id": 0,
+          "pos": 0,
+          "display_name": "Overlay",
+          "key": "overlay",
+          "type": "boolean",
+          "description": "Enable grid layer",
+          "required": false
+        },
+        "tab-97fed1e5-aa07-4da9-b982-233235079662": {
+          "id": 0,
+          "pos": 0,
+          "display_name": "Video",
+          "key": "tab-97fed1e5-aa07-4da9-b982-233235079662",
+          "keys": [
+            "video_srcMobile",
+            "video_srcTablet",
+            "video_srcDesktop"
+          ],
+          "type": "tab",
+          "description": "Sources of background videos for different screen sizes",
+          "required": false
+        },
+        "video_srcMobile": {
+          "id": 0,
+          "pos": 0,
+          "display_name": "SrcMobile",
+          "key": "video_srcMobile",
+          "type": "asset",
+          "filetypes": [
+            "videos"
+          ],
+          "description": "Background video source for small screens",
+          "required": false
+        },
+        "video_srcTablet": {
+          "id": 0,
+          "pos": 0,
+          "display_name": "SrcTablet",
+          "key": "video_srcTablet",
+          "type": "asset",
+          "filetypes": [
+            "videos"
+          ],
+          "description": "Background video source for medium screens",
+          "required": false
+        },
+        "video_srcDesktop": {
+          "id": 0,
+          "pos": 0,
+          "display_name": "SrcDesktop",
+          "key": "video_srcDesktop",
+          "type": "asset",
+          "filetypes": [
+            "videos"
+          ],
+          "description": "Background video source for large screens",
+          "required": false
+        },
+        "textPosition": {
+          "id": 0,
+          "pos": 0,
+          "display_name": "TextPosition",
+          "key": "textPosition",
+          "type": "option",
+          "default_value": "bottom",
+          "description": "Choose the alginment of the module content",
+          "options": [
+            {
+              "name": "center",
+              "value": "center",
+              "_uid": "8e248f4b-1508-4eea-9670-e34bb343ccac"
+            },
+            {
+              "name": "left",
+              "value": "left",
+              "_uid": "12988132-0512-459a-b2a1-90f13266401a"
+            },
+            {
+              "name": "right",
+              "value": "right",
+              "_uid": "7662a161-b28f-4860-9a35-8924dc87fea9"
+            }
+          ],
+          "required": false
+        },
+        "type": {
+          "id": 0,
+          "pos": 0,
+          "display_name": "Type",
+          "key": "type",
+          "type": "text",
+          "description": "Internal type for interface resolution",
+          "default_value": "video-curtain"
+        }
+      },
+      "image": "//a.storyblok.com/f/315006/1559x720/10739153c8/components-video-curtain-atmospheric-video-with-overlay.png",
+      "preview_field": null,
+      "is_root": false,
+      "preview_tmpl": null,
+      "is_nestable": true,
+      "all_presets": [
+        {
+          "id": 2366955,
+          "name": "AtmosphericVideoWithOverlay",
+          "component_id": 6616828,
+          "image": "//a.storyblok.com/f/315006/1559x720/10739153c8/components-video-curtain-atmospheric-video-with-overlay.png",
+          "icon": null,
+          "color": null,
+          "description": null
+        },
+        {
+          "id": 2366956,
+          "name": "ColorNeutralText",
+          "component_id": 6616828,
+          "image": "//a.storyblok.com/f/315006/1559x720/4157c6156e/components-video-curtain-color-neutral-text.png",
+          "icon": null,
+          "color": null,
+          "description": null
+        },
+        {
+          "id": 2366957,
+          "name": "ColorNeutralVideo",
+          "component_id": 6616828,
+          "image": "//a.storyblok.com/f/315006/1559x720/6696a8711a/components-video-curtain-color-neutral-video.png",
+          "icon": null,
+          "color": null,
+          "description": null
+        }
+      ],
+      "preset_id": null,
+      "real_name": "Video Curtain",
+      "component_group_uuid": "a0d1cdca-480d-4d4e-8333-79b23ed4fbf5",
+      "color": "#05566a",
+      "icon": "block-wallet",
+      "internal_tags_list": [],
+      "internal_tag_ids": [],
+      "content_type_asset_preview": null,
       "component_group_name": "Components"
     }
   ]

@@ -6,9 +6,11 @@ import { traverse } from "object-traversal";
 import { isImgUrl } from "@/helpers/apiUtils";
 import { fontClassNames } from "@/helpers/fonts";
 import { HeadlineLevelProvider } from "@/components/headline/HeadlineLevelContext";
+import { locale } from "@/components";
 
 type PageProps = ISbStory["data"] & {
   settings?: ISbStoryData["content"];
+  language: typeof locale;
 };
 
 const Page: NextPage<PageProps> = ({ story }) => {
@@ -25,20 +27,25 @@ const Page: NextPage<PageProps> = ({ story }) => {
 export default Page;
 
 export const getStaticPaths = (async () => {
+  const exclude = ["not-found"];
+
   return {
-    paths: (await fetchPaths()).map((path) => {
-      return {
-        params: {
-          slug: path.params.slug,
-        },
-      };
-    }),
-    fallback: false,
+    paths: (await fetchPaths())
+      .filter((path) => !exclude.includes(path.params.slug.join("/")))
+      .map((path) => {
+        return {
+          params: {
+            slug: path.params.slug,
+          },
+        };
+      }),
+    fallback: "blocking",
   };
 }) satisfies GetStaticPaths;
 
 export const getStaticProps = (async ({ params }) => {
   const slug = params?.slug?.join("/");
+
   try {
     const { pageData, settingsData } = await fetchPageProps(slug);
 
@@ -65,6 +72,7 @@ export const getStaticProps = (async ({ params }) => {
         fontClassNames,
         settings: settingsData.stories[0]?.content || null,
         key: pageData.story.id,
+        language: locale,
       },
     };
   } catch (e) {
@@ -73,3 +81,8 @@ export const getStaticProps = (async ({ params }) => {
     };
   }
 }) satisfies GetStaticProps<PageProps, NodeJS.Dict<string[]>, string>;
+
+// see: https://github.com/vercel/next.js/pull/11949
+export const config = {
+  unstable_runtimeJS: false,
+};

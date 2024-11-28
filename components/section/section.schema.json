@@ -1,0 +1,30 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "http://cms.schema.mydesignsystem.com/section.schema.json",
+  "title": "Section",
+  "description": "Component used to layout components into pages",
+  "type": "object",
+  "allOf": [
+    {
+      "type": "object",
+      "properties": {
+        "components": {
+          "type": "array",
+          "title": "Content",
+          "description": "Allowed components for content",
+          "items": {
+            "anyOf": [
+              {
+                "$ref": "http://cms.schema.mydesignsystem.com/info-table.schema.json"
+              }
+            ]
+          }
+        }
+      }
+    },
+    {
+      "$ref": "http://schema.mydesignsystem.com/section.schema.json"
+    }
+  ],
+  "additionalProperties": false
+}

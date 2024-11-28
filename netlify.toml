@@ -4,7 +4,7 @@
 [template.environment]
   NEXT_STORYBLOK_API_TOKEN = "Add your Storyblok API token for the newly created Space here"
   NEXT_STORYBLOK_OAUTH_TOKEN = "Add your Oauth token, generated from your personal account here"
-  NEXT_STORYBLOK_SPACE_ID = "Add your Storyblok Space ID for the newly created Space here"
+  NEXT_STORYBLOK_SPACE_ID = "Add your Storyblok Space ID for the newly created Space here (without the #)"
   STORYBLOK_LOGIN_EMAIL = "Add the email you used on Storyblok for the newly created Space here"
   STORYBLOK_REGION = "Add the region you used on Storyblok for the newly created Space here"
 

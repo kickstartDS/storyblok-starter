@@ -43,7 +43,7 @@
     "@kickstartds/blog": "4.0.2",
     "@kickstartds/content": "4.1.1",
     "@kickstartds/core": "4.0.2",
-    "@kickstartds/ds-agency": "^3.6.55",
+    "@kickstartds/ds-agency": "^3.6.56",
     "@kickstartds/form": "4.0.2",
     "@storyblok/react": "^3.0.9",
     "@unpic/pixels": "^1.2.2",

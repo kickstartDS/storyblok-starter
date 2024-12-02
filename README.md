@@ -20,15 +20,21 @@ To start, you'll need some variables defined [here](#).
 
 // TODO mention next local steps still needed (like `npm run generate-content-types`)
 
+// TODO add note about continuing with "Manual" if you don't need / want this... refer to other options (Vercel et al), too. But those just as a side note
+
 [![Deploy to Netlify](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/kickstartDS/storyblok-starter)
 
 ## Table of Contents <!-- omit in toc -->
 
 - [Features](#features)
-- [Deploy your own](#deploy-your-own)
+- [Getting Started](#getting-started)
   - [Requirements](#requirements)
-  - [Environment Variables](#environment-variables)
-  - [Manually](#manually)
+    - [Development](#development)
+    - [Storyblok](#storyblok)
+    - [Hosting](#hosting)
+    - [Environment Variables](#environment-variables)
+  - [Netlify Deploy](#netlify-deploy)
+  - [Manual](#manual)
     - [Setup](#setup)
     - [Start locally](#start-locally)
     - [Host on Netlify](#host-on-netlify)
@@ -82,15 +88,29 @@ This CMS Starter comes prepared with a nice list of features out-of-the-box:
 - **Config automatically generated** from Design System component APIs
 - **Automated content generation** from Storyblok Ideas with AI prompter
 
-## Deploy your own
+## Getting Started
 
 ### Requirements
 
+#### Development
+
 - Node / `npm`: Ensure you're using the correct Node version 18+ locally; `nvs use`, `nvm use` for automatic selection, if you use one of those tools.
 - [`mkcert`](https://github.com/FiloSottile/mkcert#installation): for local setup, to get a locally trusted SSL certificate... needed to run inside the Visual Editor iframe of `app.storyblok.com`
+- If you want to go with the default hosting setup, you'll need an account with [Github](https://github.com/) (code repository hosting) and [Netlify](https://www.netlify.com/) (website hosting and build process)
+
+#### Storyblok
+
+- A Space: Create a new Storyblok Space to host your project (you can just go with the free "Community" tier here, to start): https://app.storyblok.com/#/me/spaces/new
 - If you want to use video files in your space, you'll also need a verified space by adding a credit card to it... or by contacting support to add that flag for you (TODO additional note about this being required in premium)
 
-### Environment Variables
+#### Hosting
+
+- If you want to go with the default hosting setup, you'll need an account with [Github](https://github.com/), for code repository hosting,
+- and one with [Netlify](https://www.netlify.com/), for website hosting and build process
+
+TODO add general note that nothing here _needs_ to be done with Github and / or Netlify, and while some commands might change slightly... everything should be much the same no matter where you want to host
+
+#### Environment Variables
 
 | Variable                     | Description                                                             | Where to find                                                                                                                                                                                                             |
 | ---------------------------- | ----------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -101,7 +121,13 @@ This CMS Starter comes prepared with a nice list of features out-of-the-box:
 | `STORYBLOK_REGION`           | The region your Storyblok Space is hosted in.                           | This is the one you selected when creating your new Space. Can also be found on the same page the Space ID is displayed on (see above)                                                                                    |
 | `NEXT_PUBLIC_SITE_URL`       | The URL of your site.                                                   | The full URL **with** protocol, without a trailing slash, where your production setup will live. For new projects this can be the `*.netlify.app` one provided by Netlify, later on this will be your real production URL |
 
-### Manually
+### Netlify Deploy
+
+Automated process of setting up a Github repository, connecting it to Netlify, and initializing your Storyblok project. See [Quickstart](#quickstart) above.
+
+### Manual
+
+When going the manual route, you'll need the same environment variables, but you'll start the project initialization locally.
 
 #### Setup
 
@@ -114,13 +140,17 @@ This CMS Starter comes prepared with a nice list of features out-of-the-box:
    3. (Re-)login to the Storyblok CLI: `npm run storyblok-logout` followed by `npm run storyblok-login`. The logout first ensures the CLI can actually see all projects, especially newly created ones (which would be likely for a starter like this) can error out otherwise. Use your Storyblok-Login and the region chosen when creating your Space here
    4. Run the project initialization: `npm run init`. This removes demo content, adds all the needed preset and demo content images (into distinct folders, as not to pollute your future project), all components and preset configuration, and creates an initial demo page
    5. Final small adjustment you need to make is to add your future site url in `.env` (variable `NEXT_PUBLIC_SITE_URL`)
-   6. You can now commit & push all the locally updated files (`git add --all && git commit -m "Initial Storyblok setup" && git push origin main`):
-      - `cms/components.123456.json` is the automatically generated component schema, which was already part of the repository when forked (you can regenerate it with `npm run create-storyblok-config`). It now includes the correct asset references for visual component previews
-      - `cms/presets.123456.json` is the same for presets, now with updated asset references for visual preset previews and correct space and component id references
-      - `types/components-schema.json` is your live component schema pulled from Storyblok (seeded by `cms/components.123456.json`, this now includes all correct ids and references, pulled by `npm run pull-content-schema`)
-      - `types/components-presets.json` again is the same for presets
-      - `types/components-schema.d.ts` includes TypeScript types matching your content and component schemas. This is generated based off your `components-schema.json` by using https://github.com/dohomi/storyblok-generate-ts
-      - `.env` containing general project related configuration
+   6. You can now commit & push all the locally updated files (`git add --all && git commit -m "Initial Storyblok setup" && git push origin main`)
+
+Changed files in detail:
+| Filename | Description |
+| ------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `cms/components.123456.json` | The automatically generated component schema, which was already part of the repository when forked (you can regenerate it with `npm run create-storyblok-config`). It now includes the correct asset references for visual component previews |
+| `cms/presets.123456.json` | The same for presets, now with updated asset references for visual preset previews and correct space and component id references |
+| `types/components-schema.json` | Your live component schema pulled from Storyblok (seeded by `cms/components.123456.json`, this now includes all correct ids and references, pulled by `npm run pull-content-schema`) |
+| `types/components-presets.json` | The same for presets |
+| `types/components-schema.d.ts` | Includes TypeScript types matching your content and component schemas. This is generated based off your `components-schema.json` by using https://github.com/dohomi/storyblok-generate-ts |
+| `.env` | Contains general project related configuration |
 
 #### Start locally
 
@@ -183,10 +213,10 @@ From now on your build process in Netlify should be automatically triggered, dep
 - (robots.txt)
 - 404 / 500
 - TODO: check! initial branding seems broken currently, at least for Premium Starter. Maybe a consequence of failed merges with Lughausen repository
-- add general note that nothing here _needs_ to be done with Github and / or Netlify, and while some commands might change slightly... everything should be much the same no matter where you want to host
 - add section pointing at and explaining DSA DS
 - add note about initial initialization taking a while (without any feedback currently)
 - document global component / reference usage
+- copy info / warning style from `ds-starter`, add where appropriate
 
 ### Adding initial content
 

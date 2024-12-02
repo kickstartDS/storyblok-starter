@@ -1,22 +1,81 @@
 # kickstartDS Storyblok starter
 
-1. Clone our Starter space by visiting https://app.storyblok.com/#!/build/242426.
-2. Clone `energyui-storyblok-starter`-Repo by clicking on "Use this template"
-   -> "Create new repository".
-3. Go to Vercel and click on "Add New..." -> "Project". Import your cloned
-   Github Repository. Unfold "Environment Variables" and add the following:
-   - `NPM_RC` with `//<your package registry>:_authToken=<your npm token>`
-   - `STORYBLOK_API_TOKEN` with a preview token from the cloned Stroyblok
-     Space above.
-4. Click on "Deploy"
-5. Configure your freshly deployt App as the default preview URL in Storyblok
-   ("Settings" -> "Visual Editor"). Type in the base URL of your deployment and
-   add `/preview/` as the path, e.g.
-   `https://energyui-storyblok-starter.vercel.app/preview/`.
+This project provides a starter template for building marketing websites using Storyblok and a Design System. It includes pre-configured components, content schema, and best practices to streamline development and ensure consistency.
 
-See ["Local Development"-Section](#local-development) below for the necessary steps to start developing locally with rapid feedback cycles.
+[![License](https://img.shields.io/badge/license-MIT-blue)](LICENSE-MIT)
+[![License](https://img.shields.io/badge/license-Apache%202.0-blue)](LICENSE-APACHE)
 
-You can use this button to deploy the EnergyUI@Storyblok starter repo on Vercel. Feel free to change the repository URL for quicker deployment of the clone repository:
+## Table of Contents
+
+- [kickstartDS Storyblok starter](#kickstartds-storyblok-starter)
+  - [Table of Contents](#table-of-contents)
+  - [Quickstart](#quickstart)
+    - [Netlify Deploy](#netlify-deploy)
+  - [Features](#features)
+  - [Deploy your own](#deploy-your-own)
+    - [Requirements](#requirements)
+    - [Environment Variables](#environment-variables)
+    - [Manually](#manually)
+      - [Setup](#setup)
+      - [Start locally](#start-locally)
+      - [Host on Netlify](#host-on-netlify)
+      - [Netlify Webhook on Storyblok change](#netlify-webhook-on-storyblok-change)
+      - [Storyblok hosted preview](#storyblok-hosted-preview)
+  - [Local Development](#local-development)
+    - [Setup](#setup-1)
+      - [TODO](#todo)
+    - [Adding initial content](#adding-initial-content)
+      - [Root page (your index page)](#root-page-your-index-page)
+      - [Global Settings (header, footer, seo)](#global-settings-header-footer-seo)
+      - [404](#404)
+    - [Creating branded component and preset previews](#creating-branded-component-and-preset-previews)
+  - [Working with the content schema](#working-with-the-content-schema)
+    - [Typescript Support](#typescript-support)
+    - [Migrations](#migrations)
+  - [Contributing](#contributing)
+  - [License](#license)
+  - [Support](#support)
+
+## Quickstart
+
+### Netlify Deploy
+
+The Netlify Deploy button provides an easy and convenient way to deploy your project to Netlify. By clicking the button, you can quickly set up your project on Netlify without manually configuring the deployment settings. It automates the process and ensures that your project is deployed correctly with just a few clicks. This saves time and effort, especially for users who are new to Netlify or want a streamlined deployment process.
+
+To start, you'll need some variables defined [here](#).
+
+// TODO use correct URL in premium starter
+
+// TODO mention next local steps still needed (like `npm run generate-content-types`)
+
+[![Deploy to Netlify](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/kickstartDS/storyblok-starter)
+
+## Features
+
+This CMS Starter comes prepared with a nice list of features out-of-the-box:
+
+- **Easy theming** for brand compliance
+- **Flexible landing pages**, build up freely from sections
+- **Perfect Lighthouse scores** for Performance, A11y, Seo and Best Practices
+- **Structured blog** / news posts, and blog / news overview
+- Editable, **global header and footer**
+- **Basic and free:** **10** ready-to-use components with a total of **30** variants
+- **Premium:** **14** ready-to-use components with a total of **43** variants
+- **Layout components** for sections (with **9** variants) and sliders (with **3** variants)
+- **Presets for all components**, including preview screenshots
+- **Global element support**, selectively manage content in a central place (e.g., blog authors)
+- **Editable 404 pages**, add any content you like yourself
+- **Icon picker** for custom icon sprite, as a Storyblok field plugin
+- **Image optimization** (blurhashes, responsive image resizing, Design System token connected)
+- **Content alt-tag support**, with fallback to general asset alt if not defined
+- **Optimized font loading**, with granular control over swapping behaviour
+- **High performance option**, to render completely without React + Next.js ("fully static")
+- **Sitemaps + robots.txt** automatically generated
+- **Built-in** page, settings, and Seo **templates**
+- Easy **custom template support** (e.g., structured page types like products, news, etc)
+- **Fully automated initial setup**, < 30 minutes to production
+- **Config automatically generated** from Design System component APIs
+- **Automated content generation** from Storyblok Ideas with AI prompter
 
 ## Deploy your own
 
@@ -24,21 +83,29 @@ You can use this button to deploy the EnergyUI@Storyblok starter repo on Vercel.
 
 - Node / `npm`: Ensure you're using the correct Node version 18+ locally; `nvs use`, `nvm use` for automatic selection, if you use one of those tools.
 - [`mkcert`](https://github.com/FiloSottile/mkcert#installation): for local setup, to get a locally trusted SSL certificate... needed to run inside the Visual Editor iframe of `app.storyblok.com`
+- If you want to use video files in your space, you'll also need a verified space by adding a credit card to it... or by contacting support to add that flag for you (TODO additional note about this being required in premium)
+
+### Environment Variables
+
+| Variable                     | Description                                                             | Where to find                                                                                                                                                                                                             |
+| ---------------------------- | ----------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `NEXT_STORYBLOK_API_TOKEN`   | The Preview API Token for your Storyblok Space.                         | You can find the Space ID in your Storyblok Spaces "Settings", on the initially opened page (called "Space"). Make sure to exclude(!) the `#` sign in front of it (`297364` instead of `#297364`)                         |
+| `NEXT_STORYBLOK_OAUTH_TOKEN` | The Management API OAUTH Token for your Storyblok account.              | You can find the needed Preview API Token in those same "Settings", but in the sub page called "Access Tokens". You can just use the initially created `Preview`-Token (just copy it using the handy icon)                |
+| `NEXT_STORYBLOK_SPACE_ID`    | The Space ID for your Storyblok Space.                                  | Your Management API OAUTH Token needs to be created in your "My account" settings, just follow this guide: https://www.storyblok.com/docs/api/management/getting-started/authentication                                   |
+| `STORYBLOK_LOGIN_EMAIL`      | The email address for the account you created the Storyblok Space with. | If you're not sure about this, just double check here: https://app.storyblok.com/#/me/account?tab=account                                                                                                                 |
+| `STORYBLOK_REGION`           | The region your Storyblok Space is hosted in.                           | This is the one you selected when creating your new Space. Can also be found on the same page the Space ID is displayed on (see above)                                                                                    |
+| `NEXT_PUBLIC_SITE_URL`       | The URL of your site.                                                   | The full URL **with** protocol, without a trailing slash, where your production setup will live. For new projects this can be the `*.netlify.app` one provided by Netlify, later on this will be your real production URL |
 
 ### Manually
 
 #### Setup
 
 1. Create a new Storyblok Space to host your project (you can just go with the free "Community" tier here, to start): https://app.storyblok.com/#/me/spaces/new
-2. TODO note about initial video uploads needing account / space verification for it to work, only needed for premium, though. General note applies to both, though
-3. Fork the starter to your own account or organisation, this way you can easily benefit from future improvements: https://github.com/kickstartDS/storyblok-starter/fork
-4. Clone the forked repository to your local machine
-5. Switch to the freshly cloned directory, and inside:
+2. Fork the starter to your own account or organisation, this way you can easily benefit from future improvements: https://github.com/kickstartDS/storyblok-starter/fork
+3. Clone the forked repository to your local machine
+4. Switch to the freshly cloned directory, and inside:
    1. `npm i` to install dependencies
-   2. Copy `.env.local.sample` to `.env.local`, and replace all placeholders:
-      - You can find the Space ID (`NEXT_STORYBLOK_SPACE_ID`) in your Storyblok Spaces "Settings", on the initially opened page (called "Space"). Make sure to exclude(!) the `#` sign in front of it (`297364` instead of `#297364`)
-      - You can find the needed Preview API Token (`NEXT_STORYBLOK_API_TOKEN`) in those same "Settings", but in the sub page called "Access Tokens". You can just use the initially created `Preview`-Token (just copy it using the handy icon)
-      - Your Management API OAUTH Token (`NEXT_STORYBLOK_OAUTH_TOKEN`) needs to be created in your "My account" settings, just follow this guide: https://www.storyblok.com/docs/api/management/getting-started/authentication
+   2. Copy `.env.local.sample` to `.env.local`, and replace all placeholders, [see above](#environment-variables) for definitions... and where to find them
    3. (Re-)login to the Storyblok CLI: `npm run storyblok-logout` followed by `npm run storyblok-login`. The logout first ensures the CLI can actually see all projects, especially newly created ones (which would be likely for a starter like this) can error out otherwise. Use your Storyblok-Login and the region chosen when creating your Space here
    4. Run the project initialization: `npm run init`. This removes demo content, adds all the needed preset and demo content images (into distinct folders, as not to pollute your future project), all components and preset configuration, and creates an initial demo page
    5. Final small adjustment you need to make is to add your future site url in `.env` (variable `NEXT_PUBLIC_SITE_URL`)
@@ -50,9 +117,7 @@ You can use this button to deploy the EnergyUI@Storyblok starter repo on Vercel.
       - `types/components-schema.d.ts` includes TypeScript types matching your content and component schemas. This is generated based off your `components-schema.json` by using https://github.com/dohomi/storyblok-generate-ts
       - `.env` containing general project related configuration
 
-#### Local
-
-TODO add note somewhere about server start being bound to `getting-started` existing. If that page is renamed / deleted, you need to adjust the script `dev:proxy` in `package.json` accordingly.
+#### Start locally
 
 1. Inside the project directory start by creating a local certificate for the project: `mkcert localhost`. This generates local key and cert files used when starting the local server (you don't commit those, which is why they're on the `.gitignore`)
 2. Run a first full build with `npm run build`
@@ -67,16 +132,16 @@ TODO add note somewhere about server start being bound to `getting-started` exis
 
 TODO: check initial `npm run init` locally again... failed for `push-components` in initial try, because of missing environment variable `NEXT_STORYBLOK_SPACE_ID` in `push-components` script
 
-#### Netlify Hosting
+#### Host on Netlify
 
 1. Add a new site in your Netlify dashboard, choose "Import an existing project"
 2. Select the repository you forked here, presumably from Github
-3. Choose a fitting name, and while leaving the rest of the settings as is... do add the following variables through "New variable" in "Environment variables":
-   - `NEXT_STORYBLOK_API_TOKEN`: TODO don't repeat explanations, see local setup above
-   - `NEXT_STORYBLOK_OAUTH_TOKEN`: TODO don't repeat explanations, see local setup above
-   - `NEXT_STORYBLOK_SPACE_ID`: TODO don't repeat explanations, see local setup above
-   - `STORYBLOK_LOGIN_EMAIL`: the email for the account you created the Space with
-   - `STORYBLOK_REGION`: region your Space is hosted in. You should have selected this when creating it
+3. Choose a fitting name, and leave the rest of the settings as is... only add the following variables through "New variable" in "Environment variables" ([see here](#environment-variables) for definitions / where to find those):
+   - `NEXT_STORYBLOK_API_TOKEN`
+   - `NEXT_STORYBLOK_OAUTH_TOKEN`
+   - `NEXT_STORYBLOK_SPACE_ID`
+   - `STORYBLOK_LOGIN_EMAIL`
+   - `STORYBLOK_REGION`
 4. Run the first deployment for your project by hitting the final button
 5. You should be able to open the site url configured in Netlify now
 
@@ -101,12 +166,6 @@ From now on your build process in Netlify should be automatically triggered, dep
 4. On the main "Content" pane, open the page "Getting Started", that was created on initial project setup
 5. If you already went through configuring a local preview URL, you will most likely have to change back to the default preview environment now by clicking on the settings icons (cogs) on the top right of the preview frame
 
-### Netlify Deploy
-
-// TODO use correct URL in non-premium starter
-// TODO mention next local steps still needed (like `npm run generate-content-types`)
-[![Deploy to Netlify](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/kickstartDS/storyblok-starter-premium)
-
 ## Local Development
 
 ### Setup
@@ -118,12 +177,9 @@ From now on your build process in Netlify should be automatically triggered, dep
 - HTML lang
 - (robots.txt)
 - 404 / 500
-- initial branding seems broken currently, at least for Premium Starter. Maybe a consequence of failed merges with Lughausen repository
+- TODO: check! initial branding seems broken currently, at least for Premium Starter. Maybe a consequence of failed merges with Lughausen repository
 - add general note that nothing here _needs_ to be done with Github and / or Netlify, and while some commands might change slightly... everything should be much the same no matter where you want to host
-- maybe add info about exit preview-URL, to preview / compare with published content... and to remove the cookie that might stick outside of the preview, too
-- move initial demo page to slug `/`?
 - add section pointing at and explaining DSA DS
-- mention mp4-requirement for premium (project has to be verified by Storyblok)
 - add note about initial initialization taking a while (without any feedback currently)
 
 ### Adding initial content

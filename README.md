@@ -45,6 +45,12 @@ To start, you'll need some variables defined [here](#).
 - [Working with the content schema](#working-with-the-content-schema)
   - [Typescript Support](#typescript-support)
   - [Migrations](#migrations)
+- [Customizing](#customizing)
+  - [Customizing component design](#customizing-component-design)
+  - [Adding a component](#adding-a-component)
+  - [Customizing a component](#customizing-a-component)
+  - [Adding a new content template](#adding-a-new-content-template)
+  - [Switch to your own Design System](#switch-to-your-own-design-system)
 - [Contributing](#contributing)
 - [License](#license)
 - [Support](#support)
@@ -180,6 +186,7 @@ From now on your build process in Netlify should be automatically triggered, dep
 - add general note that nothing here _needs_ to be done with Github and / or Netlify, and while some commands might change slightly... everything should be much the same no matter where you want to host
 - add section pointing at and explaining DSA DS
 - add note about initial initialization taking a while (without any feedback currently)
+- document global component / reference usage
 
 ### Adding initial content
 
@@ -222,6 +229,8 @@ Reminder: Undo the import for `fonts.scss` in `index.scss` if you had to change 
 
 ### Typescript Support
 
+TODO update this, outdated... but still a good idea to document
+
 Generate ts types according to the content schema by running
 `NEXT_STORYBLOK_SPACE_ID=<your-space-id> npm run generate-content-types`.
 
@@ -229,6 +238,28 @@ Generate ts types according to the content schema by running
 
 When changing the content schema we recommend sticking to [Storyblok's Best
 Practices](https://www.storyblok.com/tp/storyblok-cli-best-practices#modify-blok-structure).
+
+## Customizing
+
+### Customizing component design
+
+- TODO document customizing DSA component token / SCSS
+
+### Adding a component
+
+- TODO document new component (example Info Table; add notices about providers / image optimization)
+
+### Customizing a component
+
+- TODO document customizing a new component
+
+### Adding a new content template
+
+- TODO document adding a custom template type
+
+### Switch to your own Design System
+
+- TODO document switching to your own Design System instance
 
 ## Contributing
 

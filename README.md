@@ -1,44 +1,16 @@
-# kickstartDS Storyblok starter
+# kickstartDS Storyblok starter <!-- omit in toc -->
 
-This project provides a starter template for building marketing websites using Storyblok and a Design System. It includes pre-configured components, content schema, and best practices to streamline development and ensure consistency.
+This project provides a starter template for building marketing websites using Storyblok and a Design System backed by [**kickstartDS**](https://www.kickstartDS.com). It includes pre-configured components, content schema, and best practices to streamline development and ensure consistency.
+
+You can learn more about it on our dedicated landing page for these starters:<br>
+https://about.design-system.agency/
 
 [![License](https://img.shields.io/badge/license-MIT-blue)](LICENSE-MIT)
 [![License](https://img.shields.io/badge/license-Apache%202.0-blue)](LICENSE-APACHE)
 
-## Table of Contents
+## Quickstart <!-- omit in toc -->
 
-- [kickstartDS Storyblok starter](#kickstartds-storyblok-starter)
-  - [Table of Contents](#table-of-contents)
-  - [Quickstart](#quickstart)
-    - [Netlify Deploy](#netlify-deploy)
-  - [Features](#features)
-  - [Deploy your own](#deploy-your-own)
-    - [Requirements](#requirements)
-    - [Environment Variables](#environment-variables)
-    - [Manually](#manually)
-      - [Setup](#setup)
-      - [Start locally](#start-locally)
-      - [Host on Netlify](#host-on-netlify)
-      - [Netlify Webhook on Storyblok change](#netlify-webhook-on-storyblok-change)
-      - [Storyblok hosted preview](#storyblok-hosted-preview)
-  - [Local Development](#local-development)
-    - [Setup](#setup-1)
-      - [TODO](#todo)
-    - [Adding initial content](#adding-initial-content)
-      - [Root page (your index page)](#root-page-your-index-page)
-      - [Global Settings (header, footer, seo)](#global-settings-header-footer-seo)
-      - [404](#404)
-    - [Creating branded component and preset previews](#creating-branded-component-and-preset-previews)
-  - [Working with the content schema](#working-with-the-content-schema)
-    - [Typescript Support](#typescript-support)
-    - [Migrations](#migrations)
-  - [Contributing](#contributing)
-  - [License](#license)
-  - [Support](#support)
-
-## Quickstart
-
-### Netlify Deploy
+### Netlify Deploy <!-- omit in toc -->
 
 The Netlify Deploy button provides an easy and convenient way to deploy your project to Netlify. By clicking the button, you can quickly set up your project on Netlify without manually configuring the deployment settings. It automates the process and ensures that your project is deployed correctly with just a few clicks. This saves time and effort, especially for users who are new to Netlify or want a streamlined deployment process.
 
@@ -49,6 +21,33 @@ To start, you'll need some variables defined [here](#).
 // TODO mention next local steps still needed (like `npm run generate-content-types`)
 
 [![Deploy to Netlify](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/kickstartDS/storyblok-starter)
+
+## Table of Contents <!-- omit in toc -->
+
+- [Features](#features)
+- [Deploy your own](#deploy-your-own)
+  - [Requirements](#requirements)
+  - [Environment Variables](#environment-variables)
+  - [Manually](#manually)
+    - [Setup](#setup)
+    - [Start locally](#start-locally)
+    - [Host on Netlify](#host-on-netlify)
+    - [Netlify Webhook on Storyblok change](#netlify-webhook-on-storyblok-change)
+    - [Storyblok hosted preview](#storyblok-hosted-preview)
+- [Local Development](#local-development)
+  - [Setup](#setup-1)
+    - [TODO](#todo)
+  - [Adding initial content](#adding-initial-content)
+    - [Root page (your index page)](#root-page-your-index-page)
+    - [Global Settings (header, footer, seo)](#global-settings-header-footer-seo)
+    - [404](#404)
+  - [Creating branded component and preset previews](#creating-branded-component-and-preset-previews)
+- [Working with the content schema](#working-with-the-content-schema)
+  - [Typescript Support](#typescript-support)
+  - [Migrations](#migrations)
+- [Contributing](#contributing)
+- [License](#license)
+- [Support](#support)
 
 ## Features
 

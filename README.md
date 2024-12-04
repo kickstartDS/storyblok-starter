@@ -5,6 +5,11 @@
 - check! initial branding seems broken currently, at least for Premium Starter. Maybe a consequence of failed merges with Lughausen repository
 - add section pointing at and explaining DSA DS
 - document global component / reference usage
+- document token extraction (and how to add values)
+- document image optimizations
+- document initial schema mismatch in Storyblok after init (needs hard refresh in browser to load correct component schemas)
+- document index page configuration: https://github.com/kickstartDS/storyblok-starter/blob/main/helpers/storyblok.ts#L324
+- fix global element error on initial `push-components`
 
 This project provides a starter template for building marketing websites using Storyblok and a Design System backed by [**kickstartDS**](https://www.kickstartDS.com). It includes pre-configured components, content schema, and best practices to streamline development and ensure consistency.
 
@@ -30,10 +35,10 @@ You can also do everything [manually](#manual), too!
 - [**TODO**](#todo)
 - [Features](#features)
 - [Requirements](#requirements)
-    - [Development](#development)
-    - [Storyblok](#storyblok)
-    - [Hosting](#hosting)
-    - [Environment Variables](#environment-variables)
+  - [Development](#development)
+  - [Storyblok](#storyblok)
+  - [Hosting](#hosting)
+  - [Environment Variables](#environment-variables)
 - [Getting Started](#getting-started)
   - [Netlify Deploy](#netlify-deploy)
   - [Manual](#manual)
@@ -44,26 +49,30 @@ You can also do everything [manually](#manual), too!
     - [Storyblok hosted preview](#storyblok-hosted-preview)
   - [Adding initial content](#adding-initial-content)
     - [Root page (your index page)](#root-page-your-index-page)
-    - [Global Settings (header, footer, seo)](#global-settings-header-footer-seo)
+    - [Blog Post](#blog-post)
+    - [Blog Overview](#blog-overview)
+    - [Global settings (header, footer, seo)](#global-settings-header-footer-seo)
     - [404](#404)
 - [Local Development](#local-development)
-  - [Setup](#setup-1)
-  - [Customizing **Design Token**](#customizing-design-token)
+- [Configuration](#configuration)
+  - [Applying your own design / branding](#applying-your-own-design--branding)
+  - [Creating branded previews](#creating-branded-previews)
+  - [Working with the content schema](#working-with-the-content-schema)
+    - [Typescript Support](#typescript-support)
+    - [Migrations](#migrations)
   - [Changing the favicon](#changing-the-favicon)
   - [Using your own custom fonts](#using-your-own-custom-fonts)
   - [Adjusting website language](#adjusting-website-language)
   - [Changing 404 / 500 content](#changing-404--500-content)
   - [Configuring sitemap.xml / robots.txt](#configuring-sitemapxml--robotstxt)
-  - [Creating branded component and preset previews](#creating-branded-component-and-preset-previews)
-  - [Working with the content schema](#working-with-the-content-schema)
-    - [Typescript Support](#typescript-support)
-    - [Migrations](#migrations)
-- [Customizing](#customizing)
+  - [Adding redirects](#adding-redirects)
+- [Customization](#customization)
   - [Customizing component design](#customizing-component-design)
   - [Adding a component](#adding-a-component)
   - [Customizing a component](#customizing-a-component)
   - [Adding a new content template](#adding-a-new-content-template)
   - [Switch to your own Design System](#switch-to-your-own-design-system)
+- [Technical background](#technical-background)
 - [Contributing](#contributing)
 - [License](#license)
 - [Support](#support)
@@ -84,6 +93,7 @@ This CMS Starter comes prepared with a nice list of features out-of-the-box:
 - **Layout components** for sections (with **9** variants) and sliders (with **3** variants)
 - **Presets for all components**, including preview screenshots
 - **Global element support**, selectively manage content in a central place (e.g., blog authors)
+- **Full TypeScript** support, including content schemas
 - **Editable 404 pages**, add any content you like yourself
 - **Icon picker** for custom icon sprite, as a Storyblok field plugin
 - **Image optimization** (blurhashes, responsive image resizing, Design System token connected)
@@ -148,7 +158,7 @@ When going the manual route, you'll need the same environment variables, but you
 
 Setup consists of creating your own code repository, cloning the project and running the Storyblok project inititialization locally.
 
-> :information_source: initialization can take a while (2-3 minutes), as in the process of adding all demo content, components and presets we also upload quite a lot of assets (especially component and preset previews) according to the [throttling imposed by Storyblok](https://www.storyblok.com/cl/rate-limit-management-api)
+> :information_source: initialization itself can take a while (2-3 minutes), as in the process of adding all demo content, components and presets we also upload quite a lot of assets (especially component and preset previews) according to the [throttling imposed by Storyblok](https://www.storyblok.com/cl/rate-limit-management-api)
 
 1. Fork the starter to your own account or organisation, this way you can easily benefit from future improvements: https://github.com/kickstartDS/storyblok-starter/fork
 2. Clone the forked repository to your local machine
@@ -224,7 +234,15 @@ Read more about the Visual Editor: https://www.storyblok.com/docs/guide/essentia
 
 **TODO**
 
-#### Global Settings (header, footer, seo)
+#### Blog Post
+
+**TODO**, possibly document switching authors to be global
+
+#### Blog Overview
+
+**TODO**, also document switching Blog Teasers to Blog Post references
+
+#### Global settings (header, footer, seo)
 
 **TODO**
 
@@ -234,9 +252,8 @@ Read more about the Visual Editor: https://www.storyblok.com/docs/guide/essentia
 
 ## Local Development
 
-### Setup
-
-Using this, you can essentially forego any hosting setup. Start developing using just your local setup and a Storyblok Space:
+Using this, you can essentially forego any hosting setup to start testing or developing. Start using just your local setup and a Storyblok Space.<br>
+This is also the setup we encourage to use to test changes before commiting / pushing them to production, even if already using a hosting setup.
 
 1. Inside the project directory start by creating a local certificate for the project: `mkcert localhost`. This generates local key and cert files used when starting the local server (you don't commit those, which is why they're on the `.gitignore`)
 2. Run a first full build with `npm run build`
@@ -251,9 +268,15 @@ Using this, you can essentially forego any hosting setup. Start developing using
 
 **TODO**: check initial `npm run init` locally again... failed for `push-components` in initial try, because of missing environment variable `NEXT_STORYBLOK_SPACE_ID` in `push-components` script
 
-### Customizing **Design Token**
+## Configuration
+
+There's a lot that needs to be configurable, to make a good starter. This involves stuff like applying your branding, configuring technical SEO aspects or generally changing the setup to your liking. Here you'll find short descriptions for all of those aspects.
+
+### Applying your own design / branding
 
 When getting started with your **Design System**, you will find the current **Design Token** set to be pretty bland and boring... this is because you are looking at the default, pretty much unstyled versions of components.
+
+**TODO** link https://design-system.agency/
 
 There are two concepts involved with design and token application in **kickstartDS**:
 
@@ -266,29 +289,13 @@ There are two concepts involved with design and token application in **kickstart
 
 To learn more about this process, follow the section ["2. Design Application"](https://www.kickstartds.com/docs/guides/create/design) of our ["Create your Design System"](https://www.kickstartds.com/docs/guides/create) guide.
 
-### Changing the favicon
+**TODO** link theming page https://about.design-system.agency/theming/
 
-**TODO**
-
-### Using your own custom fonts
-
-**TODO**
-
-### Adjusting website language
-
-**TODO**
-
-### Changing 404 / 500 content
-
-**TODO**
-
-### Configuring sitemap.xml / robots.txt
-
-**TODO**
-
-### Creating branded component and preset previews
+### Creating branded previews
 
 Use this to adjust the included component and preset previews, shown when working with content inside your Storyblok Space. By default, these will feature the demo design included with this starter. After you've applied your own branding to this starter **TODO** link this to section about design application, you'll probably want to update said previews, too!
+
+**TODO** link https://design-system.agency/
 
 `YOUR_WEBSITE` should be the path pointing to your website project, the one you want to update the previews for.
 
@@ -325,7 +332,31 @@ Generate ts types according to the content schema by running
 When changing the content schema we recommend sticking to [Storyblok's Best
 Practices](https://www.storyblok.com/tp/storyblok-cli-best-practices#modify-blok-structure).
 
-## Customizing
+### Changing the favicon
+
+**TODO**
+
+### Using your own custom fonts
+
+**TODO**
+
+### Adjusting website language
+
+**TODO**
+
+### Changing 404 / 500 content
+
+**TODO**
+
+### Configuring sitemap.xml / robots.txt
+
+**TODO**
+
+### Adding redirects
+
+**TODO**
+
+## Customization
 
 ### Customizing component design
 
@@ -346,6 +377,10 @@ Practices](https://www.storyblok.com/tp/storyblok-cli-best-practices#modify-blok
 ### Switch to your own Design System
 
 - **TODO** document switching to your own Design System instance
+
+## Technical background
+
+**TODO** detail Design System concept of components, templates and globals
 
 ## Contributing
 

@@ -10,18 +10,13 @@ import type { DividerProps } from "@kickstartds/ds-agency/divider";
 import type { FaqProps } from "@kickstartds/ds-agency/faq";
 import type { FeaturesProps } from "@kickstartds/ds-agency/features";
 import type { GalleryProps } from "@kickstartds/ds-agency/gallery";
-import type { HeroProps } from "@kickstartds/ds-agency/hero";
 import type { HtmlProps } from "@kickstartds/ds-agency/html";
-import type { ImageStoryProps } from "@kickstartds/ds-agency/image-story";
 import type { ImageTextProps } from "@kickstartds/ds-agency/image-text";
 import type { LogosProps } from "@kickstartds/ds-agency/logos";
-import type { MosaicProps } from "@kickstartds/ds-agency/mosaic";
-import type { SliderProps } from "@kickstartds/ds-agency/slider";
 import type { StatsProps } from "@kickstartds/ds-agency/stats";
 import type { TeaserCardProps } from "@kickstartds/ds-agency/teaser-card";
 import type { TestimonialsProps } from "@kickstartds/ds-agency/testimonials";
 import type { TextProps } from "@kickstartds/ds-agency/text";
-import type { VideoCurtainProps } from "@kickstartds/ds-agency/video-curtain";
 import type { InfoTableProps } from "../info-table/InfoTableProps";
 import type { ButtonProps } from "@kickstartds/ds-agency/button";
 
@@ -121,18 +116,13 @@ export type Content = (
   | FaqProps
   | FeaturesProps
   | GalleryProps
-  | HeroProps
   | HtmlProps
-  | ImageStoryProps
   | ImageTextProps
   | LogosProps
-  | MosaicProps
-  | SliderProps
   | StatsProps
   | TeaserCardProps
   | TestimonialsProps
   | TextProps
-  | VideoCurtainProps
   | InfoTableProps
 )[];
 /**

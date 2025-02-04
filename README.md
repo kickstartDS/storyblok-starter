@@ -10,6 +10,7 @@
 - document initial schema mismatch in Storyblok after init (needs hard refresh in browser to load correct component schemas)
 - document index page configuration: https://github.com/kickstartDS/storyblok-starter/blob/main/helpers/storyblok.ts#L324
 - fix global element error on initial `push-components`
+- add link to project: https://github.com/orgs/kickstartDS/projects/9 (should add a short description for that project on Github, too)
 
 This project provides a starter template for building marketing websites using Storyblok and a Design System backed by [**kickstartDS**](https://www.kickstartDS.com). It includes pre-configured components, content schema, and best practices to streamline development and ensure consistency.
 
@@ -56,7 +57,7 @@ You can also do everything [manually](#manual), too!
 - [Local Development](#local-development)
 - [Configuration](#configuration)
   - [Applying your own design / branding](#applying-your-own-design--branding)
-  - [Creating branded previews](#creating-branded-previews)
+  - [Creating or update branded previews](#creating-or-update-branded-previews)
   - [Working with the content schema](#working-with-the-content-schema)
     - [Typescript Support](#typescript-support)
     - [Migrations](#migrations)
@@ -291,9 +292,11 @@ To learn more about this process, follow the section ["2. Design Application"](h
 
 **TODO** link theming page https://about.design-system.agency/theming/
 
-### Creating branded previews
+### Creating or update branded previews
 
-Use this to adjust the included component and preset previews, shown when working with content inside your Storyblok Space. By default, these will feature the demo design included with this starter. After you've applied your own branding to this starter **TODO** link this to section about design application, you'll probably want to update said previews, too!
+Use this to adjust the included component and preset previews, shown when working with content inside your Storyblok Space. By default, these will feature the demo design included with this starter. After you've applied your own branding to this starter **TODO** link this to section about design application, you'll probably want to update said previews!
+
+If you've changed, or added, components, you'll want to rerun this to update, too.
 
 **TODO** link https://design-system.agency/
 
@@ -380,7 +383,7 @@ Practices](https://www.storyblok.com/tp/storyblok-cli-best-practices#modify-blok
 
 ## Technical background
 
-**TODO** detail Design System concept of components, templates and globals
+**TODO** detail Design System concept of components, templates and globals, succintly explain what converters (JSON Schema tooling) do in this setup.
 
 ## Contributing
 

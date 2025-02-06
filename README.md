@@ -11,6 +11,7 @@
 - document index page configuration: https://github.com/kickstartDS/storyblok-starter/blob/main/helpers/storyblok.ts#L324
 - fix global element error on initial `push-components`
 - add link to project: https://github.com/orgs/kickstartDS/projects/9 (should add a short description for that project on Github, too)
+- document security exemptions needed in next.config.js, when using the Html component for third party domain embeds
 
 This project provides a starter template for building marketing websites using Storyblok and a Design System backed by [**kickstartDS**](https://www.kickstartDS.com). It includes pre-configured components, content schema, and best practices to streamline development and ensure consistency.
 
